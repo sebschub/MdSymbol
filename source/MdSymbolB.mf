@@ -6,15 +6,15 @@
 % is also available with a FAQ at: http://scripts.sil.org/OFL
 %
 
-input fdbase;
+input mdbase;
 
 negated := 0;
-input fdrelations;
+input mdrelations;
 
 negated := 1;
-input fdrelations;
+input mdrelations;
 
 negated := 2;
-input fdrelations;
+input mdrelations;
 
 bye;

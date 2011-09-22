@@ -7,9 +7,9 @@
 %
 
 if known ps_output:
-  font_family := "FdSymbolA";
+  font_family := "MdSymbolA";
   font_weight := "Medium";
 fi
 weight_index := 2;
 
-input FdSymbolA;
+input MdSymbolA;

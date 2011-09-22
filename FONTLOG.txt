@@ -1,41 +1,41 @@
-FONTLOG for FdSymbol
+FONTLOG for MdSymbol
 --------------------
 
-This file provides detailed information on the FdSymbol font family.
-This information should be distributed along with the FdSymbol fonts
+This file provides detailed information on the MdSymbol font family.
+This information should be distributed along with the MdSymbol fonts
 and any derivative works.
 
 
 Basic Font Information
 ----------------------
 
-FdSymbol is a font of mathematical symbols designed as a companion to
+MdSymbol is a font of mathematical symbols designed as a companion to
 Typotheque's Fedra family, but it might also fit well to other contemporary
 typefaces.
 
-FdSymbol is derived from MnSymbol, designed and released into the public
+MdSymbol is derived from MnSymbol, designed and released into the public
 domain by Achim Blumensath.
 
-FdSymbol development is currently hosted on:
-http://github.com/ummels/fdsymbol
+MdSymbol development is currently hosted on:
+http://github.com/ummels/mdsymbol
 
 
 ChangeLog
 ---------
 
-17 Mar 2011 (Michael Ummels) FdSymbol version 1.000
+17 Mar 2011 (Michael Ummels) MdSymbol version 1.000
 - First public release
 
-31 Mar 2011 (Michael Ummels) FdSymbol version 1.001
+31 Mar 2011 (Michael Ummels) MdSymbol version 1.001
 - Added aleph, beth, daleth and gimel
 
-21 May 2011 (Michael Ummels) FdSymbol version 1.002
+21 May 2011 (Michael Ummels) MdSymbol version 1.002
 - Optimised all glyphs
 
-30 May 2011 (Michael Ummels) FdSymbol version 1.003
+30 May 2011 (Michael Ummels) MdSymbol version 1.003
 - Optimised negation strokes and some other glyphs
 
-27 Aug 2011 (Michael Ummels) FdSymbol version 1.004
+27 Aug 2011 (Michael Ummels) MdSymbol version 1.004
 - Added many more glyphs and optimised turnstile glyphs
 
 Acknowledgements

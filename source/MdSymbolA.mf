@@ -6,8 +6,8 @@
 % is also available with a FAQ at: http://scripts.sil.org/OFL
 %
 
-input fdbase;
-input fdgeometric;
+input mdbase;
+input mdgeometric;
 
 font_slant 0;
 font_x_height x_height#;

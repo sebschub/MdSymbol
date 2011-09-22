@@ -1,18 +1,18 @@
-FdSymbol - A math symbol font
+MdSymbol - A math symbol font
 =============================
 
-FdSymbol is a math symbol font, designed as a companion to the Fedra family
+MdSymbol is a math symbol font, designed as a companion to the Fedra family
 by Typotheque, but it might also fit other contemporary typefaces.
 
 The development of this font package is hosted at github:
-http://github.com/ummels/fdsymbol
+http://github.com/ummels/mdsymbol
 
 Usage
 -----
 
 To use this font in LaTeX, include
 
-    \usepackage{fdsymbol}
+    \usepackage{mdsymbol}
 
 in the preamble of your LaTeX document. See the PDF documentation for
 the details.
@@ -20,25 +20,25 @@ the details.
 Installation
 ------------
 
-1. Run `latex fdsymbol.ins` to generate the LaTeX package.
+1. Run `latex mdsymbol.ins` to generate the LaTeX package.
 
 2. Create the following directories in a local texmf tree:
 
-   - doc/latex/fdsymbol
-   - fonts/map/dvips/fdsymbol
-   - fonts/enc/dvips/fdsymbol
-   - fonts/tfm/public/fdsymbol
-   - fonts/type1/public/fdsymbol
-   - tex/latex/fdsymbol
+   - doc/latex/mdsymbol
+   - fonts/map/dvips/mdsymbol
+   - fonts/enc/dvips/mdsymbol
+   - fonts/tfm/public/mdsymbol
+   - fonts/type1/public/mdsymbol
+   - tex/latex/mdsymbol
 
 3. Copy all necessary files into the texmf tree:
 
-   - fdsymbol.pdf goes to doc/latex/fdsymbol
-   - fdsymbol.map in the dvips directory goes to fonts/map/dvips/fdsymbol
-   - all other files in the dvips directory go to fonts/enc/dvips/fdsymbol
-   - all files in the tfm directory go to fonts/tfm/public/fdsymbol
-   - all files in the type1 directory go to fonts/type1/public/fdsymbol
-   - fdsymbol.sty goes to tex/latex/fdsymbol
+   - mdsymbol.pdf goes to doc/latex/mdsymbol
+   - mdsymbol.map in the dvips directory goes to fonts/map/dvips/mdsymbol
+   - all other files in the dvips directory go to fonts/enc/dvips/mdsymbol
+   - all files in the tfm directory go to fonts/tfm/public/mdsymbol
+   - all files in the type1 directory go to fonts/type1/public/mdsymbol
+   - mdsymbol.sty goes to tex/latex/mdsymbol
 
 4. Afterwards, you may need to regenerate the file database:
 
@@ -46,7 +46,7 @@ Installation
 
 5. Finally, you need to activate the map file:
 
-    updmap --enable Map=fdsymbol.map
+    updmap --enable Map=mdsymbol.map
 
 For a system-wide installation, replace updmap by updmap-sys.
 
@@ -72,5 +72,5 @@ This work has the LPPL maintenance status `maintained'.
 
 The Current Maintainer of this work is Michael Ummels.
 
-This work consists of the files fdsymbol.dtx, fdsymbol.ins
-and the derived files fdsymbol.pdf and fdsymbol.sty.
+This work consists of the files mdsymbol.dtx, mdsymbol.ins
+and the derived files mdsymbol.pdf and mdsymbol.sty.

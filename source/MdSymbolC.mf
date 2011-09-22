@@ -6,15 +6,15 @@
 % is also available with a FAQ at: http://scripts.sil.org/OFL
 %
 
-input fdbase;
+input mdbase;
 
 boolean negated;
 negated := false;
 
-input fdarrows;
+input mdarrows;
 
 current_char := 223;
 
-input fdturnstile;
+input mdturnstile;
 
 bye;

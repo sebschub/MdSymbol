@@ -19,8 +19,8 @@ ifneq (,$(findstring install,$(MAKECMDGOALS)))
 TEXMFDIR := $(shell kpsewhich -expand-var='$$TEXMFHOME')
 endif
 
-pkg := fdsymbol
-font := FdSymbol
+pkg := mdsymbol
+font := MdSymbol
 names := A B C D E F
 weights := Book Regular Medium Bold
 
@@ -41,7 +41,7 @@ pfbfiles := $(fonts:%=$(pfbdir)/%.pfb)
 gffiles := $(fonts:%=$(testdir)/%.2602gf)
 prooffiles := $(fonts:%=$(testdir)/%.dvi)
 chartfiles := $(fonts:%=$(testdir)/%.pdf)
-srcfiles := $(fonts:%=source/%.mf) $(names:%=source/$(font)%.mf) $(addprefix source/,fdbase.mf fdaccents.mf fdarrows.mf fddelims.mf fdgeometric.mf fdoperators.mf fdrelations.mf fdturnstile.mf)
+srcfiles := $(fonts:%=source/%.mf) $(names:%=source/$(font)%.mf) $(addprefix source/,mdbase.mf mdaccents.mf mdarrows.mf mddelims.mf mdgeometric.mf mdoperators.mf mdrelations.mf mdturnstile.mf)
 tempfiles := $(addprefix latex/,$(pkg).aux $(pkg).log $(pkg).out $(pkg).toc $(pkg).hd)
 
 # create output directories

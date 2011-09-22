@@ -1,18 +1,18 @@
-FdSymbol - A math symbol font
+MdSymbol - A math symbol font
 =============================
 
-FdSymbol is a math symbol font, designed as a companion to the
-[Fedra family][FD] by Typotheque, but it might also fit other contemporary
+MdSymbol is a math symbol font, designed as a companion to the
+[Fedra family][MD] by Typotheque, but it might also fit other contemporary
 typefaces.
 
-[FD]: http://www.typotheque.com/fonts
+[MD]: http://www.typotheque.com/fonts
 
 Usage
 -----
 
 To use this font in LaTeX, include
 
-    \usepackage{fdsymbol}
+    \usepackage{mdsymbol}
 
 in the preamble of your LaTeX document. See the PDF documentation for
 the details.
@@ -39,7 +39,7 @@ Afterwards, you may need to regenerate the file database:
 
 Finally, you need to activate the map file:
 
-    updmap --enable Map=fdsymbol.map
+    updmap --enable Map=mdsymbol.map
 
 For a system-wide installation, replace updmap by updmap-sys.
 
@@ -64,5 +64,5 @@ This work has the LPPL maintenance status `maintained'.
 
 The Current Maintainer of this work is Michael Ummels.
 
-This work consists of the files fdsymbol.dtx, fdsymbol.ins
-and the derived files fdsymbol.sty and fdsymbol.pdf.
+This work consists of the files mdsymbol.dtx, mdsymbol.ins
+and the derived files mdsymbol.sty and mdsymbol.pdf.

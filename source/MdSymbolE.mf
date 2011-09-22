@@ -6,11 +6,11 @@
 % is also available with a FAQ at: http://scripts.sil.org/OFL
 %
 
-input fdbase;
-input fdoperators;
+input mdbase;
+input mdoperators;
 
 current_char := 113;
-input fdaccents.mf;
+input mdaccents.mf;
 
 font_x_height x_height#;
 
