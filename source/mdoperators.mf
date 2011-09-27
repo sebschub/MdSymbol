@@ -29,7 +29,7 @@ charlist current_char - 1: current_char;
 for sign = 1, -1:
   for scale = 1, 1.4:
     beginbigop(scale, scale); "big wedge";
-      draw_less(a, centre + sign * op_height/2 * up, centre - sign * op_height/2 * up, op_width - line_thickness, line_thickness, false);
+      draw_less(a, centre + sign * op_height/2 * up, centre - sign * op_height/2 * up, op_width - line_thickness, line_thickness, false, true);
     endchar;
   endfor;
   charlist current_char - 1: current_char;
@@ -38,7 +38,7 @@ endfor;
 for sign = 1, -1:
   for scale = 1, 1.4:
     beginbigop(scale, scale); "big wedge dot";
-      draw_less(a, centre + sign * op_height/2 * up, centre - sign * op_height/2 * up, op_width - line_thickness, line_thickness, false);
+      draw_less(a, centre + sign * op_height/2 * up, centre - sign * op_height/2 * up, op_width - line_thickness, line_thickness, false, true);
       fill dot(centre - sign * 1/4op_height * up, dot_size);
     endchar;
   endfor;
@@ -51,8 +51,8 @@ for sign = 1, -1:
       z0 = centre - 1/8op_width * right;
       z1 = centre + 1/8op_width * right;
 
-      draw_less(a, z0 + sign * op_height/2 * up, z0 - sign * op_height/2 * up, 3/4op_width - line_thickness, line_thickness, false);
-      draw_less(b, z1 + sign * op_height/2 * up, z1 - sign * op_height/2 * up, 3/4op_width - line_thickness, line_thickness, false);
+      draw_less(a, z0 + sign * op_height/2 * up, z0 - sign * op_height/2 * up, 3/4op_width - line_thickness, line_thickness, false, true);
+      draw_less(b, z1 + sign * op_height/2 * up, z1 - sign * op_height/2 * up, 3/4op_width - line_thickness, line_thickness, false, true);
     endchar;
   endfor;
   charlist current_char - 1: current_char;

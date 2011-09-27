@@ -336,7 +336,7 @@ for sign = 1, -1:
       draw_line(left_ex + s * up, right_ex + s * up, false);
       draw_line(left_ex - s * up, right_ex - s * up, false);
 
-      draw_less(a, centre + (7/2 + sign * 3/2) * s * up, centre + (7/2 - sign * 3/2) * s * up, 4s, line_thickness, false);
+      draw_less(a, centre + (7/2 + sign * 3/2) * s * up, centre + (7/2 - sign * 3/2) * s * up, 4s, line_thickness, false, true);
   
       if negated = 1:
         stroke_through(centre + s * up, 4equal_spread);
@@ -400,7 +400,7 @@ fi;
 if negated < 2:
   for sign = 1, -1:
     beginorder(sign, order_width#, ifneg(0,1) * equal_spread# + greater_spread#); "less than";
-      draw_less(a, left_ex, right_ex, greater_spread, line_thickness, false);
+      draw_less(a, left_ex, right_ex, greater_spread, line_thickness, false, true);
 
       if negated = 1:
         stroke_through(centre, equal_spread + greater_spread);
@@ -417,7 +417,7 @@ if negated < 3:
       z0 - z2 = z1 - z3 = (2/3equal_spread + s/2) * up;
       z0 - left_ex = z1 - right_ex = 1/3equal_spread * up;
 
-      draw_less(a, z0, z1, s, line_thickness, false);
+      draw_less(a, z0, z1, s, line_thickness, false, true);
       draw_line(z2, z3, false);
 
       if negated = 1:
@@ -435,12 +435,16 @@ if negated < 2:
       s := 3/4greater_spread;
       t := 1/2equal_spread;
 
-      draw_less(a, left_ex + t * up, right_ex + t * up, s, line_thickness, false);
+      draw_less(a, left_ex + t * up, right_ex + t * up, s, line_thickness, false, true);
 
       if sign = 1:
-        draw_line(z1a - 2t * up, z4a - 2t * up, false);
+        z6 = z4a.l + 1/2line_thickness*up - 2t * up;
+        z7 = z1a                          - 2t * up;
+        draw_line_cut(6,7);
       else:
-        draw_line(z0a - 2t * up, z3a - 2t * up, false);
+        z6 = z3a.l + 1/2line_thickness*up - 2t * up;
+        z7 = z0a                          - 2t * up;
+        draw_line_cut(6,7);
       fi;
 
       if negated = 1:
@@ -459,7 +463,7 @@ if negated < 3:
       z0 - left_ex = z1 - right_ex = 5/6equal_spread * up;
       z2 - z4 = z3 - z5 = equal_spread * up;
 
-      draw_less(a, z0, z1, s, line_thickness, false);
+      draw_less(a, z0, z1, s, line_thickness, false, true);
       draw_line(z2, z3, false);
       draw_line(z4, z5, false);
 
@@ -480,7 +484,7 @@ if negated < 3:
       z0 - z2 = z1 - z3 = (3/4equal_spread + s/2) * up;
       z0 - left_ex = z1 - right_ex = 1/2equal_spread * up;
 
-      draw_less(a, z0, z1, s, line_thickness, false);
+      draw_less(a, z0, z1, s, line_thickness, false, true);
       if sign > 0:
         draw_sim(b, z2, z3, 1/4equal_spread, line_thickness);
       else:
@@ -505,7 +509,7 @@ if negated < 3:
       z0 - left_ex = z1 - right_ex = equal_spread * up;
       z2 - z4 = z3 - z5 = equal_spread * up;
 
-      draw_less(a, z0, z1, s, line_thickness, false);
+      draw_less(a, z0, z1, s, line_thickness, false, true);
 
       if sign > 0:
         draw_sim(b, z2, z3, 1/4equal_spread, line_thickness);
@@ -530,8 +534,8 @@ if negated < 2:
       s := 3/4greater_spread;
       t := 1/2equal_spread + 1/4s;
 
-      draw_less(a, left_ex + t * up, right_ex + t * up, s, line_thickness, false);
-      draw_less(b, right_ex - t * up, left_ex - t * up, s, line_thickness, false);
+      draw_less(a, left_ex + t * up, right_ex + t * up, s, line_thickness, false, true);
+      draw_less(b, right_ex - t * up, left_ex - t * up, s, line_thickness, false, true);
 
       if negated = 1:
         stroke_through(centre, if sign > 0: 2 else: 3/2 fi * equal_spread + 3/2s);
@@ -546,8 +550,8 @@ if negated < 2:
       s := 3/4greater_spread;
       t := 2/3equal_spread + 1/2s;
 
-      draw_less(a, left_ex + t * up, right_ex + t * up, s, line_thickness, false);
-      draw_less(b, right_ex - t * up, left_ex - t * up, s, line_thickness, false);
+      draw_less(a, left_ex + t * up, right_ex + t * up, s, line_thickness, false, true);
+      draw_less(b, right_ex - t * up, left_ex - t * up, s, line_thickness, false, true);
       draw_line(left_ex, right_ex, false);
       
       if negated = 1:
@@ -564,8 +568,8 @@ if negated < 2:
       t := 7/6equal_spread + 1/2s;
       u := 1/2equal_spread;
 
-      draw_less(a, left_ex + t * up, right_ex + t * up, s, line_thickness, false);
-      draw_less(b, right_ex - t * up, left_ex - t * up, s, line_thickness, false);
+      draw_less(a, left_ex + t * up, right_ex + t * up, s, line_thickness, false, true);
+      draw_less(b, right_ex - t * up, left_ex - t * up, s, line_thickness, false, true);
       draw_line(left_ex + u * up, right_ex + u * up, false);
       draw_line(left_ex - u * up, right_ex - u * up, false);
 
@@ -582,13 +586,17 @@ if negated < 2:
       s := 3/4greater_spread;
       t := equal_spread + 1/4s;
 
-      draw_less(a, left_ex + t * up, right_ex + t * up, s, line_thickness, false);
-      draw_less(b, right_ex - t * up, left_ex - t * up, s, line_thickness, false);
+      draw_less(a, left_ex + t * up, right_ex + t * up, s, line_thickness, false, true);
+      draw_less(b, right_ex - t * up, left_ex - t * up, s, line_thickness, false, true);
 
       if sign = 1:
-        draw_line(z1a - equal_spread * up, z4a - equal_spread * up, false);
+        z6 = z4a.l + 1/2line_thickness*up - equal_spread * up;
+        z7 = z1a                          - equal_spread * up;
+        draw_line_cut(6,7);
       else:
-        draw_line(z0a - equal_spread * up, z3a - equal_spread * up, false);
+        z6 = z3a.l + 1/2line_thickness*up - equal_spread * up;
+        z7 = z0a                          - equal_spread * up;
+        draw_line_cut(6,7);
       fi;
       
       if negated = 1:
@@ -604,8 +612,8 @@ if negated < 2:
     beginorder(sign, order_width# + 2equal_spread# + line_thickness#, ifneg(0,1) * equal_spread# + greater_spread#); "less less";
       s := 2equal_spread;
 
-      draw_less(a, left_ex, right_ex - sign * s * right, greater_spread, line_thickness, false);
-      draw_less(b, left_ex + sign * s * right, right_ex, greater_spread, line_thickness, false);
+      draw_less(a, left_ex, right_ex - sign * s * right, greater_spread, line_thickness, false, true);
+      draw_less(b, left_ex + sign * s * right, right_ex, greater_spread, line_thickness, false, true);
 
       if negated = 1:
         stroke_through(centre, equal_spread + greater_spread);
@@ -619,9 +627,9 @@ if negated < 2:
     beginorder(sign, order_width# + 4equal_spread# + line_thickness#, ifneg(0,1) * equal_spread# + greater_spread#); "less less less";
       s := 2equal_spread;
 
-      draw_less(a, left_ex, right_ex - sign * 2s * right, greater_spread, line_thickness, false);
-      draw_less(b, left_ex + sign * s * right, right_ex - sign * s * right, greater_spread, line_thickness, false);
-      draw_less(c, left_ex + sign * 2s * right, right_ex, greater_spread, line_thickness, false);
+      draw_less(a, left_ex, right_ex - sign * 2s * right, greater_spread, line_thickness, false, true);
+      draw_less(b, left_ex + sign * s * right, right_ex - sign * s * right, greater_spread, line_thickness, false, true);
+      draw_less(c, left_ex + sign * 2s * right, right_ex, greater_spread, line_thickness, false, true);
 
       if negated = 1:
         stroke_through_angle(centre, equal_spread + greater_spread, 50);
@@ -633,7 +641,7 @@ fi;
 if negated < 2:
   for sign = 1, -1:
     beginorder(sign, order_width#, ifneg(0,1) * equal_spread# + greater_spread#); "closed less than";
-      draw_less(a, left_ex, right_ex, greater_spread, line_thickness, true);
+      draw_less(a, left_ex, right_ex, greater_spread, line_thickness, true, true);
 
       if negated = 1:
         stroke_through(centre, equal_spread + greater_spread);
@@ -650,7 +658,7 @@ if negated < 2:
       z0 - z2 = z1 - z3 = (2/3equal_spread + s/2) * up;
       z0 - left_ex = z1 - right_ex = 1/3equal_spread * up;
 
-      draw_less(a, z0, z1, s, line_thickness, true);
+      draw_less(a, z0, z1, s, line_thickness, true, true);
       draw_line(z2, z3, false);
 
       if negated = 1:
@@ -668,7 +676,7 @@ if negated < 2:
       z0 = left_ex;
       z1 = z0 + order_width * dir angle(right_ex - left_ex);
 
-      draw_less(a, z0, z1, greater_spread, thick, false);
+      draw_less(a, z0, z1, greater_spread, thick, false, false);
 
       theta := angle(z0a - z2a); 
 
@@ -697,7 +705,7 @@ if negated < 2:
       z0 = left_ex + t * up;
       z1 = z0 + order_width * dir angle(right_ex - left_ex);
 
-      draw_less(a, z0, z1, s, thick, false);
+      draw_less(a, z0, z1, s, thick, false, false);
 
       theta := angle(z0a - z2a); 
 
@@ -1030,7 +1038,7 @@ fi;
 if negated < 2:
   for sign = 1, -1:
     beginorder(sign, order_width#, ifneg(0,1) * equal_spread# + greater_spread#); "less than dot";
-      draw_less(a, left_ex, right_ex, greater_spread, line_thickness, false);
+      draw_less(a, left_ex, right_ex, greater_spread, line_thickness, false, true);
       fill dot(right_ex - sign * 3/4dot_size * right, 3/4dot_size);
 
       if negated = 1:
@@ -1048,7 +1056,7 @@ if negated < 2:
       z0 - z2 = z1 - z3 = (2/3equal_spread + s/2) * up;
       z0 - left_ex = z1 - right_ex = 1/3equal_spread * up;
 
-      draw_less(a, z0, z1, s, line_thickness, false);
+      draw_less(a, z0, z1, s, line_thickness, false, true);
       fill dot(z1 - sign * 3/4dot_size * right, 3/4dot_size);
       draw_line(z2, z3, false);
 
@@ -1065,13 +1073,17 @@ if negated < 2:
       s := 3/4greater_spread;
       t := 1/2equal_spread;
 
-      draw_less(a, left_ex + t * up, right_ex + t * up, s, line_thickness, false);
+      draw_less(a, left_ex + t * up, right_ex + t * up, s, line_thickness, false, true);
       fill dot(right_ex + t * up - sign * 3/4dot_size * right, 3/4dot_size);
 
       if sign = 1:
-        draw_line(z1a - 2t * up, z4a - 2t * up, false);
+        z6 = z4a.l + 1/2line_thickness*up - 2t * up;
+        z7 = z1a                          - 2t * up;
+        draw_line_cut(6,7);
       else:
-        draw_line(z0a - 2t * up, z3a - 2t * up, false);
+        z6 = z3a.l + 1/2line_thickness*up - 2t * up;
+        z7 = z0a                          - 2t * up;
+        draw_line_cut(6,7);
       fi;
 
       if negated = 1:
@@ -1087,12 +1099,16 @@ if negated < 2:
       s := 3/4greater_spread;
       t := 1/2equal_spread;
 
-      draw_less(a, left_ex - t * up, right_ex - t * up, s, line_thickness, false);
+      draw_less(a, left_ex - t * up, right_ex - t * up, s, line_thickness, false, true);
 
       if sign = 1:
-        draw_line(z0a + 2t * up, z3a + 2t * up, false);
+        z6 = z3a.l - 1/2line_thickness*up + 2t * up;
+        z7 = z0a                          + 2t * up;
+        draw_line_cut(6,7);
       else:
-        draw_line(z1a + 2t * up, z4a + 2t * up, false);
+        z6 = z4a.l - 1/2line_thickness*up + 2t * up;
+        z7 = z1a                          + 2t * up;
+        draw_line_cut(6,7);
       fi;
 
       if negated = 1:

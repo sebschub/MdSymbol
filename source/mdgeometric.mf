@@ -276,13 +276,13 @@ endfor;
 
 for sign = 1, -1:
   beginoperator(plus_size#, 1); "wedge";
-    draw_less(a, centre + sign * plus_size/2 * up, centre - sign * plus_size/2 * up, 2radius, line_thickness, false);
+    draw_less(a, centre + sign * plus_size/2 * up, centre - sign * plus_size/2 * up, 2radius, line_thickness, false, true);
   endchar;
 endfor;
 
 for sign = 1, -1:
   beginoperator(plus_size#, 1); "wedge dot";
-    draw_less(a, centre + sign * plus_size/2 * up, centre - sign * plus_size/2 * up, 2radius, line_thickness, false);
+    draw_less(a, centre + sign * plus_size/2 * up, centre - sign * plus_size/2 * up, 2radius, line_thickness, false, true);
     fill dot(centre - sign * 1/3plus_size * up, 3/4dot_size);
   endchar;
 endfor;
@@ -292,8 +292,8 @@ for sign = 1, -1:
     1/2[z0,z1] = (w/2, (h-d)/2);
     z1 - z0 = 4/9plus_size * right;
 
-    draw_less(a, z0 + sign * plus_size/2 * up, z0 - sign * plus_size/2 * up, 2radius, line_thickness, false);
-    draw_less(b, z1 + sign * plus_size/2 * up, z1 - sign * plus_size/2 * up, 2radius, line_thickness, false);
+    draw_less(a, z0 + sign * plus_size/2 * up, z0 - sign * plus_size/2 * up, 2radius, line_thickness, false, true);
+    draw_less(b, z1 + sign * plus_size/2 * up, z1 - sign * plus_size/2 * up, 2radius, line_thickness, false, true);
   endchar;
 endfor;
 
@@ -309,7 +309,7 @@ for sign = 1, -1:
     pair tp;
     tp := centre + sign * (radius + 0.25plus_size) * up;
 
-    draw_less(a, centre + sign * plus_size/2 * up, centre - sign * plus_size/2 * up, 2radius, line_thickness, false);
+    draw_less(a, centre + sign * plus_size/2 * up, centre - sign * plus_size/2 * up, 2radius, line_thickness, false, true);
     draw_line(tp + radius * left, tp + radius * right, true);
   endchar;
 endfor;
@@ -321,7 +321,7 @@ for sign = 1, -1:
     tpa := centre + sign * (radius + 0.25plus_size) * up;
     tpb := centre + sign * (radius + 0.5plus_size) * up;
 
-    draw_less(a, centre + sign * plus_size/2 * up, centre - sign * plus_size/2 * up, 2radius, line_thickness, false);
+    draw_less(a, centre + sign * plus_size/2 * up, centre - sign * plus_size/2 * up, 2radius, line_thickness, false, true);
     draw_line(tpa + radius * left, tpa + radius * right, true);
     draw_line(tpb + radius * left, tpb + radius * right, true);
   endchar;
@@ -1133,7 +1133,7 @@ endfor;
 
 for alpha = 0, 90, 180, 270:
   beginoperator(plus_size#, 1); "spherical angle (" & decimal alpha & ")";
-    draw_less(a, centre - 1/2plus_size * dir alpha, centre + 1/2plus_size * dir alpha, 2radius, line_thickness, false);
+    draw_less(a, centre - 1/2plus_size * dir alpha, centre + 1/2plus_size * dir alpha, 2radius, line_thickness, false, false);
     z3 = 2/3[z2a, z0a];
     z4 = 2/3[z2a, z1a];
 
@@ -1471,7 +1471,7 @@ beginoperator(plus_size#, 1); "sector";
   z0 = centre - 1/2plus_size * dir alpha;
   z1 = z0 + 9/10plus_size * dir alpha;
 
-  draw_less(a, z0, z1, 9/10plus_size, thick, false);
+  draw_less(a, z0, z1, 9/10plus_size, thick, false, false);
 
   theta := angle(z0a - z2a) - alpha; 
 

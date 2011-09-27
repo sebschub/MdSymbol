@@ -74,6 +74,19 @@ stroke_through_thickness := 9/10line_thickness;
 
 % Macros
 
+def ppos_cut(suffix $)(expr a, b) =
+  ppos_cut_scaled($)(a, b, 1);
+enddef;
+
+def ppos_cut_scaled(suffix $)(expr a, b, scale) =
+  if sind(a-b) = 0 :
+    penpos$(line_thickness*scale,0);
+  else:
+    penpos$(line_thickness*scale/abs(sind(a-b)),b);
+  fi
+enddef;
+
+
 % Redefine clockwise and counterclockwise (turningnumber seems more stable)
 if known ps_output:
   vardef counterclockwise primary p =
@@ -253,6 +266,18 @@ def draw_line(expr orig, dest, extend) =
   draw_straight(orig, dest, line_thickness, extend);
 enddef;
 
+def draw_line_cut(suffix $, $$)=
+  if (abs(angle(z$-z$$))<45) or (abs(angle(z$-z$$))>135) :
+    ppos_cut($)(angle(z$-z$$),90);
+    ppos_cut($$)(angle(z$-z$$),90);
+  else:
+    ppos_cut($)(angle(z$-z$$),0);
+    ppos_cut($$)(angle(z$-z$$),0);
+  fi
+  penstroke z$e .. z$$e;
+  penlabels($,$$)
+enddef;
+
 def draw_circle(expr centre, radius, thick) =
   fill circle(centre, radius + 1/2thick);
   unfill circle(centre, radius - 1/2thick);
@@ -335,7 +360,7 @@ def draw_bump(suffix $)(expr sign, lc, rc, rad, thick) =
   penlabels(0$,1$,2$,3$,4$,5$,6$);
 enddef;
 
-def draw_less(suffix $)(expr lc, rc, spread, thick, closed) =
+def draw_less(suffix $)(expr lc, rc, spread, thick, closed, straight) =
   theta := angle((length(rc - lc) - thick/2) * right + spread/2 * up);
 
   z2$ = lc + 1/2thick * dir (angle (rc - lc));
@@ -343,8 +368,13 @@ def draw_less(suffix $)(expr lc, rc, spread, thick, closed) =
   z0$ = z2$ + whatever * dir (angle (rc - lc) + theta);
   z1$ = z2$ + whatever * dir (angle (rc - lc) - theta);
 
-  penpos0$(thick, angle(rc - lc) - 90 + theta);
-  penpos1$(thick, angle(rc - lc) + 90 - theta);
+  if straight:
+    penpos0$(thick/cosd(theta), angle(rc - lc) - 90);
+    penpos1$(thick/cosd(theta), angle(rc - lc) + 90);
+  else:
+    penpos0$(thick, angle(rc - lc) - 90 + theta);
+    penpos1$(thick, angle(rc - lc) + 90 - theta);
+  fi;
   penpos3$(thick, angle(rc - lc) - 90 + theta);
   penpos4$(thick, angle(rc - lc) + 90 - theta);
 
