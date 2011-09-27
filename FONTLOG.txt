@@ -10,39 +10,31 @@ Basic Font Information
 ----------------------
 
 MdSymbol is a font of mathematical symbols designed as a companion to
-Typotheque's Fedra family, but it might also fit well to other contemporary
+Adobe Myriad Pro, but it might also fit well to other contemporary
 typefaces.
 
-MdSymbol is derived from MnSymbol, designed and released into the public
-domain by Achim Blumensath.
+MdSymbol is derived from FdSymbol, designed and released under the SIL
+Open Font License, Version 1.1 by Michael Ummels.
 
 MdSymbol development is currently hosted on:
-http://github.com/ummels/mdsymbol
+http://github.com/sebschub/fdsymbol
 
 
 ChangeLog
 ---------
 
-17 Mar 2011 (Michael Ummels) MdSymbol version 1.000
-- First public release
-
-31 Mar 2011 (Michael Ummels) MdSymbol version 1.001
-- Added aleph, beth, daleth and gimel
-
-21 May 2011 (Michael Ummels) MdSymbol version 1.002
-- Optimised all glyphs
-
-30 May 2011 (Michael Ummels) MdSymbol version 1.003
-- Optimised negation strokes and some other glyphs
-
-27 Aug 2011 (Michael Ummels) MdSymbol version 1.004
-- Added many more glyphs and optimised turnstile glyphs
+** in development **
 
 Acknowledgements
 -------------------------
 (Here is where contributors can be acknowledged. If you make modifications be sure to add your name (N), email (E), web-address (W) and description (D). This list is sorted by last name in alphabetical order.)
 
+N: Sebastian Schubert
+E: schubert.seb@googlemail.com
+W: http://github.com/sebschub/
+D: Original Modifications of FdSymbol
+
 N: Michael Ummels
 E: michael.ummels@rwth-aachen.de
 W: http://www.ummels.de
-D: Original Designer
+D: Original Designer of FdSymbol

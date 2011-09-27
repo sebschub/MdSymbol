@@ -1,11 +1,9 @@
 MdSymbol - A math symbol font
 =============================
 
-MdSymbol is a math symbol font, designed as a companion to the
-[Fedra family][MD] by Typotheque, but it might also fit other contemporary
-typefaces.
+MdSymbol is a math symbol font, designed as a companion to Myriad Pro
+by Adobe, but it might also fit other contemporary typefaces.
 
-[MD]: http://www.typotheque.com/fonts
 
 Usage
 -----
@@ -47,7 +45,7 @@ For a system-wide installation, replace updmap by updmap-sys.
 License
 -------
 
-Copyright (c) 2011 by Michael Ummels <michael.ummels@rwth-aachen.de>
+Copyright (c) 2011 by Sebastian Schubert <schubert.seb@googlemail.com>
 
 The font components of this software, e.g. MetaFont (.mf), TeX font metric
 (.tfm), Type 1 (.pfb), and OpenType (.otf) files, are licensed under the
@@ -63,7 +61,7 @@ distributed under the terms and conditions of the
 
 This work has the LPPL maintenance status `maintained'.
 
-The Current Maintainer of this work is Michael Ummels.
+The Current Maintainer of this work is Sebastian Schubert.
 
 This work consists of the files mdsymbol.dtx, mdsymbol.ins
 and the derived files mdsymbol.sty and mdsymbol.pdf.
