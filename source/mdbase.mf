@@ -227,8 +227,7 @@ def reg_poly_points(suffix $)(expr n, centre, radius, angle) =
 enddef;
 
 def dot(expr centre, radius) =
-  superellipse(centre + radius * right, centre + radius * up,
-    centre - radius * right, centre - radius * up, 0.57)
+  circle(centre, radius)
 enddef;
 
 % Draw macros
