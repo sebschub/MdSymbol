@@ -226,7 +226,7 @@ charlist current_char - 1: current_char;
 for scale = 1, 1.4:
   beginbigop(scale, scale); "sum modulo two";
     draw_sum(a)(centre, op_width, op_height, 5/3line_thickness * sqrt sqrt scale);
-    draw_circle(z13a, sqrt scale * 1/4op_width, line_thickness * sqrt sqrt scale);
+    draw_circle(z4a, sqrt scale * 1/4op_width, line_thickness * sqrt sqrt scale);
   endchar;
 endfor;
 charlist current_char - 1: current_char;

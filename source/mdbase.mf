@@ -497,23 +497,23 @@ def stroke_through_arrow(expr pos, alpha, spread)(text angles) =
 enddef;
 
 def draw_product(expr centre, width, height, sign, thick) =
-  thin  := 1/2thick;
+  thin  := 7/8thick;
 
   z1r - z0r = z3r - z2r = width * right;
   z2r - z0r = sign * (height - thin) * up;
   1/2[1/2[z0l,z1l], 1/2[z2r,z3r]] = centre;
   z4 = z0 + min(5thin, 2/5width) * right;
   z5 = z1 + min(5thin, 2/5width) * left;
-  z6 = 1/2[z0,z4] + sign * 4/3thin * up;
-  z7 = 1/2[z1,z5] + sign * 4/3thin * up;
+  z6 = 1/2[z0l,z4l];
+  z7 = 1/2[z1l,z5l];
   x8 = 1/2[x0,x4];
   x9 = 1/2[x1,x5];
-  y8 = y9 = y2 - sign * 4/3thin;
+  y8 = y9 = y2l;
 
   penpos0(thin, sign * 100);
   penpos1(thin, sign * 80);
-  penpos2(thin, sign * 93);
-  penpos3(thin, sign * 87);
+  penpos2(thin, sign * 90);
+  penpos3(thin, sign * 90);
   penpos4(thin, sign * 80);
   penpos5(thin, sign * 100);
   penpos6(thick, 0);
@@ -525,45 +525,36 @@ def draw_product(expr centre, width, height, sign, thick) =
   x10 = x6r;
   x11 = x7l;
 
-  fill z0l -- z4l -- z4r{dir (sign * 160)} .. {sign * up}z6r -- z10 -- z11 -- z7l{sign * down} .. {dir (-sign * 160)}z5r -- z5l -- z1l -- z1r{dir (sign * 160)} .. {sign * up}z7r -- z9r{sign * up} .. {dir (sign * 15)}z3l -- z3r -- z2r -- z2l{dir (-sign * 15)} .. {sign * down}z8l -- z6l{sign * down} .. {dir (-sign * 160)}z0r -- cycle;
+  fill z6r -- z8r -- z9l -- z7l -- z7r -- z9r -- z3l -- z3r -- z2r -- z2l -- z8l -- z6l --cycle;
+  
+%  fill z0l -- z4l -- z4r{dir (sign * 160)} .. {sign * up}z6r -- z10 -- z11 -- z7l{sign * down} .. {dir (-sign * 160)}z5r -- z5l -- z1l -- z1r{dir (sign * 160)} .. {sign * up}z7r -- z9r{sign * up} .. {dir (sign * 15)}z3l -- z3r -- z2r -- z2l{dir (-sign * 15)} .. {sign * down}z8l -- z6l{sign * down} .. {dir (-sign * 160)}z0r -- cycle;
 
   penlabels(0,1,2,3,4,5,6,7,8,9,10,11);
 enddef;
 
 def draw_sum(suffix $)(expr centre, width, height, thick) =
-  thin := 1/2thick;
+  thin := 4/5thick;
 
-  z1$ - z0$ = z3$ - z2$ = width * right;
-  z2$ - z0$ = height * up;
-  1/2[1/2[z0$,z1$], 1/2[z2$,z3$]] = centre;
-  z4$ - z1$ = z3$ - z5$.l = 3thin * up;
-  z6$ = whatever[z0$,z1$] + thin * up = z4$ - whatever * dir 77;
-  z8$r = z2$ + whatever * right;
-  z8$l = z2$ + whatever * down;
+  z1$l - z0$l = z3$l - z2$l = width * right;
+  z2$l - z0$l = height * up;
+  1/2[1/2[z0$l,z1$l], 1/2[z2$l,z3$l]] = centre = z4$;
 
-  penpos6$(thick, 90);
-  penpos4$(thin, 167);
-  penpos5$(thin, 180);
-  penpos8$(5/6thick, 77);
+  z5$r = z0$l + thick*up; z6$r = z2$l - thick*up;
+  penpos0$(thin, 90);
+  penpos1$(thick, 90);
+  penpos2$(thin, -90);
+  penpos3$(thick, -90);
+  
+  penpos4$(thick/sind(angle(z4$-z0$)), 0);
 
-  z13$ = centre;
+  % with the following, connection from 4 to 6 and 5 is not really
+  % straight
+  penpos5$(thick/sind(angle(z4$-z0$)), 180);
+  penpos6$(thick/sind(angle(z4$-z0$)), 180);
 
-  penpos13$(6/5thick, 10);
-
-  z3$ - z7$ = 2/3thick * up;
-  z9$ = z13$r + whatever * (z8$l - z13$l) = z7$ + whatever * right;
-
-  z10$r = z0$ + whatever * up;
-  z10$l = z0$ + whatever * right;
-
-  penpos10$(3/4thick, 103);
-
-  z11$ = z13$r + whatever * (z10$r - z13$l);
-  y11$ = y10$r;
-
-  fill z10$l -- z6$l -- z4$l -- z4$r{-dir 77} .. {left}1/4[z6$r,z10$r] -- z11$ -- z13$r -- z9$ -- 1/4[z7$,z8$l]{right} .. {-dir 113}z5$r -- z5$l -- z3$ -- z8$r -- z8$l -- z13$l -- z10$r -- cycle;
-
-  penlabels(3$,4$,5$,6$,7$,8$,9$,10$,11$,12$,13$);
+  fill z1$r -- z1$l -- z0$l -- z0$r -- z4$l -- z2$r -- z2$l -- z3$l -- z3$r -- z6$l -- z4$r -- z5$l -- cycle;
+  
+  penlabels(0$,1$,2$,3$,4$,5$,6$);
 enddef;
 
 def draw_integral(suffix $)(expr scale, centre, thick) =
