@@ -338,8 +338,8 @@ for alpha = 0, 90, 180, 270:
 endfor;
 
 for alpha = 0, 90, 180, 270, 45, 135, 225, 315:
-  beginarrow(alpha, 1, 2arrow_spread#); "parallel arrows (" & decimal alpha & ")";
-    z1 - z0 = z3 - z2 = arrow_spread * dir (alpha + 90);
+  beginarrow(alpha, 1, 2arrow_spread#+line_thickness#); "parallel arrows (" & decimal alpha & ")";
+    z1 - z0 = z3 - z2 = (arrow_spread+line_thickness) * dir (alpha + 90);
     1/2[z0,z1] = foot_ex;
     1/2[z2,z3] = head;
 
@@ -585,7 +585,7 @@ for sign = 1, -1:
 endfor;
 
 for alpha = 0, 90, 180, 270:
-  beginarrow(alpha, 6/5, ifneg(21/10, 14/10) * arrow_spread#); "triple arrow (" & decimal alpha & ")";
+  beginarrow(alpha, 6/5, ifneg(21/10, 14/10) * arrow_spread#+line_thickness#/2); "triple arrow (" & decimal alpha & ")";
     z1 - z0 = z2 - z1 = 2/3equal_spread * dir (alpha + 90);
     z1 = foot_ex;
     z4 - z3 = z5 - z4 = 2/3equal_spread * dir (alpha + 90);

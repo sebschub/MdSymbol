@@ -608,14 +608,14 @@ def draw_arrowhead_left(expr pos, angle, spread, thick) =
     pair p[], p[].l, p[].r;
 
     p1 = pos;
-    p2 = pos + sqrt(2) * (spread + 1/2thick)/2 * dir (angle + 135);
+    p2 = pos + sqrt(2) * (spread + thick)/2 * dir (angle + 135);
     1/2[p1.l, p1.r] = p1;
     1/2[p2.l, p2.r] = p2;
     p1.r - p1 = thick/(2 * sind 45) * dir angle;
-    p2.r - p2 = thick/2 * dir (angle + 45);
+    p2.r - p2 = thick/(2 * sind 45) * dir angle;
     p3.l = whatever[p2.l,p1.l];
     p3.l = pos + 1/2thick * dir (angle - 90) + whatever * dir angle;
-    p3.r - p1.r = whatever * dir (angle - 105);
+    p3.r - p1.r = whatever * dir (angle - 90);
     p3.r = pos + 1/2thick * dir (angle - 90) + whatever * dir angle;
     fill p1.r -- p2.r -- p2.l -- p3.l -- p3.r -- cycle;
   endgroup;
@@ -626,14 +626,14 @@ def draw_arrowhead_right(expr pos, angle, spread, thick) =
     pair p[], p[].l, p[].r;
 
     p1 = pos;
-    p2 = pos + sqrt(2) * (spread + 1/2thick)/2 * dir (angle - 135);
+    p2 = pos + sqrt(2) * (spread + thick)/2 * dir (angle - 135);
     1/2[p1.l, p1.r] = p1;
     1/2[p2.l, p2.r] = p2;
     p1.r - p1 = thick/(2 * sind 45) * dir angle;
-    p2.r - p2 = thick/2 * dir (angle - 45);
+    p2.r - p2 = thick/(2 * sind 45) * dir angle;
     p3.l = whatever[p2.l,p1.l];
     p3.l = pos + 1/2thick * dir (angle + 90) + whatever * dir angle;
-    p3.r - p1.r = whatever * dir (angle + 105);
+    p3.r - p1.r = whatever * dir (angle + 90);
     p3.r = pos + 1/2thick * dir (angle + 90) + whatever * dir angle;
     fill p1.r -- p3.r -- p3.l -- p2.l -- p2.r -- cycle;
   endgroup;
@@ -644,14 +644,14 @@ def draw_arrowhead(expr pos, angle, spread, thick) =
     pair p[], p[].l, p[].r;
   
     p1 = pos;
-    p2 = pos + sqrt(2) * spread/2 * dir (angle + 135);
-    p3 = pos + sqrt(2) * spread/2 * dir (angle - 135);
+    p2 = pos + sqrt(2) * (spread+line_thickness)/2 * dir (angle + 135);
+    p3 = pos + sqrt(2) * (spread+line_thickness)/2 * dir (angle - 135);
     1/2[p1.l, p1.r] = p1;
     1/2[p2.l, p2.r] = p2;
     1/2[p3.l, p3.r] = p3;
     p1.r - p1 = thick/(2 * sind 45) * dir angle;
-    p2.r - p2 = thick/2 * dir (angle + 45);
-    p3.r - p3 = thick/2 * dir (angle - 45);
+    p2.r - p2 = thick/(2 * sind 45) * dir (angle);
+    p3.r - p3 = thick/(2 * sind 45) * dir (angle);
 
     fill p1.r -- p2.r -- p2.l -- p1.l -- p3.l -- p3.r -- cycle;
   endgroup;
