@@ -717,11 +717,11 @@ def draw_angle(suffix $)(expr shift, sign, thick) =
   1/2[y0$,y1$] = y2$;
   1/2[x0$,x2$] = w/2 + shift;
 
-  theta := angle(z0$ - z2$) + 90;
+  theta := angle(z0$ - z2$);
 
-  penpos0$ (thick, theta);
-  penpos1$ (thick, -theta);
-  penpos2$ (thick * cosd theta, 0);
+  penpos0$ (thick, 0);
+  penpos1$ (thick, 0);
+  penpos2$ (thick / abs(sind theta), 0);
 
   fill stroke z0$e -- z2$e -- z1$e;
 
@@ -729,8 +729,8 @@ def draw_angle(suffix $)(expr shift, sign, thick) =
 enddef;
 
 def draw_paren(expr sign, thick) =
-  penpos0(thick,  90 - sign * 45);
-  penpos1(thick, -90 + sign * 45);
+  penpos0(thick,  90 - sign * 90);
+  penpos1(thick, -90 + sign * 90);
   penpos2(thick,  90 - sign * 90);
 
   x0 = x1 = x2 + sign * (w - 2side_bearing - thick);

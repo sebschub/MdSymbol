@@ -27,7 +27,7 @@ for sign = 1, -1:
   beginsymbol((6 + 4.5)/2 * u# + line_thickness# + 2side_bearing#, vcentre(3delim_height#)); "parenthesis -- top";
     thick := dthick(3) * line_thickness;
 
-    penpos1(thick, -90 + sign * 60);
+    penpos1(thick, -90 + sign * 90);
     penpos2(thick, 90 - sign * 90);
     penpos2'(thick, 90 - sign * 90);
 
@@ -48,7 +48,7 @@ for sign = 1, -1:
   beginsymbol((6 + 4.5)/2 * u# + line_thickness# + 2side_bearing#, vcentre(3delim_height#)); "parenthesis -- bot";
     thick := dthick(3) * line_thickness;
 
-    penpos0(thick, 90 - sign * 60);
+    penpos0(thick, 90 - sign * 90);
     penpos2(thick, 90 - sign * 90);
     penpos2'(thick, 90 - sign * 90);
 
@@ -347,7 +347,7 @@ for sign = 1, -1:
       y0 = -d;
       1/2[x0,x1] = w/2;
 
-      draw_line(z0, z1, false);
+      draw_line_cut(0, 1);
     endchar;
   endfor;
   charlist current_char - 5: current_char - 4: current_char - 3: current_char - 2: current_char - 1: current_char;
