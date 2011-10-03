@@ -31,9 +31,10 @@
 \usepackage{multicol}
 \usepackage[T1]{fontenc}
 \usepackage{lmodern}
-\IfFileExists{fedraserif.sty}{%
-  \usepackage[variant=B,footnotemarks]{fedraserif}
-  \usepackage[scaled=1.05]{inconsolata}
+\IfFileExists{MyriadPro.sty}{%
+  \usepackage[footnotefigures]{MyriadPro}
+  \renewcommand{\familydefault}{\sfdefault}
+  \usepackage[toc,eqno,enum,bib,lineno]{tabfigures}
 }{%
   \usepackage{mdsymbol}
 }
@@ -49,7 +50,7 @@
   pdfauthor={Sebastian Schubert}
 }
 
-% Restore MdSymbol's Hebrew letters (overwritten by fedraserif.sty)
+% Restore MdSymbol's Hebrew letters
 \DeclareMathSymbol{\aleph}{0}{symbols}{"C5}
 \DeclareMathSymbol{\beth}{0}{symbols}{"C6}
 \DeclareMathSymbol{\gimel}{0}{symbols}{"C7}
@@ -98,10 +99,10 @@
 %
 % \section{Introduction}
 %
-% MdSymbol is a font of mathematical symbols designed as a companion to
-% Typotheque's Fedra family\footnote{\url{http://www.typotheque.com/fonts}},
-% but it might also fit well to other contemporary typefaces.
-% To use this font in a \LaTeX\ document, add the command
+% MdSymbol is a font of mathematical symbols designed as a companion
+% to Adobe Myriad Pro, but it might also fit well to other
+% contemporary typefaces.  To use this font in a \LaTeX\ document, add
+% the command
 % \begin{quote}
 %   |\usepackage|\oarg{options}|{mdsymbol}|
 % \end{quote}
@@ -113,8 +114,8 @@
 % \subsubsection*{Acknowledgements}
 %
 % The MdSymbol font is derived from
-% MnSymbol\footnote{\url{http://www.ctan.org/pkg/mnsymbol/}},
-% another math symbol font, designed by Achim Blumensath.
+% FdSymbol\footnote{\url{http://www.ctan.org/pkg/fdsymbol/}}, another
+% math symbol font, designed by Michael Ummels.
 %
 % \section{Interferences with other packages}
 %
@@ -147,9 +148,7 @@
 % to increase the height of delimiters slightly (by 20\,\% in text size and
 % by 25\,\% in |\big| size). This can be achieved by activating the option
 % \opt{largedelims}. Use this option if you want to combine MdSymbol with a
-% text font that has rather tall delimiters, such as Fedra Serif~B. In fact,
-% the height of normal delimiters will match the height of text delimiters in
-% Fedra Serif~B if you select this option.
+% text font that has rather tall delimiters.
 %
 % The following table summarises all options (keys) that can be used with the
 % \pkg{mdsymbol} package. Values that correspond to the default behaviour of
@@ -1332,9 +1331,6 @@
 %
 % The following symbols from Computer Modern or the AMS fonts are missing
 % in MdSymbol. If available, they should be taken from the text font.
-% \iffalse
-% (For instance, the \pkg{fedraserif} package defines most of them.)
-% \fi
 % \begin{multicols}{3}
 % \parindent=0pt
 % |\mho|\par

@@ -2,7 +2,9 @@ MdSymbol - A math symbol font
 =============================
 
 MdSymbol is a math symbol font, designed as a companion to Myriad Pro
-by Adobe, but it might also fit other contemporary typefaces.
+by Adobe, but it might also fit other contemporary typefaces. MdSymbol
+is based on FdSymbol by Michael Ummels released under the SIL Open
+Font License, Version 1.1.
 
 The development of this font package is hosted at github:
 http://github.com/sebschub/mdsymbol
