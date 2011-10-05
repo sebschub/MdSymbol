@@ -540,7 +540,6 @@ def draw_sum(suffix $)(expr centre, width, height, thick) =
   z2$l - z0$l = height * up;
   1/2[1/2[z0$l,z1$l], 1/2[z2$l,z3$l]] = centre = z4$;
 
-  z5$r = z0$l + thick*up; z6$r = z2$l - thick*up;
   penpos0$(thin, 90);
   penpos1$(thick, 90);
   penpos2$(thin, -90);
@@ -548,8 +547,9 @@ def draw_sum(suffix $)(expr centre, width, height, thick) =
   
   penpos4$(thick/sind(angle(z4$-z0$)), 0);
 
-  % with the following, connection from 4 to 6 and 5 is not really
-  % straight
+  y5$r = y0$l + thick; y6$r = y2$l - thick;
+  z5$r = whatever[z0$r,z4$l]; z6$r = whatever[z2$r,z4$l];
+
   penpos5$(thick/sind(angle(z4$-z0$)), 180);
   penpos6$(thick/sind(angle(z4$-z0$)), 180);
 
@@ -561,26 +561,26 @@ enddef;
 def draw_integral(suffix $)(expr scale, centre, thick) =
   penpos0$(thick, 0);
   penpos1$(thick, 0);
-  penpos2$(2/3thick, -90);
+  penpos2$(6/7thick, -90);
   penpos3$(thick, 0);
-  penpos4$(2/3thick, -90);
+  penpos4$(6/7thick, -90);
 
   z0$ = 1/2[z1$,z3$] = 1/2[z2$,z4$];
-  z1$ - z3$ = whatever * up;
+  z1$ - z3$ = whatever * dir 85;
   z2$ - z4$ = whatever * dir 75;
 
   x0$ = xpart centre;
   y2$l = h;
-  y6$r = -d;
-  y1$ = 2/3[y0$,y2$];
+  y4$r = -d;
+  y1$ = 1/2[y0$,y2$];
 
-  penpos5$(3/4thick,-105);
-  penpos6$(3/4thick,-82);
+  penpos5$(1.05*6/7thick/sind 75,-105);
+  penpos6$(1.05*6/7thick/sind 75,-105);
 
-  y5$l = y2$l;
+  y5$l = y2$l - 0.1thick;
   x5$r = 5/4[x1$, x2$];
-  y6$l = y4$.l;
-  x6$r = 5/4[x3$, x4$];
+  y6$r = y4$r + 0.1thick;
+  x6$r = 6/4[x3$, x4$];
 
   ucorr := max (x2$r, x1$r + 1/4thick) - x2$r;
   x2$ := x2$ + ucorr;
@@ -598,8 +598,8 @@ def draw_integral(suffix $)(expr scale, centre, thick) =
   x6$r := x6$r + lcorr;
   x6$l := x6$l + lcorr;
 
-  fill z5$l .. z2$l{left} .. {down}z1$l -- z3$l{down} .. z4$l{left} .. z6$l -- z6$r
-    .. {up}z3$r -- z1$r{up} .. z2$r{right} .. z5$r -- cycle;
+  fill z5$l .. {left}z2$l{left} .. {dir angle(z0$-z1$)}z1$l -- z3$l{dir angle(z0$-z1$)} ... z4$l{left} .. z6$l -- z6$r
+     .. {right}z4$r{right} .. {dir angle(z1$-z0$)}z3$r -- z1$r{dir angle(z1$-z0$)} ... z2$r{right} .. z5$r -- cycle;
 
   penlabels(0$,1$,2$,3$,4$,5$,6$);
 enddef;
