@@ -1485,7 +1485,7 @@ beginoperator(plus_size#, 1); "sector";
 endchar;
 
 beginsymbol(5/4order_width# + 2side_bearing#, cap_height#, 0); "forall";
-  thick := 5/4line_thickness;
+  thick := line_thickness;
 
   x0 = side_bearing + 1/2thick;
   x1 = w - side_bearing - 1/2thick;
@@ -1494,8 +1494,8 @@ beginsymbol(5/4order_width# + 2side_bearing#, cap_height#, 0); "forall";
   y0 = y1 = h;
   y2 = y3 = 0;
 
-  penpos0(thick * cosd(angle(z2 - z0) + 90), 0);
-  penpos1(thick * cosd(angle(z2 - z0) + 90), 0);
+  penpos0(thick / sind(abs(angle(z2 - z0))), 0);
+  penpos1(thick / sind(abs(angle(z2 - z0))), 0);
 
   z4 = z0l + whatever * (z2 - z0) = z2 + whatever * right;
   z5 = z1r + whatever * (z3 - z1) = z2 + whatever * right;
@@ -1512,7 +1512,7 @@ endchar;
 
 for negated = 0, 1:
   beginsymbol(order_width# + 2side_bearing#, if negated = 0: cap_height# else: cap_height# + 2/3equal_spread# fi, if negated = 0: 0 else: 2/3equal_spread# fi); "exists";
-    thick := 5/4line_thickness;
+    thick := line_thickness;
 
     x1  = x3  = w - side_bearing - thick/2;
     y1 = cap_height;
@@ -1535,7 +1535,7 @@ for negated = 0, 1:
 endfor;
 
 beginsymbol(order_width# + 2side_bearing#, cap_height#, 0); "exists finitely many";
-  thick := 5/4line_thickness;
+  thick := line_thickness;
 
   x1  = x3  = w - side_bearing - thick/2;
   y1 = cap_height;
@@ -1552,7 +1552,7 @@ beginsymbol(order_width# + 2side_bearing#, cap_height#, 0); "exists finitely man
 endchar;
 
 beginsymbol(5/4order_width# + 2side_bearing#, cap_height#, 0); "game quantifier";
-  thick := 5/4line_thickness;
+  thick := line_thickness;
 
   x0 = x1 = 1/2order_width + side_bearing;
   y0 = cap_height - 1/2thick;
@@ -1577,7 +1577,7 @@ beginsymbol(5/4order_width# + 2side_bearing#, cap_height#, 0); "game quantifier"
 endchar;
 
 beginsymbol(7/8order_width# + 2side_bearing#, cap_height#, 0); "complement";
-  thick := 5/4line_thickness;
+  thick := line_thickness;
 
   z0 - z1 = (cap_height - thick) * up;
   z3 - z2 = (w - 2side_bearing - thick) * right;
