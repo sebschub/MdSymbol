@@ -17,7 +17,7 @@ lparen_char = current_char + 1;
 rparen_char = current_char + 7;
 for sign = 1, -1:
   for scale = 1, 1.2, 1.5, 1.8, 2.4, 3:
-    beginsymbol((2scale + 4.5)/2 * u# + line_thickness# + 2side_bearing#, vcentre(2scale * delim_height#)); "parenthesis";
+    beginsymbol((2scale + 2.5)/2 * u# + line_thickness# + 2side_bearing#, vcentre(2scale * delim_height#)); "parenthesis";
       draw_paren(sign, dthick(scale) * line_thickness);
     endchar;
   endfor;
@@ -28,8 +28,8 @@ for sign = 1, -1:
     thick := dthick(3) * line_thickness;
 
     penpos1(thick, -90 + sign * 90);
-    penpos2(thick, 90 - sign * 90);
-    penpos2'(thick, 90 - sign * 90);
+    penpos2(1.1thick, 90 - sign * 90);
+    penpos2'(1.1thick, 90 - sign * 90);
 
     x1 = x2 + sign * (w - 2side_bearing - thick);
     x2 = x2';
@@ -49,8 +49,8 @@ for sign = 1, -1:
     thick := dthick(3) * line_thickness;
 
     penpos0(thick, 90 - sign * 90);
-    penpos2(thick, 90 - sign * 90);
-    penpos2'(thick, 90 - sign * 90);
+    penpos2(1.1thick, 90 - sign * 90);
+    penpos2'(1.1thick, 90 - sign * 90);
 
     x0 = x2 + sign * (w - 2side_bearing - thick);
     x2 = x2';
@@ -70,8 +70,8 @@ for sign = 1, -1:
     thick := dthick(3) * line_thickness;
 
     penpos1(thick, 90 - sign * 45);
-    penpos2(thick, 90 - sign * 90);
-    penpos3(thick, 90 - sign * 90);
+    penpos2(1.1thick, 90 - sign * 90);
+    penpos3(1.1thick, 90 - sign * 90);
 
     x2 = x3 = x1 - sign * (w - 2side_bearing - thick);
     y2 =  h + 1/2line_thickness;
