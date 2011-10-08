@@ -6,22 +6,26 @@
 % is also available with a FAQ at: http://scripts.sil.org/OFL
 %
 
+
+bop_line_thickness := bop_thickness_fac * line_thickness;
+bop_dot_size       := bop_thickness_fac * dot_size;
+
 for scale = 1, 1.4:
   beginsquarebigop(scale, scale); "big plus";
-    draw_line(centre + op_height/2 * right, centre + op_height/2 * left, false);
-    draw_line(centre + op_height/2 * up, centre + op_height/2 * down, false);
+    draw_line_linethick(centre + op_height/2 * right, centre + op_height/2 * left, bop_line_thickness, false);
+    draw_line_linethick(centre + op_height/2 * up, centre + op_height/2 * down, bop_line_thickness, false);
   endchar;
 endfor;
 charlist current_char - 1: current_char;
 
 for scale = 1, 1.4:
   beginsquarebigop(scale, scale); "big times";
-    z1 - z0 = z3 - z2 = (op_width - line_thickness / sqrt(2)) * right;
-    z2 - z0 = (op_width - line_thickness / sqrt(2)) * up;
+    z1 - z0 = z3 - z2 = (op_width - bop_line_thickness / sqrt(2)) * right;
+    z2 - z0 = (op_width - bop_line_thickness / sqrt(2)) * up;
     1/2[1/2[z0,z1], 1/2[z2,z3]] = centre;
 
-    draw_line(z0, z3, false);
-    draw_line(z1, z2, false);
+    draw_line_linethick(z0, z3, bop_line_thickness, false);
+    draw_line_linethick(z1, z2, bop_line_thickness, false);
   endchar;
 endfor;
 charlist current_char - 1: current_char;
@@ -29,7 +33,7 @@ charlist current_char - 1: current_char;
 for sign = 1, -1:
   for scale = 1, 1.4:
     beginbigop(scale, scale); "big wedge";
-      draw_less(a, centre + sign * op_height/2 * up, centre - sign * op_height/2 * up, op_width - line_thickness, line_thickness, false, true);
+      draw_less(a, centre + sign * op_height/2 * up, centre - sign * op_height/2 * up, op_width - bop_line_thickness, bop_line_thickness, false, true);
     endchar;
   endfor;
   charlist current_char - 1: current_char;
@@ -38,8 +42,8 @@ endfor;
 for sign = 1, -1:
   for scale = 1, 1.4:
     beginbigop(scale, scale); "big wedge dot";
-      draw_less(a, centre + sign * op_height/2 * up, centre - sign * op_height/2 * up, op_width - line_thickness, line_thickness, false, true);
-      fill dot(centre - sign * 1/4op_height * up, dot_size);
+      draw_less(a, centre + sign * op_height/2 * up, centre - sign * op_height/2 * up, op_width - bop_line_thickness, bop_line_thickness, false, true);
+      fill dot(centre - sign * 1/4op_height * up, bop_dot_size);
     endchar;
   endfor;
   charlist current_char - 1: current_char;
@@ -51,8 +55,8 @@ for sign = 1, -1:
       z0 = centre - 1/8op_width * right;
       z1 = centre + 1/8op_width * right;
 
-      draw_less(a, z0 + sign * op_height/2 * up, z0 - sign * op_height/2 * up, 3/4op_width - line_thickness, line_thickness, false, true);
-      draw_less(b, z1 + sign * op_height/2 * up, z1 - sign * op_height/2 * up, 3/4op_width - line_thickness, line_thickness, false, true);
+      draw_less(a, z0 + sign * op_height/2 * up, z0 - sign * op_height/2 * up, 3/4op_width - bop_line_thickness, bop_line_thickness, false, true);
+      draw_less(b, z1 + sign * op_height/2 * up, z1 - sign * op_height/2 * up, 3/4op_width - bop_line_thickness, bop_line_thickness, false, true);
     endchar;
   endfor;
   charlist current_char - 1: current_char;
@@ -61,7 +65,7 @@ endfor;
 for sign = 1, -1:
   for scale = 1, 1.4:
     beginbigop(scale, scale); "big curly wedge";
-      draw_prec(a, centre + sign * op_height/2 * up, centre - sign * op_height/2 * up, op_width - line_thickness, line_thickness, false);
+      draw_prec(a, centre + sign * op_height/2 * up, centre - sign * op_height/2 * up, op_width - bop_line_thickness, bop_line_thickness, false);
     endchar;
   endfor;
   charlist current_char - 1: current_char;
@@ -70,7 +74,7 @@ endfor;
 for sign = 1, -1:
   for scale = 1, 1.4:
     beginbigop(scale, scale); "big union";
-      draw_subset(a, centre + sign * op_height/2 * up, centre - sign * op_height/2 * up, op_width - line_thickness, line_thickness);
+      draw_subset(a, centre + sign * op_height/2 * up, centre - sign * op_height/2 * up, op_width - bop_line_thickness, bop_line_thickness);
     endchar;
   endfor;
   charlist current_char - 1: current_char;
@@ -79,8 +83,8 @@ endfor;
 for sign = 1, -1:
   for scale = 1, 1.4:
     beginbigop(scale, scale); "big union dot";
-      draw_subset(a, centre + sign * op_height/2 * up, centre - sign * op_height/2 * up, op_width - line_thickness, line_thickness);
-      fill dot(centre - sign * 1/8op_height * up, dot_size);
+      draw_subset(a, centre + sign * op_height/2 * up, centre - sign * op_height/2 * up, op_width - bop_line_thickness, bop_line_thickness);
+      fill dot(centre - sign * 1/8op_height * up, bop_dot_size);
     endchar;
   endfor;
   charlist current_char - 1: current_char;
@@ -89,12 +93,12 @@ endfor;
 for sign = 1, -1:
   for scale = 1, 1.4:
     beginbigop(scale, scale); "big union plus";
-      draw_subset(a, centre + sign * op_height/2 * up, centre - sign * op_height/2 * up, op_width - line_thickness, line_thickness);
+      draw_subset(a, centre + sign * op_height/2 * up, centre - sign * op_height/2 * up, op_width - bop_line_thickness, bop_line_thickness);
 
       r := 1/4op_width;
 
-      draw_line(centre - sign * 1/8op_width * up + r * right, centre - sign * 1/8op_width * up + r * left, false);
-      draw_line(centre + (r - sign * 1/8op_width) * up, centre + (r + sign * 1/8op_width) * down, false);
+      draw_line_linethick(centre - sign * 1/8op_width * up + r * right, centre - sign * 1/8op_width * up + r * left, bop_line_thickness, false);
+      draw_line_linethick(centre + (r - sign * 1/8op_width) * up, centre + (r + sign * 1/8op_width) * down, bop_line_thickness, false);
     endchar;
   endfor;
   charlist current_char - 1: current_char;
@@ -103,13 +107,13 @@ endfor;
 for sign = 1, -1:
   for scale = 1, 1.4:
     beginbigop(scale, scale); "big square union";
-      z3 - z0 = z2 - z1 = (op_width - line_thickness) * right;
-      z1 - z0 = sign * (op_height - line_thickness) * up;
+      z3 - z0 = z2 - z1 = (op_width - bop_line_thickness) * right;
+      z1 - z0 = sign * (op_height - bop_line_thickness) * up;
       1/2[1/2[z0,z1], 1/2[z2,z3]] = centre;
 
-      draw_line(z0, z1, true);
-      draw_line(z1, z2, true);
-      draw_line(z2, z3, true);
+      draw_line_linethick(z0, z1, bop_line_thickness, true);
+      draw_line_linethick(z1, z2, bop_line_thickness, true);
+      draw_line_linethick(z2, z3, bop_line_thickness, true);
     endchar;
   endfor;
   charlist current_char - 1: current_char;
@@ -118,14 +122,14 @@ endfor;
 for sign = 1, -1:
   for scale = 1, 1.4:
     beginbigop(scale, scale); "big square union dot";
-      z3 - z0 = z2 - z1 = (op_width - line_thickness) * right;
-      z1 - z0 = sign * (op_height - line_thickness) * up;
+      z3 - z0 = z2 - z1 = (op_width - bop_line_thickness) * right;
+      z1 - z0 = sign * (op_height - bop_line_thickness) * up;
       1/2[1/2[z0,z1], 1/2[z2,z3]] = centre;
 
-      draw_line(z0, z1, true);
-      draw_line(z1, z2, true);
-      draw_line(z2, z3, true);
-      fill dot(centre - sign * 1/8op_height * up, dot_size);
+      draw_line_linethick(z0, z1, bop_line_thickness, true);
+      draw_line_linethick(z1, z2, bop_line_thickness, true);
+      draw_line_linethick(z2, z3, bop_line_thickness, true);
+      fill dot(centre - sign * 1/8op_height * up, bop_dot_size);
     endchar;
   endfor;
   charlist current_char - 1: current_char;
@@ -134,18 +138,18 @@ endfor;
 for sign = 1, -1:
   for scale = 1, 1.4:
     beginbigop(scale, scale); "big square union plus";
-      z3 - z0 = z2 - z1 = (op_width - line_thickness) * right;
-      z1 - z0 = sign * (op_height - line_thickness) * up;
+      z3 - z0 = z2 - z1 = (op_width - bop_line_thickness) * right;
+      z1 - z0 = sign * (op_height - bop_line_thickness) * up;
       1/2[1/2[z0,z1], 1/2[z2,z3]] = centre;
 
-      draw_line(z0, z1, true);
-      draw_line(z1, z2, true);
-      draw_line(z2, z3, true);
+      draw_line_linethick(z0, z1, bop_line_thickness, true);
+      draw_line_linethick(z1, z2, bop_line_thickness, true);
+      draw_line_linethick(z2, z3, bop_line_thickness, true);
 
       r := 1/4op_width;
 
-      draw_line(centre - sign * 1/8op_width * up + r * right, centre - sign * 1/8op_width * up + r * left, false);
-      draw_line(centre + (r - sign * 1/8op_width) * up, centre + (r + sign * 1/8op_width) * down, false);
+      draw_line_linethick(centre - sign * 1/8op_width * up + r * right, centre - sign * 1/8op_width * up + r * left, bop_line_thickness, false);
+      draw_line_linethick(centre + (r - sign * 1/8op_width) * up, centre + (r + sign * 1/8op_width) * down, bop_line_thickness, false);
     endchar;
   endfor;
   charlist current_char - 1: current_char;
@@ -154,11 +158,11 @@ endfor;
 for alpha = 0, 45:
   for scale = 1, 1.4:
     beginsquarebigop(scale, scale); "big circle plus";
-      r := (op_height - line_thickness)/2;
+      r := (op_height - bop_line_thickness)/2;
 
-      draw_circle(centre, r, line_thickness);
-      draw_line(centre - r * dir alpha, centre + r * dir alpha, false);
-      draw_line(centre - r * dir (alpha + 90), centre + r * dir (alpha + 90), false);
+      draw_circle(centre, r, bop_line_thickness);
+      draw_line_linethick(centre - r * dir alpha, centre + r * dir alpha, bop_line_thickness, false);
+      draw_line_linethick(centre - r * dir (alpha + 90), centre + r * dir (alpha + 90), bop_line_thickness, false);
     endchar;
   endfor;
   charlist current_char - 1: current_char;
@@ -166,18 +170,18 @@ endfor;
 
 for scale = 1, 1.4:
   beginsquarebigop(scale, scale); "big circle dot";
-    draw_circle(centre, (op_height - line_thickness)/2, line_thickness);
-    fill dot(centre, dot_size);
+    draw_circle(centre, (op_height - bop_line_thickness)/2, bop_line_thickness);
+    fill dot(centre, bop_dot_size);
   endchar;
 endfor;
 charlist current_char - 1: current_char;
 
 for scale = 1, 1.4:
   beginsquarebigop(scale, scale); "big circle asterisk";
-    thick := line_thickness;
-    r := (op_height - line_thickness)/2;
+    thick := bop_line_thickness;
+    r := (op_height - bop_line_thickness)/2;
 
-    draw_circle(centre, r, line_thickness);
+    draw_circle(centre, r, bop_line_thickness);
 
     penpos a0(4/3thick, 0);
     penpos a1(4/3thick, 60);
@@ -210,7 +214,7 @@ charlist current_char - 1: current_char;
 for sign = 1, -1:
   for scale = 1, 1.4:
     beginbigop(1.3scale, scale); "product";
-      draw_product(centre, op_width, op_height, sign, 1.1line_thickness * sqrt sqrt scale);
+      draw_product(centre, op_width, op_height, sign, bop_line_thickness * sqrt sqrt scale);
     endchar;
   endfor;
   charlist current_char - 1: current_char;
@@ -218,29 +222,29 @@ endfor;
 
 for scale = 1, 1.4:
   beginbigop(scale, scale); "sum";
-    draw_sum(a)(centre, op_width, op_height, 1.1line_thickness * sqrt sqrt scale);
+    draw_sum(a)(centre, op_width, op_height, bop_line_thickness * sqrt sqrt scale);
   endchar;
 endfor;
 charlist current_char - 1: current_char;
 
 for scale = 1, 1.4:
   beginbigop(scale, scale); "sum modulo two";
-    draw_sum(a)(centre, op_width, op_height, 1.1line_thickness * sqrt sqrt scale);
-    draw_circle(z4a, sqrt scale * 1/4op_width, line_thickness * sqrt sqrt scale);
+    draw_sum(a)(centre, op_width, op_height, bop_line_thickness * sqrt sqrt scale);
+    draw_circle(z4a, sqrt scale * 1/4op_width, bop_line_thickness * sqrt sqrt scale);
   endchar;
 endfor;
 charlist current_char - 1: current_char;
 
 for number = 0, 1, 2, 3:
   for scale = 1, 1.8:
-    beginsymbol(scale * (5number + 4) * u# + (sqrt scale) * 3/4line_thickness# + 2side_bearing#, vcentre(scale * 1.6asc_height#)); "integral";
-      italcorr scale * 3u# - (sqrt scale) * 3/4line_thickness#; % kerning between upper limit and lower limit
+    beginsymbol(scale * (5number + 4) * u# + (sqrt scale) * 3/4bop_thickness_fac*line_thickness# + 2side_bearing#, vcentre(scale * 1.6asc_height#)); "integral";
+      italcorr scale * 3u# - (sqrt scale) * 3/4bop_thickness_fac*line_thickness#; % kerning between upper limit and lower limit
 
       pair centre;
 
       for i = 0 upto number:
         centre := (side_bearing + scale * (5i + 7/2) * u, (h - d)/2);
-        draw_integral([i])(scale, centre, 1.1line_thickness * sqrt sqrt scale);
+        draw_integral([i])(scale, centre, bop_line_thickness * sqrt sqrt scale);
       endfor;
     endchar;
   endfor;
@@ -248,42 +252,42 @@ for number = 0, 1, 2, 3:
 endfor;
 
 for scale = 1, 1.8:
-  beginsymbol(scale * 9u# + 4(equal_spread# + dot_size#) + (sqrt scale) * 3/4line_thickness# + 2side_bearing#, vcentre(scale * 1.6asc_height#)); "integral dots";
-    italcorr scale * 3u# - (sqrt scale) * 3/4line_thickness#; % kerning between upper limit and lower limit
+  beginsymbol(scale * 9u# + 4(equal_spread# + bop_thickness_fac*dot_size#) + (sqrt scale) * 3/4bop_thickness_fac*line_thickness# + 2side_bearing#, vcentre(scale * 1.6asc_height#)); "integral dots";
+    italcorr scale * 3u# - (sqrt scale) * 3/4bop_thickness_fac*line_thickness#; % kerning between upper limit and lower limit
 
     pair centre;
     centre := (side_bearing + scale * 7/2u, (h - d)/2);
 
-    draw_integral([0])(scale, centre, 1.1line_thickness * sqrt sqrt scale);
+    draw_integral([0])(scale, centre, bop_line_thickness * sqrt sqrt scale);
 
-    centre := (side_bearing + scale * 6u + 4(equal_spread + dot_size), (h - d)/2);
+    centre := (side_bearing + scale * 6u + 4(equal_spread + bop_dot_size), (h - d)/2);
 
-    draw_integral([1])(scale, centre, 1.1line_thickness * sqrt sqrt scale);
+    draw_integral([1])(scale, centre, bop_line_thickness * sqrt sqrt scale);
 
     z0 = 1/4[z0[0],z0[1]];
     z1 = 2/4[z0[0],z0[1]];
     z2 = 3/4[z0[0],z0[1]];
 
-    fill dot(z0, dot_size);
-    fill dot(z1, dot_size);
-    fill dot(z2, dot_size);
+    fill dot(z0, bop_dot_size);
+    fill dot(z1, bop_dot_size);
+    fill dot(z2, bop_dot_size);
   endchar;
 endfor;
 charlist current_char - 1: current_char;
 
 for sign = 1, -1:
   for scale = 1, 1.8:
-    beginsymbol(scale * 6u# + if scale > 1: (sqrt scale) * 3/4line_thickness# else: scale * 3u# fi + 2side_bearing#, vcentre(scale * 1.6asc_height#)); "oriented integral";
+    beginsymbol(scale * 6u# + if scale > 1: (sqrt scale) * 3/4bop_thickness_fac*line_thickness# else: scale * 3u# fi + 2side_bearing#, vcentre(scale * 1.6asc_height#)); "oriented integral";
       if scale > 1:
-        italcorr scale * 3u# - (sqrt scale) * 3/4line_thickness#; % kerning between upper limit and lower limit
+        italcorr scale * 3u# - (sqrt scale) * 3/4bop_thickness_fac*line_thickness#; % kerning between upper limit and lower limit
       fi
 
       pair centre;
       centre := (side_bearing + scale * 9/2u, (h - d)/2);
 
-      draw_integral(a)(scale, centre, 1.1line_thickness * sqrt sqrt scale);
+      draw_integral(a)(scale, centre, bop_line_thickness * sqrt sqrt scale);
 
-      thick := line_thickness * sqrt sqrt scale;
+      thick := bop_line_thickness * sqrt sqrt scale;
       r := 4u;
 
       penpos0(thick, 135);
@@ -309,18 +313,18 @@ for sign = 1, -1:
 endfor;
 
 for scale = 1, 1.8:
-  beginsymbol(scale * 4u# + if scale > 1: (sqrt scale) * 3/4line_thickness# else: scale * 3u# fi + 2side_bearing#, vcentre(scale * 1.6asc_height#)); "integral with horizontal bar";
+  beginsymbol(scale * 4u# + if scale > 1: (sqrt scale) * 3/4bop_thickness_fac*line_thickness# else: scale * 3u# fi + 2side_bearing#, vcentre(scale * 1.6asc_height#)); "integral with horizontal bar";
     if scale > 1:
-      italcorr scale * 3u# - (sqrt scale) * 3/4line_thickness#; % kerning between upper limit and lower limit
+      italcorr scale * 3u# - (sqrt scale) * 3/4bop_thickness_fac*line_thickness#; % kerning between upper limit and lower limit
     fi
 
     pair centre;
     centre := (side_bearing + scale * 7/2u, (h - d)/2);
 
-    draw_integral(a)(scale, centre, 1.1line_thickness * sqrt sqrt scale);
+    draw_integral(a)(scale, centre, bop_line_thickness * sqrt sqrt scale);
 
     r := scale * 5/2u;
-    thick := line_thickness * sqrt sqrt scale;
+    thick := bop_line_thickness * sqrt sqrt scale;
 
     draw_straight(z0a + r * left, z0a + r * right, thick, true);
   endchar;
@@ -328,21 +332,21 @@ endfor;
 charlist current_char - 1: current_char;
 
 for scale = 1, 1.8:
-  beginsymbol(scale * 4u# + if scale > 1: (sqrt scale) * 3/4line_thickness# else: scale * 3u# fi + 2side_bearing#, vcentre(scale * 1.6asc_height#)); "integral with double horizontal bar";
+  beginsymbol(scale * 4u# + if scale > 1: (sqrt scale) * 3/4bop_thickness_fac*line_thickness# else: scale * 3u# fi + 2side_bearing#, vcentre(scale * 1.6asc_height#)); "integral with double horizontal bar";
     if scale > 1:
-      italcorr scale * 3u# - (sqrt scale) * 3/4line_thickness#; % kerning between upper limit and lower limit
+      italcorr scale * 3u# - (sqrt scale) * 3/4bop_thickness_fac*line_thickness#; % kerning between upper limit and lower limit
     fi
 
     pair centre;
     centre := (side_bearing + scale * 7/2u, (h - d)/2);
 
-    draw_integral(a)(scale, centre, 1.1line_thickness * sqrt sqrt scale);
+    draw_integral(a)(scale, centre, bop_line_thickness * sqrt sqrt scale);
 
     z1 - z0 = equal_spread * up;
     1/2[z0, z1] = z0a;
 
     r := scale * 5/2u;
-    thick := line_thickness * sqrt sqrt scale;
+    thick := bop_line_thickness * sqrt sqrt scale;
 
     draw_straight(z0 + r * left, z0 + r * right, thick, true);
     draw_straight(z1 + r * left, z1 + r * right, thick, true);
@@ -351,16 +355,16 @@ endfor;
 charlist current_char - 1: current_char;
 
 for scale = 1, 1.8:
-  beginsymbol(scale * 4u# + (sqrt scale) * 3/4line_thickness# + 2side_bearing#, vcentre(scale * 1.6asc_height#)); "stroked integral";
-    italcorr scale * 3u# - (sqrt scale) * 3/4line_thickness#; % kerning between upper limit and lower limit
+  beginsymbol(scale * 4u# + (sqrt scale) * 3/4bop_thickness_fac*line_thickness# + 2side_bearing#, vcentre(scale * 1.6asc_height#)); "stroked integral";
+    italcorr scale * 3u# - (sqrt scale) * 3/4bop_thickness_fac*line_thickness#; % kerning between upper limit and lower limit
 
     pair centre;
     centre := (side_bearing + scale * 7/2u, (h - d)/2);
 
-    draw_integral(a)(scale, centre, 1.1line_thickness * sqrt sqrt scale);
+    draw_integral(a)(scale, centre, bop_line_thickness * sqrt sqrt scale);
 
     r := scale * 7/2u;
-    thick := line_thickness * sqrt sqrt scale;
+    thick := bop_line_thickness * sqrt sqrt scale;
 
     draw_straight(z0a - r * dir 35, z0a + r * dir 35, thick, true);
   endchar;
@@ -369,15 +373,15 @@ charlist current_char - 1: current_char;
 
 for number = 0, 1, 2:
   for scale = 1, 1.8:
-    beginsymbol(scale * (5number + 5) * u# + if scale > 1: (sqrt scale) * 3/4line_thickness# else: scale * 3u# fi + 2side_bearing#, vcentre(scale * 1.6asc_height#)); "contour integral";
+    beginsymbol(scale * (5number + 5) * u# + if scale > 1: (sqrt scale) * 3/4bop_thickness_fac*line_thickness# else: scale * 3u# fi + 2side_bearing#, vcentre(scale * 1.6asc_height#)); "contour integral";
       if scale > 1:
-        italcorr scale * 3u# - (sqrt scale) * 3/4line_thickness#; % kerning between upper limit and lower limit
+        italcorr scale * 3u# - (sqrt scale) * 3/4bop_thickness_fac*line_thickness#; % kerning between upper limit and lower limit
       fi
 
       pair centre;
 
       centre := (side_bearing + scale * (5number/2 + 4) * u, (h - d)/2);
-      thick := line_thickness * sqrt sqrt scale;
+      thick := bop_line_thickness * sqrt sqrt scale;
       r := scale * 4u;
       s := scale * (5number + 8)/2 * u;
 
@@ -392,7 +396,7 @@ for number = 0, 1, 2:
       % Integral must come after unfill when processed with MetaPost!
       for i = 0 upto number:
         centre := (side_bearing + scale * (5i + 4) * u, (h - d)/2);
-        draw_integral([i])(scale, centre, 1.1line_thickness * sqrt sqrt scale);
+        draw_integral([i])(scale, centre, bop_line_thickness * sqrt sqrt scale);
       endfor;
     endchar;
   endfor;
@@ -402,17 +406,17 @@ endfor;
 for alpha = 0, 180:
   for sign = 1, -1:
     for scale = 1, 1.8:
-      beginsymbol(scale * 6u# + if scale > 1: (sqrt scale) * 3/4line_thickness# else: scale * 3u# fi + 2side_bearing#, vcentre(scale * 1.6asc_height#)); "oriented contour integral";
+      beginsymbol(scale * 6u# + if scale > 1: (sqrt scale) * 3/4bop_thickness_fac*line_thickness# else: scale * 3u# fi + 2side_bearing#, vcentre(scale * 1.6asc_height#)); "oriented contour integral";
         if scale > 1:
-          italcorr scale * 3u# - (sqrt scale) * 3/4line_thickness#; % kerning between upper limit and lower limit
+          italcorr scale * 3u# - (sqrt scale) * 3/4bop_thickness_fac*line_thickness#; % kerning between upper limit and lower limit
         fi
 
         pair centre;
         centre := (side_bearing + scale * (4u + if alpha > 90: u else: 0 fi), (h - d)/2);
 
-        draw_integral(a)(scale, centre, 1.1line_thickness * sqrt sqrt scale);
+        draw_integral(a)(scale, centre, bop_line_thickness * sqrt sqrt scale);
 
-        thick := line_thickness * sqrt sqrt scale;
+        thick := bop_line_thickness * sqrt sqrt scale;
         r := scale * 4u;
 
         reg_poly_points(a)(8, z0a, r, alpha + 25);
@@ -442,8 +446,8 @@ for scale = 1, 1.8:
     pair centre;
     centre := (side_bearing + scale * 4u, (h - d)/2);
 
-    draw_integral(a)(scale, centre, 1.1line_thickness * sqrt sqrt scale);
-    draw_sum(b, 1/4[z0a.l,z0a.r], scale * 7u, scale * 3/4asc_height, line_thickness * sqrt sqrt scale);
+    draw_integral(a)(scale, centre, bop_line_thickness * sqrt sqrt scale);
+    draw_sum(b, 1/4[z0a.l,z0a.r], scale * 7u, scale * 3/4asc_height, bop_line_thickness * sqrt sqrt scale);
 
   endchar;
 endfor;

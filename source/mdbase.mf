@@ -71,6 +71,8 @@ else:
 fi
 
 stroke_through_thickness := 9/10line_thickness;
+bop_thickness_fac := 1.1;	% make big operators that much thicker
+				% (including sum and integral)
 
 % Macros
 
@@ -265,6 +267,10 @@ enddef;
 
 def draw_line(expr orig, dest, extend) =
   draw_straight(orig, dest, line_thickness, extend);
+enddef;
+
+def draw_line_linethick(expr orig, dest, lt, extend) =
+  draw_straight(orig, dest, lt, extend);
 enddef;
 
 def draw_line_cut(suffix $, $$)=
