@@ -53,6 +53,8 @@ arrow_diag_len# := 1/2(arrow_horiz_len# + arrow_vert_len#);
 arrow_spread# := 1.6equal_spread#;
 delim_height# := 4.9pt#; % half the height of normal delimiters
 bigop_height# := 10.7pt#; % height of big operators
+accent_height# := x_height# + 1.u#; % height of accents
+accent_thickness# := 3/4line_thickness#;
 
 mode_setup;
 
@@ -62,12 +64,14 @@ define_whole_pixels(dot_size, small_op_size, med_op_size, large_op_size, plus_si
   arrow_horiz_len, arrow_vert_len, arrow_diag_len, arrow_spread);
 
 if known ps_output:
-  define_pixels(math_axis, line_thickness, rule_thickness, side_bearing);
+  define_pixels(math_axis, line_thickness, rule_thickness, side_bearing, accent_height, accent_thickness);
 else:
-  math_axis      := good.y(math_axis# * hppp);
-  line_thickness := ceiling(line_thickness# * hppp);
-  rule_thickness := ceiling(rule_thickness# * hppp);
-  side_bearing   := ceiling(side_bearing# * hppp);
+  math_axis        := good.y(math_axis# * hppp);
+  line_thickness   := ceiling(line_thickness# * hppp);
+  rule_thickness   := ceiling(rule_thickness# * hppp);
+  side_bearing     := ceiling(side_bearing# * hppp);
+  accent_height    := ceiling(accent_height# * hppp);
+  accent_thickness := ceiling(accent_thickness# * hppp);
 fi
 
 stroke_through_thickness := 9/10line_thickness;
@@ -197,6 +201,11 @@ def beginturnstile(expr angle, scale) =
       spread := turnstile_width - line_thickness;;
     fi
     foot = (w/2, (h - d)/2) - (len - line_thickness)/2 * dir angle;
+enddef;
+
+def beginaccent(expr width, addheight) =
+  thick  := accent_thickness;
+  beginsymbol(width, accent_height# + addheight, 0);
 enddef;
 
 % Strokes a pen path
@@ -651,8 +660,8 @@ def draw_arrowhead(expr pos, angle, spread, thick) =
     pair p[], p[].l, p[].r;
   
     p1 = pos;
-    p2 = pos + sqrt(2) * (spread+line_thickness)/2 * dir (angle + 135);
-    p3 = pos + sqrt(2) * (spread+line_thickness)/2 * dir (angle - 135);
+    p2 = pos + sqrt(2) * (spread+thick)/2 * dir (angle + 135);
+    p3 = pos + sqrt(2) * (spread+thick)/2 * dir (angle - 135);
     1/2[p1.l, p1.r] = p1;
     1/2[p2.l, p2.r] = p2;
     1/2[p3.l, p3.r] = p3;
