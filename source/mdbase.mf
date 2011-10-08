@@ -71,7 +71,7 @@ else:
 fi
 
 stroke_through_thickness := 9/10line_thickness;
-bop_thickness_fac := 1.1;	% make big operators that much thicker
+bop_thickness_fac := 1.;	% make big operators that much thicker
 				% (including sum and integral)
 
 % Macros
@@ -504,7 +504,7 @@ def stroke_through_arrow(expr pos, alpha, spread)(text angles) =
 enddef;
 
 def draw_product(expr centre, width, height, sign, thick) =
-  thin  := 7/8thick;
+  thin  := thick;
 
   z1r - z0r = z3r - z2r = width * right;
   z2r - z0r = sign * (height - thin) * up;

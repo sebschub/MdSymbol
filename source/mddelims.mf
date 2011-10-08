@@ -8,6 +8,9 @@
 
 % thickness factor for delimiters
 def dthick(expr scale) =
+%option 1: make symbols thicker with scale 
+%  sqrt sqrt scale
+%option 2: keep same thickness  
   1
 enddef;
 
