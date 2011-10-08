@@ -738,15 +738,20 @@ enddef;
 def draw_paren(expr sign, thick) =
   penpos0(thick,  90 - sign * 90);
   penpos1(thick, -90 + sign * 90);
-  penpos2(thick,  90 - sign * 90);
+  penpos2(1.1thick,  90 - sign * 90);
 
-  x0 = x1 = x2 + sign * (w - 2side_bearing - thick);
+  if sign = 1:
+    x2l = side_bearing;
+    x1r = x0r = w - side_bearing;
+  else:
+    x1r = x0r = side_bearing;
+    x2l = w - side_bearing;
+  fi
   y1.l =  h;
   y0.l = -d;
   1/2[y0,y1] = y2;
-  1/2[x0r,x2l] = w/2;
 
-  fill stroke z0e{3(x2e - x0e), y2e - y0e} .. z2e .. {3(x1e - x2e), y1e - y2e}z1e;
+  fill stroke z0e .. z2e .. z1e;
 
   penlabels(0,1,2);
 enddef;

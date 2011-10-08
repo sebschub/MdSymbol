@@ -34,14 +34,19 @@ for sign = 1, -1:
     penpos2(1.1thick, 90 - sign * 90);
     penpos2'(1.1thick, 90 - sign * 90);
 
-    x1 = x2 + sign * (w - 2side_bearing - thick);
+    if sign = 1:
+      x2l = side_bearing;
+      x1r = w - side_bearing;
+    else:
+      x1r = side_bearing;
+      x2l = w - side_bearing;
+    fi
     x2 = x2';
     y1 = h;
     y2 = -d + 1/2line_thickness;
     y2' = -d - 1/2line_thickness;
-    1/2[x1r,x2l] = w/2;
 
-    fill stroke z2'.e -- z2e{up} .. {3(x1e - x2e), y1e - y2e}z1e;
+    fill stroke z2'.e -- z2e{up} ... z1e;
 
     penlabels(1,2,2');
   endchar;
@@ -55,14 +60,19 @@ for sign = 1, -1:
     penpos2(1.1thick, 90 - sign * 90);
     penpos2'(1.1thick, 90 - sign * 90);
 
-    x0 = x2 + sign * (w - 2side_bearing - thick);
+    if sign = 1:
+      x2l = side_bearing;
+      x0r = w - side_bearing;
+    else:
+      x0r = side_bearing;
+      x2l = w - side_bearing;
+    fi
     x2 = x2';
     y2 =  h - 1/2line_thickness;
     y2' =  h + 1/2line_thickness;
     y0 = -d;
-    1/2[x0r,x2l] = w/2;
 
-    fill stroke z0e{3(x2e - x0e), y2e - y0e} .. {up}z2e -- z2'.e;
+    fill stroke z0e ... {up}z2e -- z2'.e;
 
     penlabels(1,2,2');
   endchar;
@@ -72,14 +82,16 @@ for sign = 1, -1:
   beginsymbol((6 + 4.5)/2 * u# + line_thickness# + 2side_bearing#, vcentre(0.6delim_height#)); "parenthesis -- module";
     thick := dthick(3) * line_thickness;
 
-    penpos1(thick, 90 - sign * 45);
     penpos2(1.1thick, 90 - sign * 90);
     penpos3(1.1thick, 90 - sign * 90);
 
-    x2 = x3 = x1 - sign * (w - 2side_bearing - thick);
+    if sign = 1:
+      x2l = x3l = side_bearing;
+    else:
+      x2l = x3l = w - side_bearing;
+    fi
     y2 =  h + 1/2line_thickness;
     y3 = -d - 1/2line_thickness;
-    1/2[x1r,x2l] = w/2;
 
     fill stroke z2e -- z3e;
   endchar;
