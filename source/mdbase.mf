@@ -809,28 +809,30 @@ enddef;
 def draw_root(expr thick) =
   penpos0(rule_thickness, -90);
   penpos0'(rule_thickness, -90);
-  penpos2(3/2thick, 0);
 
   y0l = h;
   x0 = w;
   z0' = z0 + 1/2line_thickness * right;
   y1 = -d;
   x1 = 4/9w;
-  x2 = 2/9w;
-  y2  = 1/2[y0, y1];
-  z1' = z1 + thick * dir (angle (z1 - z2l) + 90);
+  x2r = 2/9w + 1/2thick;
+  y2r = 1/2[y0, y1];
+  z1' = z1 + thick * right;
   y6 = h;
-  z6 = z0r + thick * dir (angle (z0r - z1') + 90) + whatever * (z0r - z1');
+  z6 = z0r + thick/sind(angle(z0r - z1')) * left + whatever * (z0r - z1');
 
+  penpos2(thick/abs(sind(angle(z1'-z2r))), 0);
   penpos3(1/2thick, angle (z1 - z2l));
 
-  z3l = z2r + 5/2thick * dir (angle (z1 - z2l) - 90);
-  z4 = z6 + whatever * (z0 - z1') = z2r + whatever * (z2l - z1);
-  z5 = whatever[z2l, z1] = z3r + whatever * dir (angle (z1 - z2l) - 90);
+  z1'' = z1' - thick/abs(sind(angle(z1' - z2r))) * right;
+ 
+  z3l = z2r + 3/2thick * dir (angle (z1 - z2l) - 90);
+  z4 = z6 + whatever * (z0r - z1') = z2r + whatever * (z2r - z1');
+  z5 = whatever[z2l, z1''] = z3r + whatever * dir (angle (z1'' - z2l) - 90);
 
-  fill z3r -- z5 -- z1 -- z1' -- z0r -- z0'r -- z0'l -- z6 -- z4 -- z2r -- z3l -- cycle;
+  fill z3r -- z5 -- z1'' -- z1' -- z0r -- z0'r -- z0'l -- z6 -- z4 -- z2r -- z3l -- cycle;
 
-  penlabels (0,0',1,1',2,3,4,5,6);
+  penlabels (0,0',1,1',1'',2,3,4,5,6);
 enddef;
 
 def draw_root_top(expr thick) =
@@ -847,26 +849,28 @@ enddef;
 def draw_root_bot(expr thick) =
   penpos0(thick, 0);
   penpos0'(thick, -90);
-  penpos2(3/2thick, 0);
 
   y0 = h + 1/2thick;
   x0l = x1;
   y1 = -d;
   x1 = 4/9w;
-  x2l = 1/9w;
-  y2  = 1/2[y0, y1];
-  z1' = z1 + whatever * dir (angle (z1 - z2l) + 90);
+  x2r = 2/9w + 1/2thick;
+  y2r = 1/2[y0, y1];
+  z1' = z1 + whatever * right;
   x1' = x0r;
 
+  penpos2(thick/abs(sind(angle(z1'-z2r))), 0);
   penpos3(1/2thick, angle (z1 - z2l));
 
-  z3l = z2r + 5/2thick * dir (angle (z1 - z2l) - 90);
+  z1'' = z1' - thick/abs(sind(angle(z1' - z2r))) * right;
+  
+  z3l = z2r + 3/2thick * dir (angle (z1 - z2l) - 90);
   z4 = z0l + whatever * up = z2r + whatever * (z2l - z1);
-  z5 = whatever[z2l, z1] = z3r + whatever * dir (angle (z1 - z2l) - 90);
+  z5 = whatever[z2l, z1''] = z3r + whatever * dir (angle (z1'' - z2l) - 90);
 
   fill z3r -- z5 -- z1 -- z1' -- z0r -- z0l -- z4 -- z2r -- z3l -- cycle;
 
-  penlabels (0,1,1',2,3,4,5);
+  penlabels (0,1,1',1'',2,3,4,5);
 enddef;
 
 % Weierstrass macros

@@ -575,20 +575,20 @@ endchar;
 root_char = current_char + 1;
 
 for scale = 1, 1.2, 1.5, 1.8, 2.4, 3:
-  beginsymbol((4scale + 2) * u# + 5/2line_thickness# + 2side_bearing#, rule_thickness#, 2scale * delim_height# - rule_thickness#); "root";
+  beginsymbol((4scale + 2) * u# + 3/2line_thickness# + 2side_bearing#, rule_thickness#, 2scale * delim_height# - rule_thickness#); "root";
     draw_root(line_thickness);
   endchar;
 endfor;
 
-beginsymbol(14u# + 5/2line_thickness# + 2side_bearing#, rule_thickness#, 1.2delim_height# - rule_thickness#); "root -- top";
+beginsymbol(14u# + 3/2line_thickness# + 2side_bearing#, rule_thickness#, 1.2delim_height# - rule_thickness#); "root -- top";
   draw_root_top(line_thickness);
 endchar;
 
-beginsymbol(14u# + 5/2line_thickness# + 2side_bearing#, 0, 2.4delim_height#); "root -- bottom";
+beginsymbol(14u# + 3/2line_thickness# + 2side_bearing#, 0, 2.4delim_height#); "root -- bottom";
   draw_root_bot(line_thickness);
 endchar;
 
-beginsymbol(14u# + 5/2line_thickness# + 2side_bearing#, vcentre(0.6delim_height#)); "root -- module";
+beginsymbol(14u# + 3/2line_thickness# + 2side_bearing#, vcentre(0.6delim_height#)); "root -- module";
   x0 = x1 = 4/9w + 1/2line_thickness;
   y0 = h;
   y1 = -d;
