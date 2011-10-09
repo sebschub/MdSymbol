@@ -32,7 +32,7 @@
 \usepackage[T1]{fontenc}
 \usepackage{lmodern}
 \IfFileExists{MyriadPro.sty}{%
-  \usepackage[footnotefigures]{MyriadPro}
+  \usepackage[footnotefigures,medfamily]{MyriadPro}
   \renewcommand{\familydefault}{\sfdefault}
   \usepackage[toc,eqno,enum,bib,lineno]{tabfigures}
 }{%
@@ -72,7 +72,7 @@
 %</driver>
 %\fi
 %
-% \CheckSum{5525}
+% \CheckSum{5564}
 % \CharacterTable
 %  {Upper-case    \A\B\C\D\E\F\G\H\I\J\K\L\M\N\O\P\Q\R\S\T\U\V\W\X\Y\Z
 %   Lower-case    \a\b\c\d\e\f\g\h\i\j\k\l\m\n\o\p\q\r\s\t\u\v\w\x\y\z
@@ -1486,53 +1486,60 @@
 \DeclareFontFamily{U}{MdSymbolE}{}
 \DeclareFontFamily{U}{MdSymbolF}{}
 
+\RequirePackage{fltpoint}
+\fpDecimalSign{.}
+\newcommand*{\mdsy@calc@bsize}[2]{\fpDiv{#1}{#2}{\mdsy@scale}}
+
+\mdsy@calc@bsize{\mdsy@s@medium}{6}
+\mdsy@calc@bsize{\mdsy@s@bold}{6}
+
 \DeclareFontShape{U}{MdSymbolA}{m}{n}{
-    <-6> s * [\mdsy@scale] MdSymbolA-\mdsy@mweight@small
-    <6-> s * [\mdsy@scale] MdSymbolA-\mdsy@mweight@normal
+    <              -\mdsy@s@medium> s * [\mdsy@scale] MdSymbolA-\mdsy@mweight@small
+    <\mdsy@s@medium-              > s * [\mdsy@scale] MdSymbolA-\mdsy@mweight@normal
 }{}
 \DeclareFontShape{U}{MdSymbolA}{b}{n}{
-    <-6> s * [\mdsy@scale] MdSymbolA-\mdsy@bweight@small
-    <6-> s * [\mdsy@scale] MdSymbolA-\mdsy@bweight@normal
+    <              -  \mdsy@s@bold> s * [\mdsy@scale] MdSymbolA-\mdsy@bweight@small
+    <\mdsy@s@bold  -              > s * [\mdsy@scale] MdSymbolA-\mdsy@bweight@normal
 }{}
 \DeclareFontShape{U}{MdSymbolB}{m}{n}{
-    <-6> s * [\mdsy@scale] MdSymbolB-\mdsy@mweight@small
-    <6-> s * [\mdsy@scale] MdSymbolB-\mdsy@mweight@normal
+    <              -\mdsy@s@medium> s * [\mdsy@scale] MdSymbolB-\mdsy@mweight@small
+    <\mdsy@s@medium-              > s * [\mdsy@scale] MdSymbolB-\mdsy@mweight@normal
 }{}
 \DeclareFontShape{U}{MdSymbolB}{b}{n}{
-    <-6> s * [\mdsy@scale] MdSymbolB-\mdsy@bweight@small
-    <6-> s * [\mdsy@scale] MdSymbolB-\mdsy@bweight@normal
+    <              -  \mdsy@s@bold> s * [\mdsy@scale] MdSymbolB-\mdsy@bweight@small
+    <\mdsy@s@bold  -              > s * [\mdsy@scale] MdSymbolB-\mdsy@bweight@normal
 }{}
 \DeclareFontShape{U}{MdSymbolC}{m}{n}{
-    <-6> s * [\mdsy@scale] MdSymbolC-\mdsy@mweight@small
-    <6-> s * [\mdsy@scale] MdSymbolC-\mdsy@mweight@normal
+    <              -\mdsy@s@medium> s * [\mdsy@scale] MdSymbolC-\mdsy@mweight@small
+    <\mdsy@s@medium-              > s * [\mdsy@scale] MdSymbolC-\mdsy@mweight@normal
 }{}
 \DeclareFontShape{U}{MdSymbolC}{b}{n}{
-    <-6> s * [\mdsy@scale] MdSymbolC-\mdsy@bweight@small
-    <6-> s * [\mdsy@scale] MdSymbolC-\mdsy@bweight@normal
+    <              -  \mdsy@s@bold> s * [\mdsy@scale] MdSymbolC-\mdsy@bweight@small
+    <\mdsy@s@bold  -              > s * [\mdsy@scale] MdSymbolC-\mdsy@bweight@normal
 }{}
 \DeclareFontShape{U}{MdSymbolD}{m}{n}{
-    <-6> s * [\mdsy@scale] MdSymbolD-\mdsy@mweight@small
-    <6-> s * [\mdsy@scale] MdSymbolD-\mdsy@mweight@normal
+    <              -\mdsy@s@medium> s * [\mdsy@scale] MdSymbolD-\mdsy@mweight@small
+    <\mdsy@s@medium-              > s * [\mdsy@scale] MdSymbolD-\mdsy@mweight@normal
 }{}
 \DeclareFontShape{U}{MdSymbolD}{b}{n}{
-    <-6> s * [\mdsy@scale] MdSymbolD-\mdsy@bweight@small
-    <6-> s * [\mdsy@scale] MdSymbolD-\mdsy@bweight@normal
+    <              -  \mdsy@s@bold> s * [\mdsy@scale] MdSymbolD-\mdsy@bweight@small
+    <\mdsy@s@bold  -              > s * [\mdsy@scale] MdSymbolD-\mdsy@bweight@normal
 }{}
 \DeclareFontShape{U}{MdSymbolE}{m}{n}{
-    <-6> s * [\mdsy@scale] MdSymbolE-\mdsy@mweight@small
-    <6-> s * [\mdsy@scale] MdSymbolE-\mdsy@mweight@normal
+    <              -\mdsy@s@medium> s * [\mdsy@scale] MdSymbolE-\mdsy@mweight@small
+    <\mdsy@s@medium-              > s * [\mdsy@scale] MdSymbolE-\mdsy@mweight@normal
 }{}
 \DeclareFontShape{U}{MdSymbolE}{b}{n}{
-    <-6> s * [\mdsy@scale] MdSymbolE-\mdsy@bweight@small
-    <6-> s * [\mdsy@scale] MdSymbolE-\mdsy@bweight@normal
+    <              -  \mdsy@s@bold> s * [\mdsy@scale] MdSymbolE-\mdsy@bweight@small
+    <\mdsy@s@bold  -              > s * [\mdsy@scale] MdSymbolE-\mdsy@bweight@normal
 }{}
 \DeclareFontShape{U}{MdSymbolF}{m}{n}{
-    <-6> s * [\mdsy@scale] MdSymbolF-\mdsy@mweight@small
-    <6-> s * [\mdsy@scale] MdSymbolF-\mdsy@mweight@normal
+    <              -\mdsy@s@medium> s * [\mdsy@scale] MdSymbolF-\mdsy@mweight@small
+    <\mdsy@s@medium-              > s * [\mdsy@scale] MdSymbolF-\mdsy@mweight@normal
 }{}
 \DeclareFontShape{U}{MdSymbolF}{b}{n}{
-    <-6> s * [\mdsy@scale] MdSymbolF-\mdsy@bweight@small
-    <6-> s * [\mdsy@scale] MdSymbolF-\mdsy@bweight@normal
+    <              -  \mdsy@s@bold> s * [\mdsy@scale] MdSymbolF-\mdsy@bweight@small
+    <\mdsy@s@bold  -              > s * [\mdsy@scale] MdSymbolF-\mdsy@bweight@normal
 }{}
 
 \DeclareSymbolFont{symbols}{U}{MdSymbolA}{m}{n}
