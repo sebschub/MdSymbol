@@ -21,24 +21,24 @@ desc_depth# := 2.2pt#; % 2.94pt#;
 x_height# := 5.46pt#;
 math_axis# := 2.75pt#;
 if weight_index = 0: % Light
-  line_thickness# := 0.64pt#;
-  rule_thickness# := 0.56pt#;
-  dot_size# := 0.84pt#;
+  line_thickness# := 0.41pt#;
+  rule_thickness# := line_thickness#;
+  dot_size# := line_thickness#;
 elseif weight_index = 1: % Regular
   line_thickness# := 0.74pt#;
-  rule_thickness# := 0.58pt#;
-  dot_size# := 0.9pt#;
+  rule_thickness# := line_thickness#;
+  dot_size# := line_thickness#;
 elseif weight_index = 2: % Semibold
-  line_thickness# := 0.86pt#;
-  rule_thickness# := 0.6pt#;
-  dot_size# := 0.97pt#;
+  line_thickness# := 0.98pt#;
+  rule_thickness# := line_thickness#;
+  dot_size# := 0.85pt#;
 else: % Bold
-  line_thickness# := 1.0pt#;
-  rule_thickness# := 0.64pt#;
-  dot_size# := 1.05pt#;
+  line_thickness# := 1.17pt#;
+  rule_thickness# := line_thickness#;
+  dot_size# := 1.0pt#;
 fi;
 
-side_bearing# := 1.5u#;
+side_bearing# := 1.u#;
 small_op_size# := 8u#; % radius of small operators
 med_op_size# := 12.5u#; % radius of medium operators
 plus_size# := 9u#;
