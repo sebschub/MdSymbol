@@ -131,15 +131,17 @@
 % Regular, Semibold and Bold. Of these, Light and Regular are suitable for normal
 % math typesetting, while Semibold and Bold can be used for bold math
 % typesetting. Using the options \opt{normalweight} and \opt{boldweight}, you
-% can select which weights are used. For example, to use the Semibold weight as
-% the normal weight in math, add \opt{normalweight=Semibold} to the package
+% can select which weights are used. For example, to use the Light weight as
+% the normal weight in math, add \opt{normalweight=Light} to the package
 % options. Analogously, to use the Bold weight with |\boldmath| or
 % |\boldsymbol|, add \opt{boldweight=Bold} to the package options. By default,
-% Light and Semibold are used. Additionally, it is possible to use a
-% suitable weight automatically depending on the font size by selecting
-% \opt{auto}. For example, if you use the option \opt{normalweight=auto}, the
-% Light weight will be used for normal and large sizes, but the Regular weight
-% will be used for small sizes (e.g.\ in sub- and superscripts).
+% Regular and Semibold are used. Additionally, it is possible to use a
+% suitable weight automatically depending on the font size.  By selecting
+% \opt{autolight} or \opt{autoregular} for \opt{normalweight}, Light
+% or Regular weight, respectively, is used for font sizes larger than
+% 6pt and Regular or Semibold, respectively, for smaller sizes.
+% Similarly, \opt{autosemibold} for \opt{boldweight} selects Semibold
+% for bold symbols larger than 6pt and Bold below 6pt.
 %
 % In order to use MdSymbol with different text fonts, it is possible to scale
 % the fonts by an arbitrary factor. This can be achieved with the option
@@ -158,8 +160,8 @@
 % \toprule
 % Key & Values \\
 % \midrule
-% \opt{normalweight} & \opt{Light}*, \opt{Regular}, \opt{auto} \\
-% \opt{boldweight} & \opt{Semibold}*, \opt{Bold}, \opt{auto} \\
+% \opt{normalweight} & \opt{Light}, \opt{Regular}*, \opt{autolight}, \opt{autoregular} \\
+% \opt{boldweight} & \opt{Semibold}*, \opt{Bold}, \opt{autosemibold} \\
 % \opt{scale} & \meta{factor} \\
 % \opt{largedelims} & \opt{true}, \opt{false}* \\
 % \bottomrule
@@ -1371,11 +1373,11 @@
 % The following two options control which weights are used
 % for which math version and font size.
 %    \begin{macrocode}
-\newcommand\mdsy@mweight@normal{Light}
-\newcommand\mdsy@mweight@small{Light}
+\newcommand\mdsy@mweight@normal{Regular}
+\newcommand\mdsy@mweight@small{Regular}
 \newcommand\mdsy@bweight@normal{Semibold}
 \newcommand\mdsy@bweight@small{Semibold}
-\mdsy@choicekey{normalweight}{light,regular,auto}{%
+\mdsy@choicekey{normalweight}{light,regular,autolight,autoregular}{%
   \ifcase\@tempb\relax
     \renewcommand\mdsy@mweight@normal{Light}%
     \renewcommand\mdsy@mweight@small{Light}%
@@ -1385,9 +1387,12 @@
   \or
     \renewcommand\mdsy@mweight@normal{Light}%
     \renewcommand\mdsy@mweight@small{Regular}%
+  \or
+    \renewcommand\mdsy@mweight@normal{Regular}%
+    \renewcommand\mdsy@mweight@small{Semibold}%
   \fi
 }
-\mdsy@choicekey{boldweight}{semibold,bold,auto}{%
+\mdsy@choicekey{boldweight}{semibold,bold,autosemibold}{%
   \ifcase\@tempb\relax
     \renewcommand\mdsy@bweight@normal{Semibold}%
     \renewcommand\mdsy@bweight@small{Semibold}%
@@ -1482,52 +1487,52 @@
 \DeclareFontFamily{U}{MdSymbolF}{}
 
 \DeclareFontShape{U}{MdSymbolA}{m}{n}{
-    <-7.1> s * [\mdsy@scale] MdSymbolA-\mdsy@mweight@small
-    <7.1-> s * [\mdsy@scale] MdSymbolA-\mdsy@mweight@normal
+    <-6> s * [\mdsy@scale] MdSymbolA-\mdsy@mweight@small
+    <6-> s * [\mdsy@scale] MdSymbolA-\mdsy@mweight@normal
 }{}
 \DeclareFontShape{U}{MdSymbolA}{b}{n}{
-    <-7.1> s * [\mdsy@scale] MdSymbolA-\mdsy@bweight@small
-    <7.1-> s * [\mdsy@scale] MdSymbolA-\mdsy@bweight@normal
+    <-6> s * [\mdsy@scale] MdSymbolA-\mdsy@bweight@small
+    <6-> s * [\mdsy@scale] MdSymbolA-\mdsy@bweight@normal
 }{}
 \DeclareFontShape{U}{MdSymbolB}{m}{n}{
-    <-7.1> s * [\mdsy@scale] MdSymbolB-\mdsy@mweight@small
-    <7.1-> s * [\mdsy@scale] MdSymbolB-\mdsy@mweight@normal
+    <-6> s * [\mdsy@scale] MdSymbolB-\mdsy@mweight@small
+    <6-> s * [\mdsy@scale] MdSymbolB-\mdsy@mweight@normal
 }{}
 \DeclareFontShape{U}{MdSymbolB}{b}{n}{
-    <-7.1> s * [\mdsy@scale] MdSymbolB-\mdsy@bweight@small
-    <7.1-> s * [\mdsy@scale] MdSymbolB-\mdsy@bweight@normal
+    <-6> s * [\mdsy@scale] MdSymbolB-\mdsy@bweight@small
+    <6-> s * [\mdsy@scale] MdSymbolB-\mdsy@bweight@normal
 }{}
 \DeclareFontShape{U}{MdSymbolC}{m}{n}{
-    <-7.1> s * [\mdsy@scale] MdSymbolC-\mdsy@mweight@small
-    <7.1-> s * [\mdsy@scale] MdSymbolC-\mdsy@mweight@normal
+    <-6> s * [\mdsy@scale] MdSymbolC-\mdsy@mweight@small
+    <6-> s * [\mdsy@scale] MdSymbolC-\mdsy@mweight@normal
 }{}
 \DeclareFontShape{U}{MdSymbolC}{b}{n}{
-    <-7.1> s * [\mdsy@scale] MdSymbolC-\mdsy@bweight@small
-    <7.1-> s * [\mdsy@scale] MdSymbolC-\mdsy@bweight@normal
+    <-6> s * [\mdsy@scale] MdSymbolC-\mdsy@bweight@small
+    <6-> s * [\mdsy@scale] MdSymbolC-\mdsy@bweight@normal
 }{}
 \DeclareFontShape{U}{MdSymbolD}{m}{n}{
-    <-7.1> s * [\mdsy@scale] MdSymbolD-\mdsy@mweight@small
-    <7.1-> s * [\mdsy@scale] MdSymbolD-\mdsy@mweight@normal
+    <-6> s * [\mdsy@scale] MdSymbolD-\mdsy@mweight@small
+    <6-> s * [\mdsy@scale] MdSymbolD-\mdsy@mweight@normal
 }{}
 \DeclareFontShape{U}{MdSymbolD}{b}{n}{
-    <-7.1> s * [\mdsy@scale] MdSymbolD-\mdsy@bweight@small
-    <7.1-> s * [\mdsy@scale] MdSymbolD-\mdsy@bweight@normal
+    <-6> s * [\mdsy@scale] MdSymbolD-\mdsy@bweight@small
+    <6-> s * [\mdsy@scale] MdSymbolD-\mdsy@bweight@normal
 }{}
 \DeclareFontShape{U}{MdSymbolE}{m}{n}{
-    <-7.1> s * [\mdsy@scale] MdSymbolE-\mdsy@mweight@small
-    <7.1-> s * [\mdsy@scale] MdSymbolE-\mdsy@mweight@normal
+    <-6> s * [\mdsy@scale] MdSymbolE-\mdsy@mweight@small
+    <6-> s * [\mdsy@scale] MdSymbolE-\mdsy@mweight@normal
 }{}
 \DeclareFontShape{U}{MdSymbolE}{b}{n}{
-    <-7.1> s * [\mdsy@scale] MdSymbolE-\mdsy@bweight@small
-    <7.1-> s * [\mdsy@scale] MdSymbolE-\mdsy@bweight@normal
+    <-6> s * [\mdsy@scale] MdSymbolE-\mdsy@bweight@small
+    <6-> s * [\mdsy@scale] MdSymbolE-\mdsy@bweight@normal
 }{}
 \DeclareFontShape{U}{MdSymbolF}{m}{n}{
-    <-7.1> s * [\mdsy@scale] MdSymbolF-\mdsy@mweight@small
-    <7.1-> s * [\mdsy@scale] MdSymbolF-\mdsy@mweight@normal
+    <-6> s * [\mdsy@scale] MdSymbolF-\mdsy@mweight@small
+    <6-> s * [\mdsy@scale] MdSymbolF-\mdsy@mweight@normal
 }{}
 \DeclareFontShape{U}{MdSymbolF}{b}{n}{
-    <-7.1> s * [\mdsy@scale] MdSymbolF-\mdsy@bweight@small
-    <7.1-> s * [\mdsy@scale] MdSymbolF-\mdsy@bweight@normal
+    <-6> s * [\mdsy@scale] MdSymbolF-\mdsy@bweight@small
+    <6-> s * [\mdsy@scale] MdSymbolF-\mdsy@bweight@normal
 }{}
 
 \DeclareSymbolFont{symbols}{U}{MdSymbolA}{m}{n}
