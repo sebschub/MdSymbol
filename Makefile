@@ -22,7 +22,7 @@ endif
 pkg := mdsymbol
 font := MdSymbol
 names := A B C D E F
-weights := Book Regular Medium Bold
+weights := Light Regular Semibold Bold
 
 fontdir := fonts
 testdir := test
