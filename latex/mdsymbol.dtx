@@ -1491,21 +1491,32 @@
     \csdef{#1}{\ifmathversionsans{\csname#1@new\endcsname}{\csname#1@old\endcsname}}%
     \mdsy@nextslot
   }
+  \newcommand\mdsy@DeclareDelimiter[4]{%
+    \ifcsdef{#1}{%
+      \csletcs{#1@old}{#1}%
+    }{\expandafter\DeclareMathDelimiter\expandafter{\csname#1\endcsname}{#2}{#3}{#4}{#3}{#4}%
+      \csletcs{#1@old}{#1}}%
+    \expandafter\DeclareMathDelimiter\expandafter{\csname sans#1\endcsname}{#2}{#3}{#4}{#3}{#4}%
+    \csletcs{#1@new}{sans#1}
+    \csundef{#1}%
+    \csdef{#1}{\ifmathversionsans{\csname#1@new\endcsname}{\csname#1@old\endcsname}}
+  }
 \else
   \newcommand\mdsy@DeclareSymbol[3]{%
     \csundef{#1}%
     \expandafter\mdsy@@DeclareSymbol\expandafter{\the\@tempcnta}{#1}{#3}{#2}%
     \mdsy@nextslot
   }
+  \newcommand\mdsy@DeclareDelimiter[4]{%
+    \csundef{#1}%
+    \expandafter\DeclareMathDelimiter\expandafter{\csname#1\endcsname}{#2}{#3}{#4}{#3}{#4}%
+  }
 \fi
 
 \newcommand\mdsy@DeclareAlias[3]{\mdsy@prevslot\mdsy@DeclareSymbol{#1}{#2}{#3}}
 \newcommand\mdsy@DeclareOperator[3]{\def#1{\DOTSB#3\slimits@}}
 \newcommand\mdsy@DeclareIntegral[3]{\def#1{\DOTSI#3\ilimits@}}
-\newcommand\mdsy@DeclareDelimiter[4]{%
-  \if\relax\noexpand#1\let#1\undefined\fi
-  \DeclareMathDelimiter{#1}{#2}{#3}{#4}{#3}{#4}%
-}
+
 \newcommand\mdsy@DeclareOpen[3]{\mdsy@DeclareDelimiter{#1}{\mathopen}{#2}{#3}}
 \newcommand\mdsy@DeclareClose[3]{\mdsy@DeclareDelimiter{#1}{\mathclose}{#2}{#3}}
 %    \end{macrocode}
@@ -1586,12 +1597,15 @@
 \SetSymbolFont{Mdnarrows}{bold}{U}{MdSymbolD}{b}{n}
 \SetSymbolFont{Mdlargesymbols}{bold}{U}{MdSymbolE}{b}{n}
 \SetSymbolFont{Mddelimiters}{bold}{U}{MdSymbolF}{b}{n}
-\SetSymbolFont{Mdsymbols}{sansbold}{U}{MdSymbolA}{b}{n}
-\SetSymbolFont{Mdrelations}{sansbold}{U}{MdSymbolB}{b}{n}
-\SetSymbolFont{Mdarrows}{sabsbold}{U}{MdSymbolC}{b}{n}
-\SetSymbolFont{Mdnarrows}{sansbold}{U}{MdSymbolD}{b}{n}
-\SetSymbolFont{Mdlargesymbols}{sansbold}{U}{MdSymbolE}{b}{n}
-\SetSymbolFont{Mddelimiters}{sansbold}{U}{MdSymbolF}{b}{n}
+\ifmdsy@onlysansmath{
+  \SetSymbolFont{Mdsymbols}{sansbold}{U}{MdSymbolA}{b}{n}
+  \SetSymbolFont{Mdrelations}{sansbold}{U}{MdSymbolB}{b}{n}
+  \SetSymbolFont{Mdarrows}{sansbold}{U}{MdSymbolC}{b}{n}
+  \SetSymbolFont{Mdnarrows}{sansbold}{U}{MdSymbolD}{b}{n}
+  \SetSymbolFont{Mdlargesymbols}{sansbold}{U}{MdSymbolE}{b}{n}
+  \SetSymbolFont{Mddelimiters}{sansbold}{U}{MdSymbolF}{b}{n}
+}
+\fi
 
 %    \end{macrocode}
 % At the moment, we still use cmsy for the calligraphic alphabet,
@@ -3180,113 +3194,113 @@
 \let\langle\undefined
 \let\rangle\undefined
 \ifmdsy@largedelims
-  \mdsy@DeclareOpen{(}{Mddelimiters}{"01}
-  \mdsy@DeclareClose{)}{Mddelimiters}{"07}
-  \mdsy@DeclareOpen{\lparen}{Mddelimiters}{"01}
-  \mdsy@DeclareClose{\rparen}{Mddelimiters}{"07}
-  \mdsy@DeclareOpen{[}{Mddelimiters}{"13}
-  \mdsy@DeclareClose{]}{Mddelimiters}{"19}
-  \mdsy@DeclareOpen{\lbrack}{Mddelimiters}{"13}
-  \mdsy@DeclareClose{\rbrack}{Mddelimiters}{"19}
-  \mdsy@DeclareOpen{\lfloor}{Mddelimiters}{"1F}
-  \mdsy@DeclareClose{\rfloor}{Mddelimiters}{"25}
-  \mdsy@DeclareOpen{\lceil}{Mddelimiters}{"2B}
-  \mdsy@DeclareClose{\rceil}{Mddelimiters}{"31}
-  \mdsy@DeclareOpen{\ulcorner}{Mddelimiters}{"37}
-  \mdsy@DeclareClose{\urcorner}{Mddelimiters}{"3D}
-  \mdsy@DeclareOpen{\llcorner}{Mddelimiters}{"43}
-  \mdsy@DeclareClose{\lrcorner}{Mddelimiters}{"49}
-  \mdsy@DeclareOpen{\ullcorner}{Mddelimiters}{"4F}
-  \mdsy@DeclareClose{\ulrcorner}{Mddelimiters}{"55}
-  \mdsy@DeclareOpen{\lsem}{Mddelimiters}{"61}
-  \mdsy@DeclareClose{\rsem}{Mddelimiters}{"67}
-  \mdsy@DeclareOpen{\lBrack}{Mddelimiters}{"61}
-  \mdsy@DeclareClose{\rBrack}{Mddelimiters}{"67}
-  \mdsy@DeclareOpen{\lbrace}{Mddelimiters}{"73}
-  \mdsy@DeclareClose{\rbrace}{Mddelimiters}{"79}
-  \mdsy@DeclareOpen{<}{Mddelimiters}{"86}
-  \mdsy@DeclareClose{>}{Mddelimiters}{"8C}
-  \mdsy@DeclareOpen{\langle}{Mddelimiters}{"86}
-  \mdsy@DeclareClose{\rangle}{Mddelimiters}{"8C}
-  \mdsy@DeclareOpen{\lAngle}{Mddelimiters}{"92}
-  \mdsy@DeclareClose{\rAngle}{Mddelimiters}{"98}
-  \mdsy@DeclareOpen{\langledot}{Mddelimiters}{"9E}
-  \mdsy@DeclareClose{\rangledot}{Mddelimiters}{"A4}
-  \mdsy@DeclareDelimiter{/}{\mathord}{Mddelimiters}{"AA}
-  \mdsy@DeclareDelimiter{\mathslash}{\mathord}{Mddelimiters}{"AA}
+%  \mdsy@DeclareOpen{(}{Mddelimiters}{"01}
+%  \mdsy@DeclareClose{)}{Mddelimiters}{"07}
+  \mdsy@DeclareOpen{lparen}{Mddelimiters}{"01}
+  \mdsy@DeclareClose{rparen}{Mddelimiters}{"07}
+%  \mdsy@DeclareOpen{[}{Mddelimiters}{"13}
+%  \mdsy@DeclareClose{]}{Mddelimiters}{"19}
+  \mdsy@DeclareOpen{lbrack}{Mddelimiters}{"13}
+  \mdsy@DeclareClose{rbrack}{Mddelimiters}{"19}
+  \mdsy@DeclareOpen{lfloor}{Mddelimiters}{"1F}
+  \mdsy@DeclareClose{rfloor}{Mddelimiters}{"25}
+  \mdsy@DeclareOpen{lceil}{Mddelimiters}{"2B}
+  \mdsy@DeclareClose{rceil}{Mddelimiters}{"31}
+  \mdsy@DeclareOpen{ulcorner}{Mddelimiters}{"37}
+  \mdsy@DeclareClose{urcorner}{Mddelimiters}{"3D}
+  \mdsy@DeclareOpen{llcorner}{Mddelimiters}{"43}
+  \mdsy@DeclareClose{lrcorner}{Mddelimiters}{"49}
+  \mdsy@DeclareOpen{ullcorner}{Mddelimiters}{"4F}
+  \mdsy@DeclareClose{ulrcorner}{Mddelimiters}{"55}
+  \mdsy@DeclareOpen{lsem}{Mddelimiters}{"61}
+  \mdsy@DeclareClose{rsem}{Mddelimiters}{"67}
+  \mdsy@DeclareOpen{lBrack}{Mddelimiters}{"61}
+  \mdsy@DeclareClose{rBrack}{Mddelimiters}{"67}
+  \mdsy@DeclareOpen{lbrace}{Mddelimiters}{"73}
+  \mdsy@DeclareClose{rbrace}{Mddelimiters}{"79}
+%  \mdsy@DeclareOpen{<}{Mddelimiters}{"86}
+%  \mdsy@DeclareClose{>}{Mddelimiters}{"8C}
+  \mdsy@DeclareOpen{langle}{Mddelimiters}{"86}
+  \mdsy@DeclareClose{rangle}{Mddelimiters}{"8C}
+  \mdsy@DeclareOpen{lAngle}{Mddelimiters}{"92}
+  \mdsy@DeclareClose{rAngle}{Mddelimiters}{"98}
+  \mdsy@DeclareOpen{langledot}{Mddelimiters}{"9E}
+  \mdsy@DeclareClose{rangledot}{Mddelimiters}{"A4}
+%  \mdsy@DeclareDelimiter{/}{\mathord}{Mddelimiters}{"AA}
+  \mdsy@DeclareDelimiter{mathslash}{\mathord}{Mddelimiters}{"AA}
   \DeclareMathSymbol{\divslash}{\mathbin}{Mddelimiters}{"AA}
-  \mdsy@DeclareDelimiter{\backslash}{\mathord}{Mddelimiters}{"B0}
+  \mdsy@DeclareDelimiter{backslash}{\mathord}{Mddelimiters}{"B0}
   \expandafter\DeclareMathDelimiter\@backslashchar%
     {\mathord}{Mddelimiters}{"B0}{Mddelimiters}{"B0}
   \DeclareMathSymbol{\setminus}{\mathbin}{Mddelimiters}{"B0}
-  \mdsy@DeclareDelimiter{|}{\mathord}{Mddelimiters}{"B7}
-  \mdsy@DeclareDelimiter{\vert}{\mathord}{Mddelimiters}{"B7}
-  \mdsy@DeclareOpen{\lvert}{Mddelimiters}{"B7}
-  \mdsy@DeclareClose{\rvert}{Mddelimiters}{"B7}
+%  \mdsy@DeclareDelimiter{|}{\mathord}{Mddelimiters}{"B7}
+  \mdsy@DeclareDelimiter{vert}{\mathord}{Mddelimiters}{"B7}
+  \mdsy@DeclareOpen{lvert}{Mddelimiters}{"B7}
+  \mdsy@DeclareClose{rvert}{Mddelimiters}{"B7}
   \DeclareMathSymbol{\mid}{\mathrel}{Mddelimiters}{"B7}
   \DeclareMathSymbol{\nmid}{\mathrel}{Mddelimiters}{"BA}
-  \mdsy@DeclareDelimiter{\Vert}{\mathord}{Mddelimiters}{"BE}
-  \mdsy@DeclareOpen{\lVert}{Mddelimiters}{"BE}
-  \mdsy@DeclareClose{\rVert}{Mddelimiters}{"BE}
+  \mdsy@DeclareDelimiter{Vert}{\mathord}{Mddelimiters}{"BE}
+  \mdsy@DeclareOpen{lVert}{Mddelimiters}{"BE}
+  \mdsy@DeclareClose{rVert}{Mddelimiters}{"BE}
   \DeclareMathSymbol{\parallel}{\mathrel}{Mddelimiters}{"BE}
   \DeclareMathSymbol{\nparallel}{\mathrel}{Mddelimiters}{"C1}
-  \mdsy@DeclareDelimiter{\Vvert}{\mathord}{Mddelimiters}{"C4}
-  \mdsy@DeclareOpen{\lVvert}{Mddelimiters}{"C4}
-  \mdsy@DeclareClose{\rVvert}{Mddelimiters}{"C4}
+  \mdsy@DeclareDelimiter{Vvert}{\mathord}{Mddelimiters}{"C4}
+  \mdsy@DeclareOpen{lVvert}{Mddelimiters}{"C4}
+  \mdsy@DeclareClose{rVvert}{Mddelimiters}{"C4}
 \else
-  \mdsy@DeclareOpen{(}{Mddelimiters}{"00}
-  \mdsy@DeclareClose{)}{Mddelimiters}{"06}
-  \mdsy@DeclareOpen{\lparen}{Mddelimiters}{"00}
-  \mdsy@DeclareClose{\rparen}{Mddelimiters}{"06}
-  \mdsy@DeclareOpen{[}{Mddelimiters}{"12}
-  \mdsy@DeclareClose{]}{Mddelimiters}{"18}
-  \mdsy@DeclareOpen{\lbrack}{Mddelimiters}{"12}
-  \mdsy@DeclareClose{\rbrack}{Mddelimiters}{"18}
-  \mdsy@DeclareOpen{\lfloor}{Mddelimiters}{"1E}
-  \mdsy@DeclareClose{\rfloor}{Mddelimiters}{"24}
-  \mdsy@DeclareOpen{\lceil}{Mddelimiters}{"2A}
-  \mdsy@DeclareClose{\rceil}{Mddelimiters}{"30}
-  \mdsy@DeclareOpen{\ulcorner}{Mddelimiters}{"36}
-  \mdsy@DeclareClose{\urcorner}{Mddelimiters}{"3C}
-  \mdsy@DeclareOpen{\llcorner}{Mddelimiters}{"42}
-  \mdsy@DeclareClose{\lrcorner}{Mddelimiters}{"48}
-  \mdsy@DeclareOpen{\ullcorner}{Mddelimiters}{"4E}
-  \mdsy@DeclareClose{\ulrcorner}{Mddelimiters}{"54}
-  \mdsy@DeclareOpen{\lsem}{Mddelimiters}{"60}
-  \mdsy@DeclareClose{\rsem}{Mddelimiters}{"66}
-  \mdsy@DeclareOpen{\lBrack}{Mddelimiters}{"60}
-  \mdsy@DeclareClose{\rBrack}{Mddelimiters}{"66}
-  \mdsy@DeclareOpen{\lbrace}{Mddelimiters}{"72}
-  \mdsy@DeclareClose{\rbrace}{Mddelimiters}{"78}
-  \mdsy@DeclareOpen{<}{Mddelimiters}{"85}
-  \mdsy@DeclareClose{>}{Mddelimiters}{"8B}
-  \mdsy@DeclareOpen{\langle}{Mddelimiters}{"85}
-  \mdsy@DeclareClose{\rangle}{Mddelimiters}{"8B}
-  \mdsy@DeclareOpen{\lAngle}{Mddelimiters}{"91}
-  \mdsy@DeclareClose{\rAngle}{Mddelimiters}{"97}
-  \mdsy@DeclareOpen{\langledot}{Mddelimiters}{"9D}
-  \mdsy@DeclareClose{\rangledot}{Mddelimiters}{"A3}
-  \mdsy@DeclareDelimiter{/}{\mathord}{Mddelimiters}{"A9}
-  \mdsy@DeclareDelimiter{\mathslash}{\mathord}{Mddelimiters}{"A9}
+%  \mdsy@DeclareOpen{(}{Mddelimiters}{"00}
+%  \mdsy@DeclareClose{)}{Mddelimiters}{"06}
+  \mdsy@DeclareOpen{lparen}{Mddelimiters}{"00}
+  \mdsy@DeclareClose{rparen}{Mddelimiters}{"06}
+%  \mdsy@DeclareOpen{[}{Mddelimiters}{"12}
+%  \mdsy@DeclareClose{]}{Mddelimiters}{"18}
+  \mdsy@DeclareOpen{lbrack}{Mddelimiters}{"12}
+  \mdsy@DeclareClose{rbrack}{Mddelimiters}{"18}
+  \mdsy@DeclareOpen{lfloor}{Mddelimiters}{"1E}
+  \mdsy@DeclareClose{rfloor}{Mddelimiters}{"24}
+  \mdsy@DeclareOpen{lceil}{Mddelimiters}{"2A}
+  \mdsy@DeclareClose{rceil}{Mddelimiters}{"30}
+  \mdsy@DeclareOpen{ulcorner}{Mddelimiters}{"36}
+  \mdsy@DeclareClose{urcorner}{Mddelimiters}{"3C}
+  \mdsy@DeclareOpen{llcorner}{Mddelimiters}{"42}
+  \mdsy@DeclareClose{lrcorner}{Mddelimiters}{"48}
+  \mdsy@DeclareOpen{ullcorner}{Mddelimiters}{"4E}
+  \mdsy@DeclareClose{ulrcorner}{Mddelimiters}{"54}
+  \mdsy@DeclareOpen{lsem}{Mddelimiters}{"60}
+  \mdsy@DeclareClose{rsem}{Mddelimiters}{"66}
+  \mdsy@DeclareOpen{lBrack}{Mddelimiters}{"60}
+  \mdsy@DeclareClose{rBrack}{Mddelimiters}{"66}
+  \mdsy@DeclareOpen{lbrace}{Mddelimiters}{"72}
+  \mdsy@DeclareClose{rbrace}{Mddelimiters}{"78}
+%  \mdsy@DeclareOpen{<}{Mddelimiters}{"85}
+%  \mdsy@DeclareClose{>}{Mddelimiters}{"8B}
+  \mdsy@DeclareOpen{langle}{Mddelimiters}{"85}
+  \mdsy@DeclareClose{rangle}{Mddelimiters}{"8B}
+  \mdsy@DeclareOpen{lAngle}{Mddelimiters}{"91}
+  \mdsy@DeclareClose{rAngle}{Mddelimiters}{"97}
+  \mdsy@DeclareOpen{langledot}{Mddelimiters}{"9D}
+  \mdsy@DeclareClose{rangledot}{Mddelimiters}{"A3}
+%  \mdsy@DeclareDelimiter{/}{\mathord}{Mddelimiters}{"A9}
+  \mdsy@DeclareDelimiter{mathslash}{\mathord}{Mddelimiters}{"A9}
   \DeclareMathSymbol{\divslash}{\mathbin}{Mddelimiters}{"A9}
-  \mdsy@DeclareDelimiter{\backslash}{\mathord}{Mddelimiters}{"AF}
+  \mdsy@DeclareDelimiter{backslash}{\mathord}{Mddelimiters}{"AF}
   \expandafter\DeclareMathDelimiter\@backslashchar%
     {\mathord}{Mddelimiters}{"AF}{Mddelimiters}{"AF}
   \DeclareMathSymbol{\setminus}{\mathbin}{Mddelimiters}{"AF}
-  \mdsy@DeclareDelimiter{|}{\mathord}{Mddelimiters}{"B6}
-  \mdsy@DeclareDelimiter{\vert}{\mathord}{Mddelimiters}{"B6}
-  \mdsy@DeclareOpen{\lvert}{Mddelimiters}{"B6}
-  \mdsy@DeclareClose{\rvert}{Mddelimiters}{"B6}
+%  \mdsy@DeclareDelimiter{|}{\mathord}{Mddelimiters}{"B6}
+  \mdsy@DeclareDelimiter{vert}{\mathord}{Mddelimiters}{"B6}
+  \mdsy@DeclareOpen{lvert}{Mddelimiters}{"B6}
+  \mdsy@DeclareClose{rvert}{Mddelimiters}{"B6}
   \DeclareMathSymbol{\mid}{\mathrel}{Mddelimiters}{"B6}
   \DeclareMathSymbol{\nmid}{\mathrel}{Mddelimiters}{"B9}
-  \mdsy@DeclareDelimiter{\Vert}{\mathord}{Mddelimiters}{"BD}
-  \mdsy@DeclareOpen{\lVert}{Mddelimiters}{"BD}
-  \mdsy@DeclareClose{\rVert}{Mddelimiters}{"BD}
+  \mdsy@DeclareDelimiter{Vert}{\mathord}{Mddelimiters}{"BD}
+  \mdsy@DeclareOpen{lVert}{Mddelimiters}{"BD}
+  \mdsy@DeclareClose{rVert}{Mddelimiters}{"BD}
   \DeclareMathSymbol{\parallel}{\mathrel}{Mddelimiters}{"BD}
   \DeclareMathSymbol{\nparallel}{\mathrel}{Mddelimiters}{"C0}
-  \mdsy@DeclareDelimiter{\Vvert}{\mathord}{Mddelimiters}{"C3}
-  \mdsy@DeclareOpen{\lVvert}{Mddelimiters}{"C3}
-  \mdsy@DeclareClose{\rVvert}{Mddelimiters}{"C3}
+  \mdsy@DeclareDelimiter{Vvert}{\mathord}{Mddelimiters}{"C3}
+  \mdsy@DeclareOpen{lVvert}{Mddelimiters}{"C3}
+  \mdsy@DeclareClose{rVvert}{Mddelimiters}{"C3}
 \fi
 \let\|\Vert
 \let\divides\mid
@@ -3295,13 +3309,13 @@
 \DeclareMathSymbol{\nshortmid}{\mathrel}{Mddelimiters}{"B8}
 \DeclareMathSymbol{\shortparallel}{\mathrel}{Mddelimiters}{"BC}
 \DeclareMathSymbol{\nshortparallel}{\mathrel}{Mddelimiters}{"BF}
-\mdsy@DeclareDelimiter{\arrowvert}{\mathord}{Mddelimiters}{"BB}
-\mdsy@DeclareDelimiter{\Arrowvert}{\mathord}{Mddelimiters}{"C2}
-\mdsy@DeclareClose{\lgroup}{Mddelimiters}{"7E}
-\mdsy@DeclareOpen{\rgroup}{Mddelimiters}{"7F}
-\mdsy@DeclareClose{\rmoustache}{Mddelimiters}{"80}
-\mdsy@DeclareOpen{\lmoustache}{Mddelimiters}{"81}
-\mdsy@DeclareDelimiter{\bracevert}{\mathord}{Mddelimiters}{"84}
+\mdsy@DeclareDelimiter{arrowvert}{\mathord}{Mddelimiters}{"BB}
+\mdsy@DeclareDelimiter{Arrowvert}{\mathord}{Mddelimiters}{"C2}
+\mdsy@DeclareClose{lgroup}{Mddelimiters}{"7E}
+\mdsy@DeclareOpen{rgroup}{Mddelimiters}{"7F}
+\mdsy@DeclareClose{rmoustache}{Mddelimiters}{"80}
+\mdsy@DeclareOpen{lmoustache}{Mddelimiters}{"81}
+\mdsy@DeclareDelimiter{bracevert}{\mathord}{Mddelimiters}{"84}
 \let\uparrow\undefined
 \let\downarrow\undefined
 \let\updownarrow\undefined
