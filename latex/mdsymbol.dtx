@@ -1501,6 +1501,26 @@
     \csundef{#1}%
     \csdef{#1}{\ifmathversionsans{\csname#1@new\endcsname}{\csname#1@old\endcsname}}
   }
+  \newcommand\mdsy@DeclareOperator[3]{%
+    \ifcsdef{#1}{%
+      \csletcs{#1@old}{#1}%
+    }{\csdef{#1}{\DOTSB#3\slimits@}
+      \csletcs{#1@old}{#1}}%
+    \csdef{sans#1}{\DOTSB#3\slimits@}
+    \csletcs{#1@new}{sans#1}
+    \csundef{#1}%
+    \csdef{#1}{\ifmathversionsans{\csname#1@new\endcsname}{\csname#1@old\endcsname}}
+  }
+  \newcommand\mdsy@DeclareIntegral[3]{%
+    \ifcsdef{#1}{%
+      \csletcs{#1@old}{#1}%
+    }{\csdef{#1}{\DOTSI#3\ilimits@}
+      \csletcs{#1@old}{#1}}%
+    \csdef{sans#1}{\DOTSI#3\ilimits@}%
+    \csletcs{#1@new}{sans#1}
+    \csundef{#1}%
+    \csdef{#1}{\ifmathversionsans{\csname#1@new\endcsname}{\csname#1@old\endcsname}}
+  }
 \else
   \newcommand\mdsy@DeclareSymbol[3]{%
     \csundef{#1}%
@@ -1511,11 +1531,11 @@
     \csundef{#1}%
     \expandafter\DeclareMathDelimiter\expandafter{\csname#1\endcsname}{#2}{#3}{#4}{#3}{#4}%
   }
+  \newcommand\mdsy@DeclareOperator[3]{\csdef{#1}{\DOTSB#3\slimits@}}
+  \newcommand\mdsy@DeclareIntegral[3]{\csdef{#1}{\DOTSI#3\ilimits@}}
 \fi
 
 \newcommand\mdsy@DeclareAlias[3]{\mdsy@prevslot\mdsy@DeclareSymbol{#1}{#2}{#3}}
-\newcommand\mdsy@DeclareOperator[3]{\def#1{\DOTSB#3\slimits@}}
-\newcommand\mdsy@DeclareIntegral[3]{\def#1{\DOTSI#3\ilimits@}}
 
 \newcommand\mdsy@DeclareOpen[3]{\mdsy@DeclareDelimiter{#1}{\mathopen}{#2}{#3}}
 \newcommand\mdsy@DeclareClose[3]{\mdsy@DeclareDelimiter{#1}{\mathclose}{#2}{#3}}
@@ -3103,69 +3123,70 @@
 \let\intop\tint
 \let\ointop\toint
 
-\mdsy@DeclareOperator{\bigplus}{\dbigplus}{\tbigplus}
-\mdsy@DeclareOperator{\bigtimes}{\dbigtimes}{\tbigtimes}
-\mdsy@DeclareOperator{\bigwedge}{\dbigwedge}{\tbigwedge}
-\mdsy@DeclareOperator{\bigvee}{\dbigvee}{\tbigvee}
-\mdsy@DeclareOperator{\bigwedgedot}{\dbigwedgedot}{\tbigwedgedot}
-\mdsy@DeclareOperator{\bigveedot}{\dbigveedot}{\tbigveedot}
-\mdsy@DeclareOperator{\bigdoublewedge}{\dbigdoublewedge}{\tbigdoublewedge}
-\mdsy@DeclareOperator{\conjquant}{\dconjquant}{\tconjquant}
-\mdsy@DeclareOperator{\bigdoublevee}{\dbigdoublevee}{\tbigdoublevee}
-\mdsy@DeclareOperator{\disjquant}{\ddisjquant}{\tdisjquant}
-\mdsy@DeclareOperator{\bigcurlywedge}{\dbigcurlywedge}{\tbigcurlywedge}
-\mdsy@DeclareOperator{\bigcurlyvee}{\dbigcurlyvee}{\tbigcurlyvee}
-\mdsy@DeclareOperator{\bigcurlywedgedot}{\dbigcurlywedgedot}{\tbigcurlywedgedot}
-\mdsy@DeclareOperator{\bigcurlyveedot}{\dbigcurlyveedot}{\tbigcurlyveedot}
-\mdsy@DeclareOperator{\bigdoublecurlywedge}{\dbigdoublecurlywedge}{\tbigdoublecurlywedge}
-\mdsy@DeclareOperator{\bigdoublecurlyvee}{\dbigdoublecurlyvee}{\tbigdoublecurlyvee}
-\mdsy@DeclareOperator{\bigcap}{\dbigcap}{\tbigcap}
-\mdsy@DeclareOperator{\bigcup}{\dbigcup}{\tbigcup}
-\mdsy@DeclareOperator{\bigcapdot}{\dbigcapdot}{\tbigcapdot}
-\mdsy@DeclareOperator{\bigcupdot}{\dbigcupdot}{\tbigcupdot}
-\mdsy@DeclareOperator{\bigcapplus}{\dbigcapplus}{\tbigcapplus}
-\mdsy@DeclareOperator{\bigcupplus}{\dbigcupplus}{\tbigcupplus}
-\mdsy@DeclareOperator{\biguplus}{\dbiguplus}{\tbiguplus}
-\mdsy@DeclareOperator{\bigsqcap}{\dbigsqcap}{\tbigsqcap}
-\mdsy@DeclareOperator{\bigsqcup}{\dbigsqcup}{\tbigsqcup}
-\mdsy@DeclareOperator{\bigsqcapdot}{\dbigsqcapdot}{\tbigsqcapdot}
-\mdsy@DeclareOperator{\bigsqcupdot}{\dbigsqcupdot}{\tbigsqcupdot}
-\mdsy@DeclareOperator{\bigsqcapplus}{\dbigsqcapplus}{\tbigsqcapplus}
-\mdsy@DeclareOperator{\bigsqcupplus}{\dbigsqcupplus}{\tbigsqcupplus}
-\mdsy@DeclareOperator{\bigoplus}{\dbigoplus}{\tbigoplus}
-\mdsy@DeclareOperator{\bigotimes}{\dbigotimes}{\tbigotimes}
-\mdsy@DeclareOperator{\bigodot}{\dbigodot}{\tbigodot}
-\mdsy@DeclareOperator{\bigoast}{\dbigoast}{\tbigoast}
-\mdsy@DeclareOperator{\sum}{\dsum}{\tsum}
-\mdsy@DeclareOperator{\osum}{\dosum}{\tosum}
-\mdsy@DeclareOperator{\modtwosum}{\dmodtwosum}{\tmodtwosum}
-\mdsy@DeclareOperator{\prod}{\dprod}{\tprod}
-\mdsy@DeclareOperator{\coprod}{\dcoprod}{\tcoprod}
-\mdsy@DeclareIntegral{\iint}{\diint}{\tiint}
-\mdsy@DeclareIntegral{\iiint}{\diiint}{\tiiint}
-\mdsy@DeclareIntegral{\iiiint}{\diiiint}{\tiiiint}
-\mdsy@DeclareIntegral{\idotsint}{\didotsint}{\tidotsint}
-\mdsy@DeclareIntegral{\dotsint}{\ddotsint}{\tdotsint}
-\mdsy@DeclareIntegral{\landupint}{\dlandupint}{\tlandupint}
-\mdsy@DeclareIntegral{\intclockwise}{\dintclockwise}{\tintclockwise}
-\mdsy@DeclareIntegral{\landdownint}{\dlanddownint}{\tlanddownint}
-\mdsy@DeclareIntegral{\awint}{\dawint}{\tawint}
-\mdsy@DeclareIntegral{\intctrclockwise}{\dintctrclockwise}{\tintctrclockwise}
-\mdsy@DeclareIntegral{\landdownint}{\dlanddownint}{\tlanddownint}
-\mdsy@DeclareIntegral{\intbar}{\dintbar}{\tintbar}
-\mdsy@DeclareIntegral{\intBar}{\dintBar}{\tintBar}
-\mdsy@DeclareIntegral{\fint}{\dfint}{\tfint}
-\mdsy@DeclareIntegral{\oiint}{\doiint}{\toiint}
-\mdsy@DeclareIntegral{\oiiint}{\doiiint}{\toiiint}
-\mdsy@DeclareIntegral{\rcirclerightint}{\drcirclerightint}{\trcirclerightint}
-\mdsy@DeclareIntegral{\ointctrclockwise}{\dointctrclockwise}{\tointctrclockwise}
-\mdsy@DeclareIntegral{\lcirclerightint}{\dlcirclerightint}{\tlcirclerightint}
-\mdsy@DeclareIntegral{\varointclockwise}{\dvarointclockwise}{\tvarointclockwise}
-\mdsy@DeclareIntegral{\rcircleleftint}{\drcircleleftint}{\trcircleleftint}
-\mdsy@DeclareIntegral{\varointctrclockwise}{\dvarointctrclockwise}{\tvarointctrclockwise}
-\mdsy@DeclareIntegral{\lcircleleftint}{\dlcircleleftint}{\tlcircleleftint}
-\mdsy@DeclareIntegral{\ointclockwise}{\dointclockwise}{\tointclockwise}
-\mdsy@DeclareIntegral{\sumint}{\dsumint}{\tsumint}
+\mdsy@DeclareOperator{bigplus}{\dbigplus}{\tbigplus}
+\mdsy@DeclareOperator{bigtimes}{\dbigtimes}{\tbigtimes}
+\mdsy@DeclareOperator{bigwedge}{\dbigwedge}{\tbigwedge}
+\mdsy@DeclareOperator{bigvee}{\dbigvee}{\tbigvee}
+\mdsy@DeclareOperator{bigwedgedot}{\dbigwedgedot}{\tbigwedgedot}
+\mdsy@DeclareOperator{bigveedot}{\dbigveedot}{\tbigveedot}
+\mdsy@DeclareOperator{bigdoublewedge}{\dbigdoublewedge}{\tbigdoublewedge}
+\mdsy@DeclareOperator{conjquant}{\dconjquant}{\tconjquant}
+\mdsy@DeclareOperator{bigdoublevee}{\dbigdoublevee}{\tbigdoublevee}
+\mdsy@DeclareOperator{disjquant}{\ddisjquant}{\tdisjquant}
+\mdsy@DeclareOperator{bigcurlywedge}{\dbigcurlywedge}{\tbigcurlywedge}
+\mdsy@DeclareOperator{bigcurlyvee}{\dbigcurlyvee}{\tbigcurlyvee}
+\mdsy@DeclareOperator{bigcurlywedgedot}{\dbigcurlywedgedot}{\tbigcurlywedgedot}
+\mdsy@DeclareOperator{bigcurlyveedot}{\dbigcurlyveedot}{\tbigcurlyveedot}
+\mdsy@DeclareOperator{bigdoublecurlywedge}{\dbigdoublecurlywedge}{\tbigdoublecurlywedge}
+\mdsy@DeclareOperator{bigdoublecurlyvee}{\dbigdoublecurlyvee}{\tbigdoublecurlyvee}
+\mdsy@DeclareOperator{bigcap}{\dbigcap}{\tbigcap}
+\mdsy@DeclareOperator{bigcup}{\dbigcup}{\tbigcup}
+\mdsy@DeclareOperator{bigcapdot}{\dbigcapdot}{\tbigcapdot}
+\mdsy@DeclareOperator{bigcupdot}{\dbigcupdot}{\tbigcupdot}
+\mdsy@DeclareOperator{bigcapplus}{\dbigcapplus}{\tbigcapplus}
+\mdsy@DeclareOperator{bigcupplus}{\dbigcupplus}{\tbigcupplus}
+\mdsy@DeclareOperator{biguplus}{\dbiguplus}{\tbiguplus}
+\mdsy@DeclareOperator{bigsqcap}{\dbigsqcap}{\tbigsqcap}
+\mdsy@DeclareOperator{bigsqcup}{\dbigsqcup}{\tbigsqcup}
+\mdsy@DeclareOperator{bigsqcapdot}{\dbigsqcapdot}{\tbigsqcapdot}
+\mdsy@DeclareOperator{bigsqcupdot}{\dbigsqcupdot}{\tbigsqcupdot}
+\mdsy@DeclareOperator{bigsqcapplus}{\dbigsqcapplus}{\tbigsqcapplus}
+\mdsy@DeclareOperator{bigsqcupplus}{\dbigsqcupplus}{\tbigsqcupplus}
+\mdsy@DeclareOperator{bigoplus}{\dbigoplus}{\tbigoplus}
+\mdsy@DeclareOperator{bigotimes}{\dbigotimes}{\tbigotimes}
+\mdsy@DeclareOperator{bigodot}{\dbigodot}{\tbigodot}
+\mdsy@DeclareOperator{bigoast}{\dbigoast}{\tbigoast}
+\mdsy@DeclareOperator{sum}{\dsum}{\tsum}
+\mdsy@DeclareOperator{osum}{\dosum}{\tosum}
+\mdsy@DeclareOperator{modtwosum}{\dmodtwosum}{\tmodtwosum}
+\mdsy@DeclareOperator{prod}{\dprod}{\tprod}
+\mdsy@DeclareOperator{coprod}{\dcoprod}{\tcoprod}
+\mdsy@DeclareIntegral{iint}{\diint}{\tiint}
+\mdsy@DeclareIntegral{iiint}{\diiint}{\tiiint}
+\mdsy@DeclareIntegral{iiiint}{\diiiint}{\tiiiint}
+\mdsy@DeclareIntegral{idotsint}{\didotsint}{\tidotsint}
+\mdsy@DeclareIntegral{dotsint}{\ddotsint}{\tdotsint}
+\mdsy@DeclareIntegral{landupint}{\dlandupint}{\tlandupint}
+\mdsy@DeclareIntegral{intclockwise}{\dintclockwise}{\tintclockwise}
+\mdsy@DeclareIntegral{landdownint}{\dlanddownint}{\tlanddownint}
+\mdsy@DeclareIntegral{awint}{\dawint}{\tawint}
+\mdsy@DeclareIntegral{intctrclockwise}{\dintctrclockwise}{\tintctrclockwise}
+\mdsy@DeclareIntegral{landdownint}{\dlanddownint}{\tlanddownint}
+\mdsy@DeclareIntegral{intbar}{\dintbar}{\tintbar}
+\mdsy@DeclareIntegral{intBar}{\dintBar}{\tintBar}
+\mdsy@DeclareIntegral{fint}{\dfint}{\tfint}
+\mdsy@DeclareIntegral{oiint}{\doiint}{\toiint}
+\mdsy@DeclareIntegral{oiint}{\doiint}{\toiint}
+\mdsy@DeclareIntegral{oiiint}{\doiiint}{\toiiint}
+\mdsy@DeclareIntegral{rcirclerightint}{\drcirclerightint}{\trcirclerightint}
+\mdsy@DeclareIntegral{ointctrclockwise}{\dointctrclockwise}{\tointctrclockwise}
+\mdsy@DeclareIntegral{lcirclerightint}{\dlcirclerightint}{\tlcirclerightint}
+\mdsy@DeclareIntegral{varointclockwise}{\dvarointclockwise}{\tvarointclockwise}
+\mdsy@DeclareIntegral{rcircleleftint}{\drcircleleftint}{\trcircleleftint}
+\mdsy@DeclareIntegral{varointctrclockwise}{\dvarointctrclockwise}{\tvarointctrclockwise}
+\mdsy@DeclareIntegral{lcircleleftint}{\dlcircleleftint}{\tlcircleleftint}
+\mdsy@DeclareIntegral{ointclockwise}{\dointclockwise}{\tointclockwise}
+\mdsy@DeclareIntegral{sumint}{\dsumint}{\tsumint}
 
 \def\intkern@{\mkern-8.5mu\mathchoice{\mkern-1mu}{}{}{}}
 \def\intdots@{\mkern-6mu%
