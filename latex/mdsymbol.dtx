@@ -1521,6 +1521,36 @@
     \csundef{#1}%
     \csdef{#1}{\ifmathversionsans{\csname#1@new\endcsname}{\csname#1@old\endcsname}}
   }
+  \newcommand\mdsy@DeclareMathSymbol[4]{%
+    \ifcsdef{#1}{%
+      \csletcs{#1@old}{#1}%
+    }{\expandafter\DeclareMathSymbol\expandafter{\csname#1\endcsname}{#2}{#3}{#4}%
+      \csletcs{#1@old}{#1}}%
+    \expandafter\DeclareMathSymbol\expandafter{\csname sans#1\endcsname}{#2}{#3}{#4}%
+    \csletcs{#1@new}{sans#1}
+    \csundef{#1}%
+    \csdef{#1}{\ifmathversionsans{\csname#1@new\endcsname}{\csname#1@old\endcsname}}
+  }
+  \newcommand\mdsy@DeclareMathDelimiter[6]{%
+    \ifcsdef{#1}{%
+      \csletcs{#1@old}{#1}%
+    }{\expandafter\DeclareMathDelimiter\expandafter{\csname#1\endcsname}{#2}{#3}{#4}{#5}{#6}%
+      \csletcs{#1@old}{#1}}%
+    \expandafter\DeclareMathDelimiter\expandafter{\csname sans#1\endcsname}{#2}{#3}{#4}{#5}{#6}%
+    \csletcs{#1@new}{sans#1}
+    \csundef{#1}%
+    \csdef{#1}{\ifmathversionsans{\csname#1@new\endcsname}{\csname#1@old\endcsname}}
+  }
+  \newcommand\mdsy@DeclareRobustCommand[2]{%
+    \ifcsdef{#1}{%
+      \csletcs{#1@old}{#1}%
+    }{\expandafter\DeclareRobustCommand\expandafter{\csname#1\endcsname}{#2}%
+      \csletcs{#1@old}{#1}}%
+    \expandafter\DeclareRobustCommand\expandafter{\csname sans#1\endcsname}{#2}%
+    \csletcs{#1@new}{sans#1}
+    \csundef{#1}%
+    \csdef{#1}{\ifmathversionsans{\csname#1@new\endcsname}{\csname#1@old\endcsname}}
+  }
 \else
   \newcommand\mdsy@DeclareSymbol[3]{%
     \csundef{#1}%
@@ -1533,6 +1563,9 @@
   }
   \newcommand\mdsy@DeclareOperator[3]{\csdef{#1}{\DOTSB#3\slimits@}}
   \newcommand\mdsy@DeclareIntegral[3]{\csdef{#1}{\DOTSI#3\ilimits@}}
+  \newcommand\mdsy@DeclareMathSymbol[4]{\expandafter\DeclareMathSymbol\expandafter{\csname#1\endcsname}{#2}{#3}{#4}}
+  \newcommand\mdsy@DeclareMathDelimiter[6]{\expandafter\DeclareMathDelimiter\expandafter{\csname#1\endcsname}{#2}{#3}{#4}{#5}{#6}}
+  \newcommand\mdsy@DeclareRobustCommand[2]{\expandafter\DeclareRobustCommand\expandafter{\csname#1\endcsname}{#2}}
 \fi
 
 \newcommand\mdsy@DeclareAlias[3]{\mdsy@prevslot\mdsy@DeclareSymbol{#1}{#2}{#3}}
@@ -1667,7 +1700,7 @@
   \mdsy@DeclareAlias{@cdots}{Mdsymbols}{\mathinner}
   \let\cdots\@cdots
 \mdsy@DeclareSymbol{@vdots}{Mdsymbols}{\mathord}
-\DeclareRobustCommand{\vdots}{\ifmmode\@vdots\else\hbox{$\@vdots$}\fi}
+\mdsy@DeclareRobustCommand{vdots}{\ifmmode\@vdots\else\hbox{$\@vdots$}\fi}
 \mdsy@DeclareSymbol{udots}{Mdsymbols}{\mathord}
   \mdsy@DeclareAlias{adots}{Mdsymbols}{\mathord}
 \mdsy@DeclareSymbol{ddots}{Mdsymbols}{\mathord}
@@ -2279,28 +2312,34 @@
 \mdsy@setslot{0}
 \mdsy@DeclareSymbol{rightarrow}{Mdarrows}{\mathrel}
   \mdsy@DeclareAlias{to}{Mdarrows}{\mathrel}
-\mdsy@DeclareSymbol{uparrow}{Mdarrows}{\mathrel}
+% \mdsy@DeclareSymbol{uparrow}{Mdarrows}{\mathrel}
+\mdsy@nextslot                  %uparrow defined below
 \mdsy@DeclareSymbol{leftarrow}{Mdarrows}{\mathrel}
 \mdsy@DeclareAlias{gets}{Mdarrows}{\mathrel}
-\mdsy@DeclareSymbol{downarrow}{Mdarrows}{\mathrel}
+% \mdsy@DeclareSymbol{downarrow}{Mdarrows}{\mathrel}
+\mdsy@nextslot                  %downarrow defined below
 \mdsy@DeclareSymbol{nearrow}{Mdarrows}{\mathrel}
 \mdsy@DeclareSymbol{nwarrow}{Mdarrows}{\mathrel}
 \mdsy@DeclareSymbol{swarrow}{Mdarrows}{\mathrel}
 \mdsy@DeclareSymbol{searrow}{Mdarrows}{\mathrel}
 \mdsy@DeclareSymbol{Rightarrow}{Mdarrows}{\mathrel}
-\mdsy@DeclareSymbol{Uparrow}{Mdarrows}{\mathrel}
+% \mdsy@DeclareSymbol{Uparrow}{Mdarrows}{\mathrel}
+\mdsy@nextslot                  %Uparrow defined below
 \mdsy@DeclareSymbol{Leftarrow}{Mdarrows}{\mathrel}
-\mdsy@DeclareSymbol{Downarrow}{Mdarrows}{\mathrel}
+% \mdsy@DeclareSymbol{Downarrow}{Mdarrows}{\mathrel}
+\mdsy@nextslot                  %Downarrow defined below
 \mdsy@DeclareSymbol{Nearrow}{Mdarrows}{\mathrel}
 \mdsy@DeclareSymbol{Nwarrow}{Mdarrows}{\mathrel}
 \mdsy@DeclareSymbol{Swarrow}{Mdarrows}{\mathrel}
 \mdsy@DeclareSymbol{Searrow}{Mdarrows}{\mathrel}
 \mdsy@DeclareSymbol{leftrightarrow}{Mdarrows}{\mathrel}
-\mdsy@DeclareSymbol{updownarrow}{Mdarrows}{\mathrel}
+% \mdsy@DeclareSymbol{updownarrow}{Mdarrows}{\mathrel}
+\mdsy@nextslot                  %updownarrow defined below
 \mdsy@DeclareSymbol{neswarrow}{Mdarrows}{\mathrel}
 \mdsy@DeclareSymbol{nwsearrow}{Mdarrows}{\mathrel}
 \mdsy@DeclareSymbol{Leftrightarrow}{Mdarrows}{\mathrel}
-\mdsy@DeclareSymbol{Updownarrow}{Mdarrows}{\mathrel}
+% \mdsy@DeclareSymbol{Updownarrow}{Mdarrows}{\mathrel}
+\mdsy@nextslot                  %Updownarrow defined below
 \mdsy@DeclareSymbol{Neswarrow}{Mdarrows}{\mathrel}
 \mdsy@DeclareSymbol{Nwsearrow}{Mdarrows}{\mathrel}
 \mdsy@DeclareSymbol{twoheadrightarrow}{Mdarrows}{\mathrel}
@@ -2645,10 +2684,9 @@
 \mdsy@DeclareSymbol{vDdash}{Mdarrows}{\mathrel}
 \mdsy@DeclareSymbol{Ddashv}{Mdarrows}{\mathrel}
 
-\DeclareRobustCommand{\relbar}{\mathrel{\smash-}}
-\DeclareRobustCommand{\Relbar}{\mathrel=}
-\let\joinrel\undefined
-\DeclareRobustCommand\joinrel{\mathrel{\mkern-4mu}}
+\mdsy@DeclareRobustCommand{relbar}{\mathrel{\smash-}}
+\mdsy@DeclareRobustCommand{Relbar}{\mathrel=}
+\mdsy@DeclareRobustCommand{joinrel}{\mathrel{\mkern-4mu}}
 %    \end{macrocode}
 % MdSymbolD: stroked arrows
 %    \begin{macrocode}
@@ -3210,12 +3248,6 @@
 %    \end{macrocode}
 % MdSymbolF: delimiters
 %    \begin{macrocode}
-\let\lfloor\undefined
-\let\rfloor\undefined
-\let\lceil\undefined
-\let\rceil\undefined
-\let\langle\undefined
-\let\rangle\undefined
 \ifmdsy@largedelims
 %  \mdsy@DeclareOpen{(}{Mddelimiters}{"01}
 %  \mdsy@DeclareClose{)}{Mddelimiters}{"07}
@@ -3251,22 +3283,22 @@
   \mdsy@DeclareClose{rangledot}{Mddelimiters}{"A4}
 %  \mdsy@DeclareDelimiter{/}{\mathord}{Mddelimiters}{"AA}
   \mdsy@DeclareDelimiter{mathslash}{\mathord}{Mddelimiters}{"AA}
-  \DeclareMathSymbol{\divslash}{\mathbin}{Mddelimiters}{"AA}
+  \mdsy@DeclareMathSymbol{divslash}{\mathbin}{Mddelimiters}{"AA}
   \mdsy@DeclareDelimiter{backslash}{\mathord}{Mddelimiters}{"B0}
   \expandafter\DeclareMathDelimiter\@backslashchar%
     {\mathord}{Mddelimiters}{"B0}{Mddelimiters}{"B0}
-  \DeclareMathSymbol{\setminus}{\mathbin}{Mddelimiters}{"B0}
+  \mdsy@DeclareMathSymbol{setminus}{\mathbin}{Mddelimiters}{"B0}
 %  \mdsy@DeclareDelimiter{|}{\mathord}{Mddelimiters}{"B7}
   \mdsy@DeclareDelimiter{vert}{\mathord}{Mddelimiters}{"B7}
   \mdsy@DeclareOpen{lvert}{Mddelimiters}{"B7}
   \mdsy@DeclareClose{rvert}{Mddelimiters}{"B7}
-  \DeclareMathSymbol{\mid}{\mathrel}{Mddelimiters}{"B7}
-  \DeclareMathSymbol{\nmid}{\mathrel}{Mddelimiters}{"BA}
+  \mdsy@DeclareMathSymbol{mid}{\mathrel}{Mddelimiters}{"B7}
+  \mdsy@DeclareMathSymbol{nmid}{\mathrel}{Mddelimiters}{"BA}
   \mdsy@DeclareDelimiter{Vert}{\mathord}{Mddelimiters}{"BE}
   \mdsy@DeclareOpen{lVert}{Mddelimiters}{"BE}
   \mdsy@DeclareClose{rVert}{Mddelimiters}{"BE}
-  \DeclareMathSymbol{\parallel}{\mathrel}{Mddelimiters}{"BE}
-  \DeclareMathSymbol{\nparallel}{\mathrel}{Mddelimiters}{"C1}
+  \mdsy@DeclareMathSymbol{parallel}{\mathrel}{Mddelimiters}{"BE}
+  \mdsy@DeclareMathSymbol{nparallel}{\mathrel}{Mddelimiters}{"C1}
   \mdsy@DeclareDelimiter{Vvert}{\mathord}{Mddelimiters}{"C4}
   \mdsy@DeclareOpen{lVvert}{Mddelimiters}{"C4}
   \mdsy@DeclareClose{rVvert}{Mddelimiters}{"C4}
@@ -3305,22 +3337,22 @@
   \mdsy@DeclareClose{rangledot}{Mddelimiters}{"A3}
 %  \mdsy@DeclareDelimiter{/}{\mathord}{Mddelimiters}{"A9}
   \mdsy@DeclareDelimiter{mathslash}{\mathord}{Mddelimiters}{"A9}
-  \DeclareMathSymbol{\divslash}{\mathbin}{Mddelimiters}{"A9}
+  \mdsy@DeclareMathSymbol{divslash}{\mathbin}{Mddelimiters}{"A9}
   \mdsy@DeclareDelimiter{backslash}{\mathord}{Mddelimiters}{"AF}
   \expandafter\DeclareMathDelimiter\@backslashchar%
     {\mathord}{Mddelimiters}{"AF}{Mddelimiters}{"AF}
-  \DeclareMathSymbol{\setminus}{\mathbin}{Mddelimiters}{"AF}
+  \mdsy@DeclareMathSymbol{setminus}{\mathbin}{Mddelimiters}{"AF}
 %  \mdsy@DeclareDelimiter{|}{\mathord}{Mddelimiters}{"B6}
   \mdsy@DeclareDelimiter{vert}{\mathord}{Mddelimiters}{"B6}
   \mdsy@DeclareOpen{lvert}{Mddelimiters}{"B6}
   \mdsy@DeclareClose{rvert}{Mddelimiters}{"B6}
-  \DeclareMathSymbol{\mid}{\mathrel}{Mddelimiters}{"B6}
-  \DeclareMathSymbol{\nmid}{\mathrel}{Mddelimiters}{"B9}
+  \mdsy@DeclareMathSymbol{mid}{\mathrel}{Mddelimiters}{"B6}
+  \mdsy@DeclareMathSymbol{nmid}{\mathrel}{Mddelimiters}{"B9}
   \mdsy@DeclareDelimiter{Vert}{\mathord}{Mddelimiters}{"BD}
   \mdsy@DeclareOpen{lVert}{Mddelimiters}{"BD}
   \mdsy@DeclareClose{rVert}{Mddelimiters}{"BD}
-  \DeclareMathSymbol{\parallel}{\mathrel}{Mddelimiters}{"BD}
-  \DeclareMathSymbol{\nparallel}{\mathrel}{Mddelimiters}{"C0}
+  \mdsy@DeclareMathSymbol{parallel}{\mathrel}{Mddelimiters}{"BD}
+  \mdsy@DeclareMathSymbol{nparallel}{\mathrel}{Mddelimiters}{"C0}
   \mdsy@DeclareDelimiter{Vvert}{\mathord}{Mddelimiters}{"C3}
   \mdsy@DeclareOpen{lVvert}{Mddelimiters}{"C3}
   \mdsy@DeclareClose{rVvert}{Mddelimiters}{"C3}
@@ -3328,10 +3360,10 @@
 \let\|\Vert
 \let\divides\mid
 \let\ndivides\nmid
-\DeclareMathSymbol{\shortmid}{\mathrel}{Mddelimiters}{"B5}
-\DeclareMathSymbol{\nshortmid}{\mathrel}{Mddelimiters}{"B8}
-\DeclareMathSymbol{\shortparallel}{\mathrel}{Mddelimiters}{"BC}
-\DeclareMathSymbol{\nshortparallel}{\mathrel}{Mddelimiters}{"BF}
+\mdsy@DeclareMathSymbol{shortmid}{\mathrel}{Mddelimiters}{"B5}
+\mdsy@DeclareMathSymbol{nshortmid}{\mathrel}{Mddelimiters}{"B8}
+\mdsy@DeclareMathSymbol{shortparallel}{\mathrel}{Mddelimiters}{"BC}
+\mdsy@DeclareMathSymbol{nshortparallel}{\mathrel}{Mddelimiters}{"BF}
 \mdsy@DeclareDelimiter{arrowvert}{\mathord}{Mddelimiters}{"BB}
 \mdsy@DeclareDelimiter{Arrowvert}{\mathord}{Mddelimiters}{"C2}
 \mdsy@DeclareClose{lgroup}{Mddelimiters}{"7E}
@@ -3339,28 +3371,23 @@
 \mdsy@DeclareClose{rmoustache}{Mddelimiters}{"80}
 \mdsy@DeclareOpen{lmoustache}{Mddelimiters}{"81}
 \mdsy@DeclareDelimiter{bracevert}{\mathord}{Mddelimiters}{"84}
-\let\uparrow\undefined
-\let\downarrow\undefined
-\let\updownarrow\undefined
-\let\Uparrow\undefined
-\let\Downarrow\undefined
-\let\Updownarrow\undefined
-\DeclareMathDelimiter{\uparrow}{\mathrel}{Mdarrows}{"01}{Mddelimiters}{"C6}
-\DeclareMathDelimiter{\downarrow}{\mathrel}{Mdarrows}{"03}{Mddelimiters}{"C7}
-\DeclareMathDelimiter{\updownarrow}{\mathrel}{Mdarrows}{"11}{Mddelimiters}{"C8}
-\DeclareMathDelimiter{\Uparrow}{\mathrel}{Mdarrows}{"09}{Mddelimiters}{"C9}
-\DeclareMathDelimiter{\Downarrow}{\mathrel}{Mdarrows}{"0B}{Mddelimiters}{"CA}
-\DeclareMathDelimiter{\Updownarrow}{\mathrel}{Mdarrows}{"15}{Mddelimiters}{"CB}
+
+\mdsy@DeclareMathDelimiter{uparrow}{\mathrel}{Mdarrows}{"01}{Mddelimiters}{"C6}
+\mdsy@DeclareMathDelimiter{downarrow}{\mathrel}{Mdarrows}{"03}{Mddelimiters}{"C7}
+\mdsy@DeclareMathDelimiter{updownarrow}{\mathrel}{Mdarrows}{"11}{Mddelimiters}{"C8}
+\mdsy@DeclareMathDelimiter{Uparrow}{\mathrel}{Mdarrows}{"09}{Mddelimiters}{"C9}
+\mdsy@DeclareMathDelimiter{Downarrow}{\mathrel}{Mdarrows}{"0B}{Mddelimiters}{"CA}
+\mdsy@DeclareMathDelimiter{Updownarrow}{\mathrel}{Mdarrows}{"15}{Mddelimiters}{"CB}
 %    \end{macrocode}
 % Horizontal braces.
 %    \begin{macrocode}
-\DeclareMathSymbol{\braceld}{\mathord}{Mddelimiters}{"CC}
-\DeclareMathSymbol{\bracelu}{\mathord}{Mddelimiters}{"CD}
-\DeclareMathSymbol{\bracerd}{\mathord}{Mddelimiters}{"CE}
-\DeclareMathSymbol{\braceru}{\mathord}{Mddelimiters}{"CF}
-\DeclareMathSymbol{\bracemd}{\mathord}{Mddelimiters}{"D0}
-\DeclareMathSymbol{\bracemu}{\mathord}{Mddelimiters}{"D1}
-\DeclareMathSymbol{\bracemid}{\mathord}{Mddelimiters}{"D2}
+\mdsy@DeclareMathSymbol{braceld}{\mathord}{Mddelimiters}{"CC}
+\mdsy@DeclareMathSymbol{bracelu}{\mathord}{Mddelimiters}{"CD}
+\mdsy@DeclareMathSymbol{bracerd}{\mathord}{Mddelimiters}{"CE}
+\mdsy@DeclareMathSymbol{braceru}{\mathord}{Mddelimiters}{"CF}
+\mdsy@DeclareMathSymbol{bracemd}{\mathord}{Mddelimiters}{"D0}
+\mdsy@DeclareMathSymbol{bracemu}{\mathord}{Mddelimiters}{"D1}
+\mdsy@DeclareMathSymbol{bracemid}{\mathord}{Mddelimiters}{"D2}
 
 \def\bracefill@#1#2#3#4#5{%
   $\m@th#5#1\leaders\hbox{$#4$}\hfill#2\leaders\hbox{$#4$}\hfill#3$%
@@ -3390,10 +3417,10 @@
 %    \begin{macrocode}
 \ifmdsy@largedelims
   \DeclareMathRadical{\sqrtsign}{Mddelimiters}{"D4}{Mddelimiters}{"D4}
-  \DeclareMathSymbol{\surd}{\mathop}{Mddelimiters}{"D4}
+  \mdsy@DeclareMathSymbol{surd}{\mathop}{Mddelimiters}{"D4}
 \else
   \DeclareMathRadical{\sqrtsign}{Mddelimiters}{"D3}{Mddelimiters}{"D3}
-  \DeclareMathSymbol{\surd}{\mathop}{Mddelimiters}{"D3}
+  \mdsy@DeclareMathSymbol{surd}{\mathop}{Mddelimiters}{"D3}
 \fi
 %    \end{macrocode}
 % In the \textit{n}-th root, we don't want the~\textit{n} to come too
