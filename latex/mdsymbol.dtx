@@ -1456,9 +1456,12 @@
 %    \end{macrocode}
 % Unneeded partial symbols.
 %    \begin{macrocode}
-\let\mapstochar\undefined
-\let\lhook\undefined
-\let\rhook\undefined
+\ifmdsy@onlysansmath
+\else
+  \let\mapstochar\undefined
+  \let\lhook\undefined
+  \let\rhook\undefined
+\fi
 %    \end{macrocode}
 % Shorthands to simplify the definitions below.  
 %    \begin{macrocode}
@@ -1551,6 +1554,16 @@
     \csundef{#1}%
     \csdef{#1}{\ifmathversionsans{\csname#1@new\endcsname}{\csname#1@old\endcsname}}
   }
+  \newcommand\mdsy@DeclareMathAccent[4]{%
+    \ifcsdef{#1}{%
+      \csletcs{#1@old}{#1}%
+    }{\expandafter\DeclareMathAccent\expandafter{\csname#1\endcsname}{#2}{#3}{#4}%
+      \csletcs{#1@old}{#1}}%
+    \expandafter\DeclareMathAccent\expandafter{\csname sans#1\endcsname}{#2}{#3}{#4}%
+    \csletcs{#1@new}{sans#1}
+    \csundef{#1}%
+    \csdef{#1}{\ifmathversionsans{\csname#1@new\endcsname}{\csname#1@old\endcsname}}
+  }
 \else
   \newcommand\mdsy@DeclareSymbol[3]{%
     \csundef{#1}%
@@ -1566,6 +1579,7 @@
   \newcommand\mdsy@DeclareMathSymbol[4]{\expandafter\DeclareMathSymbol\expandafter{\csname#1\endcsname}{#2}{#3}{#4}}
   \newcommand\mdsy@DeclareMathDelimiter[6]{\expandafter\DeclareMathDelimiter\expandafter{\csname#1\endcsname}{#2}{#3}{#4}{#5}{#6}}
   \newcommand\mdsy@DeclareRobustCommand[2]{\expandafter\DeclareRobustCommand\expandafter{\csname#1\endcsname}{#2}}
+  \newcommand\mdsy@DeclareMathAccent[4]{\expandafter\DeclareMathAccent\expandafter{\csname#1\endcsname}{#2}{#3}{#4}}
 \fi
 
 \newcommand\mdsy@DeclareAlias[3]{\mdsy@prevslot\mdsy@DeclareSymbol{#1}{#2}{#3}}
@@ -3238,13 +3252,13 @@
 %    \end{macrocode}
 % Math accents.
 %    \begin{macrocode}
-\DeclareMathAccent{\widehat}{\mathord}{Mdlargesymbols}{"72}
-\DeclareMathAccent{\widetilde}{\mathord}{Mdlargesymbols}{"78}
-\DeclareMathAccent{\wideparen}{\mathord}{Mdlargesymbols}{"7E}
-\DeclareMathAccent{\vec}{\mathord}{Mdlargesymbols}{"84}
-\DeclareMathAccent{\middlebar}{\mathord}{Mdlargesymbols}{"85}
-\DeclareMathAccent{\middleslash}{\mathord}{Mdlargesymbols}{"86}
-\DeclareMathAccent{\strokethrough}{\mathord}{Mdlargesymbols}{"87}
+\mdsy@DeclareMathAccent{widehat}{\mathord}{Mdlargesymbols}{"72}
+\mdsy@DeclareMathAccent{widetilde}{\mathord}{Mdlargesymbols}{"78}
+\mdsy@DeclareMathAccent{wideparen}{\mathord}{Mdlargesymbols}{"7E}
+\mdsy@DeclareMathAccent{vec}{\mathord}{Mdlargesymbols}{"84}
+\mdsy@DeclareMathAccent{middlebar}{\mathord}{Mdlargesymbols}{"85}
+\mdsy@DeclareMathAccent{middleslash}{\mathord}{Mdlargesymbols}{"86}
+\mdsy@DeclareMathAccent{strokethrough}{\mathord}{Mdlargesymbols}{"87}
 %    \end{macrocode}
 % MdSymbolF: delimiters
 %    \begin{macrocode}
