@@ -1489,9 +1489,9 @@
     }{\expandafter\mdsy@@DeclareSymbol\expandafter{\the\@tempcnta}{#1}{#3}{#2}%
       \csletcs{#1@old}{#1}}
     \expandafter\mdsy@@DeclareSymbol\expandafter{\the\@tempcnta}{sans#1}{#3}{#2}%
-    \csletcs{#1@new}{sans#1}
+%    \csletcs{#1@new}{sans#1}
     \csundef{#1}%
-    \csdef{#1}{\ifmathversionsans{\csname#1@new\endcsname}{\csname#1@old\endcsname}}%
+    \csdef{#1}{\ifmathversionsans{\csname sans#1\endcsname}{\csname#1@old\endcsname}}%
     \mdsy@nextslot
   }
   \newcommand\mdsy@DeclareDelimiter[4]{%
@@ -1500,9 +1500,9 @@
     }{\expandafter\DeclareMathDelimiter\expandafter{\csname#1\endcsname}{#2}{#3}{#4}{#3}{#4}%
       \csletcs{#1@old}{#1}}%
     \expandafter\DeclareMathDelimiter\expandafter{\csname sans#1\endcsname}{#2}{#3}{#4}{#3}{#4}%
-    \csletcs{#1@new}{sans#1}
+%    \csletcs{#1@new}{sans#1}
     \csundef{#1}%
-    \csdef{#1}{\ifmathversionsans{\csname#1@new\endcsname}{\csname#1@old\endcsname}}
+    \csdef{#1}{\ifmathversionsans{\csname sans#1\endcsname}{\csname#1@old\endcsname}}
   }
   \newcommand\mdsy@DeclareOperator[3]{%
     \ifcsdef{#1}{%
@@ -1510,9 +1510,9 @@
     }{\csdef{#1}{\DOTSB#3\slimits@}
       \csletcs{#1@old}{#1}}%
     \csdef{sans#1}{\DOTSB#3\slimits@}
-    \csletcs{#1@new}{sans#1}
+%    \csletcs{#1@new}{sans#1}
     \csundef{#1}%
-    \csdef{#1}{\ifmathversionsans{\csname#1@new\endcsname}{\csname#1@old\endcsname}}
+    \csdef{#1}{\ifmathversionsans{\csname sans#1\endcsname}{\csname#1@old\endcsname}}
   }
   \newcommand\mdsy@DeclareIntegral[3]{%
     \ifcsdef{#1}{%
@@ -1520,9 +1520,9 @@
     }{\csdef{#1}{\DOTSI#3\ilimits@}
       \csletcs{#1@old}{#1}}%
     \csdef{sans#1}{\DOTSI#3\ilimits@}%
-    \csletcs{#1@new}{sans#1}
+%    \csletcs{#1@new}{sans#1}
     \csundef{#1}%
-    \csdef{#1}{\ifmathversionsans{\csname#1@new\endcsname}{\csname#1@old\endcsname}}
+    \csdef{#1}{\ifmathversionsans{\csname sans#1\endcsname}{\csname#1@old\endcsname}}
   }
   \newcommand\mdsy@DeclareMathSymbol[4]{%
     \ifcsdef{#1}{%
@@ -1530,9 +1530,9 @@
     }{\expandafter\DeclareMathSymbol\expandafter{\csname#1\endcsname}{#2}{#3}{#4}%
       \csletcs{#1@old}{#1}}%
     \expandafter\DeclareMathSymbol\expandafter{\csname sans#1\endcsname}{#2}{#3}{#4}%
-    \csletcs{#1@new}{sans#1}
+%    \csletcs{#1@new}{sans#1}
     \csundef{#1}%
-    \csdef{#1}{\ifmathversionsans{\csname#1@new\endcsname}{\csname#1@old\endcsname}}
+    \csdef{#1}{\ifmathversionsans{\csname sans#1\endcsname}{\csname#1@old\endcsname}}
   }
   \newcommand\mdsy@DeclareMathDelimiter[6]{%
     \ifcsdef{#1}{%
@@ -1540,9 +1540,9 @@
     }{\expandafter\DeclareMathDelimiter\expandafter{\csname#1\endcsname}{#2}{#3}{#4}{#5}{#6}%
       \csletcs{#1@old}{#1}}%
     \expandafter\DeclareMathDelimiter\expandafter{\csname sans#1\endcsname}{#2}{#3}{#4}{#5}{#6}%
-    \csletcs{#1@new}{sans#1}
+%    \csletcs{#1@new}{sans#1}
     \csundef{#1}%
-    \csdef{#1}{\ifmathversionsans{\csname#1@new\endcsname}{\csname#1@old\endcsname}}
+    \csdef{#1}{\ifmathversionsans{\csname sans#1\endcsname}{\csname#1@old\endcsname}}
   }
   \newcommand\mdsy@DeclareRobustCommand[2]{%
     \ifcsdef{#1}{%
@@ -1550,9 +1550,9 @@
     }{\expandafter\DeclareRobustCommand\expandafter{\csname#1\endcsname}{#2}%
       \csletcs{#1@old}{#1}}%
     \expandafter\DeclareRobustCommand\expandafter{\csname sans#1\endcsname}{#2}%
-    \csletcs{#1@new}{sans#1}
+%    \csletcs{#1@new}{sans#1}
     \csundef{#1}%
-    \csdef{#1}{\ifmathversionsans{\csname#1@new\endcsname}{\csname#1@old\endcsname}}
+    \csdef{#1}{\ifmathversionsans{\csname sans#1\endcsname}{\csname#1@old\endcsname}}
   }
   \newcommand\mdsy@DeclareMathAccent[4]{%
     \ifcsdef{#1}{%
@@ -1560,9 +1560,22 @@
     }{\expandafter\DeclareMathAccent\expandafter{\csname#1\endcsname}{#2}{#3}{#4}%
       \csletcs{#1@old}{#1}}%
     \expandafter\DeclareMathAccent\expandafter{\csname sans#1\endcsname}{#2}{#3}{#4}%
-    \csletcs{#1@new}{sans#1}
+%    \csletcs{#1@new}{sans#1}
     \csundef{#1}%
-    \csdef{#1}{\ifmathversionsans{\csname#1@new\endcsname}{\csname#1@old\endcsname}}
+    \csdef{#1}{\ifmathversionsans{\csname sans#1\endcsname}{\csname#1@old\endcsname}}
+  }
+  \newcommand{\mdsy@DeclareActiveMathSymbol}[4]{%
+    \ifnum\mathcode`#1="8000 %
+    \errmessage{`#1' is already active}%
+    \fi
+    \expandafter\mathchardef\csname#1@old\endcsname=\mathcode`#1 %
+    \expandafter\DeclareMathSymbol\csname#1@new\endcsname{#2}{#3}{#4}
+    \begingroup
+    \lccode`\~=`#1 %
+    \lowercase{\endgroup
+      \def~%
+    }{\ifmathversionsans{\csname#1@new\endcsname}{\csname#1@old\endcsname}}%
+    \mathcode`#1="8000 %
   }
 \else
   \newcommand\mdsy@DeclareSymbol[3]{%
@@ -1580,6 +1593,7 @@
   \newcommand\mdsy@DeclareMathDelimiter[6]{\expandafter\DeclareMathDelimiter\expandafter{\csname#1\endcsname}{#2}{#3}{#4}{#5}{#6}}
   \newcommand\mdsy@DeclareRobustCommand[2]{\expandafter\DeclareRobustCommand\expandafter{\csname#1\endcsname}{#2}}
   \newcommand\mdsy@DeclareMathAccent[4]{\expandafter\DeclareMathAccent\expandafter{\csname#1\endcsname}{#2}{#3}{#4}}
+  \newcommand\mdsy@DeclareActiveMathSymbol[4]{\DeclareMathSymbol{#1}{#2}{#3}{#4}}
 \fi
 
 \newcommand\mdsy@DeclareAlias[3]{\mdsy@prevslot\mdsy@DeclareSymbol{#1}{#2}{#3}}
@@ -3444,30 +3458,51 @@
   \dimen@\ht\z@ \advance\dimen@-\dp\z@
   \mkern5mu\raise.6\dimen@\copy\rootbox \mkern-8mu\box\z@}
 %    \end{macrocode}
-% Mathchars.
+% Mathchars. If onlysansmath, we make certain single characters active
+% to react on the mathversion. amsmath interferes with that. So change
+% one of its command and make the definitions at the begin of the
+% document.
 %    \begin{macrocode}
-\DeclareMathSymbol{+}{\mathbin}{Mdsymbols}{"11}
-\DeclareMathSymbol{-}{\mathbin}{Mdsymbols}{"0E}
-\DeclareMathSymbol{*}{\mathbin}{Mdsymbols}{"98}
-\DeclareMathSymbol{:}{\mathrel}{Mdsymbols}{"02}
-\DeclareMathSymbol{=}{\mathrel}{Mdrelations}{"00}
-\DeclareMathSymbol{<}{\mathrel}{Mdrelations}{"24}
-\DeclareMathSymbol{>}{\mathrel}{Mdrelations}{"25}
-\ifmdsy@largedelims
-  \DeclareMathSymbol{|}{\mathord}{Mddelimiters}{"B6}
-  \DeclareMathSymbol{(}{\mathopen}{Mddelimiters}{"01}
-  \DeclareMathSymbol{)}{\mathclose}{Mddelimiters}{"07}
-  \DeclareMathSymbol{[}{\mathopen}{Mddelimiters}{"13}
-  \DeclareMathSymbol{]}{\mathclose}{Mddelimiters}{"19}
-  \DeclareMathSymbol{/}{\mathord}{Mddelimiters}{"AA}
-\else
-  \DeclareMathSymbol{|}{\mathord}{Mddelimiters}{"B5}
-  \DeclareMathSymbol{(}{\mathopen}{Mddelimiters}{"00}
-  \DeclareMathSymbol{)}{\mathclose}{Mddelimiters}{"06}
-  \DeclareMathSymbol{[}{\mathopen}{Mddelimiters}{"12}
-  \DeclareMathSymbol{]}{\mathclose}{Mddelimiters}{"18}
-  \DeclareMathSymbol{/}{\mathord}{Mddelimiters}{"A9}
-\fi
+\AtBeginDocument{%
+  \mdsy@DeclareActiveMathSymbol{+}{\mathbin}{Mdsymbols}{"11}
+  \mdsy@DeclareActiveMathSymbol{-}{\mathbin}{Mdsymbols}{"0E}
+  \mdsy@DeclareActiveMathSymbol{*}{\mathbin}{Mdsymbols}{"98}
+  \mdsy@DeclareActiveMathSymbol{:}{\mathrel}{Mdsymbols}{"02}
+  \mdsy@DeclareActiveMathSymbol{=}{\mathrel}{Mdrelations}{"00}
+  \mdsy@DeclareActiveMathSymbol{<}{\mathrel}{Mdrelations}{"24}
+  \mdsy@DeclareActiveMathSymbol{>}{\mathrel}{Mdrelations}{"25}
+  \ifmdsy@largedelims
+    \mdsy@DeclareActiveMathSymbol{|}{\mathord}{Mddelimiters}{"B6}
+    \mdsy@DeclareActiveMathSymbol{(}{\mathopen}{Mddelimiters}{"01}
+    \mdsy@DeclareActiveMathSymbol{)}{\mathclose}{Mddelimiters}{"07}
+    \mdsy@DeclareActiveMathSymbol{[}{\mathopen}{Mddelimiters}{"13}
+    \mdsy@DeclareActiveMathSymbol{]}{\mathclose}{Mddelimiters}{"19}
+    \mdsy@DeclareActiveMathSymbol{/}{\mathord}{Mddelimiters}{"AA}
+  \else
+    \mdsy@DeclareActiveMathSymbol{|}{\mathord}{Mddelimiters}{"B5}
+    \mdsy@DeclareActiveMathSymbol{(}{\mathopen}{Mddelimiters}{"00}
+    \mdsy@DeclareActiveMathSymbol{)}{\mathclose}{Mddelimiters}{"06}
+    \mdsy@DeclareActiveMathSymbol{[}{\mathopen}{Mddelimiters}{"12}
+    \mdsy@DeclareActiveMathSymbol{]}{\mathclose}{Mddelimiters}{"18}
+    \mdsy@DeclareActiveMathSymbol{/}{\mathord}{Mddelimiters}{"A9}
+  \fi
+  \ifmdsy@onlysansmath
+    \def\resetMathstrut@{%
+      \setbox\z@\hbox{%
+        \ifmathversionsans{%
+          \mathchardef\@tempa\csname(@new\endcsname%
+        }{%
+          \mathchardef\@tempa\csname(@old\endcsname%
+        }
+        \def\@tempb##1"##2##3{\the\textfont"##3\char"}%
+        \expandafter\@tempb\meaning\@tempa \relax
+      }%
+      \ht\Mathstrutbox@\ht\z@ \dp\Mathstrutbox@\dp\z@
+    }
+    \renewcommand{\std@minus}{-}
+    \renewcommand{\std@equal}{=}
+  \fi
+}
 %    \end{macrocode}
 % There is no |\not| symbol in MdSymbol since all relational symbols come
 % with a stroked companion. For compatibility we define a |\not| command that
