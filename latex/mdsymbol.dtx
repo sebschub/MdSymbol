@@ -1423,36 +1423,65 @@
 % scaling factors of big delimiters, so that |\Big|, |\bigg| and |\Bigg| do
 % not change their size.
 %    \begin{macrocode}
+\RequirePackage{etoolbox}
+\ifmdsy@onlysansmath
+  \newcommand{\mdsy@renewcommand}[2]{%
+    \ifcsdef{#1}{%
+      \csletcs{#1@old}{#1}%
+    }{%
+      \expandafter\newcommand\csname #1@old\endcsname{#2}%
+    }%
+    \expandafter\newcommand\csname sans#1\endcsname{#2}%
+    \csundef{#1}%
+    \csdef{#1}{\ifmathversionsans{\csname sans#1\endcsname}{\csname#1@old\endcsname}}%
+  }
+  \newcommand{\mdsy@DeclareRobustCommand}[2]{%
+    \ifcsdef{#1}{%
+      \csletcs{#1@old}{#1}%
+    }{%
+      \expandafter\DeclareRobustCommand\csname#1\endcsname{#2}%
+      \csletcs{#1@old}{#1}%
+    }%
+    \expandafter\DeclareRobustCommand\csname sans#1\endcsname{#2}%
+    \csundef{#1}%
+    \csdef{#1}{\ifmathversionsans{\csname sans#1\endcsname}{\csname#1@old\endcsname}}%
+  }
+\else
+  \newcommand{\mdsy@renewcommand}[2]{%
+    \expandafter\providecommand\csname #1\endcsname{#2}%
+  }
+  \newcommand{\mdsy@DeclareRobustCommand}[2]{%
+    \expandafter\DeclareRobustCommand\csname#1\endcsname{#2}%
+  }
+\fi
 \ifmdsy@largedelims
-  \renewcommand{\Big}{\bBigg@{1.25}}
-  \renewcommand{\bigg}{\bBigg@{1.66}}
-  \renewcommand{\Bigg}{\bBigg@{2.08}}
+  \mdsy@renewcommand{Big}{\bBigg@{1.25}}
+  \mdsy@renewcommand{bigg}{\bBigg@{1.66}}
+  \mdsy@renewcommand{Bigg}{\bBigg@{2.08}}
 \fi
 %    \end{macrocode}
 % Some symbols missing from MdSymbol can be obtained from other fonts or
 % by combining several other symbols.
 %    \begin{macrocode}
-\DeclareRobustCommand{\dagger}{\mdsy@text{\textdagger}}
-\DeclareRobustCommand{\ddagger}{\mdsy@text{\textdaggerdbl}}
-\DeclareRobustCommand{\mathparagraph}{\mdsy@text{\textparagraph}}
-\DeclareRobustCommand{\mathsection}{\mdsy@text{\textsection}}
-\DeclareRobustCommand{\mathdollar}{\mdsy@text{\textdollar}}
-\DeclareRobustCommand{\mathsterling}{\mdsy@text{\textsterling}}
-\DeclareRobustCommand{\yen}{\mdsy@text{\textyen}}
-\DeclareRobustCommand{\circledR}{\mdsy@text{\textcircled{%
+\mdsy@DeclareRobustCommand{dagger}{\mdsy@text{\textdagger}}
+\mdsy@DeclareRobustCommand{ddagger}{\mdsy@text{\textdaggerdbl}}
+\mdsy@DeclareRobustCommand{mathparagraph}{\mdsy@text{\textparagraph}}
+\mdsy@DeclareRobustCommand{mathsection}{\mdsy@text{\textsection}}
+\mdsy@DeclareRobustCommand{mathdollar}{\mdsy@text{\textdollar}}
+\mdsy@DeclareRobustCommand{mathsterling}{\mdsy@text{\textsterling}}
+\mdsy@DeclareRobustCommand{yen}{\mdsy@text{\textyen}}
+\mdsy@DeclareRobustCommand{circledR}{\mdsy@text{\textcircled{%
   \check@mathfonts\fontsize\sf@size\z@\math@fontsfalse\selectfont R}}}
-\DeclareRobustCommand{\circledS}{\mdsy@text{\textcircled{%
+\mdsy@DeclareRobustCommand{circledS}{\mdsy@text{\textcircled{%
   \check@mathfonts\fontsize\sf@size\z@\math@fontsfalse\selectfont S}}}
-\DeclareRobustCommand{\Re}{\mathfrak{R}}
-\DeclareRobustCommand{\Im}{\mathfrak{I}}
-\DeclareRobustCommand{\dotcong}{\mathrel{\dot{\cong}}}
-\DeclareRobustCommand{\thicksim}{\mathrel{\text{\boldmath$\m@th\sim$}}}
-\DeclareRobustCommand{\thickapprox}{\mathrel{\text{\boldmath$\m@th\approx$}}}
-\let\hbar\undefined
-\let\hslash\undefined
-\DeclareRobustCommand{\hbar}{\middlebar h}
-\DeclareRobustCommand{\hslash}{\middleslash h}
-\DeclareRobustCommand{\centerdot}{\mathbin{\rule{0.15em}{0.15em}}}
+\mdsy@DeclareRobustCommand{Re}{\mathfrak{R}}
+\mdsy@DeclareRobustCommand{Im}{\mathfrak{I}}
+\mdsy@DeclareRobustCommand{dotcong}{\mathrel{\dot{\cong}}}
+\mdsy@DeclareRobustCommand{thicksim}{\mathrel{\text{\boldmath$\m@th\sim$}}}
+\mdsy@DeclareRobustCommand{thickapprox}{\mathrel{\text{\boldmath$\m@th\approx$}}}
+\mdsy@DeclareRobustCommand{hbar}{\middlebar h}
+\mdsy@DeclareRobustCommand{hslash}{\middleslash h}
+\mdsy@DeclareRobustCommand{centerdot}{\mathbin{\rule{0.15em}{0.15em}}}
 %    \end{macrocode}
 % Unneeded partial symbols.
 %    \begin{macrocode}
@@ -1465,8 +1494,6 @@
 %    \end{macrocode}
 % Shorthands to simplify the definitions below.  
 %    \begin{macrocode}
-\RequirePackage{etoolbox}
-
 \def\sans@version{sans}
 \def\ifmathversionsans{%
   \ifx\math@version\sans@version
@@ -1544,16 +1571,6 @@
     \csundef{#1}%
     \csdef{#1}{\ifmathversionsans{\csname sans#1\endcsname}{\csname#1@old\endcsname}}
   }
-  \newcommand\mdsy@DeclareRobustCommand[2]{%
-    \ifcsdef{#1}{%
-      \csletcs{#1@old}{#1}%
-    }{\expandafter\DeclareRobustCommand\expandafter{\csname#1\endcsname}{#2}%
-      \csletcs{#1@old}{#1}}%
-    \expandafter\DeclareRobustCommand\expandafter{\csname sans#1\endcsname}{#2}%
-%    \csletcs{#1@new}{sans#1}
-    \csundef{#1}%
-    \csdef{#1}{\ifmathversionsans{\csname sans#1\endcsname}{\csname#1@old\endcsname}}
-  }
   \newcommand\mdsy@DeclareMathAccent[4]{%
     \ifcsdef{#1}{%
       \csletcs{#1@old}{#1}%
@@ -1591,7 +1608,6 @@
   \newcommand\mdsy@DeclareIntegral[3]{\csdef{#1}{\DOTSI#3\ilimits@}}
   \newcommand\mdsy@DeclareMathSymbol[4]{\expandafter\DeclareMathSymbol\expandafter{\csname#1\endcsname}{#2}{#3}{#4}}
   \newcommand\mdsy@DeclareMathDelimiter[6]{\expandafter\DeclareMathDelimiter\expandafter{\csname#1\endcsname}{#2}{#3}{#4}{#5}{#6}}
-  \newcommand\mdsy@DeclareRobustCommand[2]{\expandafter\DeclareRobustCommand\expandafter{\csname#1\endcsname}{#2}}
   \newcommand\mdsy@DeclareMathAccent[4]{\expandafter\DeclareMathAccent\expandafter{\csname#1\endcsname}{#2}{#3}{#4}}
   \newcommand\mdsy@DeclareActiveMathSymbol[4]{\DeclareMathSymbol{#1}{#2}{#3}{#4}}
 \fi
@@ -1698,8 +1714,7 @@
 \DeclareMathAlphabet{\mathbb}{U}{msb}{m}{n}
 \DeclareMathAlphabet{\mathfrak}{U}{euf}{m}{n}
 \SetMathAlphabet{\mathfrak}{bold}{U}{euf}{b}{n}
-\let\Bbbk\undefined
-\newcommand{\Bbbk}{\mathbb{\mathchar"717C}}
+\mdsy@renewcommand{Bbbk}{\mathbb{\mathchar"717C}}
 %    \end{macrocode}
 % A command for taking math symbols from the text font.
 %    \begin{macrocode}
@@ -3256,8 +3271,8 @@
 \mdsy@DeclareIntegral{ointclockwise}{\dointclockwise}{\tointclockwise}
 \mdsy@DeclareIntegral{sumint}{\dsumint}{\tsumint}
 
-\def\intkern@{\mkern-8.5mu\mathchoice{\mkern-1mu}{}{}{}}
-\def\intdots@{\mkern-6mu%
+\mdsy@renewcommand{intkern@}{\mkern-8.5mu\mathchoice{\mkern-1mu}{}{}{}}
+\mdsy@renewcommand{intdots@}{\mkern-6mu%
   \mathchoice{\@cdots}%
   {{\cdotp}\mkern0.5mu{\cdotp}\mkern0.5mu{\cdotp}}%
   {{\cdotp}{\cdotp}{\cdotp}}%
@@ -3385,9 +3400,9 @@
   \mdsy@DeclareOpen{lVvert}{Mddelimiters}{"C3}
   \mdsy@DeclareClose{rVvert}{Mddelimiters}{"C3}
 \fi
-\let\|\Vert
-\let\divides\mid
-\let\ndivides\nmid
+\mdsy@renewcommand{|}{\Vert}
+\mdsy@renewcommand{divides}{\mid}
+\mdsy@renewcommand{ndivides}{\nmid}
 \mdsy@DeclareMathSymbol{shortmid}{\mathrel}{Mddelimiters}{"B5}
 \mdsy@DeclareMathSymbol{nshortmid}{\mathrel}{Mddelimiters}{"B8}
 \mdsy@DeclareMathSymbol{shortparallel}{\mathrel}{Mddelimiters}{"BC}
@@ -3420,13 +3435,13 @@
 \def\bracefill@#1#2#3#4#5{%
   $\m@th#5#1\leaders\hbox{$#4$}\hfill#2\leaders\hbox{$#4$}\hfill#3$%
 }
-\def\downbracefill@{\bracefill@\braceld\bracemd\bracerd\bracemid}
-\def\upbracefill@{\bracefill@\bracelu\bracemu\braceru\bracemid}
-\def\downgroupfill@{\bracefill@\braceld{}\bracerd\bracemid}
-\def\upgroupfill@{\bracefill@\bracelu{}\braceru\bracemid}
-\def\linesegmentfill@{\arrowfill@\leftfootline\relbar\rightfootline}
-\def\leftharpoonfill@{\arrowfill@\leftharpoondown\relbar\relbar}
-\def\rightharpoonfill@{\arrowfill@\relbar\relbar\rightharpoonup}
+\mdsy@renewcommand{downbracefill@}{\bracefill@\braceld\bracemd\bracerd\bracemid}
+\mdsy@renewcommand{upbracefill@}{\bracefill@\bracelu\bracemu\braceru\bracemid}
+\mdsy@renewcommand{downgroupfill@}{\bracefill@\braceld{}\bracerd\bracemid}
+\mdsy@renewcommand{upgroupfill@}{\bracefill@\bracelu{}\braceru\bracemid}
+\mdsy@renewcommand{linesegmentfill@}{\arrowfill@\leftfootline\relbar\rightfootline}
+\mdsy@renewcommand{leftharpoonfill@}{\arrowfill@\leftharpoondown\relbar\relbar}
+\mdsy@renewcommand{rightharpoonfill@}{\arrowfill@\relbar\relbar\rightharpoonup}
 
 \DeclareRobustCommand{\overbrace}[1]{%
   \mathop{\mathpalette{\overarrow@\downbracefill@}{#1}}\limits%
@@ -3434,12 +3449,12 @@
 \DeclareRobustCommand{\underbrace}[1]{%
   \mathop{\mathpalette{\underarrow@\upbracefill@}{#1}}\limits%
 }
-\DeclareRobustCommand{\overgroup}{\mathpalette{\overarrow@\downgroupfill@}}
-\DeclareRobustCommand{\undergroup}{\mathpalette{\underarrow@\upgroupfill@}}
-\DeclareRobustCommand{\overlinesegment}{\mathpalette{\overarrow@\linesegmentfill@}}
-\DeclareRobustCommand{\overleftharpoon}{\mathpalette{\overarrow@\leftharpoonfill@}}
-\DeclareRobustCommand{\overrightharpoon}{\mathpalette{\overarrow@\rightharpoonfill@}}
-\DeclareRobustCommand{\underlinesegment}{\mathpalette{\underarrow@\linesegmentfill@}}
+\mdsy@DeclareRobustCommand{overgroup}{\mathpalette{\overarrow@\downgroupfill@}}
+\mdsy@DeclareRobustCommand{undergroup}{\mathpalette{\underarrow@\upgroupfill@}}
+\mdsy@DeclareRobustCommand{overlinesegment}{\mathpalette{\overarrow@\linesegmentfill@}}
+\mdsy@DeclareRobustCommand{overleftharpoon}{\mathpalette{\overarrow@\leftharpoonfill@}}
+\mdsy@DeclareRobustCommand{overrightharpoon}{\mathpalette{\overarrow@\rightharpoonfill@}}
+\mdsy@DeclareRobustCommand{underlinesegment}{\mathpalette{\underarrow@\linesegmentfill@}}
 %    \end{macrocode}
 % Radical symbols.
 %    \begin{macrocode}
