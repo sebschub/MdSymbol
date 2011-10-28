@@ -1375,6 +1375,10 @@
 %    \begin{macrocode}
 \define@boolkey{mdsymbol.sty}[mdsy@]{onlysansmath}[true]{}
 %    \end{macrocode}
+% The next option controls whether a mathcal font is defined.
+%    \begin{macrocode}
+\define@boolkey{mdsymbol.sty}[mdsy@]{nomathcal}[true]{}
+%    \end{macrocode}
 % The following two options control which weights are used
 % for which math version and font size.
 %    \begin{macrocode}
@@ -1409,7 +1413,7 @@
     \renewcommand\mdsy@bweight@small{Bold}%
   \fi
 }
-\ExecuteOptionsX{largedelims=false,onlysansmath=false}
+\ExecuteOptionsX{largedelims=false,onlysansmath=false,nomathcal=false}
 \ProcessOptionsX
 %    \end{macrocode}
 % Load external packages, but only if they are not already loaded
@@ -1435,6 +1439,17 @@
     \csundef{#1}%
     \csdef{#1}{\ifmathversionsans{\csname sans#1\endcsname}{\csname#1@old\endcsname}}%
   }
+  \newcommand{\mdsy@DeclareRobustCommandArg}[2]{%
+    \ifcsdef{#1}{%
+      \csletcs{#1@old}{#1}%
+    }{%
+      \expandafter\DeclareRobustCommand\csname#1\endcsname[1]{#2}%
+      \csletcs{#1@old}{#1}%
+    }%
+    \expandafter\DeclareRobustCommand\csname sans#1\endcsname[1]{#2}%
+    \csundef{#1}%
+    \csdef{#1}{\ifmathversionsans{\csname sans#1\endcsname}{\csname#1@old\endcsname}}%
+  }
   \newcommand{\mdsy@DeclareRobustCommand}[2]{%
     \ifcsdef{#1}{%
       \csletcs{#1@old}{#1}%
@@ -1452,6 +1467,9 @@
   }
   \newcommand{\mdsy@DeclareRobustCommand}[2]{%
     \expandafter\DeclareRobustCommand\csname#1\endcsname{#2}%
+  }
+  \newcommand{\mdsy@DeclareRobustCommandArg}[2]{%
+    \expandafter\DeclareRobustCommand\csname#1\endcsname[1]{#2}%
   }
 \fi
 \ifmdsy@largedelims
@@ -1707,13 +1725,46 @@
 %    \end{macrocode}
 % At the moment, we still use cmsy for the calligraphic alphabet,
 % msb for the blackboard bold alphabet, and euf for the Fraktur
-% alphabet.
+% alphabet. The definition of the first one can be prevented by the
+% nomathcal option.
 %    \begin{macrocode}
-\DeclareMathAlphabet{\mathcal}{OMS}{cmsy}{m}{n}
-\SetMathAlphabet{\mathcal}{bold}{OMS}{cmsy}{b}{n}
-\DeclareMathAlphabet{\mathbb}{U}{msb}{m}{n}
-\DeclareMathAlphabet{\mathfrak}{U}{euf}{m}{n}
-\SetMathAlphabet{\mathfrak}{bold}{U}{euf}{b}{n}
+\ifmdsy@nomathcal
+\else
+  \ifmdsy@onlysansmath
+    \ifundef{\mathcal}{%
+      \DeclareMathAlphabet{\mathcal}{OMS}{cmsy}{m}{n}%
+      \SetMathAlphabet{\mathcal}{bold}{OMS}{cmsy}{b}{n}%
+    }{}
+    \SetMathAlphabet{\mathcal}{sans}{OMS}{cmsy}{m}{n}
+    \SetMathAlphabet{\mathcal}{sansbold}{OMS}{cmsy}{b}{n}
+  \else
+    \DeclareMathAlphabet{\mathcal}{OMS}{cmsy}{m}{n}
+    \SetMathAlphabet{\mathcal}{bold}{OMS}{cmsy}{b}{n}
+  \fi
+\fi
+
+\ifmdsy@onlysansmath
+  \ifundef{\mathbb}{%
+    \DeclareMathAlphabet{\mathbb}{U}{msb}{m}{n}%
+  }{}
+  \SetMathAlphabet{\mathbb}{sans}{U}{msb}{m}{n}
+  \SetMathAlphabet{\mathbb}{sansbold}{U}{msb}{m}{n}
+\else
+   \DeclareMathAlphabet{\mathbb}{U}{msb}{m}{n}
+\fi
+
+\ifmdsy@onlysansmath
+  \ifundef{\mathfrak}{%
+    \DeclareMathAlphabet{\mathfrak}{U}{euf}{m}{n}%
+    \SetMathAlphabet{\mathfrak}{bold}{U}{euf}{b}{n}%
+  }{}
+  \SetMathAlphabet{\mathfrak}{sans}{U}{euf}{m}{n}
+  \SetMathAlphabet{\mathfrak}{sansbold}{U}{euf}{b}{n}
+\else
+  \DeclareMathAlphabet{\mathfrak}{U}{euf}{m}{n}
+  \SetMathAlphabet{\mathfrak}{bold}{U}{euf}{b}{n}
+\fi
+
 \mdsy@renewcommand{Bbbk}{\mathbb{\mathchar"717C}}
 %    \end{macrocode}
 % A command for taking math symbols from the text font.
@@ -3443,10 +3494,10 @@
 \mdsy@renewcommand{leftharpoonfill@}{\arrowfill@\leftharpoondown\relbar\relbar}
 \mdsy@renewcommand{rightharpoonfill@}{\arrowfill@\relbar\relbar\rightharpoonup}
 
-\DeclareRobustCommand{\overbrace}[1]{%
+\mdsy@DeclareRobustCommandArg{overbrace}{%
   \mathop{\mathpalette{\overarrow@\downbracefill@}{#1}}\limits%
 }
-\DeclareRobustCommand{\underbrace}[1]{%
+\mdsy@DeclareRobustCommandArg{underbrace}{%
   \mathop{\mathpalette{\underarrow@\upbracefill@}{#1}}\limits%
 }
 \mdsy@DeclareRobustCommand{overgroup}{\mathpalette{\overarrow@\downgroupfill@}}
