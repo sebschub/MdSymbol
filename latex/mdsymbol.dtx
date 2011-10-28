@@ -1758,8 +1758,13 @@
     \DeclareMathAlphabet{\mathfrak}{U}{euf}{m}{n}%
     \SetMathAlphabet{\mathfrak}{bold}{U}{euf}{b}{n}%
   }{}
-  \SetMathAlphabet{\mathfrak}{sans}{U}{euf}{m}{n}
-  \SetMathAlphabet{\mathfrak}{sansbold}{U}{euf}{b}{n}
+  \@ifpackageloaded{eufrak}{%
+    \SetMathAlphabet{\EuFrak}{sans}{U}{euf}{m}{n}%
+    \SetMathAlphabet{\EuFrak}{sansbold}{U}{euf}{b}{n}%
+  }{%
+    \SetMathAlphabet{\mathfrak}{sans}{U}{euf}{m}{n}%
+    \SetMathAlphabet{\mathfrak}{sansbold}{U}{euf}{b}{n}%
+  }
 \else
   \DeclareMathAlphabet{\mathfrak}{U}{euf}{m}{n}
   \SetMathAlphabet{\mathfrak}{bold}{U}{euf}{b}{n}
