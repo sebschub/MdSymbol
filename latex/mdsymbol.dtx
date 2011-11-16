@@ -1327,6 +1327,8 @@
 % \showsymbol{\hslash}
 % \showsymbol{\circledR}
 % \showsymbol{\circledS}
+% \showsymbol{\lambdabar}
+% \showsymbol{\lambdaslash}
 % \end{multicols}
 %
 % \subsection{Missing symbols}
@@ -1364,6 +1366,11 @@
 % first options determines the size of delimiters.
 %    \begin{macrocode}
 \define@boolkey{mdsymbol.sty}[mdsy@]{largedelims}[true]{}
+%    \end{macrocode}
+% The following option determines whether faked symbols should be
+% defined.
+%    \begin{macrocode}
+\define@boolkey{mdsymbol.sty}[mdsy@]{retainmissing}[true]{}
 %    \end{macrocode}
 % The next option allows to scale the fonts by an arbitrary factor.
 %    \begin{macrocode}
@@ -1413,7 +1420,7 @@
     \renewcommand\mdsy@bweight@small{Bold}%
   \fi
 }
-\ExecuteOptionsX{largedelims=false,onlysansmath=false,nomathcal=false}
+\ExecuteOptionsX{largedelims=false,onlysansmath=false,nomathcal=false,retainmissing=false}
 \ProcessOptionsX
 %    \end{macrocode}
 % Load external packages, but only if they are not already loaded
@@ -1481,25 +1488,32 @@
 % Some symbols missing from MdSymbol can be obtained from other fonts or
 % by combining several other symbols.
 %    \begin{macrocode}
-\mdsy@DeclareRobustCommand{dagger}{\mdsy@text{\textdagger}}
-\mdsy@DeclareRobustCommand{ddagger}{\mdsy@text{\textdaggerdbl}}
-\mdsy@DeclareRobustCommand{mathparagraph}{\mdsy@text{\textparagraph}}
-\mdsy@DeclareRobustCommand{mathsection}{\mdsy@text{\textsection}}
-\mdsy@DeclareRobustCommand{mathdollar}{\mdsy@text{\textdollar}}
-\mdsy@DeclareRobustCommand{mathsterling}{\mdsy@text{\textsterling}}
-\mdsy@DeclareRobustCommand{yen}{\mdsy@text{\textyen}}
-\mdsy@DeclareRobustCommand{circledR}{\mdsy@text{\textcircled{%
-  \check@mathfonts\fontsize\sf@size\z@\math@fontsfalse\selectfont R}}}
-\mdsy@DeclareRobustCommand{circledS}{\mdsy@text{\textcircled{%
-  \check@mathfonts\fontsize\sf@size\z@\math@fontsfalse\selectfont S}}}
-\mdsy@DeclareRobustCommand{Re}{\mathfrak{R}}
-\mdsy@DeclareRobustCommand{Im}{\mathfrak{I}}
-\mdsy@DeclareRobustCommand{dotcong}{\mathrel{\dot{\cong}}}
-\mdsy@DeclareRobustCommand{thicksim}{\mathrel{\text{\boldmath$\m@th\sim$}}}
-\mdsy@DeclareRobustCommand{thickapprox}{\mathrel{\text{\boldmath$\m@th\approx$}}}
-\mdsy@DeclareRobustCommand{hbar}{\middlebar h}
-\mdsy@DeclareRobustCommand{hslash}{\middleslash h}
-\mdsy@DeclareRobustCommand{centerdot}{\mathbin{\rule{0.15em}{0.15em}}}
+\ifmdsy@retainmissing
+\else
+  \mdsy@DeclareRobustCommand{dagger}{\mdsy@text{\textdagger}}
+  \mdsy@DeclareRobustCommand{ddagger}{\mdsy@text{\textdaggerdbl}}
+  \mdsy@DeclareRobustCommand{mathparagraph}{\mdsy@text{\textparagraph}}
+  \mdsy@DeclareRobustCommand{mathsection}{\mdsy@text{\textsection}}
+  \mdsy@DeclareRobustCommand{mathdollar}{\mdsy@text{\textdollar}}
+  \mdsy@DeclareRobustCommand{mathsterling}{\mdsy@text{\textsterling}}
+  \mdsy@DeclareRobustCommand{yen}{\mdsy@text{\textyen}}
+  \mdsy@DeclareRobustCommand{circledR}{\mdsy@text{\textcircled{%
+        \check@mathfonts\fontsize\sf@size\z@\math@fontsfalse\selectfont R}}}
+  \mdsy@DeclareRobustCommand{circledS}{\mdsy@text{\textcircled{%
+        \check@mathfonts\fontsize\sf@size\z@\math@fontsfalse\selectfont S}}}
+  \mdsy@DeclareRobustCommand{Re}{\mathfrak{R}}
+  \mdsy@DeclareRobustCommand{Im}{\mathfrak{I}}
+  \mdsy@DeclareRobustCommand{dotcong}{\mathrel{\dot{\cong}}}
+  \mdsy@DeclareRobustCommand{thicksim}{\mathrel{\text{\boldmath$\m@th\sim$}}}
+  \mdsy@DeclareRobustCommand{thickapprox}{\mathrel{\text{\boldmath$\m@th\approx$}}}
+  \mdsy@DeclareRobustCommand{hslash}{\middleslash h}
+  \mdsy@DeclareRobustCommand{centerdot}{\mathbin{\rule{0.15em}{0.15em}}}
+  \mdsy@DeclareRobustCommand{lambdabar}{\middlebar\lambda}
+  \mdsy@DeclareRobustCommand{lambdaslash}{\middleslash\lambda}
+  \@ifpackageloaded{MyriadPro}{}{%
+    \mdsy@DeclareRobustCommand{hbar}{\middlebar h}%
+  }
+\fi
 %    \end{macrocode}
 % Unneeded partial symbols.
 %    \begin{macrocode}
@@ -1510,7 +1524,7 @@
   \let\rhook\undefined
 \fi
 %    \end{macrocode}
-% Shorthands to simplify the definitions below.  
+% Shorthands to simplify the definitions below.
 %    \begin{macrocode}
 \def\sans@version{sans}
 \def\ifmathversionsans{%
