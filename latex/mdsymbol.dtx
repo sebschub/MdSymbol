@@ -72,7 +72,7 @@
 %</driver>
 %\fi
 %
-% \CheckSum{5564}
+% \CheckSum{4293}
 % \CharacterTable
 %  {Upper-case    \A\B\C\D\E\F\G\H\I\J\K\L\M\N\O\P\Q\R\S\T\U\V\W\X\Y\Z
 %   Lower-case    \a\b\c\d\e\f\g\h\i\j\k\l\m\n\o\p\q\r\s\t\u\v\w\x\y\z
@@ -1430,102 +1430,13 @@
 \@ifpackageloaded{amsmath}{}{\RequirePackage{amsmath}}
 \@ifpackageloaded{textcomp}{}{\RequirePackage{textcomp}}
 %    \end{macrocode}
-% If the option \textsf{largedelims} has been selected, we readjust the
-% scaling factors of big delimiters, so that |\Big|, |\bigg| and |\Bigg| do
-% not change their size.
+% Definition of the sans and sansbold mathversions for
+% \opt{onlysansmath}. The following shorthands simplify the
+% definition of commands which have different output depending on the
+% mathversion in the case of \opt{onlysansmath}. Without that option,
+% they just normally define the commands.
 %    \begin{macrocode}
 \RequirePackage{etoolbox}
-\ifmdsy@onlysansmath
-  \newcommand{\mdsy@renewcommand}[2]{%
-    \ifcsdef{#1}{%
-      \csletcs{#1@old}{#1}%
-    }{%
-      \expandafter\newcommand\csname #1@old\endcsname{#2}%
-    }%
-    \expandafter\newcommand\csname sans#1\endcsname{#2}%
-    \csundef{#1}%
-    \csdef{#1}{\ifmathversionsans{\csname sans#1\endcsname}{\csname#1@old\endcsname}}%
-  }
-  \newcommand{\mdsy@DeclareRobustCommandArg}[3]{%
-    \ifcsdef{#1}{%
-      \csletcs{#1@old}{#1}%
-    }{%
-      \expandafter\DeclareRobustCommand\csname#1\endcsname[#2]{#3}%
-      \csletcs{#1@old}{#1}%
-    }%
-    \expandafter\DeclareRobustCommand\csname sans#1\endcsname[#2]{#3}%
-    \csundef{#1}%
-    \csdef{#1}{\ifmathversionsans{\csname sans#1\endcsname}{\csname#1@old\endcsname}}%
-  }
-  \newcommand{\mdsy@DeclareRobustCommand}[2]{%
-    \ifcsdef{#1}{%
-      \csletcs{#1@old}{#1}%
-    }{%
-      \expandafter\DeclareRobustCommand\csname#1\endcsname{#2}%
-      \csletcs{#1@old}{#1}%
-    }%
-    \expandafter\DeclareRobustCommand\csname sans#1\endcsname{#2}%
-    \csundef{#1}%
-    \csdef{#1}{\ifmathversionsans{\csname sans#1\endcsname}{\csname#1@old\endcsname}}%
-  }
-\else
-  \newcommand{\mdsy@renewcommand}[2]{%
-    \expandafter\providecommand\csname #1\endcsname{#2}%
-  }
-  \newcommand{\mdsy@DeclareRobustCommand}[2]{%
-    \expandafter\DeclareRobustCommand\csname#1\endcsname{#2}%
-  }
-  \newcommand{\mdsy@DeclareRobustCommandArg}[3]{%
-    \expandafter\DeclareRobustCommand\csname#1\endcsname[#2]{#3}%
-  }
-\fi
-\ifmdsy@largedelims
-  \mdsy@renewcommand{Big}{\bBigg@{1.25}}
-  \mdsy@renewcommand{bigg}{\bBigg@{1.66}}
-  \mdsy@renewcommand{Bigg}{\bBigg@{2.08}}
-\fi
-%    \end{macrocode}
-% Some symbols missing from MdSymbol can be obtained from other fonts or
-% by combining several other symbols.
-%    \begin{macrocode}
-\ifmdsy@retainmissing
-\else
-  \mdsy@DeclareRobustCommand{dagger}{\mdsy@text{\textdagger}}
-  \mdsy@DeclareRobustCommand{ddagger}{\mdsy@text{\textdaggerdbl}}
-  \mdsy@DeclareRobustCommand{mathparagraph}{\mdsy@text{\textparagraph}}
-  \mdsy@DeclareRobustCommand{mathsection}{\mdsy@text{\textsection}}
-  \mdsy@DeclareRobustCommand{mathdollar}{\mdsy@text{\textdollar}}
-  \mdsy@DeclareRobustCommand{mathsterling}{\mdsy@text{\textsterling}}
-  \mdsy@DeclareRobustCommand{yen}{\mdsy@text{\textyen}}
-  \mdsy@DeclareRobustCommand{circledR}{\mdsy@text{\textcircled{%
-        \check@mathfonts\fontsize\sf@size\z@\math@fontsfalse\selectfont R}}}
-  \mdsy@DeclareRobustCommand{circledS}{\mdsy@text{\textcircled{%
-        \check@mathfonts\fontsize\sf@size\z@\math@fontsfalse\selectfont S}}}
-  \mdsy@DeclareRobustCommand{Re}{\mathfrak{R}}
-  \mdsy@DeclareRobustCommand{Im}{\mathfrak{I}}
-  \mdsy@DeclareRobustCommand{dotcong}{\mathrel{\dot{\cong}}}
-  \mdsy@DeclareRobustCommand{thicksim}{\mathrel{\text{\boldmath$\m@th\sim$}}}
-  \mdsy@DeclareRobustCommand{thickapprox}{\mathrel{\text{\boldmath$\m@th\approx$}}}
-  \mdsy@DeclareRobustCommand{hslash}{\middleslash h}
-  \mdsy@DeclareRobustCommand{centerdot}{\mathbin{\rule{0.15em}{0.15em}}}
-  \mdsy@DeclareRobustCommand{lambdabar}{\middlebar\lambda}
-  \mdsy@DeclareRobustCommand{lambdaslash}{\middleslash\lambda}
-  \@ifpackageloaded{MyriadPro}{}{%
-    \mdsy@DeclareRobustCommand{hbar}{\middlebar h}%
-  }
-\fi
-%    \end{macrocode}
-% Unneeded partial symbols.
-%    \begin{macrocode}
-\ifmdsy@onlysansmath
-\else
-  \let\mapstochar\undefined
-  \let\lhook\undefined
-  \let\rhook\undefined
-\fi
-%    \end{macrocode}
-% Shorthands to simplify the definitions below.
-%    \begin{macrocode}
 \def\sans@version{sans}
 \def\ifmathversionsans{%
   \ifx\math@version\sans@version
@@ -1636,6 +1547,38 @@
     }{\ifmathversionsans{\csname#1@new\endcsname}{\csname#1@old\endcsname}}%
     \mathcode`#1="8000 %
   }
+    \newcommand{\mdsy@renewcommand}[2]{%
+    \ifcsdef{#1}{%
+      \csletcs{#1@old}{#1}%
+    }{%
+      \expandafter\newcommand\csname #1@old\endcsname{#2}%
+    }%
+    \expandafter\newcommand\csname sans#1\endcsname{#2}%
+    \csundef{#1}%
+    \csdef{#1}{\ifmathversionsans{\csname sans#1\endcsname}{\csname#1@old\endcsname}}%
+  }
+  \newcommand{\mdsy@DeclareRobustCommandArg}[3]{%
+    \ifcsdef{#1}{%
+      \csletcs{#1@old}{#1}%
+    }{%
+      \expandafter\DeclareRobustCommand\csname#1\endcsname[#2]{#3}%
+      \csletcs{#1@old}{#1}%
+    }%
+    \expandafter\DeclareRobustCommand\csname sans#1\endcsname[#2]{#3}%
+    \csundef{#1}%
+    \csdef{#1}{\ifmathversionsans{\csname sans#1\endcsname}{\csname#1@old\endcsname}}%
+  }
+  \newcommand{\mdsy@DeclareRobustCommand}[2]{%
+    \ifcsdef{#1}{%
+      \csletcs{#1@old}{#1}%
+    }{%
+      \expandafter\DeclareRobustCommand\csname#1\endcsname{#2}%
+      \csletcs{#1@old}{#1}%
+    }%
+    \expandafter\DeclareRobustCommand\csname sans#1\endcsname{#2}%
+    \csundef{#1}%
+    \csdef{#1}{\ifmathversionsans{\csname sans#1\endcsname}{\csname#1@old\endcsname}}%
+  }
 \else
   \newcommand\mdsy@DeclareSymbol[3]{%
     \csundef{#1}%
@@ -1646,19 +1589,91 @@
     \csundef{#1}%
     \expandafter\DeclareMathDelimiter\expandafter{\csname#1\endcsname}{#2}{#3}{#4}{#3}{#4}%
   }
-  \newcommand\mdsy@DeclareOperator[3]{\csdef{#1}{\DOTSB#3\slimits@}}
-  \newcommand\mdsy@DeclareIntegral[3]{\csdef{#1}{\DOTSI#3\ilimits@}}
-  \newcommand\mdsy@DeclareMathSymbol[4]{\expandafter\DeclareMathSymbol\expandafter{\csname#1\endcsname}{#2}{#3}{#4}}
-  \newcommand\mdsy@DeclareMathDelimiter[6]{\expandafter\DeclareMathDelimiter\expandafter{\csname#1\endcsname}{#2}{#3}{#4}{#5}{#6}}
-  \newcommand\mdsy@DeclareMathAccent[4]{\expandafter\DeclareMathAccent\expandafter{\csname#1\endcsname}{#2}{#3}{#4}}
-  \newcommand\mdsy@DeclareMathRadical[5]{\expandafter\DeclareMathRadical\expandafter{\csname#1\endcsname}{#2}{#3}{#4}{#5}}
-  \newcommand\mdsy@DeclareActiveMathSymbol[4]{\DeclareMathSymbol{#1}{#2}{#3}{#4}}
+  \newcommand\mdsy@DeclareOperator[3]{%
+    \csdef{#1}{\DOTSB#3\slimits@}%
+  }
+  \newcommand\mdsy@DeclareIntegral[3]{%
+    \csdef{#1}{\DOTSI#3\ilimits@}%
+  }
+  \newcommand\mdsy@DeclareMathSymbol[4]{%
+    \expandafter\DeclareMathSymbol\expandafter{\csname#1\endcsname}{#2}{#3}{#4}%
+  }
+  \newcommand\mdsy@DeclareMathDelimiter[6]{%
+    \expandafter\DeclareMathDelimiter\expandafter{\csname#1\endcsname}{#2}{#3}{#4}{#5}{#6}%
+  }
+  \newcommand\mdsy@DeclareMathAccent[4]{%
+    \expandafter\DeclareMathAccent\expandafter{\csname#1\endcsname}{#2}{#3}{#4}%
+  }
+  \newcommand\mdsy@DeclareMathRadical[5]{%
+    \expandafter\DeclareMathRadical\expandafter{\csname#1\endcsname}{#2}{#3}{#4}{#5}%
+  }
+  \newcommand\mdsy@DeclareActiveMathSymbol[4]{%
+    \DeclareMathSymbol{#1}{#2}{#3}{#4}%
+  }
+  \newcommand{\mdsy@renewcommand}[2]{%
+    \expandafter\providecommand\csname #1\endcsname{#2}%
+  }
+  \newcommand{\mdsy@DeclareRobustCommand}[2]{%
+    \expandafter\DeclareRobustCommand\csname#1\endcsname{#2}%
+  }
+  \newcommand{\mdsy@DeclareRobustCommandArg}[3]{%
+    \expandafter\DeclareRobustCommand\csname#1\endcsname[#2]{#3}%
+  }
 \fi
 
 \newcommand\mdsy@DeclareAlias[3]{\mdsy@prevslot\mdsy@DeclareSymbol{#1}{#2}{#3}}
 
 \newcommand\mdsy@DeclareOpen[3]{\mdsy@DeclareDelimiter{#1}{\mathopen}{#2}{#3}}
 \newcommand\mdsy@DeclareClose[3]{\mdsy@DeclareDelimiter{#1}{\mathclose}{#2}{#3}}
+%    \end{macrocode}
+% If the option \textsf{largedelims} has been selected, we readjust the
+% scaling factors of big delimiters, so that |\Big|, |\bigg| and |\Bigg| do
+% not change their size.
+%    \begin{macrocode}
+\ifmdsy@largedelims
+  \mdsy@renewcommand{Big}{\bBigg@{1.25}}
+  \mdsy@renewcommand{bigg}{\bBigg@{1.66}}
+  \mdsy@renewcommand{Bigg}{\bBigg@{2.08}}
+\fi
+%    \end{macrocode}
+% Some symbols missing from MdSymbol can be obtained from other fonts or
+% by combining several other symbols.
+%    \begin{macrocode}
+\ifmdsy@retainmissing
+\else
+  \mdsy@DeclareRobustCommand{dagger}{\mdsy@text{\textdagger}}
+  \mdsy@DeclareRobustCommand{ddagger}{\mdsy@text{\textdaggerdbl}}
+  \mdsy@DeclareRobustCommand{mathparagraph}{\mdsy@text{\textparagraph}}
+  \mdsy@DeclareRobustCommand{mathsection}{\mdsy@text{\textsection}}
+  \mdsy@DeclareRobustCommand{mathdollar}{\mdsy@text{\textdollar}}
+  \mdsy@DeclareRobustCommand{mathsterling}{\mdsy@text{\textsterling}}
+  \mdsy@DeclareRobustCommand{yen}{\mdsy@text{\textyen}}
+  \mdsy@DeclareRobustCommand{circledR}{\mdsy@text{\textcircled{%
+        \check@mathfonts\fontsize\sf@size\z@\math@fontsfalse\selectfont R}}}
+  \mdsy@DeclareRobustCommand{circledS}{\mdsy@text{\textcircled{%
+        \check@mathfonts\fontsize\sf@size\z@\math@fontsfalse\selectfont S}}}
+  \mdsy@DeclareRobustCommand{Re}{\mathfrak{R}}
+  \mdsy@DeclareRobustCommand{Im}{\mathfrak{I}}
+  \mdsy@DeclareRobustCommand{dotcong}{\mathrel{\dot{\cong}}}
+  \mdsy@DeclareRobustCommand{thicksim}{\mathrel{\text{\boldmath$\m@th\sim$}}}
+  \mdsy@DeclareRobustCommand{thickapprox}{\mathrel{\text{\boldmath$\m@th\approx$}}}
+  \mdsy@DeclareRobustCommand{hslash}{\middleslash h}
+  \mdsy@DeclareRobustCommand{centerdot}{\mathbin{\rule{0.15em}{0.15em}}}
+  \mdsy@DeclareRobustCommand{lambdabar}{\middlebar\lambda}
+  \mdsy@DeclareRobustCommand{lambdaslash}{\middleslash\lambda}
+  \@ifpackageloaded{MyriadPro}{}{%
+    \mdsy@DeclareRobustCommand{hbar}{\middlebar h}%
+  }
+\fi
+%    \end{macrocode}
+% Unneeded partial symbols.
+%    \begin{macrocode}
+\ifmdsy@onlysansmath
+\else
+  \let\mapstochar\undefined
+  \let\lhook\undefined
+  \let\rhook\undefined
+\fi
 %    \end{macrocode}
 % Font definitions.
 %    \begin{macrocode}
