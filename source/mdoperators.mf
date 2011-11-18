@@ -8,9 +8,9 @@
 
 def sthick(expr scale) =
 %option 1: make symbols thicker with scale 
-%  sqrt scale
+  sqrt scale
 %option 2: keep same thickness
-  1
+%  1
 enddef;
 
 def bop_line_thickness(expr scale) = 
