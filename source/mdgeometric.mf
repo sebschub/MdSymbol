@@ -1611,7 +1611,7 @@ beginsymbol(7/8order_width# + 2side_bearing#, cap_height#, 0); "complement";
   penlabels(0,1,2,3,4,5,6,7);
 endchar;
 
-beginsymbol(5u# + line_thickness# + 2side_bearing#, asc_height#, 1/2line_thickness#); "flat";
+beginsymbol(4u# + line_thickness# + 2side_bearing#, asc_height#, 1/2line_thickness#); "flat";
   thick := line_thickness;
 
   x0l = x1l = side_bearing;
@@ -1627,16 +1627,16 @@ beginsymbol(5u# + line_thickness# + 2side_bearing#, asc_height#, 1/2line_thickne
 
   penpos0(thick, 0);
   penpos1(thick, 0);
-  penpos2(4/3thick, 0);
-  penpos3(thick, 90);
-  penpos4(thick, 130);
+  penpos2(thick, 0);
+  penpos3(7/8thick, 90);
+  penpos4(2/3thick, 130);
 
   fill z1.l -- z0.l{dir 35} ... {up}z2.r .. {left}z3.r ..{dir 230}z4.r -- z4.l{dir 50} .. {right}z3.l .. {down}z2.l .. {dir 215}z5 -- z1.r -- cycle;
 
   penlabels (0,1,2,3,4,5);
 endchar;
 
-beginsymbol(5u# + line_thickness# + 2side_bearing#, asc_height#, desc_depth#); "natural";
+beginsymbol(4u# + line_thickness# + 2side_bearing#, asc_height#, desc_depth#); "natural";
   thick := line_thickness;
 
   x0l = x1l = w - x2r = w - x3r = side_bearing;
@@ -1652,10 +1652,10 @@ beginsymbol(5u# + line_thickness# + 2side_bearing#, asc_height#, desc_depth#); "
   penpos1(thick, 0);
   penpos2(thick, 0);
   penpos3(thick, 0);
-  penpos4(3/2thick, 90);
-  penpos5(3/2thick, 90);
-  penpos6(3/2thick, 90);
-  penpos7(3/2thick, 90);
+  penpos4(thick/cosd(15), 90);
+  penpos5(thick/cosd(15), 90);
+  penpos6(thick/cosd(15), 90);
+  penpos7(thick/cosd(15), 90);
 
   z8 = whatever[z0,z1] = whatever[z4,z6];
   z9 = whatever[z2,z3] = whatever[z5,z7];
@@ -1671,7 +1671,7 @@ beginsymbol(5u# + line_thickness# + 2side_bearing#, asc_height#, desc_depth#); "
   penlabels(1,2,4,5,6,7);
 endchar;
 
-beginsymbol(5u# + line_thickness# + 2side_bearing#, asc_height#, desc_depth#); "sharp";
+beginsymbol(4u# + line_thickness# + 2side_bearing#, asc_height#, desc_depth#); "sharp";
   thick := line_thickness;
 
   x0l - x4 = x1l - x5 = x6 - x2r = x7 - x3r;
@@ -1690,10 +1690,10 @@ beginsymbol(5u# + line_thickness# + 2side_bearing#, asc_height#, desc_depth#); "
   penpos1(thick, 0);
   penpos2(thick, 0);
   penpos3(thick, 0);
-  penpos4(3/2thick, 90);
-  penpos5(3/2thick, 90);
-  penpos6(3/2thick, 90);
-  penpos7(3/2thick, 90);
+  penpos4(thick/cosd(15), 90);
+  penpos5(thick/cosd(15), 90);
+  penpos6(thick/cosd(15), 90);
+  penpos7(thick/cosd(15), 90);
 
   fill stroke z0e -- z1e;
   fill stroke z2e -- z3e;
