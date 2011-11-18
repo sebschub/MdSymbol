@@ -333,11 +333,11 @@ def draw_sim(suffix $)(expr lc, rc, spread, thick) =
   z1$ = 1/4[lc, rc] + 1/6thick * dir (angle (rc - lc)) +
     signum * spread * dir (angle (rc - lc) + 90);
 
-  penpos0$(5/6thick, angle(rc - lc) - signum * (90 - theta));
+  penpos0$(thick, angle(rc - lc) - signum * (90 - theta));
   penpos1$(thick, angle(rc - lc) - signum * 90);
   penpos2$(thick, angle(rc - lc) - signum * (theta + 90 - 5));
   penpos3$(thick, angle(rc - lc) - signum * 90);
-  penpos4$(5/6thick, angle(rc - lc) - signum * (90 - theta));
+  penpos4$(thick, angle(rc - lc) - signum * (90 - theta));
 
   fill stroke z0$.e{dir (angle(rc - lc) + signum * theta)} .. {dir angle(rc - lc)}z1$.e .. {dir (angle(rc - lc) - signum * (theta - 5))}z2$.e .. {dir angle(rc - lc)}z3$.e .. {dir (angle(rc - lc) + signum * theta)}z4$.e;
 
