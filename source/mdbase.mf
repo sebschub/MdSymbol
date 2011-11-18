@@ -587,16 +587,16 @@ def draw_integral(suffix $)(expr scale, centre, thick) =
   penpos4$(6/7thick, -90);
 
   z0$ = 1/2[z1$,z3$] = 1/2[z2$,z4$];
-  z1$ - z3$ = whatever * dir 85;
-  z2$ - z4$ = whatever * dir 75;
+  z1$ - z3$ = whatever * dir 79;
+  z2$ - z4$ = whatever * dir 70;
 
   x0$ = xpart centre;
   y2$l = h;
   y4$r = -d;
   y1$ = 1/2[y0$,y2$];
 
-  penpos5$(1.05*6/7thick/sind 75,-105);
-  penpos6$(1.05*6/7thick/sind 75,-105);
+  penpos5$(1.05*6/7thick/sind 70,-105);
+  penpos6$(1.05*6/7thick/sind 70,-105);
 
   y5$l = y2$l - 0.2thick;
   x5$r = 5/4[x1$, x2$] + 0.2thick;
