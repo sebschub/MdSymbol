@@ -15,10 +15,10 @@ if known ps_output:
 fi
 
 u# := 0.6pt#;
-asc_height# := 7.54pt#; % 8.56pt#;
-cap_height# := 7.07pt#; %7.37pt#;
-desc_depth# := 2.2pt#; % 2.94pt#;
-x_height# := 5.46pt#;
+cap_height# := 6.74pt#; %7.37pt#;
+asc_height# := cap_height#; % 8.56pt#;
+desc_depth# := 1.98pt#; % 2.94pt#;
+x_height# := 4.84pt#;
 math_axis# := 2.75pt#;
 if weight_index = 0: % Light
   line_thickness# := 0.41pt#;
