@@ -55,24 +55,26 @@ beginaccent(6u# + side_bearing#, 3u# + 1/2accent_thickness#); "vec";
 endchar;
 
 beginsymbol(5u#, (-1)[x_height#, asc_height#], 0); "middle bar";
-  penpos0(5/6line_thickness, 90);
-  penpos1(5/6line_thickness, 90);
+  penpos0(accent_thickness, 90);
+  penpos1(accent_thickness, 90);
 
   x0 = w - x1 = 0;
   y0 = y1 = h;
 
   fill stroke z0e -- z1e;
+  penlabels(0,1)
 endchar;
 
 beginsymbol(5u#, (-1)[x_height#, asc_height#], 0); "middle slash";
-  penpos0(line_thickness, 90);
-  penpos1(line_thickness, 90);
-
   x0 = w - x1 = 0;
   1/2[y0,y1] = h;
   y1 - y0 = 2line_thickness;
 
+  penpos0(accent_thickness/cosd(angle(z1-z0)), 90);
+  penpos1(accent_thickness/cosd(angle(z1-z0)), 90);
+
   fill stroke z0e -- z1e;
+  penlabels(0,1)
 endchar;
 
 beginsymbol(5u# + 2side_bearing#, 3/2asc_height#, 0); "stroke through";
