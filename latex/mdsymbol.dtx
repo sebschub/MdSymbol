@@ -1547,7 +1547,31 @@
     }{\ifmathversionsans{\csname#1@new\endcsname}{\csname#1@old\endcsname}}%
     \mathcode`#1="8000 %
   }
-    \newcommand{\mdsy@renewcommand}[2]{%
+  \newcommand{\mdsy@DeclareActiveMathDelimiter}[4]{%
+    \ifnum\mathcode`#1="8000 %
+    \errmessage{`#1' is already active}%
+    \fi
+    \expandafter\mathchardef\csname#1@old\endcsname=\mathcode`#1 %
+    \expandafter\DeclareMathSymbol\csname#1@new\endcsname{#2}{#3}{#4}
+    \begingroup
+    \lccode`\~=`#1 %
+    \lowercase{\endgroup
+      \def~%
+    }{\ifmathversionsans{\csname#1@new\endcsname}{\csname#1@old\endcsname}}%
+    \mathcode`#1="8000 %
+    % \ifnum\mathcode`#1="8000 %
+    % \errmessage{`#1' is already active}%
+    % \fi
+    % \expandafter\csdef{#1@old}{\delimiter\delcode`#1} %
+    % \expandafter\DeclareMathDelimiter\csname#1@new\endcsname{#2}{#3}{#4}{#3}{#4}
+    % \begingroup
+    % \lccode`\~=`#1 %
+    % \lowercase{\endgroup
+    %   \def~%
+    % }{\ifmathversionsans{\csname#1@new\endcsname}{\csname#1@old\endcsname}}%
+    % \mathcode`#1="8000 %
+  }
+  \newcommand{\mdsy@renewcommand}[2]{%
     \ifcsdef{#1}{%
       \csletcs{#1@old}{#1}%
     }{%
@@ -1609,6 +1633,9 @@
   }
   \newcommand\mdsy@DeclareActiveMathSymbol[4]{%
     \DeclareMathSymbol{#1}{#2}{#3}{#4}%
+  }
+  \newcommand\mdsy@DeclareActiveMathDelimiter[4]{%
+    \DeclareMathDelimiter{#1}{#2}{#3}{#4}{#3}{#4}%
   }
   \newcommand{\mdsy@renewcommand}[2]{%
     \expandafter\providecommand\csname #1\endcsname{#2}%
@@ -3583,19 +3610,19 @@
   \mdsy@DeclareActiveMathSymbol{<}{\mathrel}{Mdrelations}{"24}
   \mdsy@DeclareActiveMathSymbol{>}{\mathrel}{Mdrelations}{"25}
   \ifmdsy@largedelims
-    \mdsy@DeclareActiveMathSymbol{|}{\mathord}{Mddelimiters}{"B6}
-    \mdsy@DeclareActiveMathSymbol{(}{\mathopen}{Mddelimiters}{"01}
-    \mdsy@DeclareActiveMathSymbol{)}{\mathclose}{Mddelimiters}{"07}
-    \mdsy@DeclareActiveMathSymbol{[}{\mathopen}{Mddelimiters}{"13}
-    \mdsy@DeclareActiveMathSymbol{]}{\mathclose}{Mddelimiters}{"19}
-    \mdsy@DeclareActiveMathSymbol{/}{\mathord}{Mddelimiters}{"AA}
+    \mdsy@DeclareActiveMathDelimiter{|}{\mathord}{Mddelimiters}{"B6}
+    \mdsy@DeclareActiveMathDelimiter{(}{\mathopen}{Mddelimiters}{"01}
+    \mdsy@DeclareActiveMathDelimiter{)}{\mathclose}{Mddelimiters}{"07}
+    \mdsy@DeclareActiveMathDelimiter{[}{\mathopen}{Mddelimiters}{"13}
+    \mdsy@DeclareActiveMathDelimiter{]}{\mathclose}{Mddelimiters}{"19}
+    \mdsy@DeclareActiveMathDelimiter{/}{\mathord}{Mddelimiters}{"AA}
   \else
-    \mdsy@DeclareActiveMathSymbol{|}{\mathord}{Mddelimiters}{"B5}
-    \mdsy@DeclareActiveMathSymbol{(}{\mathopen}{Mddelimiters}{"00}
-    \mdsy@DeclareActiveMathSymbol{)}{\mathclose}{Mddelimiters}{"06}
-    \mdsy@DeclareActiveMathSymbol{[}{\mathopen}{Mddelimiters}{"12}
-    \mdsy@DeclareActiveMathSymbol{]}{\mathclose}{Mddelimiters}{"18}
-    \mdsy@DeclareActiveMathSymbol{/}{\mathord}{Mddelimiters}{"A9}
+    \mdsy@DeclareActiveMathDelimiter{|}{\mathord}{Mddelimiters}{"B5}
+    \mdsy@DeclareActiveMathDelimiter{(}{\mathopen}{Mddelimiters}{"00}
+    \mdsy@DeclareActiveMathDelimiter{)}{\mathclose}{Mddelimiters}{"06}
+    \mdsy@DeclareActiveMathDelimiter{[}{\mathopen}{Mddelimiters}{"12}
+    \mdsy@DeclareActiveMathDelimiter{]}{\mathclose}{Mddelimiters}{"18}
+    \mdsy@DeclareActiveMathDelimiter{/}{\mathord}{Mddelimiters}{"A9}
   \fi
   \ifmdsy@onlysansmath
     \def\resetMathstrut@{%
