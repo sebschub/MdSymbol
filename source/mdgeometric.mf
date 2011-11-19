@@ -1703,38 +1703,41 @@ beginsymbol(4u# + line_thickness# + 2side_bearing#, asc_height#, desc_depth#); "
   penlabels (0,1,2,3,4,5,6,7);
 endchar;
 
-beginsymbol(9u# + line_thickness# + 2side_bearing#, cap_height#, 0); "aleph";
+beginsymbol(8u# + line_thickness# + 2side_bearing#, cap_height#, 0); "aleph";
   thick := line_thickness;
 
   x0l = x2l = side_bearing;
   x1r = x3r = w - side_bearing;
-  y0 = h;
+  y0l = h;
   y1 = h;
   y2 = 0;
-  y3 = 0;
+  y3r = 0;
 
-  penpos0(3/2thick, 20);
-  penpos1(4/3thick, 2);
-  penpos2(3/2thick, 0);
-  penpos3(4/3thick, 20);
+  penpos0(thick/sind(abs(angle(z3r-z0l))), 0);
+  penpos1(thick, 0);
+  penpos2(thick, 0);
+  penpos3(thick/sind(abs(angle(z3r-z0l))), 0);
 
   path p;
   p = z0{dir -70} .. {dir -70}z3;
 
   z4 = point 3/10 of p;
   z5 = point 5/8 of p;
+  z6 = point 1/2 of p;
 
-  penpos4(5/4thick, -40);
-  penpos5(5/4thick, -45);
+  penpos4(8/9thick, -40);
+  penpos5(8/9thick, -45);
 
-  fill stroke z0.e{dir -70} .. {dir -70}z3.e;
+  penpos6(thick/sind(abs(angle(z3r-z0l))),0);
+
+  fill stroke z0.e{dir -70} .. z6.e .. {dir -70}z3.e;
   fill stroke z2.e{up} .. {dir 50}z4.e;
   fill stroke z5.e{dir 45} .. {up}z1.e;
 
-  penlabels(0,1,2,3,4,5);
+  penlabels(0,1,2,3,4,5,6);
 endchar;
 
-beginsymbol(9u# + line_thickness# + 2side_bearing#, cap_height#, 0); "beth";
+beginsymbol(8u# + line_thickness# + 2side_bearing#, cap_height#, 0); "beth";
   thick := line_thickness;
 
   x0 = u + side_bearing;
@@ -1749,12 +1752,12 @@ beginsymbol(9u# + line_thickness# + 2side_bearing#, cap_height#, 0); "beth";
   x5 = x4;
   y5 = 2/3h;
 
-  penpos0(3/2thick, 75);
-  penpos1(3/2thick * sind 75, 90);
-  penpos2(3/2thick, 75);
-  penpos3(3/2thick, 75);
-  penpos4(5/4thick, 0);
-  penpos5(5/4thick, 0);
+  penpos0(thick, 90);
+  penpos1(thick, 90);
+  penpos2(thick, 90);
+  penpos3(thick, 90);
+  penpos4(thick, 0);
+  penpos5(thick, 0);
 
   fill stroke z2.e -- z3.e;
   fill stroke z0.e -- z1.e{right} ..tension3/4.. {down}z5.e -- z4.e;
@@ -1778,12 +1781,12 @@ beginsymbol(6u# + line_thickness# + 2side_bearing#, cap_height#, 0); "gimel";
   z5 = z4 + whatever * dir -30;
   y6 = 2/3h;
 
-  penpos2(4/3thick, 80);
-  penpos2'(4/3thick * sind 80, 90);
-  penpos3(4/3thick, 0);
-  penpos4(3/2thick, 60);
-  penpos5(3/2thick, 60);
-  penpos6(5/4thick, 0);
+  penpos2(thick, 90);
+  penpos2'(thick * sind 80, 90);
+  penpos3(thick, 0);
+  penpos4(thick, 60);
+  penpos5(thick, 60);
+  penpos6(thick, 0);
 
   path p;
   p = z6{dir -82} .. {dir -67}z3;
@@ -1791,7 +1794,7 @@ beginsymbol(6u# + line_thickness# + 2side_bearing#, cap_height#, 0); "gimel";
   x8 = 2/5[x0,x1];
   z7 = z8 + whatever * dir 60;
 
-  penpos7(thick, 150);
+  penpos7(5/6thick, 150);
   penpos8(thick, 150);
 
   fill stroke z4.e -- z5.e{dir -30} .. {dir -82}z6.e .. {dir -67}z3.e;
@@ -1800,7 +1803,7 @@ beginsymbol(6u# + line_thickness# + 2side_bearing#, cap_height#, 0); "gimel";
   penlabels(2,2',3,4,5,6,7,8);
 endchar;
 
-beginsymbol(8u# + line_thickness# + 2side_bearing#, cap_height#, 0); "daleth";
+beginsymbol(7u# + line_thickness# + 2side_bearing#, cap_height#, 0); "daleth";
   thick := line_thickness;
 
   x0 = side_bearing;
@@ -1810,10 +1813,10 @@ beginsymbol(8u# + line_thickness# + 2side_bearing#, cap_height#, 0); "daleth";
   y2 = y0;
   y3 = 0;
 
-  penpos0(3/2thick, 75);
-  penpos1(3/2thick, 75);
-  penpos2(5/4thick, 0);
-  penpos3(5/4thick, 0);
+  penpos0(thick, 90);
+  penpos1(thick, 90);
+  penpos2(thick, 0);
+  penpos3(thick, 0);
 
   fill stroke z0.e -- z1.e;
   fill stroke z2.e -- z3.e;
@@ -1836,7 +1839,7 @@ beginsymbol(9u# + 2line_thickness#, x_height#, desc_depth#); "Weierstrass p";
   superpull := 1/6;
 
   penpos2(line_thickness, -60);
-  penpos1(4/3line_thickness, theta);
+  penpos1(line_thickness, theta);
   penpos7(line_thickness, -90);
 
   x2 + 1/2u = x1 = x7 - 1/2u = 3u;
@@ -1845,7 +1848,7 @@ beginsymbol(9u# + 2line_thickness#, x_height#, desc_depth#); "Weierstrass p";
   y1 = 2/5[-d, h];
   x3l = 1/2u;
   x6r = max(x7 + line_thickness, 1/2w - 1/4u);
-  x3r - x3l = x6r - x6l = 5/4line_thickness;
+  x3r - x3l = x6r - x6l =line_thickness;
 
   ellipse_set(2l,3l,4l,1l);
   ellipse_set(2r,3r,4r,1r);
@@ -1859,7 +1862,7 @@ beginsymbol(9u# + 2line_thickness#, x_height#, desc_depth#); "Weierstrass p";
 
   penpos8(line_thickness, 180);
   penpos9(line_thickness, 90);
-  penpos10(3/2line_thickness, 0);
+  penpos10(line_thickness, 0);
   penpos11(line_thickness, -90);
   penpos12(line_thickness, -100);
 
@@ -1872,7 +1875,7 @@ beginsymbol(9u# + 2line_thickness#, x_height#, desc_depth#); "Weierstrass p";
   y10 = 1/2[y9,y11];
   y12r = 1/4[y11r,y1l];
 
-  fill stroke z7e{left} ... z8e{up} ... pulled_arc.e(9,10) & pulled_arc.e(10,11) .. z12.e;  % stem and bowl
+  fill stroke z7e{left} ... z8e{up} ... z9e .. z10e .. z11e .. z12.e;  % stem and bowl
 
   penlabels(1,2,3,4,5,6,7,8,9,10,11,12);
 endchar;
