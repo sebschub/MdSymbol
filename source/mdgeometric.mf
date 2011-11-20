@@ -1611,7 +1611,7 @@ beginsymbol(7/8order_width# + 2side_bearing#, cap_height#, 0); "complement";
   penlabels(0,1,2,3,4,5,6,7);
 endchar;
 
-beginsymbol(4u# + line_thickness# + 2side_bearing#, asc_height#, 1/2line_thickness#); "flat";
+beginsymbol(4u# + line_thickness# + 2side_bearing#, asc_height#, 0); "flat";
   thick := line_thickness;
 
   x0l = x1l = side_bearing;
@@ -1623,7 +1623,7 @@ beginsymbol(4u# + line_thickness# + 2side_bearing#, asc_height#, 1/2line_thickne
   y3r = x_height;
   y2 = 1/2[y0,y1];
   y4r = 5/6x_height;
-  y5 = thick * (1 + sind 35) / cosd 35 - d;
+  y5 = thick / cosd 35 - d;
 
   penpos0(thick, 0);
   penpos1(thick, 0);
@@ -1631,7 +1631,7 @@ beginsymbol(4u# + line_thickness# + 2side_bearing#, asc_height#, 1/2line_thickne
   penpos3(7/8thick, 90);
   penpos4(2/3thick, 130);
 
-  fill z1.l -- z0.l{dir 35} ... {up}z2.r .. {left}z3.r ..{dir 230}z4.r -- z4.l{dir 50} .. {right}z3.l .. {down}z2.l .. {dir 215}z5 -- z1.r -- cycle;
+  fill z1.l -- z0.l -- z0.r{dir 35} ... {up}z2.r .. {left}z3.r ..{dir 230}z4.r -- z4.l{dir 50} .. {right}z3.l .. {down}z2.l .. {dir 215}z5 -- z1.r -- cycle;
 
   penlabels (0,1,2,3,4,5);
 endchar;
