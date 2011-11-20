@@ -1880,3 +1880,31 @@ beginsymbol(9u# + 2line_thickness#, x_height#, desc_depth#); "Weierstrass p";
   penlabels(1,2,3,4,5,6,7,8,9,10,11,12);
 endchar;
 endgroup;
+
+beginsymbol(8u# + line_thickness# + 2side_bearing#, cap_height#, 0); "nabla";
+  thick:=line_thickness;
+  thin := 4/5thick;
+  thicker := 8/7thick;
+
+  y0r = y1r = h;
+  y2  = 0;
+
+  x0r = side_bearing;
+  x1r = w - side_bearing;
+  x2  = w/2;
+
+  penpos0(thin, 90);
+  penpos1(thin,90);
+  penpos2(thicker,0);
+
+  y3 = y4 = h-thick;
+  z3 = z2r + whatever*(z0l-z2l);
+  z4 = z2l + whatever*(z1l-z2r);
+
+  z5 = whatever[z3,z2r] = whatever[z4,z2l];
+
+  fill z0r -- z0l -- z2l -- z2r -- z1l -- z1r -- cycle;
+  unfill z3 -- z4 -- z5 -- cycle;
+
+  penlabels(0,1,2,3,4,5);
+endchar;
