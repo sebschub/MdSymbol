@@ -80,12 +80,9 @@ endchar;
 beginsymbol(5u# + 2side_bearing#, 3/2asc_height#, 0); "stroke through";
   theta := 70;
 
-  penpos1(line_thickness, theta - 90);
-  penpos2(line_thickness, theta - 90);
-
   z0 = (w/2,1/6asc_height);
   z1 = z0 + 3/4asc_height / cosd (90 - theta) * dir theta;
   z2 = z0 - 3/4asc_height / cosd (90 - theta) * dir theta;
 
-  fill stroke z1e -- z2e;
+  draw_line_cut_linethick(1,2)(4/5line_thickness);
 endchar;

@@ -74,21 +74,21 @@ else:
   accent_thickness := ceiling(accent_thickness# * hppp);
 fi
 
-stroke_through_thickness := 9/10line_thickness;
+stroke_through_thickness := 4/5line_thickness;
 bop_thickness_fac := 1.;	% make big operators that much thicker
 				% (including sum and integral)
 
 % Macros
 
 def ppos_cut(suffix $)(expr a, b) =
-  ppos_cut_scaled($)(a, b, 1);
+  ppos_cut_linethick($)(line_thickness, a, b);
 enddef;
 
-def ppos_cut_scaled(suffix $)(expr a, b, scale) =
+def ppos_cut_linethick(suffix $)(expr lt, a, b) =
   if sind(a-b) = 0 :
-    penpos$(line_thickness*scale,0);
+    penpos$(lt,0);
   else:
-    penpos$(line_thickness*scale/abs(sind(a-b)),b);
+    penpos$(lt/abs(sind(a-b)),b);
   fi
 enddef;
 
@@ -282,16 +282,20 @@ def draw_line_linethick(expr orig, dest, lt, extend) =
   draw_straight(orig, dest, lt, extend);
 enddef;
 
-def draw_line_cut(suffix $, $$)=
+def draw_line_cut_linethick(suffix $, $$)(expr lt)=
   if (abs(angle(z$-z$$))<45) or (abs(angle(z$-z$$))>135) :
-    ppos_cut($)(angle(z$-z$$),90);
-    ppos_cut($$)(angle(z$-z$$),90);
+    ppos_cut_linethick($)(lt,angle(z$-z$$),90);
+    ppos_cut_linethick($$)(lt,angle(z$-z$$),90);
   else:
-    ppos_cut($)(angle(z$-z$$),0);
-    ppos_cut($$)(angle(z$-z$$),0);
+    ppos_cut_linethick($)(lt,angle(z$-z$$),0);
+    ppos_cut_linethick($$)(lt,angle(z$-z$$),0);
   fi
   penstroke z$e .. z$$e;
-  penlabels($,$$)
+  penlabels($,$$);
+enddef;
+
+def draw_line_cut(suffix $, $$)=
+  draw_line_cut_linethick($,$$)(line_thickness);
 enddef;
 
 def draw_circle(expr centre, radius, thick) =
@@ -500,8 +504,9 @@ enddef;
 def stroke_through_angle(expr pos, spread, angle) =
   begingroup;
     stroke_len := 1/2spread / cosd (90 - angle);
-
-    draw_straight(pos + stroke_len * dir angle, pos - stroke_len * dir angle, stroke_through_thickness, true);
+    z100 = pos + stroke_len * dir angle;
+    z101 = pos - stroke_len * dir angle;
+    draw_line_cut_linethick(100,101)(stroke_through_thickness);
   endgroup;
 enddef;
 
@@ -514,7 +519,9 @@ def stroke_through_arrow(expr pos, alpha, spread)(text angles) =
     stroke_dir := alpha + select(alpha / 45)(angles);
     stroke_len := 1/2spread / sind (stroke_dir - alpha);
 
-    draw_straight(pos + stroke_len * dir stroke_dir, pos - stroke_len * dir stroke_dir, stroke_through_thickness, true);
+    z102 = pos + stroke_len * dir stroke_dir;
+    z103 = pos - stroke_len * dir stroke_dir;
+    draw_line_cut_linethick(102,103)(stroke_through_thickness);
   endgroup;
 enddef;
 
