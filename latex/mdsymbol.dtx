@@ -1302,8 +1302,7 @@
 %
 % \subsection{Faked symbols}
 %
-% The following symbols are taken from the text font or
-% another math font (in case of \cmd{\Bbbk}, \cmd{\Re} and \cmd{\Im}).
+% The following symbols are taken from the text font.
 %
 % \begin{multicols}{2}
 % \raggedright
@@ -1315,9 +1314,6 @@
 % \showsymbol{\mathdollar}
 % \showsymbol{\mathsterling}
 % \showsymbol{\yen}
-% \showsymbol{\Bbbk}
-% \showsymbol{\Re}
-% \showsymbol{\Im}
 % \showsymbol{\hbar}
 % \showsymbol{\hslash}
 % \showsymbol{\circledR}
@@ -1376,10 +1372,6 @@
 %    \begin{macrocode}
 \define@boolkey{mdsymbol.sty}[mdsy@]{onlysansmath}[true]{}
 %    \end{macrocode}
-% The next option controls whether a mathcal font is defined.
-%    \begin{macrocode}
-\define@boolkey{mdsymbol.sty}[mdsy@]{nomathcal}[true]{}
-%    \end{macrocode}
 % The following two options control which weights are used
 % for which math version and font size.
 %    \begin{macrocode}
@@ -1414,7 +1406,7 @@
     \renewcommand\mdsy@bweight@small{Bold}%
   \fi
 }
-\ExecuteOptionsX{largedelims=false,onlysansmath=false,nomathcal=false,retainmissing=false}
+\ExecuteOptionsX{largedelims=false,onlysansmath=false,retainmissing=false}
 \ProcessOptionsX
 %    \end{macrocode}
 % Load external packages, but only if they are not already loaded
@@ -1782,56 +1774,6 @@
   \SetSymbolFont{Mddelimiters}{sansbold}{U}{MdSymbolF}{b}{n}
 }
 \fi
-
-%    \end{macrocode}
-% At the moment, we still use cmsy for the calligraphic alphabet,
-% msb for the blackboard bold alphabet, and euf for the Fraktur
-% alphabet. The definition of the first one can be prevented by the
-% nomathcal option.
-%    \begin{macrocode}
-\ifmdsy@nomathcal
-\else
-  \ifmdsy@onlysansmath
-    \ifundef{\mathcal}{%
-      \DeclareMathAlphabet{\mathcal}{OMS}{cmsy}{m}{n}%
-      \SetMathAlphabet{\mathcal}{bold}{OMS}{cmsy}{b}{n}%
-    }{}
-    \SetMathAlphabet{\mathcal}{sans}{OMS}{cmsy}{m}{n}
-    \SetMathAlphabet{\mathcal}{sansbold}{OMS}{cmsy}{b}{n}
-  \else
-    \DeclareMathAlphabet{\mathcal}{OMS}{cmsy}{m}{n}
-    \SetMathAlphabet{\mathcal}{bold}{OMS}{cmsy}{b}{n}
-  \fi
-\fi
-
-\ifmdsy@onlysansmath
-  \ifundef{\mathbb}{%
-    \DeclareMathAlphabet{\mathbb}{U}{msb}{m}{n}%
-  }{}
-  \SetMathAlphabet{\mathbb}{sans}{U}{msb}{m}{n}
-  \SetMathAlphabet{\mathbb}{sansbold}{U}{msb}{m}{n}
-\else
-   \DeclareMathAlphabet{\mathbb}{U}{msb}{m}{n}
-\fi
-
-\ifmdsy@onlysansmath
-  \ifundef{\mathfrak}{%
-    \DeclareMathAlphabet{\mathfrak}{U}{euf}{m}{n}%
-    \SetMathAlphabet{\mathfrak}{bold}{U}{euf}{b}{n}%
-  }{}
-  \@ifpackageloaded{eufrak}{%
-    \SetMathAlphabet{\EuFrak}{sans}{U}{euf}{m}{n}%
-    \SetMathAlphabet{\EuFrak}{sansbold}{U}{euf}{b}{n}%
-  }{%
-    \SetMathAlphabet{\mathfrak}{sans}{U}{euf}{m}{n}%
-    \SetMathAlphabet{\mathfrak}{sansbold}{U}{euf}{b}{n}%
-  }
-\else
-  \DeclareMathAlphabet{\mathfrak}{U}{euf}{m}{n}
-  \SetMathAlphabet{\mathfrak}{bold}{U}{euf}{b}{n}
-\fi
-
-\mdsy@renewcommand{Bbbk}{\mathbb{\mathchar"717C}}
 %    \end{macrocode}
 % A command for taking math symbols from the text font.
 %    \begin{macrocode}
