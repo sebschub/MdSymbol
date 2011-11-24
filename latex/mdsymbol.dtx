@@ -1534,28 +1534,9 @@
     \mathcode`#1="8000 %
   }
   \newcommand{\mdsy@DeclareActiveMathDelimiter}[4]{%
-    \ifnum\mathcode`#1="8000 %
-    \errmessage{`#1' is already active}%
-    \fi
-    \expandafter\mathchardef\csname#1@old\endcsname=\mathcode`#1 %
-    \expandafter\DeclareMathSymbol\csname#1@new\endcsname{#2}{#3}{#4}
-    \begingroup
-    \lccode`\~=`#1 %
-    \lowercase{\endgroup
-      \def~%
-    }{\ifmathversionsans{\csname#1@new\endcsname}{\csname#1@old\endcsname}}%
-    \mathcode`#1="8000 %
-    % \ifnum\mathcode`#1="8000 %
-    % \errmessage{`#1' is already active}%
-    % \fi
-    % \expandafter\csdef{#1@old}{\delimiter\delcode`#1} %
-    % \expandafter\DeclareMathDelimiter\csname#1@new\endcsname{#2}{#3}{#4}{#3}{#4}
-    % \begingroup
-    % \lccode`\~=`#1 %
-    % \lowercase{\endgroup
-    %   \def~%
-    % }{\ifmathversionsans{\csname#1@new\endcsname}{\csname#1@old\endcsname}}%
-    % \mathcode`#1="8000 %
+    % don't know how to implement an active math delimiter; so declare
+    % it as an active math symbol instead
+    \mdsy@DeclareActiveMathSymbol{#1}{#2}{#3}{#4}
   }
   \newcommand{\mdsy@renewcommand}[2]{%
     \ifcsdef{#1}{%
