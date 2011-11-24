@@ -54,6 +54,7 @@
 
 \newcommand{\pkg}[1]{\mbox{#1}}
 \newcommand{\opt}[1]{\mbox{\texttt{#1}}}
+\newcommand{\mainopt}[1]{\mbox{\textbf{#1}}}
 \newcommand{\file}[1]{\texttt{#1}}
 \providecommand{\figureversion}[1]{}
 
@@ -66,7 +67,7 @@
 %</driver>
 %\fi
 %
-% \CheckSum{4349}
+% \CheckSum{4245}
 % \CharacterTable
 %  {Upper-case    \A\B\C\D\E\F\G\H\I\J\K\L\M\N\O\P\Q\R\S\T\U\V\W\X\Y\Z
 %   Lower-case    \a\b\c\d\e\f\g\h\i\j\k\l\m\n\o\p\q\r\s\t\u\v\w\x\y\z
@@ -100,16 +101,24 @@
 % \begin{quote}
 %   |\usepackage|\oarg{options}|{mdsymbol}|
 % \end{quote}
-% to the preamble of your document. This redefines most of the standard
-% mathematical symbols and makes available many new ones
-% (see Section~\ref{sec:glyphs}). For the available options see
-% Section~\ref{sec:selection}.
+% to the preamble of your document. With default settings, it
+% redefines most of the standard mathematical symbols and makes
+% available many new ones (see Section~\ref{sec:glyphs}). With the
+% \opt{onlysansmath} option, the symbols are only defined for two new
+% math versions, sans and sansbold. This allows to easily use two
+% distinct math fonts in one document.  For details and the other
+% available options see section~\ref{sec:selection}.
 %
 % \subsubsection*{Acknowledgements}
 %
-% The MdSymbol font is derived from
+% The MdSymbol font is heavily based on
 % FdSymbol\footnote{\url{http://www.ctan.org/pkg/fdsymbol/}}, another
-% math symbol font, designed by Michael Ummels.
+% math symbol font, designed by Michael Ummels.  All supporting
+% scripts (to e.g. convert the MetaFont sources to Type~1 fonts) were
+% written by him.  I got a lot of help in |comp.text.tex| so basically
+% the main code implementing the \opt{onlysansmath} functionality is
+% written by Bruno Le Floch, Enrico Gregorio, Lars Madsen and Heiko
+% Oberdiek; the ugly parts and bugs by me.
 %
 % \section{Interferences with other packages}
 %
@@ -119,32 +128,58 @@
 % can either load these packages before \pkg{mdsymbol} or you can include the
 % options in the |\documentclass| command.
 %
-% \section{Font selection}\label{sec:selection}
+% \section{Options}\label{sec:options}
 %
-% MdSymbol comes in four weights, which are (in increasing order) Light,
-% Regular, Semibold and Bold. Of these, Light and Regular are suitable for normal
-% math typesetting, while Semibold and Bold can be used for bold math
-% typesetting. Using the options \opt{normalweight} and \opt{boldweight}, you
-% can select which weights are used. For example, to use the Light weight as
-% the normal weight in math, add \opt{normalweight=Light} to the package
+% \subsection{Font selection}\label{sec:selection}
+%
+% MdSymbol comes in four weights, which are (in increasing order)
+% Light, Regular, Semibold and Bold. Of these, Light and Regular are
+% suitable for normal math typesetting, while Semibold and Bold can be
+% used for bold math typesetting. Using the options
+% \mainopt{normalweight} and \mainopt{boldweight}, you can select
+% which weights are used. For example, to use the Light weight as the
+% normal weight in math, add \opt{normalweight=Light} to the package
 % options. Analogously, to use the Bold weight with |\boldmath| or
-% |\boldsymbol|, add \opt{boldweight=Bold} to the package options. By default,
-% Regular and Semibold are used. Additionally, it is possible to use a
-% suitable weight automatically depending on the font size.  By selecting
-% \opt{autolight} or \opt{autoregular} for \opt{normalweight}, Light
-% or Regular weight, respectively, is used for font sizes larger than
-% 6pt and Regular or Semibold, respectively, for smaller sizes.
-% Similarly, \opt{autosemibold} for \opt{boldweight} selects Semibold
-% for bold symbols larger than 6pt and Bold below 6pt.
+% |\boldsymbol|, add \opt{boldweight=Bold} to the package options. By
+% default, Regular and Semibold are used. Additionally, it is possible
+% to use a suitable weight automatically depending on the font size.
+% By selecting \opt{autolight} or \opt{autoregular} for
+% \opt{normalweight}, Light or Regular weight, respectively, is used
+% for font sizes larger than 6pt and Regular or Semibold,
+% respectively, for smaller sizes.  Similarly, \opt{autosemibold} for
+% \opt{boldweight} selects Semibold for bold symbols larger than 6pt
+% and Bold below 6pt.
 %
-% In order to use MdSymbol with different text fonts, it is possible to scale
-% the fonts by an arbitrary factor. This can be achieved with the option
-% \opt{scale}. For example, to use the fonts at 90\,\% of their original size,
-% you can add \opt{scale=0.9} to the package options. Finally, it is possible
-% to increase the height of delimiters slightly (by 20\,\% in text size and
-% by 25\,\% in |\big| size). This can be achieved by activating the option
-% \opt{largedelims}. Use this option if you want to combine MdSymbol with a
-% text font that has rather tall delimiters.
+%
+%\subsection{Math Symbols only in sans serif math}\label{sec:sansmath}
+%
+% With the \mainopt{onlysansmath} option, MdSymbol does not change already
+% defined math symbols but declares two new math versions, sans and
+% sansbold, and defines it's symbols to be only used within these math
+% versions.  Use the command |\mathversion{sans}| or
+% |\mathversion{sansbold}| to switch to this math version. Also single
+% input character symbols (e.g. |+|, |-|, |(|, |)|) adapt to the math
+% version except when used with a delimiter increasing command like
+% |\big(|.\footnote{Any help to solve this problem is highly welcome!}
+% Use the corresponding full command instead (|\big\lparen|).
+%
+%
+%\subsection{Miscellaneous}\label{sec:Misc}
+%
+%
+% MdSymbol uses and combines some symbols of the text font
+% (section~\ref{sec:faked}). The option \mainopt{retainmissing}
+% prevents this.
+%
+% In order to use MdSymbol with different text fonts, it is possible
+% to scale the fonts by an arbitrary factor. This can be achieved with
+% the option \mainopt{scale}. For example, to use the fonts at 90\,\%
+% of their original size, you can add \opt{scale=0.9} to the package
+% options. Finally, it is possible to increase the height of
+% delimiters slightly (by 20\,\% in text size and by 25\,\% in |\big|
+% size). This can be achieved by activating the option
+% \mainopt{largedelims}. Use this option if you want to combine
+% MdSymbol with a text font that has rather tall delimiters.
 %
 % The following table summarises all options (keys) that can be used with the
 % \pkg{mdsymbol} package. Values that correspond to the default behaviour of
@@ -156,6 +191,8 @@
 % \midrule
 % \opt{normalweight} & \opt{Light}, \opt{Regular}*, \opt{autolight}, \opt{autoregular} \\
 % \opt{boldweight} & \opt{Semibold}*, \opt{Bold}, \opt{autosemibold} \\
+% \opt{onlysansmath} & \opt{true}, \opt{false}*\\
+% \opt{retainmissing} & \opt{true}, \opt{false}*\\
 % \opt{scale} & \meta{factor} \\
 % \opt{largedelims} & \opt{true}, \opt{false}* \\
 % \bottomrule
@@ -1300,13 +1337,12 @@
 % \showaccent{\strokethrough}
 % \end{multicols}
 %
-% \subsection{Faked symbols}
+% \subsection{Faked symbols}\label{sec:faked}
 %
 % The following symbols are taken from the text font.
 %
 % \begin{multicols}{2}
 % \raggedright
-
 % \showsymbol{\dagger}
 % \showsymbol{\ddagger}
 % \showsymbol{\mathparagraph}
@@ -1338,6 +1374,7 @@
 % |\rhook|\par
 % |\diagup|\par
 % |\diagdown|\par
+% |\Bbbk|\par
 % \quad
 % \end{multicols}
 %
