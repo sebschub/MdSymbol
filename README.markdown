@@ -12,7 +12,7 @@ Usage
 
 To use this font in LaTeX, include
 
-    \usepackage{mdsymbol}
+    \usepackage{MdSymbol}
 
 in the preamble of your LaTeX document. See the PDF documentation for
 the details.
@@ -40,7 +40,7 @@ Afterwards, you may need to regenerate the file database:
 
 Finally, you need to activate the map file:
 
-    updmap --enable Map=mdsymbol.map
+    updmap --enable Map=MdSymbol.map
 
 For a system-wide installation, replace updmap by updmap-sys.
 
@@ -65,8 +65,8 @@ This work has the LPPL maintenance status `maintained'.
 
 The Current Maintainer of this work is Sebastian Schubert.
 
-This work consists of the files mdsymbol.dtx, mdsymbol.ins
-and the derived files mdsymbol.sty and mdsymbol.pdf.
+This work consists of the files MdSymbol.dtx, MdSymbol.ins
+and the derived files MdSymbol.sty and MdSymbol.pdf.
 
 All other files distributed with these sources, e.g. the Makefile and
 the Python scripts were written by Michael Ummels and are in the
