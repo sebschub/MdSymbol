@@ -1453,29 +1453,52 @@
 \@ifpackageloaded{amsmath}{}{\RequirePackage{amsmath}}
 \@ifpackageloaded{textcomp}{}{\RequirePackage{textcomp}}
 %    \end{macrocode}
-% Definition of the sans and sansbold mathversions for
-% \opt{onlysansmath}. The following shorthands simplify the
-% definition of commands which have different output depending on the
-% mathversion in the case of \opt{onlysansmath}. Without that option,
-% they just normally define the commands.
+% Add an additional switch into the mathversion command to indicate
+% sans or sansbold math.  Putting this into the |\ifmathversionsans|
+% command does not work with the delimiter definition below.
 %    \begin{macrocode}
-\RequirePackage{etoolbox}
-\def\sans@version{sans}
+\ifmdsy@onlysansmath
+  \DeclareMathVersion{sans}
+  \DeclareMathVersion{sansbold}
+
+  \newif\if@mdsy@sans@
+
+  \let\mathversion@old\mathversion
+  \def\sans@version{sans}
+  \def\sans@version@bold{sansbold}
+  \renewcommand{\mathversion}[1]{%
+    \mathversion@old{#1}
+    \@mdsy@sans@false
+    \ifx\math@version\sans@version
+      \@mdsy@sans@true
+    \fi
+    \ifx\math@version\sans@version@bold
+      \@mdsy@sans@true
+    \fi
+  }
+\fi
 \def\ifmathversionsans{%
-  \ifx\math@version\sans@version
+  \if@mdsy@sans@
     \expandafter\@firstoftwo
   \else
     \expandafter\@secondoftwo
-  \fi}
+  \fi
+}
+%    \end{macrocode}
+% The following shorthands simplify the definition of commands which
+% have different output depending on the mathversion in the case of
+% \opt{onlysansmath}. Without that option, they just normally define
+% the commands.
+%    \begin{macrocode}
+\RequirePackage{etoolbox}
 
 \newcommand\mdsy@setslot[1]{\@tempcnta #1\relax}
 \newcommand\mdsy@nextslot{\advance\@tempcnta 1\relax}
 \newcommand\mdsy@prevslot{\advance\@tempcnta-1\relax}
 
 \newcommand\mdsy@@DeclareSymbol[4]{\expandafter\DeclareMathSymbol\expandafter{\csname#2\endcsname}{#3}{#4}{#1}}
+
 \ifmdsy@onlysansmath
-  \DeclareMathVersion{sans}
-  \DeclareMathVersion{sansbold}
   \newcommand\mdsy@DeclareSymbol[3]{%
     \ifcsdef{#1}{%
       \csletcs{#1@old}{#1}%
@@ -1608,6 +1631,7 @@
     \csdef{#1}{\ifmathversionsans{\csname sans#1\endcsname}{\csname#1@old\endcsname}}%
   }
 \else
+  \let\ifmathversionsans\undefined
   \newcommand\mdsy@DeclareSymbol[3]{%
     \csundef{#1}%
     \expandafter\mdsy@@DeclareSymbol\expandafter{\the\@tempcnta}{#1}{#3}{#2}%
