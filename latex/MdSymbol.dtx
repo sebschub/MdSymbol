@@ -3580,9 +3580,7 @@
   \mkern5mu\raise.6\dimen@\copy\rootbox \mkern-8mu\box\z@}
 %    \end{macrocode}
 % Mathchars. If onlysansmath, we make certain single characters active
-% to react on the mathversion. amsmath interferes with that. So change
-% one of its command and make the definitions at the begin of the
-% document.
+% to react on the mathversion.
 %    \begin{macrocode}
 \AtBeginDocument{%
   \mdsy@DeclareActiveMathSymbol{+}{\mathbin}{symbols}{"11}
@@ -3608,6 +3606,12 @@
     \mdsy@DeclareActiveMathDelimiter{/}{\mathord}{delimiters}{"A9}
   \fi
   \ifmdsy@onlysansmath
+%    \end{macrocode}
+% amsmath and amsopn define commands which use the mathcode of some of
+% the symbols above to define new math characters.  Since the mathcode
+% is out of the range (made active), this fails.  So change the
+% commands and make the definitions at the begin of the document.
+%    \begin{macrocode}
     \def\resetMathstrut@{%
       \setbox\z@\hbox{%
         \ifmathversionsans{%
@@ -3622,6 +3626,11 @@
     }
     \renewcommand{\std@minus}{-}
     \renewcommand{\std@equal}{=}
+    \gdef\newmcodes@{\mathcode`\'39\mathcode`\*42\mathcode`\."613A%
+      \ifnum\mathcode`\-=45 \else
+        \renewcommand{\std@minus}{-}\relax
+      \fi
+      \mathcode`\-45\mathcode`\/47\mathcode`\:"603A\relax}
   \fi
 }
 %    \end{macrocode}
