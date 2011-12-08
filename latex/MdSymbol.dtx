@@ -3506,7 +3506,7 @@
   \mdsy@DeclareOpen{lVvert}{delimiters}{"C3}
   \mdsy@DeclareClose{rVvert}{delimiters}{"C3}
 \fi
-\mdsy@renewcommand{|}{\Vert}
+\let\|\Vert
 \mdsy@renewcommand{divides}{\mid}
 \mdsy@renewcommand{ndivides}{\nmid}
 \mdsy@DeclareMathSymbol{shortmid}{\mathrel}{delimiters}{"B5}
@@ -3591,14 +3591,14 @@
   \mdsy@DeclareActiveMathSymbol{<}{\mathrel}{relations}{"24}
   \mdsy@DeclareActiveMathSymbol{>}{\mathrel}{relations}{"25}
   \ifmdsy@largedelims
-    \mdsy@DeclareActiveMathDelimiter{|}{\mathord}{delimiters}{"B6}
+    \mdsy@DeclareActiveMathDelimiter{|}{\mathord}{delimiters}{"B7}
     \mdsy@DeclareActiveMathDelimiter{(}{\mathopen}{delimiters}{"01}
     \mdsy@DeclareActiveMathDelimiter{)}{\mathclose}{delimiters}{"07}
     \mdsy@DeclareActiveMathDelimiter{[}{\mathopen}{delimiters}{"13}
     \mdsy@DeclareActiveMathDelimiter{]}{\mathclose}{delimiters}{"19}
     \mdsy@DeclareActiveMathDelimiter{/}{\mathord}{delimiters}{"AA}
   \else
-    \mdsy@DeclareActiveMathDelimiter{|}{\mathord}{delimiters}{"B5}
+    \mdsy@DeclareActiveMathDelimiter{|}{\mathord}{delimiters}{"B6}
     \mdsy@DeclareActiveMathDelimiter{(}{\mathopen}{delimiters}{"00}
     \mdsy@DeclareActiveMathDelimiter{)}{\mathclose}{delimiters}{"06}
     \mdsy@DeclareActiveMathDelimiter{[}{\mathopen}{delimiters}{"12}
