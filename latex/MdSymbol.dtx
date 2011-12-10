@@ -30,12 +30,16 @@
 
 \usepackage{multicol}
 \usepackage[T1]{fontenc}
-\usepackage{lmodern}
 \IfFileExists{MyriadPro.sty}{%
   \usepackage[footnotefigures,medfamily]{MyriadPro}
   \renewcommand{\familydefault}{\sfdefault}
+  \DeclareFontFamily{T1}{mdsylmtt}{}
+  \DeclareFontShape{T1}{mdsylmtt}{m}{n}
+  { <-> [1.13] ec-lmtt10}{}
+  \renewcommand{\ttdefault}{mdsylmtt}
   \usepackage[toc,eqno,enum,bib,lineno]{tabfigures}
 }{%
+  \usepackage{lmodern}
   \usepackage{MdSymbol}
 }
 \usepackage{booktabs}
@@ -67,7 +71,7 @@
 %</driver>
 %\fi
 %
-% \CheckSum{4245}
+% \CheckSum{4293}
 % \CharacterTable
 %  {Upper-case    \A\B\C\D\E\F\G\H\I\J\K\L\M\N\O\P\Q\R\S\T\U\V\W\X\Y\Z
 %   Lower-case    \a\b\c\d\e\f\g\h\i\j\k\l\m\n\o\p\q\r\s\t\u\v\w\x\y\z
@@ -153,15 +157,16 @@
 %
 %\subsection{Math Symbols only in sans serif math}\label{sec:sansmath}
 %
-% With the \mainopt{onlysansmath} option, MdSymbol does not change already
-% defined math symbols but declares two new math versions, sans and
-% sansbold, and defines it's symbols to be only used within these math
-% versions.  Use the command |\mathversion{sans}| or
+% With the \mainopt{onlysansmath} option, MdSymbol does not change
+% already defined math symbols but declares two new math versions,
+% sans and sansbold, and defines its symbols to be only used within
+% these math versions.  Use the command |\mathversion{sans}| or
 % |\mathversion{sansbold}| to switch to this math version. Also single
 % input character symbols (e.g. |+|, |-|, |(|, |)|) adapt to the math
-% version except when used with a delimiter increasing command like
-% |\big(|.\footnote{Any help to solve this problem is highly welcome!}
-% Use the corresponding full command instead (|\big\lparen|).
+% version except when used with a delimiter size increasing command
+% like |\big(|.\footnote{Any help to solve this problem is highly
+% welcome!} As a workaround, use the corresponding full command instead
+% (|\big\lparen|).
 %
 %
 %\subsection{Miscellaneous}\label{sec:Misc}
