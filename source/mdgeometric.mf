@@ -1213,22 +1213,24 @@ beginoperator(plus_size#, 1); "right angle with dot";
   penlabels(0,1,2,3,4,5);
 endchar;
 
-beginsymbol(3u# + line_thickness#, 4/5asc_height#, 0); "prime";
+beginsymbol(3u# + line_thickness#, 3/5asc_height#, 0); "prime";
   z0 = (w, h);
-  z1 = z0 + (u + line_thickness) * left;
+  z1 = z0 + (3/4u + line_thickness) * left;
   z2 = (1u, 1/9h);
-  z3 = z2 + 4/3line_thickness * right;
+  z3 = z2 + 5/4line_thickness * right;
 
   fill z0 -- z1 -- z2 -- z3 -- cycle;
+  labels(0,1,2,3);
 endchar;
 
-beginsymbol(3u# + line_thickness#, 4/5asc_height#, 0); "backprime";
+beginsymbol(3u# + line_thickness#, 3/5asc_height#, 0); "backprime";
   z0 = (0, h);
-  z1 = z0 + (u + line_thickness) * right;
+  z1 = z0 + (3/4u + line_thickness) * right;
   z2 = (w - 1u, 1/9h);
-  z3 = z2 + 4/3line_thickness * left;
+  z3 = z2 + 5/4line_thickness * left;
 
   fill z0 -- z1 -- z2 -- z3 -- cycle;
+  labels(0,1,2,3);
 endchar;
 
 for sign = 1, -1:
