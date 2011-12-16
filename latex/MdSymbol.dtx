@@ -1465,12 +1465,16 @@
 \ifmdsy@onlysansmath
   \DeclareMathVersion{sans}
   \DeclareMathVersion{sansbold}
+  \DeclareMathVersion{sanstabular}
+  \DeclareMathVersion{sansboldtabular}
 
   \newif\if@mdsy@sans@
 
   \let\mathversion@old\mathversion
   \def\sans@version{sans}
   \def\sans@version@bold{sansbold}
+  \def\sans@version@tab{sanstabular}
+  \def\sans@version@bold@tab{sansboldtabular}
   \renewcommand{\mathversion}[1]{%
     \mathversion@old{#1}
     \@mdsy@sans@false
@@ -1478,6 +1482,12 @@
       \@mdsy@sans@true
     \fi
     \ifx\math@version\sans@version@bold
+      \@mdsy@sans@true
+    \fi
+    \ifx\math@version\sans@version@tab
+      \@mdsy@sans@true
+    \fi
+    \ifx\math@version\sans@version@bold@tab
       \@mdsy@sans@true
     \fi
   }
@@ -1807,14 +1817,18 @@
   }{%
     \ifmdsy@onlysansmath%
       \SetSymbolFont{#1}{sans}{#2}{#3}{m}{n}%
+      \SetSymbolFont{#1}{sanstabular}{#2}{#3}{m}{n}%
     \else%
       \SetSymbolFont{#1}{normal}{#2}{#3}{m}{n}%
+      \SetSymbolFont{#1}{tabular}{#2}{#3}{m}{n}%
     \fi%
   }
   \ifmdsy@onlysansmath%
     \SetSymbolFont{#1}{sansbold}{#2}{#3}{b}{n}%
+    \SetSymbolFont{#1}{sansboldtabular}{#2}{#3}{b}{n}%
   \else%
     \SetSymbolFont{#1}{bold}{#2}{#3}{b}{n}%
+    \SetSymbolFont{#1}{boldtabular}{#2}{#3}{b}{n}%
   \fi%
 }
 
