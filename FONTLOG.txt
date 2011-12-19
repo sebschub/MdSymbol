@@ -23,7 +23,8 @@ http://github.com/sebschub/fdsymbol
 ChangeLog
 ---------
 
-** in development **
+19 Dec 2011 (Sebastian Schubert) MdSymbol version 1.000
+- First public release
 
 Acknowledgements
 -------------------------
