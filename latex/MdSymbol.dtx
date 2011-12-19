@@ -35,7 +35,7 @@
   \renewcommand{\familydefault}{\sfdefault}
   \DeclareFontFamily{T1}{mdsylmtt}{}
   \DeclareFontShape{T1}{mdsylmtt}{m}{n}
-  { <-> [1.13] ec-lmtt10}{}
+  { <-> [1.11] ec-lmtt10}{}
   \renewcommand{\ttdefault}{mdsylmtt}
   \usepackage[toc,eqno,enum,bib,lineno]{tabfigures}
 }{%
@@ -71,7 +71,7 @@
 %</driver>
 %\fi
 %
-% \CheckSum{4293}
+% \CheckSum{4313}
 % \CharacterTable
 %  {Upper-case    \A\B\C\D\E\F\G\H\I\J\K\L\M\N\O\P\Q\R\S\T\U\V\W\X\Y\Z
 %   Lower-case    \a\b\c\d\e\f\g\h\i\j\k\l\m\n\o\p\q\r\s\t\u\v\w\x\y\z
@@ -1476,20 +1476,20 @@
   \def\sans@version@tab{sanstabular}
   \def\sans@version@bold@tab{sansboldtabular}
   \renewcommand{\mathversion}[1]{%
-    \mathversion@old{#1}
-    \@mdsy@sans@false
-    \ifx\math@version\sans@version
-      \@mdsy@sans@true
-    \fi
-    \ifx\math@version\sans@version@bold
-      \@mdsy@sans@true
-    \fi
-    \ifx\math@version\sans@version@tab
-      \@mdsy@sans@true
-    \fi
-    \ifx\math@version\sans@version@bold@tab
-      \@mdsy@sans@true
-    \fi
+    \mathversion@old{#1}%
+    \@mdsy@sans@false%
+    \ifx\math@version\sans@version%
+      \@mdsy@sans@true%
+    \fi%
+    \ifx\math@version\sans@version@bold%
+      \@mdsy@sans@true%
+    \fi%
+    \ifx\math@version\sans@version@tab%
+      \@mdsy@sans@true%
+    \fi%
+    \ifx\math@version\sans@version@bold@tab%
+      \@mdsy@sans@true%
+    \fi%
   }
 \fi
 \def\ifmathversionsans{%
