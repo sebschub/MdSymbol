@@ -21,10 +21,10 @@
 %
 %\iffalse
 %<*driver>
-\ProvidesFile{MdSymbol.dtx}[2011/12/19 v0.1 MdSymbol support package]
+\ProvidesFile{MdSymbol.dtx}[2011/12/23 v0.1a MdSymbol support package]
 %</driver>
 %<style>\NeedsTeXFormat{LaTeX2e}[1999/12/01]
-%<style>\ProvidesPackage{MdSymbol}[2011/12/19 v0.1 MdSymbol support package]
+%<style>\ProvidesPackage{MdSymbol}[2011/12/23 v0.1a MdSymbol support package]
 %<*driver>
 \documentclass[10pt]{ltxdoc}
 
@@ -71,7 +71,7 @@
 %</driver>
 %\fi
 %
-% \CheckSum{4321}
+% \CheckSum{4320}
 % \CharacterTable
 %  {Upper-case    \A\B\C\D\E\F\G\H\I\J\K\L\M\N\O\P\Q\R\S\T\U\V\W\X\Y\Z
 %   Lower-case    \a\b\c\d\e\f\g\h\i\j\k\l\m\n\o\p\q\r\s\t\u\v\w\x\y\z
@@ -203,6 +203,12 @@
 % \bottomrule
 % \end{tabular}
 % \end{center}
+%
+% \section{Version history}\label{sec:history}
+%
+% Version 0.1: First version\\
+% Version 0.1a: Always declare sansmathtabular and sansmathboldtabular
+% if \opt{onlysansmath} option is given
 %
 % \section{Symbols}\label{sec:glyphs}
 %
@@ -1461,7 +1467,7 @@
 % Command to check whether tabular math version is available
 %    \begin{macrocode}
 \newcommand*\mdsy@if@tabular@math[1]{%
-  \@ifundefined{mv@tabular}{}{#1}%
+  #1%
 }
 %    \end{macrocode}
 % Add an additional switch into the mathversion command to indicate
