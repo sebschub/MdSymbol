@@ -21,10 +21,10 @@
 %
 %\iffalse
 %<*driver>
-\ProvidesFile{MdSymbol.dtx}[2011/12/23 v0.1a MdSymbol support package]
+\ProvidesFile{MdSymbol.dtx}[2012/01/03 v0.2 MdSymbol support package]
 %</driver>
 %<style>\NeedsTeXFormat{LaTeX2e}[1999/12/01]
-%<style>\ProvidesPackage{MdSymbol}[2011/12/23 v0.1a MdSymbol support package]
+%<style>\ProvidesPackage{MdSymbol}[2012/01/03 v0.2 MdSymbol support package]
 %<*driver>
 \documentclass[10pt]{ltxdoc}
 
@@ -71,7 +71,7 @@
 %</driver>
 %\fi
 %
-% \CheckSum{4320}
+% \CheckSum{4317}
 % \CharacterTable
 %  {Upper-case    \A\B\C\D\E\F\G\H\I\J\K\L\M\N\O\P\Q\R\S\T\U\V\W\X\Y\Z
 %   Lower-case    \a\b\c\d\e\f\g\h\i\j\k\l\m\n\o\p\q\r\s\t\u\v\w\x\y\z
@@ -159,14 +159,19 @@
 %
 % With the \mainopt{onlysansmath} option, MdSymbol does not change
 % already defined math symbols but declares two new math versions,
-% sans and sansbold, and defines its symbols to be only used within
-% these math versions.  Use the command |\mathversion{sans}| or
+% sans and sansbold, and defines its symbols to be used within these
+% math versions.  Use the command |\mathversion{sans}| or
 % |\mathversion{sansbold}| to switch to this math version. Also single
 % input character symbols (e.g. |+|, |-|, |(|, |)|) adapt to the math
 % version except when used with a delimiter size increasing command
 % like |\big(|.\footnote{Any help to solve this problem is highly
-% welcome!} As a workaround, use the corresponding full command instead
-% (|\big\lparen|).
+% welcome!} As a workaround, use the corresponding full command
+% instead (|\big\lparen|).
+%
+% Furthermore with the \mainopt{onlysansmath} option, MdSymbol defines
+% the symbols that were not available before loading MdSymbol in all
+% math versions, therefore allowing to complement but not substitute
+% already defined symbols.
 %
 %
 %\subsection{Miscellaneous}\label{sec:Misc}
@@ -208,7 +213,8 @@
 %
 % Version 0.1: First version\\
 % Version 0.1a: Always declare sansmathtabular and sansmathboldtabular
-% if \opt{onlysansmath} option is given
+% if \opt{onlysansmath} option is given\\
+% Version 0.2: Internal bugfixes
 %
 % \section{Symbols}\label{sec:glyphs}
 %
