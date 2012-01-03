@@ -1473,7 +1473,7 @@
 % Command to check whether tabular math version is available
 %    \begin{macrocode}
 \newcommand*\mdsy@if@tabular@math[1]{%
-  #1%
+  \@ifundefined{mv@tabular}{}{#1}%
 }
 %    \end{macrocode}
 % Add an additional switch into the mathversion command to indicate
@@ -1483,9 +1483,8 @@
 \ifmdsy@onlysansmath
   \DeclareMathVersion{sans}
   \DeclareMathVersion{sansbold}
-  \mdsy@if@tabular@math{%
-    \DeclareMathVersion{sanstabular}%
-    \DeclareMathVersion{sansboldtabular}}
+  \DeclareMathVersion{sanstabular}
+  \DeclareMathVersion{sansboldtabular}
 
   \newif\if@mdsy@sans@
 
@@ -1836,7 +1835,7 @@
   }{%
     \ifmdsy@onlysansmath%
       \SetSymbolFont{#1}{sans}{#2}{#3}{m}{n}%
-      \mdsy@if@tabular@math{\SetSymbolFont{#1}{sanstabular}{#2}{#3}{m}{n}}%
+      \SetSymbolFont{#1}{sanstabular}{#2}{#3}{m}{n}%
     \else%
       \SetSymbolFont{#1}{normal}{#2}{#3}{m}{n}%
       \mdsy@if@tabular@math{\SetSymbolFont{#1}{tabular}{#2}{#3}{m}{n}}%
@@ -1844,7 +1843,7 @@
   }
   \ifmdsy@onlysansmath%
     \SetSymbolFont{#1}{sansbold}{#2}{#3}{b}{n}%
-    \mdsy@if@tabular@math{\SetSymbolFont{#1}{sansboldtabular}{#2}{#3}{b}{n}}%
+    \SetSymbolFont{#1}{sansboldtabular}{#2}{#3}{b}{n}%
   \else%
     \SetSymbolFont{#1}{bold}{#2}{#3}{b}{n}%
     \mdsy@if@tabular@math{\SetSymbolFont{#1}{boldtabular}{#2}{#3}{b}{n}}%
