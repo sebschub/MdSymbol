@@ -1829,34 +1829,34 @@
     <\mdsy@s@bold  -              > s * [\mdsy@scale] MdSymbolF-\mdsy@bweight@normal
 }{}
 
- %\newcommand\IfUndefSymbolFont[3]{\@ifundefined{sym#1}{#2}{#3}}
+\newcommand\IfUndefSymbolFont[3]{\@ifundefined{sym#1}{#2}{#3}}
 \newcommand{\mdsy@DeclareSymbolFont}[3]{%
-  % \IfUndefSymbolFont{#1}{%
-  \DeclareSymbolFont{#1}{#2}{#3}{m}{n}
-  % }{%
-  %   \ifmdsy@onlysansmath%
-  %     \SetSymbolFont{#1}{sans}{#2}{#3}{m}{n}%
-  %     \mdsy@if@tabular@math{\SetSymbolFont{#1}{sanstabular}{#2}{#3}{m}{n}}%
-  %   \else%
-  %     \SetSymbolFont{#1}{normal}{#2}{#3}{m}{n}%
-  %     \mdsy@if@tabular@math{\SetSymbolFont{#1}{tabular}{#2}{#3}{m}{n}}%
-  %   \fi%
-  % }
-  % \ifmdsy@onlysansmath%
-  %   \SetSymbolFont{#1}{sansbold}{#2}{#3}{b}{n}%
-  %   \mdsy@if@tabular@math{\SetSymbolFont{#1}{sansboldtabular}{#2}{#3}{b}{n}}%
-  % \else%
-  %   \SetSymbolFont{#1}{bold}{#2}{#3}{b}{n}%
-  %   \mdsy@if@tabular@math{\SetSymbolFont{#1}{boldtabular}{#2}{#3}{b}{n}}%
-  % \fi%
+  \IfUndefSymbolFont{#1}{%
+    \DeclareSymbolFont{#1}{#2}{#3}{m}{n}
+  }{%
+    \ifmdsy@onlysansmath%
+      \SetSymbolFont{#1}{sans}{#2}{#3}{m}{n}%
+      \mdsy@if@tabular@math{\SetSymbolFont{#1}{sanstabular}{#2}{#3}{m}{n}}%
+    \else%
+      \SetSymbolFont{#1}{normal}{#2}{#3}{m}{n}%
+      \mdsy@if@tabular@math{\SetSymbolFont{#1}{tabular}{#2}{#3}{m}{n}}%
+    \fi%
+  }
+  \ifmdsy@onlysansmath%
+    \SetSymbolFont{#1}{sansbold}{#2}{#3}{b}{n}%
+    \mdsy@if@tabular@math{\SetSymbolFont{#1}{sansboldtabular}{#2}{#3}{b}{n}}%
+  \else%
+    \SetSymbolFont{#1}{bold}{#2}{#3}{b}{n}%
+    \mdsy@if@tabular@math{\SetSymbolFont{#1}{boldtabular}{#2}{#3}{b}{n}}%
+  \fi%
 }
 
-\mdsy@DeclareSymbolFont{MdSymbols}{U}{MdSymbolA}
-\mdsy@DeclareSymbolFont{MdRelations}{U}{MdSymbolB}
-\mdsy@DeclareSymbolFont{MdArrows}{U}{MdSymbolC}
-\mdsy@DeclareSymbolFont{MdNarrows}{U}{MdSymbolD}
-\mdsy@DeclareSymbolFont{MdLargesymbols}{U}{MdSymbolE}
-\mdsy@DeclareSymbolFont{MdDelimiters}{U}{MdSymbolF}
+\mdsy@DeclareSymbolFont{symbols}{U}{MdSymbolA}
+\mdsy@DeclareSymbolFont{relations}{U}{MdSymbolB}
+\mdsy@DeclareSymbolFont{arrows}{U}{MdSymbolC}
+\mdsy@DeclareSymbolFont{narrows}{U}{MdSymbolD}
+\mdsy@DeclareSymbolFont{largesymbols}{U}{MdSymbolE}
+\mdsy@DeclareSymbolFont{delimiters}{U}{MdSymbolF}
 
 %    \end{macrocode}
 % A command for taking math symbols from the text font.
@@ -1873,1003 +1873,1003 @@
 % MdSymbolA: binary operators and ordinary symbols
 %    \begin{macrocode}
 \mdsy@setslot{0}
-\mdsy@DeclareSymbol{cdot}{MdSymbols}{\mathbin}
-  \mdsy@DeclareAlias{cdotp}{MdSymbols}{\mathpunct}
-\mdsy@DeclareSymbol{hdotdot}{MdSymbols}{\mathbin}
-\mdsy@DeclareSymbol{vdotdot}{MdSymbols}{\mathbin}
-  \mdsy@DeclareAlias{colon}{MdSymbols}{\mathpunct}
-  \mdsy@DeclareAlias{mathcolon}{MdSymbols}{\mathpunct}
-  \mdsy@DeclareAlias{mathratio}{MdSymbols}{\mathrel}
-\mdsy@DeclareSymbol{udotdot}{MdSymbols}{\mathbin}
-\mdsy@DeclareSymbol{ddotdot}{MdSymbols}{\mathbin}
-\mdsy@DeclareSymbol{hdots}{MdSymbols}{\mathord}
-  \mdsy@DeclareAlias{@cdots}{MdSymbols}{\mathinner}
-  \mdsy@DeclareAlias{cdots}{MdSymbols}{\mathinner}
-\mdsy@DeclareSymbol{@vdots}{MdSymbols}{\mathord}
+\mdsy@DeclareSymbol{cdot}{symbols}{\mathbin}
+  \mdsy@DeclareAlias{cdotp}{symbols}{\mathpunct}
+\mdsy@DeclareSymbol{hdotdot}{symbols}{\mathbin}
+\mdsy@DeclareSymbol{vdotdot}{symbols}{\mathbin}
+  \mdsy@DeclareAlias{colon}{symbols}{\mathpunct}
+  \mdsy@DeclareAlias{mathcolon}{symbols}{\mathpunct}
+  \mdsy@DeclareAlias{mathratio}{symbols}{\mathrel}
+\mdsy@DeclareSymbol{udotdot}{symbols}{\mathbin}
+\mdsy@DeclareSymbol{ddotdot}{symbols}{\mathbin}
+\mdsy@DeclareSymbol{hdots}{symbols}{\mathord}
+  \mdsy@DeclareAlias{@cdots}{symbols}{\mathinner}
+  \mdsy@DeclareAlias{cdots}{symbols}{\mathinner}
+\mdsy@DeclareSymbol{@vdots}{symbols}{\mathord}
 \mdsy@DeclareRobustCommand{vdots}{\ifmmode\@vdots\else\hbox{$\@vdots$}\fi}
-\mdsy@DeclareSymbol{udots}{MdSymbols}{\mathord}
-  \mdsy@DeclareAlias{adots}{MdSymbols}{\mathord}
-\mdsy@DeclareSymbol{ddots}{MdSymbols}{\mathord}
-\mdsy@DeclareSymbol{righttherefore}{MdSymbols}{\mathord}
-\mdsy@DeclareSymbol{uptherefore}{MdSymbols}{\mathord}
-  \mdsy@DeclareAlias{therefore}{MdSymbols}{\mathord}
-\mdsy@DeclareSymbol{lefttherefore}{MdSymbols}{\mathord}
-\mdsy@DeclareSymbol{downtherefore}{MdSymbols}{\mathord}
-  \mdsy@DeclareAlias{because}{MdSymbols}{\mathord}
-\mdsy@DeclareSymbol{squaredots}{MdSymbols}{\mathord}
-  \mdsy@DeclareAlias{Colon}{MdSymbols}{\mathrel}
-\mdsy@DeclareSymbol{minus}{MdSymbols}{\mathbin}
-\mdsy@DeclareSymbol{medslash}{MdSymbols}{\mathbin}
-  \mdsy@DeclareAlias{smalldivslash}{MdSymbols}{\mathbin}
-\mdsy@DeclareSymbol{medbackslash}{MdSymbols}{\mathbin}
-  \mdsy@DeclareAlias{smallsetminus}{MdSymbols}{\mathbin}
-\mdsy@DeclareSymbol{plus}{MdSymbols}{\mathbin}
-\mdsy@DeclareSymbol{times}{MdSymbols}{\mathbin}
-\mdsy@DeclareSymbol{dotminus}{MdSymbols}{\mathbin}
-\mdsy@DeclareSymbol{minusdot}{MdSymbols}{\mathbin}
-\mdsy@DeclareSymbol{div}{MdSymbols}{\mathbin}
-\mdsy@DeclareSymbol{minusfdots}{MdSymbols}{\mathbin}
-\mdsy@DeclareSymbol{minusrdots}{MdSymbols}{\mathbin}
-\mdsy@DeclareSymbol{dotsminusdots}{MdSymbols}{\mathrel}
-\mdsy@DeclareSymbol{pm}{MdSymbols}{\mathbin}
-\mdsy@DeclareSymbol{mp}{MdSymbols}{\mathbin}
-\mdsy@DeclareSymbol{dotplus}{MdSymbols}{\mathbin}
-\mdsy@DeclareSymbol{plusdot}{MdSymbols}{\mathbin}
-\mdsy@DeclareSymbol{dottimes}{MdSymbols}{\mathbin}
-\mdsy@DeclareSymbol{timesbar}{MdSymbols}{\mathbin}
-\mdsy@DeclareSymbol{divideontimes}{MdSymbols}{\mathbin}
-\mdsy@DeclareSymbol{neg}{MdSymbols}{\mathord}
-  \mdsy@DeclareAlias{lnot}{MdSymbols}{\mathord}
-  \mdsy@DeclareAlias{minushookdown}{MdSymbols}{\mathbin}
-\mdsy@DeclareSymbol{backneg}{MdSymbols}{\mathord}
-  \mdsy@DeclareAlias{hookdownminus}{MdSymbols}{\mathbin}
-  \mdsy@DeclareAlias{invneg}{MdSymbols}{\mathord}
-  \mdsy@DeclareAlias{invnot}{MdSymbols}{\mathord}
-\mdsy@DeclareSymbol{intprod}{MdSymbols}{\mathbin}
-  \mdsy@DeclareAlias{minushookup}{MdSymbols}{\mathbin}
-  \mdsy@DeclareAlias{turnedneg}{MdSymbols}{\mathord}
-  \mdsy@DeclareAlias{turnednot}{MdSymbols}{\mathord}
-\mdsy@DeclareSymbol{intprodr}{MdSymbols}{\mathbin}
-  \mdsy@DeclareAlias{hookupminus}{MdSymbols}{\mathbin}
-  \mdsy@DeclareAlias{turnedbackneg}{MdSymbols}{\mathord}
-\mdsy@DeclareSymbol{leftthreetimes}{MdSymbols}{\mathbin}
-\mdsy@DeclareSymbol{rightthreetimes}{MdSymbols}{\mathbin}
-\mdsy@DeclareSymbol{dtimes}{MdSymbols}{\mathbin}
-  \mdsy@DeclareAlias{btimes}{MdSymbols}{\mathbin}
-\mdsy@DeclareSymbol{rtimes}{MdSymbols}{\mathbin}
-  \mdsy@DeclareAlias{rJoin}{MdSymbols}{\mathrel}
-\mdsy@DeclareSymbol{utimes}{MdSymbols}{\mathbin}
-  \mdsy@DeclareAlias{ttimes}{MdSymbols}{\mathbin}
-\mdsy@DeclareSymbol{ltimes}{MdSymbols}{\mathbin}
-  \mdsy@DeclareAlias{lJoin}{MdSymbols}{\mathrel}
-\mdsy@DeclareSymbol{bowtie}{MdSymbols}{\mathrel}
-  \mdsy@DeclareAlias{Join}{MdSymbols}{\mathrel}
-  \mdsy@DeclareAlias{lrtimes}{MdSymbols}{\mathbin}
-\mdsy@DeclareSymbol{upbowtie}{MdSymbols}{\mathbin}
-  \mdsy@DeclareAlias{hourglass}{MdSymbols}{\mathbin}
-\mdsy@DeclareSymbol{rightY}{MdSymbols}{\mathbin}
-\mdsy@DeclareSymbol{upY}{MdSymbols}{\mathbin}
-\mdsy@DeclareSymbol{leftY}{MdSymbols}{\mathbin}
-\mdsy@DeclareSymbol{downY}{MdSymbols}{\mathbin}
-\mdsy@DeclareSymbol{wedge}{MdSymbols}{\mathbin}
-  \mdsy@DeclareAlias{land}{MdSymbols}{\mathbin}
-\mdsy@DeclareSymbol{vee}{MdSymbols}{\mathbin}
-  \mdsy@DeclareAlias{lor}{MdSymbols}{\mathbin}
-\mdsy@DeclareSymbol{wedgedot}{MdSymbols}{\mathbin}
-\mdsy@DeclareSymbol{veedot}{MdSymbols}{\mathbin}
-\mdsy@DeclareSymbol{doublewedge}{MdSymbols}{\mathbin}
-  \mdsy@DeclareAlias{wedgeonwedge}{MdSymbols}{\mathbin}
-\mdsy@DeclareSymbol{doublevee}{MdSymbols}{\mathbin}
-  \mdsy@DeclareAlias{veeonvee}{MdSymbols}{\mathbin}
-\mdsy@DeclareSymbol{curlywedge}{MdSymbols}{\mathbin}
-\mdsy@DeclareSymbol{curlyvee}{MdSymbols}{\mathbin}
-\mdsy@DeclareSymbol{barwedge}{MdSymbols}{\mathbin}
-\mdsy@DeclareSymbol{veebar}{MdSymbols}{\mathbin}
-\mdsy@DeclareSymbol{doublebarwedge}{MdSymbols}{\mathbin}
-\mdsy@DeclareSymbol{veedoublebar}{MdSymbols}{\mathbin}
-\mdsy@DeclareSymbol{cup}{MdSymbols}{\mathbin}
-\mdsy@DeclareSymbol{cap}{MdSymbols}{\mathbin}
-\mdsy@DeclareSymbol{doublecup}{MdSymbols}{\mathbin}
-  \mdsy@DeclareAlias{Cup}{MdSymbols}{\mathbin}
-\mdsy@DeclareSymbol{doublecap}{MdSymbols}{\mathbin}
-  \mdsy@DeclareAlias{Cap}{MdSymbols}{\mathbin}
-\mdsy@DeclareSymbol{cupdot}{MdSymbols}{\mathbin}
-\mdsy@DeclareSymbol{capdot}{MdSymbols}{\mathbin}
-\mdsy@DeclareSymbol{cupplus}{MdSymbols}{\mathbin}
-  \mdsy@DeclareAlias{uplus}{MdSymbols}{\mathbin}
-\mdsy@DeclareSymbol{capplus}{MdSymbols}{\mathbin}
-\mdsy@DeclareSymbol{sqcup}{MdSymbols}{\mathbin}
-\mdsy@DeclareSymbol{sqcap}{MdSymbols}{\mathbin}
-\mdsy@DeclareSymbol{doublesqcup}{MdSymbols}{\mathbin}
-  \mdsy@DeclareAlias{Sqcup}{MdSymbols}{\mathbin}
-\mdsy@DeclareSymbol{doublesqcap}{MdSymbols}{\mathbin}
-  \mdsy@DeclareAlias{Sqcap}{MdSymbols}{\mathbin}
-\mdsy@DeclareSymbol{sqcupdot}{MdSymbols}{\mathbin}
-\mdsy@DeclareSymbol{sqcapdot}{MdSymbols}{\mathbin}
-\mdsy@DeclareSymbol{sqcupplus}{MdSymbols}{\mathbin}
-\mdsy@DeclareSymbol{sqcapplus}{MdSymbols}{\mathbin}
-\mdsy@DeclareSymbol{pullback}{MdSymbols}{\mathbin}
-\mdsy@DeclareSymbol{pushout}{MdSymbols}{\mathbin}
-\mdsy@DeclareSymbol{smalltriangleright}{MdSymbols}{\mathbin}
-\mdsy@DeclareSymbol{smalltriangleup}{MdSymbols}{\mathbin}
-\mdsy@DeclareSymbol{smalltriangleleft}{MdSymbols}{\mathbin}
-\mdsy@DeclareSymbol{smalltriangledown}{MdSymbols}{\mathbin}
-\mdsy@DeclareSymbol{smallblacktriangleright}{MdSymbols}{\mathbin}
-\mdsy@DeclareSymbol{smallblacktriangleup}{MdSymbols}{\mathbin}
-\mdsy@DeclareSymbol{smallblacktriangleleft}{MdSymbols}{\mathbin}
-\mdsy@DeclareSymbol{smallblacktriangledown}{MdSymbols}{\mathbin}
-\mdsy@DeclareSymbol{medtriangleright}{MdSymbols}{\mathbin}
-  \mdsy@DeclareAlias{triangleright}{MdSymbols}{\mathbin}
-\mdsy@DeclareSymbol{medtriangleup}{MdSymbols}{\mathbin}
-  \mdsy@DeclareAlias{triangle}{MdSymbols}{\mathbin}
-  \mdsy@DeclareAlias{vartriangle}{MdSymbols}{\mathbin}
-\mdsy@DeclareSymbol{medtriangleleft}{MdSymbols}{\mathbin}
-  \mdsy@DeclareAlias{triangleleft}{MdSymbols}{\mathbin}
-\mdsy@DeclareSymbol{medtriangledown}{MdSymbols}{\mathbin}
-  \mdsy@DeclareAlias{triangledown}{MdSymbols}{\mathbin}
-\mdsy@DeclareSymbol{medblacktriangleright}{MdSymbols}{\mathbin}
-  \mdsy@DeclareAlias{blacktriangleright}{MdSymbols}{\mathbin}
-\mdsy@DeclareSymbol{medblacktriangleup}{MdSymbols}{\mathbin}
-  \mdsy@DeclareAlias{blacktriangle}{MdSymbols}{\mathbin}
-\mdsy@DeclareSymbol{medblacktriangleleft}{MdSymbols}{\mathbin}
-  \mdsy@DeclareAlias{blacktriangleleft}{MdSymbols}{\mathbin}
-\mdsy@DeclareSymbol{medblacktriangledown}{MdSymbols}{\mathbin}
-  \mdsy@DeclareAlias{blacktriangledown}{MdSymbols}{\mathbin}
-\mdsy@DeclareSymbol{largetriangleup}{MdSymbols}{\mathord}
-  \mdsy@DeclareAlias{bigtriangleup}{MdSymbols}{\mathbin}
-\mdsy@DeclareSymbol{largetriangledown}{MdSymbols}{\mathord}
-  \mdsy@DeclareAlias{bigtriangledown}{MdSymbols}{\mathbin}
-\mdsy@DeclareSymbol{smallcircle}{MdSymbols}{\mathbin}
-  \mdsy@DeclareAlias{circ}{MdSymbols}{\mathbin}
-  \mdsy@DeclareAlias{smwhtcircle}{MdSymbols}{\mathbin}
-\mdsy@DeclareSymbol{smallblackcircle}{MdSymbols}{\mathbin}
-  \mdsy@DeclareAlias{bullet}{MdSymbols}{\mathbin}
-  \mdsy@DeclareAlias{smblkcircle}{MdSymbols}{\mathbin}
-\mdsy@DeclareSymbol{medcircle}{MdSymbols}{\mathbin}
-  \mdsy@DeclareAlias{mdlgwhtcircle}{MdSymbols}{\mathbin}
-\mdsy@DeclareSymbol{medblackcircle}{MdSymbols}{\mathbin}
-  \mdsy@DeclareAlias{mdlgblkcircle}{MdSymbols}{\mathbin}
-\mdsy@DeclareSymbol{ominus}{MdSymbols}{\mathbin}
-\mdsy@DeclareSymbol{overt}{MdSymbols}{\mathbin}
-  \mdsy@DeclareAlias{circledvert}{MdSymbols}{\mathbin}
-\mdsy@DeclareSymbol{oslash}{MdSymbols}{\mathbin}
-\mdsy@DeclareSymbol{obackslash}{MdSymbols}{\mathbin}
-  \mdsy@DeclareAlias{obslash}{MdSymbols}{\mathbin}
-\mdsy@DeclareSymbol{oplus}{MdSymbols}{\mathbin}
-\mdsy@DeclareSymbol{otimes}{MdSymbols}{\mathbin}
-\mdsy@DeclareSymbol{odot}{MdSymbols}{\mathbin}
-\mdsy@DeclareSymbol{ocirc}{MdSymbols}{\mathbin}
-  \mdsy@DeclareAlias{circledcirc}{MdSymbols}{\mathbin}
-\mdsy@DeclareSymbol{oast}{MdSymbols}{\mathbin}
-  \mdsy@DeclareAlias{circledast}{MdSymbols}{\mathbin}
-\mdsy@DeclareSymbol{odash}{MdSymbols}{\mathbin}
-  \mdsy@DeclareAlias{circleddash}{MdSymbols}{\mathbin}
-\mdsy@DeclareSymbol{oequal}{MdSymbols}{\mathbin}
-  \mdsy@DeclareAlias{circledequal}{MdSymbols}{\mathbin}
-\mdsy@DeclareSymbol{emptyset}{MdSymbols}{\mathord}
-  \mdsy@DeclareAlias{diameter}{MdSymbols}{\mathord}
-  \mdsy@DeclareAlias{varnothing}{MdSymbols}{\mathord}
-\mdsy@DeclareSymbol{revemptyset}{MdSymbols}{\mathord}
-\mdsy@DeclareSymbol{largecircle}{MdSymbols}{\mathord}
-  \mdsy@DeclareAlias{bigcirc}{MdSymbols}{\mathord}
-  \mdsy@DeclareAlias{lgwhtcircle}{MdSymbols}{\mathord}
-\mdsy@DeclareSymbol{largeblackcircle}{MdSymbols}{\mathord}
-  \mdsy@DeclareAlias{lgblkcircle}{MdSymbols}{\mathord}
-\mdsy@DeclareSymbol{smallsquare}{MdSymbols}{\mathbin}
-  \mdsy@DeclareAlias{smwhtsquare}{MdSymbols}{\mathbin}
-\mdsy@DeclareSymbol{smallblacksquare}{MdSymbols}{\mathbin}
-  \mdsy@DeclareAlias{smblksquare}{MdSymbols}{\mathbin}
-\mdsy@DeclareSymbol{medsquare}{MdSymbols}{\mathbin}
-  \mdsy@DeclareAlias{square}{MdSymbols}{\mathbin}
-  \mdsy@DeclareAlias{Box}{MdSymbols}{\mathbin}
-  \mdsy@DeclareAlias{mdlgwhtsquare}{MdSymbols}{\mathbin}
-  \mdsy@DeclareAlias{mdwhtsquare}{MdSymbols}{\mathbin}
-\mdsy@DeclareSymbol{medblacksquare}{MdSymbols}{\mathbin}
-  \mdsy@DeclareAlias{mdlgblksquare}{MdSymbols}{\mathbin}
-  \mdsy@DeclareAlias{mdblksquare}{MdSymbols}{\mathbin}
-\mdsy@DeclareSymbol{boxminus}{MdSymbols}{\mathbin}
-\mdsy@DeclareSymbol{boxvert}{MdSymbols}{\mathbin}
-  \mdsy@DeclareAlias{boxbar}{MdSymbols}{\mathbin}
-\mdsy@DeclareSymbol{boxslash}{MdSymbols}{\mathbin}
-  \mdsy@DeclareAlias{boxdiag}{MdSymbols}{\mathbin}
-\mdsy@DeclareSymbol{boxbackslash}{MdSymbols}{\mathbin}
-  \mdsy@DeclareAlias{boxbslash}{MdSymbols}{\mathbin}
-\mdsy@DeclareSymbol{boxplus}{MdSymbols}{\mathbin}
-\mdsy@DeclareSymbol{boxtimes}{MdSymbols}{\mathbin}
-\mdsy@DeclareSymbol{boxdot}{MdSymbols}{\mathbin}
-\mdsy@DeclareSymbol{boxbox}{MdSymbols}{\mathbin}
-\mdsy@DeclareSymbol{largesquare}{MdSymbols}{\mathord}
-  \mdsy@DeclareAlias{lgwhtsquare}{MdSymbols}{\mathord}
-\mdsy@DeclareSymbol{largeblacksquare}{MdSymbols}{\mathord}
-  \mdsy@DeclareAlias{lgblksquare}{MdSymbols}{\mathord}
-\mdsy@DeclareSymbol{smalldiamond}{MdSymbols}{\mathbin}
-  \mdsy@DeclareAlias{diamond}{MdSymbols}{\mathbin}
-  \mdsy@DeclareAlias{smwhtdiamond}{MdSymbols}{\mathbin}
-\mdsy@DeclareSymbol{smallblackdiamond}{MdSymbols}{\mathbin}
-  \mdsy@DeclareAlias{blackdiamond}{MdSymbols}{\mathbin}
-  \mdsy@DeclareAlias{smblkdiamond}{MdSymbols}{\mathbin}
-\mdsy@DeclareSymbol{meddiamond}{MdSymbols}{\mathbin}
-  \mdsy@DeclareAlias{Diamond}{MdSymbols}{\mathbin}
-  \mdsy@DeclareAlias{mdlgwhtdiamond}{MdSymbols}{\mathbin}
-  \mdsy@DeclareAlias{mdwhtdiamond}{MdSymbols}{\mathbin}
-\mdsy@DeclareSymbol{medblackdiamond}{MdSymbols}{\mathbin}
-  \mdsy@DeclareAlias{mdlgblkdiamond}{MdSymbols}{\mathbin}
-  \mdsy@DeclareAlias{mdblkdiamond}{MdSymbols}{\mathbin}
-\mdsy@DeclareSymbol{diamondminus}{MdSymbols}{\mathbin}
-\mdsy@DeclareSymbol{diamondvert}{MdSymbols}{\mathbin}
-\mdsy@DeclareSymbol{diamondslash}{MdSymbols}{\mathbin}
-\mdsy@DeclareSymbol{diamondbackslash}{MdSymbols}{\mathbin}
-  \mdsy@DeclareAlias{diamondbslash}{MdSymbols}{\mathbin}
-\mdsy@DeclareSymbol{diamondplus}{MdSymbols}{\mathbin}
-\mdsy@DeclareSymbol{diamondtimes}{MdSymbols}{\mathbin}
-\mdsy@DeclareSymbol{diamonddot}{MdSymbols}{\mathbin}
-  \mdsy@DeclareAlias{diamondcdot}{MdSymbols}{\mathbin}
-\mdsy@DeclareSymbol{diamonddiamond}{MdSymbols}{\mathbin}
-\mdsy@DeclareSymbol{smalllozenge}{MdSymbols}{\mathord}
-  \mdsy@DeclareAlias{smwhtlozenge}{MdSymbols}{\mathord}
-\mdsy@DeclareSymbol{smallblacklozenge}{MdSymbols}{\mathord}
-  \mdsy@DeclareAlias{smblklozenge}{MdSymbols}{\mathord}
-\mdsy@DeclareSymbol{medlozenge}{MdSymbols}{\mathord}
-  \mdsy@DeclareAlias{lozenge}{MdSymbols}{\mathord}
-  \mdsy@DeclareAlias{mdlgwhtlozenge}{MdSymbols}{\mathord}
-  \mdsy@DeclareAlias{mdwhtlozenge}{MdSymbols}{\mathord}
-\mdsy@DeclareSymbol{medblacklozenge}{MdSymbols}{\mathord}
-  \mdsy@DeclareAlias{blacklozenge}{MdSymbols}{\mathord}
-  \mdsy@DeclareAlias{mdlgblklozenge}{MdSymbols}{\mathord}
-  \mdsy@DeclareAlias{mdblklozenge}{MdSymbols}{\mathord}
-\mdsy@DeclareSymbol{lozengeminus}{MdSymbols}{\mathord}
-\mdsy@DeclareSymbol{smallwhitestar}{MdSymbols}{\mathbin}
-  \mdsy@DeclareAlias{smwhitestar}{MdSymbols}{\mathbin}
-\mdsy@DeclareSymbol{smallblackstar}{MdSymbols}{\mathbin}
-  \mdsy@DeclareAlias{star}{MdSymbols}{\mathbin}
-\mdsy@DeclareSymbol{medwhitestar}{MdSymbols}{\mathbin}
-\mdsy@DeclareSymbol{medblackstar}{MdSymbols}{\mathbin}
-  \mdsy@DeclareAlias{medstar}{MdSymbols}{\mathbin}
-\mdsy@DeclareSymbol{largewhitestar}{MdSymbols}{\mathord}
-\mdsy@DeclareSymbol{largeblackstar}{MdSymbols}{\mathord}
-  \mdsy@DeclareAlias{bigstar}{MdSymbols}{\mathord}
-\mdsy@DeclareSymbol{ast}{MdSymbols}{\mathbin}
-\mdsy@DeclareSymbol{infty}{MdSymbols}{\mathord}
-\mdsy@DeclareSymbol{propto}{MdSymbols}{\mathrel}
-  \mdsy@DeclareAlias{varpropto}{MdSymbols}{\mathrel}
-\mdsy@DeclareSymbol{backpropto}{MdSymbols}{\mathrel}
-  \mdsy@DeclareAlias{propfrom}{MdSymbols}{\mathrel}
-\mdsy@DeclareSymbol{crossing}{MdSymbols}{\mathrel}
-\mdsy@DeclareSymbol{between}{MdSymbols}{\mathrel}
-\mdsy@DeclareSymbol{intercal}{MdSymbols}{\mathbin}
-\mdsy@DeclareSymbol{wreath}{MdSymbols}{\mathbin}
-  \mdsy@DeclareAlias{wr}{MdSymbols}{\mathbin}
-\mdsy@DeclareSymbol{angle}{MdSymbols}{\mathord}
-\mdsy@DeclareSymbol{revangle}{MdSymbols}{\mathord}
-\mdsy@DeclareSymbol{measuredangle}{MdSymbols}{\mathord}
-\mdsy@DeclareSymbol{revmeasuredangle}{MdSymbols}{\mathord}
-  \mdsy@DeclareAlias{measuredangleleft}{MdSymbols}{\mathord}
-\mdsy@DeclareSymbol{sphericalangle}{MdSymbols}{\mathord}
-\mdsy@DeclareSymbol{sphericalangleup}{MdSymbols}{\mathord}
-\mdsy@DeclareSymbol{sphericalangleleft}{MdSymbols}{\mathord}
-  \mdsy@DeclareAlias{revsphericalangle}{MdSymbols}{\mathord}
-  \mdsy@DeclareAlias{gtlpar}{MdSymbols}{\mathord}
-\mdsy@DeclareSymbol{sphericalangledown}{MdSymbols}{\mathord}
-\mdsy@DeclareSymbol{rightangle}{MdSymbols}{\mathord}
-\mdsy@DeclareSymbol{measuredrightangle}{MdSymbols}{\mathord}
-\mdsy@DeclareSymbol{rightanglesquare}{MdSymbols}{\mathord}
-  \mdsy@DeclareAlias{rightanglesqr}{MdSymbols}{\mathord}
-\mdsy@DeclareSymbol{measuredrightangledot}{MdSymbols}{\mathord}
-  \mdsy@DeclareAlias{rightanglemdot}{MdSymbols}{\mathord}
-\mdsy@DeclareSymbol{prime}{MdSymbols}{\mathord}
-\mdsy@DeclareSymbol{backprime}{MdSymbols}{\mathord}
-\mdsy@DeclareSymbol{smallprod}{MdSymbols}{\mathop}
-\mdsy@DeclareSymbol{smallcoprod}{MdSymbols}{\mathop}
-  \mdsy@DeclareAlias{amalg}{MdSymbols}{\mathbin}
-\mdsy@DeclareSymbol{smallint}{MdSymbols}{\mathop}
-\mdsy@DeclareSymbol{checkmark}{MdSymbols}{\mathord}
-\mdsy@DeclareSymbol{lightning}{MdSymbols}{\mathord}
-  \mdsy@DeclareAlias{downzigzagarrow}{MdSymbols}{\mathord}
-\mdsy@DeclareSymbol{diamondsuit}{MdSymbols}{\mathord}
-\mdsy@DeclareSymbol{vardiamondsuit}{MdSymbols}{\mathord}
-\mdsy@DeclareSymbol{heartsuit}{MdSymbols}{\mathord}
-\mdsy@DeclareSymbol{varheartsuit}{MdSymbols}{\mathord}
-\mdsy@DeclareSymbol{spadesuit}{MdSymbols}{\mathord}
-\mdsy@DeclareSymbol{clubsuit}{MdSymbols}{\mathord}
-\mdsy@DeclareSymbol{maltese}{MdSymbols}{\mathord}
-\mdsy@DeclareSymbol{starofdavid}{MdSymbols}{\mathord}
-\mdsy@DeclareSymbol{sector}{MdSymbols}{\mathord}
-\mdsy@DeclareSymbol{forall}{MdSymbols}{\mathord}
-\mdsy@DeclareSymbol{exists}{MdSymbols}{\mathord}
-\mdsy@DeclareSymbol{nexists}{MdSymbols}{\mathord}
-\mdsy@DeclareSymbol{Finv}{MdSymbols}{\mathord}
-\mdsy@DeclareSymbol{Game}{MdSymbols}{\mathord}
-\mdsy@DeclareSymbol{complement}{MdSymbols}{\mathord}
-\mdsy@DeclareSymbol{flat}{MdSymbols}{\mathord}
-\mdsy@DeclareSymbol{natural}{MdSymbols}{\mathord}
-\mdsy@DeclareSymbol{sharp}{MdSymbols}{\mathord}
-\mdsy@DeclareSymbol{aleph}{MdSymbols}{\mathord}
-\mdsy@DeclareSymbol{beth}{MdSymbols}{\mathord}
-\mdsy@DeclareSymbol{gimel}{MdSymbols}{\mathord}
-\mdsy@DeclareSymbol{daleth}{MdSymbols}{\mathord}
-\mdsy@DeclareSymbol{wp}{MdSymbols}{\mathord}
-\mdsy@DeclareSymbol{nabla}{MdSymbols}{\mathord}
+\mdsy@DeclareSymbol{udots}{symbols}{\mathord}
+  \mdsy@DeclareAlias{adots}{symbols}{\mathord}
+\mdsy@DeclareSymbol{ddots}{symbols}{\mathord}
+\mdsy@DeclareSymbol{righttherefore}{symbols}{\mathord}
+\mdsy@DeclareSymbol{uptherefore}{symbols}{\mathord}
+  \mdsy@DeclareAlias{therefore}{symbols}{\mathord}
+\mdsy@DeclareSymbol{lefttherefore}{symbols}{\mathord}
+\mdsy@DeclareSymbol{downtherefore}{symbols}{\mathord}
+  \mdsy@DeclareAlias{because}{symbols}{\mathord}
+\mdsy@DeclareSymbol{squaredots}{symbols}{\mathord}
+  \mdsy@DeclareAlias{Colon}{symbols}{\mathrel}
+\mdsy@DeclareSymbol{minus}{symbols}{\mathbin}
+\mdsy@DeclareSymbol{medslash}{symbols}{\mathbin}
+  \mdsy@DeclareAlias{smalldivslash}{symbols}{\mathbin}
+\mdsy@DeclareSymbol{medbackslash}{symbols}{\mathbin}
+  \mdsy@DeclareAlias{smallsetminus}{symbols}{\mathbin}
+\mdsy@DeclareSymbol{plus}{symbols}{\mathbin}
+\mdsy@DeclareSymbol{times}{symbols}{\mathbin}
+\mdsy@DeclareSymbol{dotminus}{symbols}{\mathbin}
+\mdsy@DeclareSymbol{minusdot}{symbols}{\mathbin}
+\mdsy@DeclareSymbol{div}{symbols}{\mathbin}
+\mdsy@DeclareSymbol{minusfdots}{symbols}{\mathbin}
+\mdsy@DeclareSymbol{minusrdots}{symbols}{\mathbin}
+\mdsy@DeclareSymbol{dotsminusdots}{symbols}{\mathrel}
+\mdsy@DeclareSymbol{pm}{symbols}{\mathbin}
+\mdsy@DeclareSymbol{mp}{symbols}{\mathbin}
+\mdsy@DeclareSymbol{dotplus}{symbols}{\mathbin}
+\mdsy@DeclareSymbol{plusdot}{symbols}{\mathbin}
+\mdsy@DeclareSymbol{dottimes}{symbols}{\mathbin}
+\mdsy@DeclareSymbol{timesbar}{symbols}{\mathbin}
+\mdsy@DeclareSymbol{divideontimes}{symbols}{\mathbin}
+\mdsy@DeclareSymbol{neg}{symbols}{\mathord}
+  \mdsy@DeclareAlias{lnot}{symbols}{\mathord}
+  \mdsy@DeclareAlias{minushookdown}{symbols}{\mathbin}
+\mdsy@DeclareSymbol{backneg}{symbols}{\mathord}
+  \mdsy@DeclareAlias{hookdownminus}{symbols}{\mathbin}
+  \mdsy@DeclareAlias{invneg}{symbols}{\mathord}
+  \mdsy@DeclareAlias{invnot}{symbols}{\mathord}
+\mdsy@DeclareSymbol{intprod}{symbols}{\mathbin}
+  \mdsy@DeclareAlias{minushookup}{symbols}{\mathbin}
+  \mdsy@DeclareAlias{turnedneg}{symbols}{\mathord}
+  \mdsy@DeclareAlias{turnednot}{symbols}{\mathord}
+\mdsy@DeclareSymbol{intprodr}{symbols}{\mathbin}
+  \mdsy@DeclareAlias{hookupminus}{symbols}{\mathbin}
+  \mdsy@DeclareAlias{turnedbackneg}{symbols}{\mathord}
+\mdsy@DeclareSymbol{leftthreetimes}{symbols}{\mathbin}
+\mdsy@DeclareSymbol{rightthreetimes}{symbols}{\mathbin}
+\mdsy@DeclareSymbol{dtimes}{symbols}{\mathbin}
+  \mdsy@DeclareAlias{btimes}{symbols}{\mathbin}
+\mdsy@DeclareSymbol{rtimes}{symbols}{\mathbin}
+  \mdsy@DeclareAlias{rJoin}{symbols}{\mathrel}
+\mdsy@DeclareSymbol{utimes}{symbols}{\mathbin}
+  \mdsy@DeclareAlias{ttimes}{symbols}{\mathbin}
+\mdsy@DeclareSymbol{ltimes}{symbols}{\mathbin}
+  \mdsy@DeclareAlias{lJoin}{symbols}{\mathrel}
+\mdsy@DeclareSymbol{bowtie}{symbols}{\mathrel}
+  \mdsy@DeclareAlias{Join}{symbols}{\mathrel}
+  \mdsy@DeclareAlias{lrtimes}{symbols}{\mathbin}
+\mdsy@DeclareSymbol{upbowtie}{symbols}{\mathbin}
+  \mdsy@DeclareAlias{hourglass}{symbols}{\mathbin}
+\mdsy@DeclareSymbol{rightY}{symbols}{\mathbin}
+\mdsy@DeclareSymbol{upY}{symbols}{\mathbin}
+\mdsy@DeclareSymbol{leftY}{symbols}{\mathbin}
+\mdsy@DeclareSymbol{downY}{symbols}{\mathbin}
+\mdsy@DeclareSymbol{wedge}{symbols}{\mathbin}
+  \mdsy@DeclareAlias{land}{symbols}{\mathbin}
+\mdsy@DeclareSymbol{vee}{symbols}{\mathbin}
+  \mdsy@DeclareAlias{lor}{symbols}{\mathbin}
+\mdsy@DeclareSymbol{wedgedot}{symbols}{\mathbin}
+\mdsy@DeclareSymbol{veedot}{symbols}{\mathbin}
+\mdsy@DeclareSymbol{doublewedge}{symbols}{\mathbin}
+  \mdsy@DeclareAlias{wedgeonwedge}{symbols}{\mathbin}
+\mdsy@DeclareSymbol{doublevee}{symbols}{\mathbin}
+  \mdsy@DeclareAlias{veeonvee}{symbols}{\mathbin}
+\mdsy@DeclareSymbol{curlywedge}{symbols}{\mathbin}
+\mdsy@DeclareSymbol{curlyvee}{symbols}{\mathbin}
+\mdsy@DeclareSymbol{barwedge}{symbols}{\mathbin}
+\mdsy@DeclareSymbol{veebar}{symbols}{\mathbin}
+\mdsy@DeclareSymbol{doublebarwedge}{symbols}{\mathbin}
+\mdsy@DeclareSymbol{veedoublebar}{symbols}{\mathbin}
+\mdsy@DeclareSymbol{cup}{symbols}{\mathbin}
+\mdsy@DeclareSymbol{cap}{symbols}{\mathbin}
+\mdsy@DeclareSymbol{doublecup}{symbols}{\mathbin}
+  \mdsy@DeclareAlias{Cup}{symbols}{\mathbin}
+\mdsy@DeclareSymbol{doublecap}{symbols}{\mathbin}
+  \mdsy@DeclareAlias{Cap}{symbols}{\mathbin}
+\mdsy@DeclareSymbol{cupdot}{symbols}{\mathbin}
+\mdsy@DeclareSymbol{capdot}{symbols}{\mathbin}
+\mdsy@DeclareSymbol{cupplus}{symbols}{\mathbin}
+  \mdsy@DeclareAlias{uplus}{symbols}{\mathbin}
+\mdsy@DeclareSymbol{capplus}{symbols}{\mathbin}
+\mdsy@DeclareSymbol{sqcup}{symbols}{\mathbin}
+\mdsy@DeclareSymbol{sqcap}{symbols}{\mathbin}
+\mdsy@DeclareSymbol{doublesqcup}{symbols}{\mathbin}
+  \mdsy@DeclareAlias{Sqcup}{symbols}{\mathbin}
+\mdsy@DeclareSymbol{doublesqcap}{symbols}{\mathbin}
+  \mdsy@DeclareAlias{Sqcap}{symbols}{\mathbin}
+\mdsy@DeclareSymbol{sqcupdot}{symbols}{\mathbin}
+\mdsy@DeclareSymbol{sqcapdot}{symbols}{\mathbin}
+\mdsy@DeclareSymbol{sqcupplus}{symbols}{\mathbin}
+\mdsy@DeclareSymbol{sqcapplus}{symbols}{\mathbin}
+\mdsy@DeclareSymbol{pullback}{symbols}{\mathbin}
+\mdsy@DeclareSymbol{pushout}{symbols}{\mathbin}
+\mdsy@DeclareSymbol{smalltriangleright}{symbols}{\mathbin}
+\mdsy@DeclareSymbol{smalltriangleup}{symbols}{\mathbin}
+\mdsy@DeclareSymbol{smalltriangleleft}{symbols}{\mathbin}
+\mdsy@DeclareSymbol{smalltriangledown}{symbols}{\mathbin}
+\mdsy@DeclareSymbol{smallblacktriangleright}{symbols}{\mathbin}
+\mdsy@DeclareSymbol{smallblacktriangleup}{symbols}{\mathbin}
+\mdsy@DeclareSymbol{smallblacktriangleleft}{symbols}{\mathbin}
+\mdsy@DeclareSymbol{smallblacktriangledown}{symbols}{\mathbin}
+\mdsy@DeclareSymbol{medtriangleright}{symbols}{\mathbin}
+  \mdsy@DeclareAlias{triangleright}{symbols}{\mathbin}
+\mdsy@DeclareSymbol{medtriangleup}{symbols}{\mathbin}
+  \mdsy@DeclareAlias{triangle}{symbols}{\mathbin}
+  \mdsy@DeclareAlias{vartriangle}{symbols}{\mathbin}
+\mdsy@DeclareSymbol{medtriangleleft}{symbols}{\mathbin}
+  \mdsy@DeclareAlias{triangleleft}{symbols}{\mathbin}
+\mdsy@DeclareSymbol{medtriangledown}{symbols}{\mathbin}
+  \mdsy@DeclareAlias{triangledown}{symbols}{\mathbin}
+\mdsy@DeclareSymbol{medblacktriangleright}{symbols}{\mathbin}
+  \mdsy@DeclareAlias{blacktriangleright}{symbols}{\mathbin}
+\mdsy@DeclareSymbol{medblacktriangleup}{symbols}{\mathbin}
+  \mdsy@DeclareAlias{blacktriangle}{symbols}{\mathbin}
+\mdsy@DeclareSymbol{medblacktriangleleft}{symbols}{\mathbin}
+  \mdsy@DeclareAlias{blacktriangleleft}{symbols}{\mathbin}
+\mdsy@DeclareSymbol{medblacktriangledown}{symbols}{\mathbin}
+  \mdsy@DeclareAlias{blacktriangledown}{symbols}{\mathbin}
+\mdsy@DeclareSymbol{largetriangleup}{symbols}{\mathord}
+  \mdsy@DeclareAlias{bigtriangleup}{symbols}{\mathbin}
+\mdsy@DeclareSymbol{largetriangledown}{symbols}{\mathord}
+  \mdsy@DeclareAlias{bigtriangledown}{symbols}{\mathbin}
+\mdsy@DeclareSymbol{smallcircle}{symbols}{\mathbin}
+  \mdsy@DeclareAlias{circ}{symbols}{\mathbin}
+  \mdsy@DeclareAlias{smwhtcircle}{symbols}{\mathbin}
+\mdsy@DeclareSymbol{smallblackcircle}{symbols}{\mathbin}
+  \mdsy@DeclareAlias{bullet}{symbols}{\mathbin}
+  \mdsy@DeclareAlias{smblkcircle}{symbols}{\mathbin}
+\mdsy@DeclareSymbol{medcircle}{symbols}{\mathbin}
+  \mdsy@DeclareAlias{mdlgwhtcircle}{symbols}{\mathbin}
+\mdsy@DeclareSymbol{medblackcircle}{symbols}{\mathbin}
+  \mdsy@DeclareAlias{mdlgblkcircle}{symbols}{\mathbin}
+\mdsy@DeclareSymbol{ominus}{symbols}{\mathbin}
+\mdsy@DeclareSymbol{overt}{symbols}{\mathbin}
+  \mdsy@DeclareAlias{circledvert}{symbols}{\mathbin}
+\mdsy@DeclareSymbol{oslash}{symbols}{\mathbin}
+\mdsy@DeclareSymbol{obackslash}{symbols}{\mathbin}
+  \mdsy@DeclareAlias{obslash}{symbols}{\mathbin}
+\mdsy@DeclareSymbol{oplus}{symbols}{\mathbin}
+\mdsy@DeclareSymbol{otimes}{symbols}{\mathbin}
+\mdsy@DeclareSymbol{odot}{symbols}{\mathbin}
+\mdsy@DeclareSymbol{ocirc}{symbols}{\mathbin}
+  \mdsy@DeclareAlias{circledcirc}{symbols}{\mathbin}
+\mdsy@DeclareSymbol{oast}{symbols}{\mathbin}
+  \mdsy@DeclareAlias{circledast}{symbols}{\mathbin}
+\mdsy@DeclareSymbol{odash}{symbols}{\mathbin}
+  \mdsy@DeclareAlias{circleddash}{symbols}{\mathbin}
+\mdsy@DeclareSymbol{oequal}{symbols}{\mathbin}
+  \mdsy@DeclareAlias{circledequal}{symbols}{\mathbin}
+\mdsy@DeclareSymbol{emptyset}{symbols}{\mathord}
+  \mdsy@DeclareAlias{diameter}{symbols}{\mathord}
+  \mdsy@DeclareAlias{varnothing}{symbols}{\mathord}
+\mdsy@DeclareSymbol{revemptyset}{symbols}{\mathord}
+\mdsy@DeclareSymbol{largecircle}{symbols}{\mathord}
+  \mdsy@DeclareAlias{bigcirc}{symbols}{\mathord}
+  \mdsy@DeclareAlias{lgwhtcircle}{symbols}{\mathord}
+\mdsy@DeclareSymbol{largeblackcircle}{symbols}{\mathord}
+  \mdsy@DeclareAlias{lgblkcircle}{symbols}{\mathord}
+\mdsy@DeclareSymbol{smallsquare}{symbols}{\mathbin}
+  \mdsy@DeclareAlias{smwhtsquare}{symbols}{\mathbin}
+\mdsy@DeclareSymbol{smallblacksquare}{symbols}{\mathbin}
+  \mdsy@DeclareAlias{smblksquare}{symbols}{\mathbin}
+\mdsy@DeclareSymbol{medsquare}{symbols}{\mathbin}
+  \mdsy@DeclareAlias{square}{symbols}{\mathbin}
+  \mdsy@DeclareAlias{Box}{symbols}{\mathbin}
+  \mdsy@DeclareAlias{mdlgwhtsquare}{symbols}{\mathbin}
+  \mdsy@DeclareAlias{mdwhtsquare}{symbols}{\mathbin}
+\mdsy@DeclareSymbol{medblacksquare}{symbols}{\mathbin}
+  \mdsy@DeclareAlias{mdlgblksquare}{symbols}{\mathbin}
+  \mdsy@DeclareAlias{mdblksquare}{symbols}{\mathbin}
+\mdsy@DeclareSymbol{boxminus}{symbols}{\mathbin}
+\mdsy@DeclareSymbol{boxvert}{symbols}{\mathbin}
+  \mdsy@DeclareAlias{boxbar}{symbols}{\mathbin}
+\mdsy@DeclareSymbol{boxslash}{symbols}{\mathbin}
+  \mdsy@DeclareAlias{boxdiag}{symbols}{\mathbin}
+\mdsy@DeclareSymbol{boxbackslash}{symbols}{\mathbin}
+  \mdsy@DeclareAlias{boxbslash}{symbols}{\mathbin}
+\mdsy@DeclareSymbol{boxplus}{symbols}{\mathbin}
+\mdsy@DeclareSymbol{boxtimes}{symbols}{\mathbin}
+\mdsy@DeclareSymbol{boxdot}{symbols}{\mathbin}
+\mdsy@DeclareSymbol{boxbox}{symbols}{\mathbin}
+\mdsy@DeclareSymbol{largesquare}{symbols}{\mathord}
+  \mdsy@DeclareAlias{lgwhtsquare}{symbols}{\mathord}
+\mdsy@DeclareSymbol{largeblacksquare}{symbols}{\mathord}
+  \mdsy@DeclareAlias{lgblksquare}{symbols}{\mathord}
+\mdsy@DeclareSymbol{smalldiamond}{symbols}{\mathbin}
+  \mdsy@DeclareAlias{diamond}{symbols}{\mathbin}
+  \mdsy@DeclareAlias{smwhtdiamond}{symbols}{\mathbin}
+\mdsy@DeclareSymbol{smallblackdiamond}{symbols}{\mathbin}
+  \mdsy@DeclareAlias{blackdiamond}{symbols}{\mathbin}
+  \mdsy@DeclareAlias{smblkdiamond}{symbols}{\mathbin}
+\mdsy@DeclareSymbol{meddiamond}{symbols}{\mathbin}
+  \mdsy@DeclareAlias{Diamond}{symbols}{\mathbin}
+  \mdsy@DeclareAlias{mdlgwhtdiamond}{symbols}{\mathbin}
+  \mdsy@DeclareAlias{mdwhtdiamond}{symbols}{\mathbin}
+\mdsy@DeclareSymbol{medblackdiamond}{symbols}{\mathbin}
+  \mdsy@DeclareAlias{mdlgblkdiamond}{symbols}{\mathbin}
+  \mdsy@DeclareAlias{mdblkdiamond}{symbols}{\mathbin}
+\mdsy@DeclareSymbol{diamondminus}{symbols}{\mathbin}
+\mdsy@DeclareSymbol{diamondvert}{symbols}{\mathbin}
+\mdsy@DeclareSymbol{diamondslash}{symbols}{\mathbin}
+\mdsy@DeclareSymbol{diamondbackslash}{symbols}{\mathbin}
+  \mdsy@DeclareAlias{diamondbslash}{symbols}{\mathbin}
+\mdsy@DeclareSymbol{diamondplus}{symbols}{\mathbin}
+\mdsy@DeclareSymbol{diamondtimes}{symbols}{\mathbin}
+\mdsy@DeclareSymbol{diamonddot}{symbols}{\mathbin}
+  \mdsy@DeclareAlias{diamondcdot}{symbols}{\mathbin}
+\mdsy@DeclareSymbol{diamonddiamond}{symbols}{\mathbin}
+\mdsy@DeclareSymbol{smalllozenge}{symbols}{\mathord}
+  \mdsy@DeclareAlias{smwhtlozenge}{symbols}{\mathord}
+\mdsy@DeclareSymbol{smallblacklozenge}{symbols}{\mathord}
+  \mdsy@DeclareAlias{smblklozenge}{symbols}{\mathord}
+\mdsy@DeclareSymbol{medlozenge}{symbols}{\mathord}
+  \mdsy@DeclareAlias{lozenge}{symbols}{\mathord}
+  \mdsy@DeclareAlias{mdlgwhtlozenge}{symbols}{\mathord}
+  \mdsy@DeclareAlias{mdwhtlozenge}{symbols}{\mathord}
+\mdsy@DeclareSymbol{medblacklozenge}{symbols}{\mathord}
+  \mdsy@DeclareAlias{blacklozenge}{symbols}{\mathord}
+  \mdsy@DeclareAlias{mdlgblklozenge}{symbols}{\mathord}
+  \mdsy@DeclareAlias{mdblklozenge}{symbols}{\mathord}
+\mdsy@DeclareSymbol{lozengeminus}{symbols}{\mathord}
+\mdsy@DeclareSymbol{smallwhitestar}{symbols}{\mathbin}
+  \mdsy@DeclareAlias{smwhitestar}{symbols}{\mathbin}
+\mdsy@DeclareSymbol{smallblackstar}{symbols}{\mathbin}
+  \mdsy@DeclareAlias{star}{symbols}{\mathbin}
+\mdsy@DeclareSymbol{medwhitestar}{symbols}{\mathbin}
+\mdsy@DeclareSymbol{medblackstar}{symbols}{\mathbin}
+  \mdsy@DeclareAlias{medstar}{symbols}{\mathbin}
+\mdsy@DeclareSymbol{largewhitestar}{symbols}{\mathord}
+\mdsy@DeclareSymbol{largeblackstar}{symbols}{\mathord}
+  \mdsy@DeclareAlias{bigstar}{symbols}{\mathord}
+\mdsy@DeclareSymbol{ast}{symbols}{\mathbin}
+\mdsy@DeclareSymbol{infty}{symbols}{\mathord}
+\mdsy@DeclareSymbol{propto}{symbols}{\mathrel}
+  \mdsy@DeclareAlias{varpropto}{symbols}{\mathrel}
+\mdsy@DeclareSymbol{backpropto}{symbols}{\mathrel}
+  \mdsy@DeclareAlias{propfrom}{symbols}{\mathrel}
+\mdsy@DeclareSymbol{crossing}{symbols}{\mathrel}
+\mdsy@DeclareSymbol{between}{symbols}{\mathrel}
+\mdsy@DeclareSymbol{intercal}{symbols}{\mathbin}
+\mdsy@DeclareSymbol{wreath}{symbols}{\mathbin}
+  \mdsy@DeclareAlias{wr}{symbols}{\mathbin}
+\mdsy@DeclareSymbol{angle}{symbols}{\mathord}
+\mdsy@DeclareSymbol{revangle}{symbols}{\mathord}
+\mdsy@DeclareSymbol{measuredangle}{symbols}{\mathord}
+\mdsy@DeclareSymbol{revmeasuredangle}{symbols}{\mathord}
+  \mdsy@DeclareAlias{measuredangleleft}{symbols}{\mathord}
+\mdsy@DeclareSymbol{sphericalangle}{symbols}{\mathord}
+\mdsy@DeclareSymbol{sphericalangleup}{symbols}{\mathord}
+\mdsy@DeclareSymbol{sphericalangleleft}{symbols}{\mathord}
+  \mdsy@DeclareAlias{revsphericalangle}{symbols}{\mathord}
+  \mdsy@DeclareAlias{gtlpar}{symbols}{\mathord}
+\mdsy@DeclareSymbol{sphericalangledown}{symbols}{\mathord}
+\mdsy@DeclareSymbol{rightangle}{symbols}{\mathord}
+\mdsy@DeclareSymbol{measuredrightangle}{symbols}{\mathord}
+\mdsy@DeclareSymbol{rightanglesquare}{symbols}{\mathord}
+  \mdsy@DeclareAlias{rightanglesqr}{symbols}{\mathord}
+\mdsy@DeclareSymbol{measuredrightangledot}{symbols}{\mathord}
+  \mdsy@DeclareAlias{rightanglemdot}{symbols}{\mathord}
+\mdsy@DeclareSymbol{prime}{symbols}{\mathord}
+\mdsy@DeclareSymbol{backprime}{symbols}{\mathord}
+\mdsy@DeclareSymbol{smallprod}{symbols}{\mathop}
+\mdsy@DeclareSymbol{smallcoprod}{symbols}{\mathop}
+  \mdsy@DeclareAlias{amalg}{symbols}{\mathbin}
+\mdsy@DeclareSymbol{smallint}{symbols}{\mathop}
+\mdsy@DeclareSymbol{checkmark}{symbols}{\mathord}
+\mdsy@DeclareSymbol{lightning}{symbols}{\mathord}
+  \mdsy@DeclareAlias{downzigzagarrow}{symbols}{\mathord}
+\mdsy@DeclareSymbol{diamondsuit}{symbols}{\mathord}
+\mdsy@DeclareSymbol{vardiamondsuit}{symbols}{\mathord}
+\mdsy@DeclareSymbol{heartsuit}{symbols}{\mathord}
+\mdsy@DeclareSymbol{varheartsuit}{symbols}{\mathord}
+\mdsy@DeclareSymbol{spadesuit}{symbols}{\mathord}
+\mdsy@DeclareSymbol{clubsuit}{symbols}{\mathord}
+\mdsy@DeclareSymbol{maltese}{symbols}{\mathord}
+\mdsy@DeclareSymbol{starofdavid}{symbols}{\mathord}
+\mdsy@DeclareSymbol{sector}{symbols}{\mathord}
+\mdsy@DeclareSymbol{forall}{symbols}{\mathord}
+\mdsy@DeclareSymbol{exists}{symbols}{\mathord}
+\mdsy@DeclareSymbol{nexists}{symbols}{\mathord}
+\mdsy@DeclareSymbol{Finv}{symbols}{\mathord}
+\mdsy@DeclareSymbol{Game}{symbols}{\mathord}
+\mdsy@DeclareSymbol{complement}{symbols}{\mathord}
+\mdsy@DeclareSymbol{flat}{symbols}{\mathord}
+\mdsy@DeclareSymbol{natural}{symbols}{\mathord}
+\mdsy@DeclareSymbol{sharp}{symbols}{\mathord}
+\mdsy@DeclareSymbol{aleph}{symbols}{\mathord}
+\mdsy@DeclareSymbol{beth}{symbols}{\mathord}
+\mdsy@DeclareSymbol{gimel}{symbols}{\mathord}
+\mdsy@DeclareSymbol{daleth}{symbols}{\mathord}
+\mdsy@DeclareSymbol{wp}{symbols}{\mathord}
+\mdsy@DeclareSymbol{nabla}{symbols}{\mathord}
 %    \end{macrocode}
 % MdSymbolB: relations
 %    \begin{macrocode}
 \mdsy@setslot{0}
-\mdsy@DeclareSymbol{equal}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{equiv}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{sim}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{backsim}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{approx}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{triplesim}{MdRelations}{\mathrel}
-  \mdsy@DeclareAlias{approxident}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{simeq}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{backsimeq}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{eqsim}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{cong}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{backcong}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{approxeq}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{bumpeq}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{bumpeqq}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{Bumpeq}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{doteq}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{eqdot}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{Doteq}{MdRelations}{\mathrel}
-  \mdsy@DeclareAlias{doteqdot}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{fallingdotseq}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{risingdotseq}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{coloneq}{MdRelations}{\mathrel}
-  \mdsy@DeclareAlias{coloneqq}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{eqcolon}{MdRelations}{\mathrel}
-  \mdsy@DeclareAlias{eqqcolon}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{smile}{MdRelations}{\mathrel}
-  \mdsy@DeclareAlias{smallsmile}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{frown}{MdRelations}{\mathrel}
-  \mdsy@DeclareAlias{smallfrown}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{smilefrown}{MdRelations}{\mathrel}
-  \mdsy@DeclareAlias{asymp}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{frownsmile}{MdRelations}{\mathrel}
-  \mdsy@DeclareAlias{closure}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{smileeq}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{frowneq}{MdRelations}{\mathrel}
-  \mdsy@DeclareAlias{arceq}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{eqcirc}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{circeq}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{wedgeq}{MdRelations}{\mathrel}
-  \mdsy@DeclareAlias{hateq}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{veeeq}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{stareq}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{triangleeq}{MdRelations}{\mathrel}
-  \mdsy@DeclareAlias{triangleq}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{in}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{owns}{MdRelations}{\mathrel}
-  \mdsy@DeclareAlias{ni}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{less}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{gtr}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{leq}{MdRelations}{\mathrel}
-  \mdsy@DeclareAlias{le}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{geq}{MdRelations}{\mathrel}
-  \mdsy@DeclareAlias{ge}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{leqslant}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{geqslant}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{leqq}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{geqq}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{lesssim}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{gtrsim}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{lessapprox}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{gtrapprox}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{lessgtr}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{gtrless}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{lesseqgtr}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{gtreqless}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{lesseqqgtr}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{gtreqqless}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{lesseqslantgtr}{MdRelations}{\mathrel}
-  \mdsy@DeclareAlias{lesg}{MdRelations}{\mathrel}
-  \mdsy@DeclareAlias{lesseqgtrslant}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{gtreqslantless}{MdRelations}{\mathrel}
-  \mdsy@DeclareAlias{gesl}{MdRelations}{\mathrel}
-  \mdsy@DeclareAlias{gtreqlessslant}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{ll}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{gg}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{lll}{MdRelations}{\mathrel}
-  \mdsy@DeclareAlias{llless}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{ggg}{MdRelations}{\mathrel}
-  \mdsy@DeclareAlias{gggtr}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{lessclosed}{MdRelations}{\mathrel}
-  \mdsy@DeclareAlias{lhd}{MdRelations}{\mathbin}
-  \mdsy@DeclareAlias{vartriangleleft}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{gtrclosed}{MdRelations}{\mathrel}
-  \mdsy@DeclareAlias{rhd}{MdRelations}{\mathbin}
-  \mdsy@DeclareAlias{vartriangleright}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{leqclosed}{MdRelations}{\mathrel}
-  \mdsy@DeclareAlias{unlhd}{MdRelations}{\mathbin}
-  \mdsy@DeclareAlias{trianglelefteq}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{geqclosed}{MdRelations}{\mathrel}
-  \mdsy@DeclareAlias{unrhd}{MdRelations}{\mathbin}
-  \mdsy@DeclareAlias{trianglerighteq}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{lesscc}{MdRelations}{\mathrel}
-  \mdsy@DeclareAlias{ltcc}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{gtrcc}{MdRelations}{\mathrel}
-  \mdsy@DeclareAlias{gtcc}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{leqslcc}{MdRelations}{\mathrel}
-  \mdsy@DeclareAlias{lescc}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{geqslcc}{MdRelations}{\mathrel}
-  \mdsy@DeclareAlias{gescc}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{sqsubset}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{sqsupset}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{sqsubseteq}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{sqsupseteq}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{sqsubseteqq}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{sqsupseteqq}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{Sqsubset}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{Sqsupset}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{subset}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{supset}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{subseteq}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{supseteq}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{subseteqq}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{supseteqq}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{Subset}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{Supset}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{prec}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{succ}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{preceq}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{succeq}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{preccurlyeq}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{succcurlyeq}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{preceqq}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{succeqq}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{precsim}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{succsim}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{precapprox}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{succapprox}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{lessdot}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{gtrdot}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{leqdot}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{geqdot}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{leqslantdot}{MdRelations}{\mathrel}
-  \mdsy@DeclareAlias{lesdot}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{geqslantdot}{MdRelations}{\mathrel}
-  \mdsy@DeclareAlias{gesdot}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{eqslantless}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{eqslantgtr}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{curlyeqprec}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{curlyeqsucc}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{nequal}{MdRelations}{\mathrel}
-  \mdsy@DeclareAlias{neq}{MdRelations}{\mathrel}
-  \mdsy@DeclareAlias{ne}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{nequiv}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{nsim}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{nbacksim}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{napprox}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{ntriplesim}{MdRelations}{\mathrel}
-  \mdsy@DeclareAlias{napproxident}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{nsimeq}{MdRelations}{\mathrel}
-  \mdsy@DeclareAlias{nsime}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{nbacksimeq}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{neqsim}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{ncong}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{nbackcong}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{napproxeq}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{nbumpeq}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{nbumpeqq}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{nBumpeq}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{ndoteq}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{neqdot}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{nDoteq}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{nfallingdotseq}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{nrisingdotseq}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{nsmile}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{nfrown}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{nsmilefrown}{MdRelations}{\mathrel}
-  \mdsy@DeclareAlias{nasymp}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{nfrownsmile}{MdRelations}{\mathrel}
-  \mdsy@DeclareAlias{nclosure}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{nsmileeq}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{nfrowneq}{MdRelations}{\mathrel}
-  \mdsy@DeclareAlias{narceq}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{neqcirc}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{ncirceq}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{nwedgeq}{MdRelations}{\mathrel}
-  \mdsy@DeclareAlias{nhateq}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{nveeeq}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{nstareq}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{ntriangleeq}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{nin}{MdRelations}{\mathrel}
-  \mdsy@DeclareAlias{notin}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{nowns}{MdRelations}{\mathrel}
-  \mdsy@DeclareAlias{nni}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{nless}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{ngtr}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{nleq}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{ngeq}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{nleqslant}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{ngeqslant}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{nleqq}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{ngeqq}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{nlesssim}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{ngtrsim}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{nlessapprox}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{ngtrapprox}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{nlessgtr}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{ngtrless}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{nlesseqgtr}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{ngtreqless}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{nlesseqqgtr}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{ngtreqqless}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{nlesseqslantgtr}{MdRelations}{\mathrel}
-  \mdsy@DeclareAlias{nlesg}{MdRelations}{\mathrel}
-  \mdsy@DeclareAlias{nlesseqgtrslant}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{ngtreqslantless}{MdRelations}{\mathrel}
-  \mdsy@DeclareAlias{ngesl}{MdRelations}{\mathrel}
-  \mdsy@DeclareAlias{ngtreqlessslant}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{nll}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{ngg}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{nlll}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{nggg}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{nlessclosed}{MdRelations}{\mathrel}
-  \mdsy@DeclareAlias{ntriangleleft}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{ngtrclosed}{MdRelations}{\mathrel}
-  \mdsy@DeclareAlias{ntriangleright}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{nleqclosed}{MdRelations}{\mathrel}
-  \mdsy@DeclareAlias{ntrianglelefteq}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{ngeqclosed}{MdRelations}{\mathrel}
-  \mdsy@DeclareAlias{ntrianglerighteq}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{nlesscc}{MdRelations}{\mathrel}
-  \mdsy@DeclareAlias{nltcc}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{ngtrcc}{MdRelations}{\mathrel}
-  \mdsy@DeclareAlias{ngtcc}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{nleqslcc}{MdRelations}{\mathrel}
-  \mdsy@DeclareAlias{nlescc}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{ngeqslcc}{MdRelations}{\mathrel}
-  \mdsy@DeclareAlias{ngescc}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{nsqsubset}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{nsqsupset}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{nsqsubseteq}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{nsqsupseteq}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{nsqsubseteqq}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{nsqsupseteqq}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{nSqsubset}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{nSqsupset}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{nsubset}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{nsupset}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{nsubseteq}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{nsupseteq}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{nsubseteqq}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{nsupseteqq}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{nSubset}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{nSupset}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{nprec}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{nsucc}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{npreceq}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{nsucceq}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{npreccurlyeq}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{nsucccurlyeq}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{npreceqq}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{nsucceqq}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{nprecsim}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{nsuccsim}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{nprecapprox}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{nsuccapprox}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{nlessdot}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{ngtrdot}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{nleqdot}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{ngeqdot}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{nleqslantdot}{MdRelations}{\mathrel}
-  \mdsy@DeclareAlias{nlesdot}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{ngeqslantdot}{MdRelations}{\mathrel}
-  \mdsy@DeclareAlias{ngesdot}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{neqslantless}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{neqslantgtr}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{ncurlyeqprec}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{ncurlyeqsucc}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{simneqq}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{backsimneqq}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{lneq}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{gneq}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{lneqq}{MdRelations}{\mathrel}
-  \mdsy@DeclareAlias{lvertneqq}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{gneqq}{MdRelations}{\mathrel}
-  \mdsy@DeclareAlias{gvertneqq}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{lnsim}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{gnsim}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{lnapprox}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{gnapprox}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{sqsubsetneq}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{sqsupsetneq}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{sqsubsetneqq}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{sqsupsetneqq}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{subsetneq}{MdRelations}{\mathrel}
-  \mdsy@DeclareAlias{varsubsetneq}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{supsetneq}{MdRelations}{\mathrel}
-  \mdsy@DeclareAlias{varsupsetneq}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{subsetneqq}{MdRelations}{\mathrel}
-  \mdsy@DeclareAlias{varsubsetneqq}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{supsetneqq}{MdRelations}{\mathrel}
-  \mdsy@DeclareAlias{varsupsetneqq}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{precneq}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{succneq}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{precneqq}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{succneqq}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{precnsim}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{succnsim}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{precnapprox}{MdRelations}{\mathrel}
-\mdsy@DeclareSymbol{succnapprox}{MdRelations}{\mathrel}
+\mdsy@DeclareSymbol{equal}{relations}{\mathrel}
+\mdsy@DeclareSymbol{equiv}{relations}{\mathrel}
+\mdsy@DeclareSymbol{sim}{relations}{\mathrel}
+\mdsy@DeclareSymbol{backsim}{relations}{\mathrel}
+\mdsy@DeclareSymbol{approx}{relations}{\mathrel}
+\mdsy@DeclareSymbol{triplesim}{relations}{\mathrel}
+  \mdsy@DeclareAlias{approxident}{relations}{\mathrel}
+\mdsy@DeclareSymbol{simeq}{relations}{\mathrel}
+\mdsy@DeclareSymbol{backsimeq}{relations}{\mathrel}
+\mdsy@DeclareSymbol{eqsim}{relations}{\mathrel}
+\mdsy@DeclareSymbol{cong}{relations}{\mathrel}
+\mdsy@DeclareSymbol{backcong}{relations}{\mathrel}
+\mdsy@DeclareSymbol{approxeq}{relations}{\mathrel}
+\mdsy@DeclareSymbol{bumpeq}{relations}{\mathrel}
+\mdsy@DeclareSymbol{bumpeqq}{relations}{\mathrel}
+\mdsy@DeclareSymbol{Bumpeq}{relations}{\mathrel}
+\mdsy@DeclareSymbol{doteq}{relations}{\mathrel}
+\mdsy@DeclareSymbol{eqdot}{relations}{\mathrel}
+\mdsy@DeclareSymbol{Doteq}{relations}{\mathrel}
+  \mdsy@DeclareAlias{doteqdot}{relations}{\mathrel}
+\mdsy@DeclareSymbol{fallingdotseq}{relations}{\mathrel}
+\mdsy@DeclareSymbol{risingdotseq}{relations}{\mathrel}
+\mdsy@DeclareSymbol{coloneq}{relations}{\mathrel}
+  \mdsy@DeclareAlias{coloneqq}{relations}{\mathrel}
+\mdsy@DeclareSymbol{eqcolon}{relations}{\mathrel}
+  \mdsy@DeclareAlias{eqqcolon}{relations}{\mathrel}
+\mdsy@DeclareSymbol{smile}{relations}{\mathrel}
+  \mdsy@DeclareAlias{smallsmile}{relations}{\mathrel}
+\mdsy@DeclareSymbol{frown}{relations}{\mathrel}
+  \mdsy@DeclareAlias{smallfrown}{relations}{\mathrel}
+\mdsy@DeclareSymbol{smilefrown}{relations}{\mathrel}
+  \mdsy@DeclareAlias{asymp}{relations}{\mathrel}
+\mdsy@DeclareSymbol{frownsmile}{relations}{\mathrel}
+  \mdsy@DeclareAlias{closure}{relations}{\mathrel}
+\mdsy@DeclareSymbol{smileeq}{relations}{\mathrel}
+\mdsy@DeclareSymbol{frowneq}{relations}{\mathrel}
+  \mdsy@DeclareAlias{arceq}{relations}{\mathrel}
+\mdsy@DeclareSymbol{eqcirc}{relations}{\mathrel}
+\mdsy@DeclareSymbol{circeq}{relations}{\mathrel}
+\mdsy@DeclareSymbol{wedgeq}{relations}{\mathrel}
+  \mdsy@DeclareAlias{hateq}{relations}{\mathrel}
+\mdsy@DeclareSymbol{veeeq}{relations}{\mathrel}
+\mdsy@DeclareSymbol{stareq}{relations}{\mathrel}
+\mdsy@DeclareSymbol{triangleeq}{relations}{\mathrel}
+  \mdsy@DeclareAlias{triangleq}{relations}{\mathrel}
+\mdsy@DeclareSymbol{in}{relations}{\mathrel}
+\mdsy@DeclareSymbol{owns}{relations}{\mathrel}
+  \mdsy@DeclareAlias{ni}{relations}{\mathrel}
+\mdsy@DeclareSymbol{less}{relations}{\mathrel}
+\mdsy@DeclareSymbol{gtr}{relations}{\mathrel}
+\mdsy@DeclareSymbol{leq}{relations}{\mathrel}
+  \mdsy@DeclareAlias{le}{relations}{\mathrel}
+\mdsy@DeclareSymbol{geq}{relations}{\mathrel}
+  \mdsy@DeclareAlias{ge}{relations}{\mathrel}
+\mdsy@DeclareSymbol{leqslant}{relations}{\mathrel}
+\mdsy@DeclareSymbol{geqslant}{relations}{\mathrel}
+\mdsy@DeclareSymbol{leqq}{relations}{\mathrel}
+\mdsy@DeclareSymbol{geqq}{relations}{\mathrel}
+\mdsy@DeclareSymbol{lesssim}{relations}{\mathrel}
+\mdsy@DeclareSymbol{gtrsim}{relations}{\mathrel}
+\mdsy@DeclareSymbol{lessapprox}{relations}{\mathrel}
+\mdsy@DeclareSymbol{gtrapprox}{relations}{\mathrel}
+\mdsy@DeclareSymbol{lessgtr}{relations}{\mathrel}
+\mdsy@DeclareSymbol{gtrless}{relations}{\mathrel}
+\mdsy@DeclareSymbol{lesseqgtr}{relations}{\mathrel}
+\mdsy@DeclareSymbol{gtreqless}{relations}{\mathrel}
+\mdsy@DeclareSymbol{lesseqqgtr}{relations}{\mathrel}
+\mdsy@DeclareSymbol{gtreqqless}{relations}{\mathrel}
+\mdsy@DeclareSymbol{lesseqslantgtr}{relations}{\mathrel}
+  \mdsy@DeclareAlias{lesg}{relations}{\mathrel}
+  \mdsy@DeclareAlias{lesseqgtrslant}{relations}{\mathrel}
+\mdsy@DeclareSymbol{gtreqslantless}{relations}{\mathrel}
+  \mdsy@DeclareAlias{gesl}{relations}{\mathrel}
+  \mdsy@DeclareAlias{gtreqlessslant}{relations}{\mathrel}
+\mdsy@DeclareSymbol{ll}{relations}{\mathrel}
+\mdsy@DeclareSymbol{gg}{relations}{\mathrel}
+\mdsy@DeclareSymbol{lll}{relations}{\mathrel}
+  \mdsy@DeclareAlias{llless}{relations}{\mathrel}
+\mdsy@DeclareSymbol{ggg}{relations}{\mathrel}
+  \mdsy@DeclareAlias{gggtr}{relations}{\mathrel}
+\mdsy@DeclareSymbol{lessclosed}{relations}{\mathrel}
+  \mdsy@DeclareAlias{lhd}{relations}{\mathbin}
+  \mdsy@DeclareAlias{vartriangleleft}{relations}{\mathrel}
+\mdsy@DeclareSymbol{gtrclosed}{relations}{\mathrel}
+  \mdsy@DeclareAlias{rhd}{relations}{\mathbin}
+  \mdsy@DeclareAlias{vartriangleright}{relations}{\mathrel}
+\mdsy@DeclareSymbol{leqclosed}{relations}{\mathrel}
+  \mdsy@DeclareAlias{unlhd}{relations}{\mathbin}
+  \mdsy@DeclareAlias{trianglelefteq}{relations}{\mathrel}
+\mdsy@DeclareSymbol{geqclosed}{relations}{\mathrel}
+  \mdsy@DeclareAlias{unrhd}{relations}{\mathbin}
+  \mdsy@DeclareAlias{trianglerighteq}{relations}{\mathrel}
+\mdsy@DeclareSymbol{lesscc}{relations}{\mathrel}
+  \mdsy@DeclareAlias{ltcc}{relations}{\mathrel}
+\mdsy@DeclareSymbol{gtrcc}{relations}{\mathrel}
+  \mdsy@DeclareAlias{gtcc}{relations}{\mathrel}
+\mdsy@DeclareSymbol{leqslcc}{relations}{\mathrel}
+  \mdsy@DeclareAlias{lescc}{relations}{\mathrel}
+\mdsy@DeclareSymbol{geqslcc}{relations}{\mathrel}
+  \mdsy@DeclareAlias{gescc}{relations}{\mathrel}
+\mdsy@DeclareSymbol{sqsubset}{relations}{\mathrel}
+\mdsy@DeclareSymbol{sqsupset}{relations}{\mathrel}
+\mdsy@DeclareSymbol{sqsubseteq}{relations}{\mathrel}
+\mdsy@DeclareSymbol{sqsupseteq}{relations}{\mathrel}
+\mdsy@DeclareSymbol{sqsubseteqq}{relations}{\mathrel}
+\mdsy@DeclareSymbol{sqsupseteqq}{relations}{\mathrel}
+\mdsy@DeclareSymbol{Sqsubset}{relations}{\mathrel}
+\mdsy@DeclareSymbol{Sqsupset}{relations}{\mathrel}
+\mdsy@DeclareSymbol{subset}{relations}{\mathrel}
+\mdsy@DeclareSymbol{supset}{relations}{\mathrel}
+\mdsy@DeclareSymbol{subseteq}{relations}{\mathrel}
+\mdsy@DeclareSymbol{supseteq}{relations}{\mathrel}
+\mdsy@DeclareSymbol{subseteqq}{relations}{\mathrel}
+\mdsy@DeclareSymbol{supseteqq}{relations}{\mathrel}
+\mdsy@DeclareSymbol{Subset}{relations}{\mathrel}
+\mdsy@DeclareSymbol{Supset}{relations}{\mathrel}
+\mdsy@DeclareSymbol{prec}{relations}{\mathrel}
+\mdsy@DeclareSymbol{succ}{relations}{\mathrel}
+\mdsy@DeclareSymbol{preceq}{relations}{\mathrel}
+\mdsy@DeclareSymbol{succeq}{relations}{\mathrel}
+\mdsy@DeclareSymbol{preccurlyeq}{relations}{\mathrel}
+\mdsy@DeclareSymbol{succcurlyeq}{relations}{\mathrel}
+\mdsy@DeclareSymbol{preceqq}{relations}{\mathrel}
+\mdsy@DeclareSymbol{succeqq}{relations}{\mathrel}
+\mdsy@DeclareSymbol{precsim}{relations}{\mathrel}
+\mdsy@DeclareSymbol{succsim}{relations}{\mathrel}
+\mdsy@DeclareSymbol{precapprox}{relations}{\mathrel}
+\mdsy@DeclareSymbol{succapprox}{relations}{\mathrel}
+\mdsy@DeclareSymbol{lessdot}{relations}{\mathrel}
+\mdsy@DeclareSymbol{gtrdot}{relations}{\mathrel}
+\mdsy@DeclareSymbol{leqdot}{relations}{\mathrel}
+\mdsy@DeclareSymbol{geqdot}{relations}{\mathrel}
+\mdsy@DeclareSymbol{leqslantdot}{relations}{\mathrel}
+  \mdsy@DeclareAlias{lesdot}{relations}{\mathrel}
+\mdsy@DeclareSymbol{geqslantdot}{relations}{\mathrel}
+  \mdsy@DeclareAlias{gesdot}{relations}{\mathrel}
+\mdsy@DeclareSymbol{eqslantless}{relations}{\mathrel}
+\mdsy@DeclareSymbol{eqslantgtr}{relations}{\mathrel}
+\mdsy@DeclareSymbol{curlyeqprec}{relations}{\mathrel}
+\mdsy@DeclareSymbol{curlyeqsucc}{relations}{\mathrel}
+\mdsy@DeclareSymbol{nequal}{relations}{\mathrel}
+  \mdsy@DeclareAlias{neq}{relations}{\mathrel}
+  \mdsy@DeclareAlias{ne}{relations}{\mathrel}
+\mdsy@DeclareSymbol{nequiv}{relations}{\mathrel}
+\mdsy@DeclareSymbol{nsim}{relations}{\mathrel}
+\mdsy@DeclareSymbol{nbacksim}{relations}{\mathrel}
+\mdsy@DeclareSymbol{napprox}{relations}{\mathrel}
+\mdsy@DeclareSymbol{ntriplesim}{relations}{\mathrel}
+  \mdsy@DeclareAlias{napproxident}{relations}{\mathrel}
+\mdsy@DeclareSymbol{nsimeq}{relations}{\mathrel}
+  \mdsy@DeclareAlias{nsime}{relations}{\mathrel}
+\mdsy@DeclareSymbol{nbacksimeq}{relations}{\mathrel}
+\mdsy@DeclareSymbol{neqsim}{relations}{\mathrel}
+\mdsy@DeclareSymbol{ncong}{relations}{\mathrel}
+\mdsy@DeclareSymbol{nbackcong}{relations}{\mathrel}
+\mdsy@DeclareSymbol{napproxeq}{relations}{\mathrel}
+\mdsy@DeclareSymbol{nbumpeq}{relations}{\mathrel}
+\mdsy@DeclareSymbol{nbumpeqq}{relations}{\mathrel}
+\mdsy@DeclareSymbol{nBumpeq}{relations}{\mathrel}
+\mdsy@DeclareSymbol{ndoteq}{relations}{\mathrel}
+\mdsy@DeclareSymbol{neqdot}{relations}{\mathrel}
+\mdsy@DeclareSymbol{nDoteq}{relations}{\mathrel}
+\mdsy@DeclareSymbol{nfallingdotseq}{relations}{\mathrel}
+\mdsy@DeclareSymbol{nrisingdotseq}{relations}{\mathrel}
+\mdsy@DeclareSymbol{nsmile}{relations}{\mathrel}
+\mdsy@DeclareSymbol{nfrown}{relations}{\mathrel}
+\mdsy@DeclareSymbol{nsmilefrown}{relations}{\mathrel}
+  \mdsy@DeclareAlias{nasymp}{relations}{\mathrel}
+\mdsy@DeclareSymbol{nfrownsmile}{relations}{\mathrel}
+  \mdsy@DeclareAlias{nclosure}{relations}{\mathrel}
+\mdsy@DeclareSymbol{nsmileeq}{relations}{\mathrel}
+\mdsy@DeclareSymbol{nfrowneq}{relations}{\mathrel}
+  \mdsy@DeclareAlias{narceq}{relations}{\mathrel}
+\mdsy@DeclareSymbol{neqcirc}{relations}{\mathrel}
+\mdsy@DeclareSymbol{ncirceq}{relations}{\mathrel}
+\mdsy@DeclareSymbol{nwedgeq}{relations}{\mathrel}
+  \mdsy@DeclareAlias{nhateq}{relations}{\mathrel}
+\mdsy@DeclareSymbol{nveeeq}{relations}{\mathrel}
+\mdsy@DeclareSymbol{nstareq}{relations}{\mathrel}
+\mdsy@DeclareSymbol{ntriangleeq}{relations}{\mathrel}
+\mdsy@DeclareSymbol{nin}{relations}{\mathrel}
+  \mdsy@DeclareAlias{notin}{relations}{\mathrel}
+\mdsy@DeclareSymbol{nowns}{relations}{\mathrel}
+  \mdsy@DeclareAlias{nni}{relations}{\mathrel}
+\mdsy@DeclareSymbol{nless}{relations}{\mathrel}
+\mdsy@DeclareSymbol{ngtr}{relations}{\mathrel}
+\mdsy@DeclareSymbol{nleq}{relations}{\mathrel}
+\mdsy@DeclareSymbol{ngeq}{relations}{\mathrel}
+\mdsy@DeclareSymbol{nleqslant}{relations}{\mathrel}
+\mdsy@DeclareSymbol{ngeqslant}{relations}{\mathrel}
+\mdsy@DeclareSymbol{nleqq}{relations}{\mathrel}
+\mdsy@DeclareSymbol{ngeqq}{relations}{\mathrel}
+\mdsy@DeclareSymbol{nlesssim}{relations}{\mathrel}
+\mdsy@DeclareSymbol{ngtrsim}{relations}{\mathrel}
+\mdsy@DeclareSymbol{nlessapprox}{relations}{\mathrel}
+\mdsy@DeclareSymbol{ngtrapprox}{relations}{\mathrel}
+\mdsy@DeclareSymbol{nlessgtr}{relations}{\mathrel}
+\mdsy@DeclareSymbol{ngtrless}{relations}{\mathrel}
+\mdsy@DeclareSymbol{nlesseqgtr}{relations}{\mathrel}
+\mdsy@DeclareSymbol{ngtreqless}{relations}{\mathrel}
+\mdsy@DeclareSymbol{nlesseqqgtr}{relations}{\mathrel}
+\mdsy@DeclareSymbol{ngtreqqless}{relations}{\mathrel}
+\mdsy@DeclareSymbol{nlesseqslantgtr}{relations}{\mathrel}
+  \mdsy@DeclareAlias{nlesg}{relations}{\mathrel}
+  \mdsy@DeclareAlias{nlesseqgtrslant}{relations}{\mathrel}
+\mdsy@DeclareSymbol{ngtreqslantless}{relations}{\mathrel}
+  \mdsy@DeclareAlias{ngesl}{relations}{\mathrel}
+  \mdsy@DeclareAlias{ngtreqlessslant}{relations}{\mathrel}
+\mdsy@DeclareSymbol{nll}{relations}{\mathrel}
+\mdsy@DeclareSymbol{ngg}{relations}{\mathrel}
+\mdsy@DeclareSymbol{nlll}{relations}{\mathrel}
+\mdsy@DeclareSymbol{nggg}{relations}{\mathrel}
+\mdsy@DeclareSymbol{nlessclosed}{relations}{\mathrel}
+  \mdsy@DeclareAlias{ntriangleleft}{relations}{\mathrel}
+\mdsy@DeclareSymbol{ngtrclosed}{relations}{\mathrel}
+  \mdsy@DeclareAlias{ntriangleright}{relations}{\mathrel}
+\mdsy@DeclareSymbol{nleqclosed}{relations}{\mathrel}
+  \mdsy@DeclareAlias{ntrianglelefteq}{relations}{\mathrel}
+\mdsy@DeclareSymbol{ngeqclosed}{relations}{\mathrel}
+  \mdsy@DeclareAlias{ntrianglerighteq}{relations}{\mathrel}
+\mdsy@DeclareSymbol{nlesscc}{relations}{\mathrel}
+  \mdsy@DeclareAlias{nltcc}{relations}{\mathrel}
+\mdsy@DeclareSymbol{ngtrcc}{relations}{\mathrel}
+  \mdsy@DeclareAlias{ngtcc}{relations}{\mathrel}
+\mdsy@DeclareSymbol{nleqslcc}{relations}{\mathrel}
+  \mdsy@DeclareAlias{nlescc}{relations}{\mathrel}
+\mdsy@DeclareSymbol{ngeqslcc}{relations}{\mathrel}
+  \mdsy@DeclareAlias{ngescc}{relations}{\mathrel}
+\mdsy@DeclareSymbol{nsqsubset}{relations}{\mathrel}
+\mdsy@DeclareSymbol{nsqsupset}{relations}{\mathrel}
+\mdsy@DeclareSymbol{nsqsubseteq}{relations}{\mathrel}
+\mdsy@DeclareSymbol{nsqsupseteq}{relations}{\mathrel}
+\mdsy@DeclareSymbol{nsqsubseteqq}{relations}{\mathrel}
+\mdsy@DeclareSymbol{nsqsupseteqq}{relations}{\mathrel}
+\mdsy@DeclareSymbol{nSqsubset}{relations}{\mathrel}
+\mdsy@DeclareSymbol{nSqsupset}{relations}{\mathrel}
+\mdsy@DeclareSymbol{nsubset}{relations}{\mathrel}
+\mdsy@DeclareSymbol{nsupset}{relations}{\mathrel}
+\mdsy@DeclareSymbol{nsubseteq}{relations}{\mathrel}
+\mdsy@DeclareSymbol{nsupseteq}{relations}{\mathrel}
+\mdsy@DeclareSymbol{nsubseteqq}{relations}{\mathrel}
+\mdsy@DeclareSymbol{nsupseteqq}{relations}{\mathrel}
+\mdsy@DeclareSymbol{nSubset}{relations}{\mathrel}
+\mdsy@DeclareSymbol{nSupset}{relations}{\mathrel}
+\mdsy@DeclareSymbol{nprec}{relations}{\mathrel}
+\mdsy@DeclareSymbol{nsucc}{relations}{\mathrel}
+\mdsy@DeclareSymbol{npreceq}{relations}{\mathrel}
+\mdsy@DeclareSymbol{nsucceq}{relations}{\mathrel}
+\mdsy@DeclareSymbol{npreccurlyeq}{relations}{\mathrel}
+\mdsy@DeclareSymbol{nsucccurlyeq}{relations}{\mathrel}
+\mdsy@DeclareSymbol{npreceqq}{relations}{\mathrel}
+\mdsy@DeclareSymbol{nsucceqq}{relations}{\mathrel}
+\mdsy@DeclareSymbol{nprecsim}{relations}{\mathrel}
+\mdsy@DeclareSymbol{nsuccsim}{relations}{\mathrel}
+\mdsy@DeclareSymbol{nprecapprox}{relations}{\mathrel}
+\mdsy@DeclareSymbol{nsuccapprox}{relations}{\mathrel}
+\mdsy@DeclareSymbol{nlessdot}{relations}{\mathrel}
+\mdsy@DeclareSymbol{ngtrdot}{relations}{\mathrel}
+\mdsy@DeclareSymbol{nleqdot}{relations}{\mathrel}
+\mdsy@DeclareSymbol{ngeqdot}{relations}{\mathrel}
+\mdsy@DeclareSymbol{nleqslantdot}{relations}{\mathrel}
+  \mdsy@DeclareAlias{nlesdot}{relations}{\mathrel}
+\mdsy@DeclareSymbol{ngeqslantdot}{relations}{\mathrel}
+  \mdsy@DeclareAlias{ngesdot}{relations}{\mathrel}
+\mdsy@DeclareSymbol{neqslantless}{relations}{\mathrel}
+\mdsy@DeclareSymbol{neqslantgtr}{relations}{\mathrel}
+\mdsy@DeclareSymbol{ncurlyeqprec}{relations}{\mathrel}
+\mdsy@DeclareSymbol{ncurlyeqsucc}{relations}{\mathrel}
+\mdsy@DeclareSymbol{simneqq}{relations}{\mathrel}
+\mdsy@DeclareSymbol{backsimneqq}{relations}{\mathrel}
+\mdsy@DeclareSymbol{lneq}{relations}{\mathrel}
+\mdsy@DeclareSymbol{gneq}{relations}{\mathrel}
+\mdsy@DeclareSymbol{lneqq}{relations}{\mathrel}
+  \mdsy@DeclareAlias{lvertneqq}{relations}{\mathrel}
+\mdsy@DeclareSymbol{gneqq}{relations}{\mathrel}
+  \mdsy@DeclareAlias{gvertneqq}{relations}{\mathrel}
+\mdsy@DeclareSymbol{lnsim}{relations}{\mathrel}
+\mdsy@DeclareSymbol{gnsim}{relations}{\mathrel}
+\mdsy@DeclareSymbol{lnapprox}{relations}{\mathrel}
+\mdsy@DeclareSymbol{gnapprox}{relations}{\mathrel}
+\mdsy@DeclareSymbol{sqsubsetneq}{relations}{\mathrel}
+\mdsy@DeclareSymbol{sqsupsetneq}{relations}{\mathrel}
+\mdsy@DeclareSymbol{sqsubsetneqq}{relations}{\mathrel}
+\mdsy@DeclareSymbol{sqsupsetneqq}{relations}{\mathrel}
+\mdsy@DeclareSymbol{subsetneq}{relations}{\mathrel}
+  \mdsy@DeclareAlias{varsubsetneq}{relations}{\mathrel}
+\mdsy@DeclareSymbol{supsetneq}{relations}{\mathrel}
+  \mdsy@DeclareAlias{varsupsetneq}{relations}{\mathrel}
+\mdsy@DeclareSymbol{subsetneqq}{relations}{\mathrel}
+  \mdsy@DeclareAlias{varsubsetneqq}{relations}{\mathrel}
+\mdsy@DeclareSymbol{supsetneqq}{relations}{\mathrel}
+  \mdsy@DeclareAlias{varsupsetneqq}{relations}{\mathrel}
+\mdsy@DeclareSymbol{precneq}{relations}{\mathrel}
+\mdsy@DeclareSymbol{succneq}{relations}{\mathrel}
+\mdsy@DeclareSymbol{precneqq}{relations}{\mathrel}
+\mdsy@DeclareSymbol{succneqq}{relations}{\mathrel}
+\mdsy@DeclareSymbol{precnsim}{relations}{\mathrel}
+\mdsy@DeclareSymbol{succnsim}{relations}{\mathrel}
+\mdsy@DeclareSymbol{precnapprox}{relations}{\mathrel}
+\mdsy@DeclareSymbol{succnapprox}{relations}{\mathrel}
 %    \end{macrocode}
 % MdSymbolC: arrows and turnstile symbols
 %    \begin{macrocode}
 \mdsy@setslot{0}
-\mdsy@DeclareSymbol{rightarrow}{MdArrows}{\mathrel}
-  \mdsy@DeclareAlias{to}{MdArrows}{\mathrel}
-% \mdsy@DeclareSymbol{uparrow}{MdArrows}{\mathrel}
+\mdsy@DeclareSymbol{rightarrow}{arrows}{\mathrel}
+  \mdsy@DeclareAlias{to}{arrows}{\mathrel}
+% \mdsy@DeclareSymbol{uparrow}{arrows}{\mathrel}
 \mdsy@nextslot                  %uparrow defined below
-\mdsy@DeclareSymbol{leftarrow}{MdArrows}{\mathrel}
-\mdsy@DeclareAlias{gets}{MdArrows}{\mathrel}
-% \mdsy@DeclareSymbol{downarrow}{MdArrows}{\mathrel}
+\mdsy@DeclareSymbol{leftarrow}{arrows}{\mathrel}
+\mdsy@DeclareAlias{gets}{arrows}{\mathrel}
+% \mdsy@DeclareSymbol{downarrow}{arrows}{\mathrel}
 \mdsy@nextslot                  %downarrow defined below
-\mdsy@DeclareSymbol{nearrow}{MdArrows}{\mathrel}
-\mdsy@DeclareSymbol{nwarrow}{MdArrows}{\mathrel}
-\mdsy@DeclareSymbol{swarrow}{MdArrows}{\mathrel}
-\mdsy@DeclareSymbol{searrow}{MdArrows}{\mathrel}
-\mdsy@DeclareSymbol{Rightarrow}{MdArrows}{\mathrel}
-% \mdsy@DeclareSymbol{Uparrow}{MdArrows}{\mathrel}
+\mdsy@DeclareSymbol{nearrow}{arrows}{\mathrel}
+\mdsy@DeclareSymbol{nwarrow}{arrows}{\mathrel}
+\mdsy@DeclareSymbol{swarrow}{arrows}{\mathrel}
+\mdsy@DeclareSymbol{searrow}{arrows}{\mathrel}
+\mdsy@DeclareSymbol{Rightarrow}{arrows}{\mathrel}
+% \mdsy@DeclareSymbol{Uparrow}{arrows}{\mathrel}
 \mdsy@nextslot                  %Uparrow defined below
-\mdsy@DeclareSymbol{Leftarrow}{MdArrows}{\mathrel}
-% \mdsy@DeclareSymbol{Downarrow}{MdArrows}{\mathrel}
+\mdsy@DeclareSymbol{Leftarrow}{arrows}{\mathrel}
+% \mdsy@DeclareSymbol{Downarrow}{arrows}{\mathrel}
 \mdsy@nextslot                  %Downarrow defined below
-\mdsy@DeclareSymbol{Nearrow}{MdArrows}{\mathrel}
-\mdsy@DeclareSymbol{Nwarrow}{MdArrows}{\mathrel}
-\mdsy@DeclareSymbol{Swarrow}{MdArrows}{\mathrel}
-\mdsy@DeclareSymbol{Searrow}{MdArrows}{\mathrel}
-\mdsy@DeclareSymbol{leftrightarrow}{MdArrows}{\mathrel}
-% \mdsy@DeclareSymbol{updownarrow}{MdArrows}{\mathrel}
+\mdsy@DeclareSymbol{Nearrow}{arrows}{\mathrel}
+\mdsy@DeclareSymbol{Nwarrow}{arrows}{\mathrel}
+\mdsy@DeclareSymbol{Swarrow}{arrows}{\mathrel}
+\mdsy@DeclareSymbol{Searrow}{arrows}{\mathrel}
+\mdsy@DeclareSymbol{leftrightarrow}{arrows}{\mathrel}
+% \mdsy@DeclareSymbol{updownarrow}{arrows}{\mathrel}
 \mdsy@nextslot                  %updownarrow defined below
-\mdsy@DeclareSymbol{neswarrow}{MdArrows}{\mathrel}
-\mdsy@DeclareSymbol{nwsearrow}{MdArrows}{\mathrel}
-\mdsy@DeclareSymbol{Leftrightarrow}{MdArrows}{\mathrel}
-% \mdsy@DeclareSymbol{Updownarrow}{MdArrows}{\mathrel}
+\mdsy@DeclareSymbol{neswarrow}{arrows}{\mathrel}
+\mdsy@DeclareSymbol{nwsearrow}{arrows}{\mathrel}
+\mdsy@DeclareSymbol{Leftrightarrow}{arrows}{\mathrel}
+% \mdsy@DeclareSymbol{Updownarrow}{arrows}{\mathrel}
 \mdsy@nextslot                  %Updownarrow defined below
-\mdsy@DeclareSymbol{Neswarrow}{MdArrows}{\mathrel}
-\mdsy@DeclareSymbol{Nwsearrow}{MdArrows}{\mathrel}
-\mdsy@DeclareSymbol{twoheadrightarrow}{MdArrows}{\mathrel}
-\mdsy@DeclareSymbol{twoheaduparrow}{MdArrows}{\mathrel}
-\mdsy@DeclareSymbol{twoheadleftarrow}{MdArrows}{\mathrel}
-\mdsy@DeclareSymbol{twoheaddownarrow}{MdArrows}{\mathrel}
-\mdsy@DeclareSymbol{twoheadnearrow}{MdArrows}{\mathrel}
-\mdsy@DeclareSymbol{twoheadnwarrow}{MdArrows}{\mathrel}
-\mdsy@DeclareSymbol{twoheadswarrow}{MdArrows}{\mathrel}
-\mdsy@DeclareSymbol{twoheadsearrow}{MdArrows}{\mathrel}
-\mdsy@DeclareSymbol{rightarrowtail}{MdArrows}{\mathrel}
-\mdsy@DeclareSymbol{uparrowtail}{MdArrows}{\mathrel}
-\mdsy@DeclareSymbol{leftarrowtail}{MdArrows}{\mathrel}
-\mdsy@DeclareSymbol{downarrowtail}{MdArrows}{\mathrel}
-\mdsy@DeclareSymbol{nearrowtail}{MdArrows}{\mathrel}
-\mdsy@DeclareSymbol{nwarrowtail}{MdArrows}{\mathrel}
-\mdsy@DeclareSymbol{swarrowtail}{MdArrows}{\mathrel}
-\mdsy@DeclareSymbol{searrowtail}{MdArrows}{\mathrel}
-\mdsy@DeclareSymbol{rightmapsto}{MdArrows}{\mathrel}
-  \mdsy@DeclareAlias{mapsto}{MdArrows}{\mathrel}
-\mdsy@DeclareSymbol{upmapsto}{MdArrows}{\mathrel}
-  \mdsy@DeclareAlias{mapsup}{MdArrows}{\mathrel}
-\mdsy@DeclareSymbol{leftmapsto}{MdArrows}{\mathrel}
-  \mdsy@DeclareAlias{mapsfrom}{MdArrows}{\mathrel}
-\mdsy@DeclareSymbol{downmapsto}{MdArrows}{\mathrel}
-  \mdsy@DeclareAlias{mapsdown}{MdArrows}{\mathrel}
-\mdsy@DeclareSymbol{Rightmapsto}{MdArrows}{\mathrel}
-  \mdsy@DeclareAlias{Mapsto}{MdArrows}{\mathrel}
-\mdsy@DeclareSymbol{Upmapsto}{MdArrows}{\mathrel}
-  \mdsy@DeclareAlias{Mapsup}{MdArrows}{\mathrel}
-\mdsy@DeclareSymbol{Leftmapsto}{MdArrows}{\mathrel}
-  \mdsy@DeclareAlias{Mapsfrom}{MdArrows}{\mathrel}
-\mdsy@DeclareSymbol{Downmapsto}{MdArrows}{\mathrel}
-  \mdsy@DeclareAlias{Mapsdown}{MdArrows}{\mathrel}
-\mdsy@DeclareSymbol{hookrightarrow}{MdArrows}{\mathrel}
-  \mdsy@DeclareAlias{lhookrightarrow}{MdArrows}{\mathrel}
-\mdsy@DeclareSymbol{hookuparrow}{MdArrows}{\mathrel}
-  \mdsy@DeclareAlias{lhookuparrow}{MdArrows}{\mathrel}
-\mdsy@DeclareSymbol{varhookleftarrow}{MdArrows}{\mathrel}
-  \mdsy@DeclareAlias{lhookleftarrow}{MdArrows}{\mathrel}
-\mdsy@DeclareSymbol{varhookdownarrow}{MdArrows}{\mathrel}
-  \mdsy@DeclareAlias{lhookdownarrow}{MdArrows}{\mathrel}
-\mdsy@DeclareSymbol{varhooknearrow}{MdArrows}{\mathrel}
-  \mdsy@DeclareAlias{lhooknearrow}{MdArrows}{\mathrel}
-\mdsy@DeclareSymbol{hooknwarrow}{MdArrows}{\mathrel}
-  \mdsy@DeclareAlias{hknwarrow}{MdArrows}{\mathrel}
-  \mdsy@DeclareAlias{lhooknwarrow}{MdArrows}{\mathrel}
-\mdsy@DeclareSymbol{varhookswarrow}{MdArrows}{\mathrel}
-  \mdsy@DeclareAlias{lhookswarrow}{MdArrows}{\mathrel}
-\mdsy@DeclareSymbol{hooksearrow}{MdArrows}{\mathrel}
-  \mdsy@DeclareAlias{hksearrow}{MdArrows}{\mathrel}
-  \mdsy@DeclareAlias{lhooksearrow}{MdArrows}{\mathrel}
-\mdsy@DeclareSymbol{varhookrightarrow}{MdArrows}{\mathrel}
-  \mdsy@DeclareAlias{rhookrightarrow}{MdArrows}{\mathrel}
-\mdsy@DeclareSymbol{varhookuparrow}{MdArrows}{\mathrel}
-  \mdsy@DeclareAlias{rhookuparrow}{MdArrows}{\mathrel}
-\mdsy@DeclareSymbol{hookleftarrow}{MdArrows}{\mathrel}
-  \mdsy@DeclareAlias{rhookleftarrow}{MdArrows}{\mathrel}
-\mdsy@DeclareSymbol{hookdownarrow}{MdArrows}{\mathrel}
-  \mdsy@DeclareAlias{rhookdownarrow}{MdArrows}{\mathrel}
-\mdsy@DeclareSymbol{hooknearrow}{MdArrows}{\mathrel}
-  \mdsy@DeclareAlias{hknearrow}{MdArrows}{\mathrel}
-  \mdsy@DeclareAlias{rhooknearrow}{MdArrows}{\mathrel}
-\mdsy@DeclareSymbol{varhooknwarrow}{MdArrows}{\mathrel}
-  \mdsy@DeclareAlias{rhooknwarrow}{MdArrows}{\mathrel}
-\mdsy@DeclareSymbol{hookswarrow}{MdArrows}{\mathrel}
-  \mdsy@DeclareAlias{hkswarrow}{MdArrows}{\mathrel}
-  \mdsy@DeclareAlias{rhookswarrow}{MdArrows}{\mathrel}
-\mdsy@DeclareSymbol{varhooksearrow}{MdArrows}{\mathrel}
-  \mdsy@DeclareAlias{rhooksearrow}{MdArrows}{\mathrel}
-\mdsy@DeclareSymbol{rightharpoonup}{MdArrows}{\mathrel}
-\mdsy@DeclareSymbol{upharpoonleft}{MdArrows}{\mathrel}
-\mdsy@DeclareSymbol{leftharpoondown}{MdArrows}{\mathrel}
-\mdsy@DeclareSymbol{downharpoonright}{MdArrows}{\mathrel}
-\mdsy@DeclareSymbol{neharpoonnw}{MdArrows}{\mathrel}
-\mdsy@DeclareSymbol{nwharpoonsw}{MdArrows}{\mathrel}
-\mdsy@DeclareSymbol{swharpoonse}{MdArrows}{\mathrel}
-\mdsy@DeclareSymbol{seharpoonne}{MdArrows}{\mathrel}
-\mdsy@DeclareSymbol{rightharpoondown}{MdArrows}{\mathrel}
-\mdsy@DeclareSymbol{upharpoonright}{MdArrows}{\mathrel}
-  \mdsy@DeclareAlias{restriction}{MdArrows}{\mathrel}
-\mdsy@DeclareSymbol{leftharpoonup}{MdArrows}{\mathrel}
-\mdsy@DeclareSymbol{downharpoonleft}{MdArrows}{\mathrel}
-\mdsy@DeclareSymbol{neharpoonse}{MdArrows}{\mathrel}
-\mdsy@DeclareSymbol{nwharpoonne}{MdArrows}{\mathrel}
-\mdsy@DeclareSymbol{swharpoonnw}{MdArrows}{\mathrel}
-\mdsy@DeclareSymbol{seharpoonsw}{MdArrows}{\mathrel}
-\mdsy@DeclareSymbol{leftrightharpoonupdown}{MdArrows}{\mathrel}
-\mdsy@DeclareSymbol{updownharpoonleftright}{MdArrows}{\mathrel}
-\mdsy@DeclareSymbol{neswharpoonnwse}{MdArrows}{\mathrel}
-\mdsy@DeclareSymbol{nwseharpoonnesw}{MdArrows}{\mathrel}
-\mdsy@DeclareSymbol{leftrightharpoondownup}{MdArrows}{\mathrel}
-\mdsy@DeclareSymbol{updownharpoonrightleft}{MdArrows}{\mathrel}
-\mdsy@DeclareSymbol{neswharpoonsenw}{MdArrows}{\mathrel}
-\mdsy@DeclareSymbol{nwseharpoonswne}{MdArrows}{\mathrel}
-\mdsy@DeclareSymbol{rightleftharpoons}{MdArrows}{\mathrel}
-\mdsy@DeclareSymbol{updownharpoons}{MdArrows}{\mathrel}
-  \mdsy@DeclareAlias{updownharpoonsleftright}{MdArrows}{\mathrel}
-\mdsy@DeclareSymbol{neswharpoons}{MdArrows}{\mathrel}
-\mdsy@DeclareSymbol{senwharpoons}{MdArrows}{\mathrel}
-\mdsy@DeclareSymbol{leftrightharpoons}{MdArrows}{\mathrel}
-\mdsy@DeclareSymbol{downupharpoons}{MdArrows}{\mathrel}
-  \mdsy@DeclareAlias{downupharpoonsleftright}{MdArrows}{\mathrel}
-\mdsy@DeclareSymbol{swneharpoons}{MdArrows}{\mathrel}
-\mdsy@DeclareSymbol{nwseharpoons}{MdArrows}{\mathrel}
-\mdsy@DeclareSymbol{rightbkarrow}{MdArrows}{\mathrel}
-  \mdsy@DeclareAlias{dasharrow}{MdArrows}{\mathrel}
-  \mdsy@DeclareAlias{dashrightarrow}{MdArrows}{\mathrel}
-\mdsy@DeclareSymbol{upbkarrow}{MdArrows}{\mathrel}
-\mdsy@DeclareSymbol{leftbkarrow}{MdArrows}{\mathrel}
-  \mdsy@DeclareAlias{dashleftarrow}{MdArrows}{\mathrel}
-\mdsy@DeclareSymbol{downbkarrow}{MdArrows}{\mathrel}
-\mdsy@DeclareSymbol{nebkarrow}{MdArrows}{\mathrel}
-\mdsy@DeclareSymbol{nwbkarrow}{MdArrows}{\mathrel}
-\mdsy@DeclareSymbol{swbkarrow}{MdArrows}{\mathrel}
-\mdsy@DeclareSymbol{sebkarrow}{MdArrows}{\mathrel}
-\mdsy@DeclareSymbol{rightspoon}{MdArrows}{\mathrel}
-  \mdsy@DeclareAlias{multimap}{MdArrows}{\mathrel}
-\mdsy@DeclareSymbol{upspoon}{MdArrows}{\mathrel}
-  \mdsy@DeclareAlias{cirmid}{MdArrows}{\mathrel}
-\mdsy@DeclareSymbol{leftspoon}{MdArrows}{\mathrel}
-  \mdsy@DeclareAlias{multimapinv}{MdArrows}{\mathrel}
-\mdsy@DeclareSymbol{downspoon}{MdArrows}{\mathrel}
-  \mdsy@DeclareAlias{midcir}{MdArrows}{\mathrel}
-\mdsy@DeclareSymbol{rightblackspoon}{MdArrows}{\mathrel}
-\mdsy@DeclareSymbol{upblackspoon}{MdArrows}{\mathrel}
-\mdsy@DeclareSymbol{leftblackspoon}{MdArrows}{\mathrel}
-\mdsy@DeclareSymbol{downblackspoon}{MdArrows}{\mathrel}
-\mdsy@DeclareSymbol{leftrightspoon}{MdArrows}{\mathrel}
-  \mdsy@DeclareAlias{dualmap}{MdArrows}{\mathrel}
-\mdsy@DeclareSymbol{leftrightblackspoon}{MdArrows}{\mathrel}
-\mdsy@DeclareSymbol{blackwhitespoon}{MdArrows}{\mathrel}
-  \mdsy@DeclareAlias{imageof}{MdArrows}{\mathrel}
-\mdsy@DeclareSymbol{whiteblackspoon}{MdArrows}{\mathrel}
-  \mdsy@DeclareAlias{origof}{MdArrows}{\mathrel}
-\mdsy@DeclareSymbol{rightpitchfork}{MdArrows}{\mathrel}
-\mdsy@DeclareSymbol{uppitchfork}{MdArrows}{\mathrel}
-  \mdsy@DeclareAlias{pitchfork}{MdArrows}{\mathrel}
-\mdsy@DeclareSymbol{leftpitchfork}{MdArrows}{\mathrel}
-\mdsy@DeclareSymbol{downpitchfork}{MdArrows}{\mathrel}
-\mdsy@DeclareSymbol{rightrightarrows}{MdArrows}{\mathrel}
-\mdsy@DeclareSymbol{upuparrows}{MdArrows}{\mathrel}
-\mdsy@DeclareSymbol{leftleftarrows}{MdArrows}{\mathrel}
-\mdsy@DeclareSymbol{downdownarrows}{MdArrows}{\mathrel}
-\mdsy@DeclareSymbol{nenearrows}{MdArrows}{\mathrel}
-\mdsy@DeclareSymbol{nwnwarrows}{MdArrows}{\mathrel}
-\mdsy@DeclareSymbol{swswarrows}{MdArrows}{\mathrel}
-\mdsy@DeclareSymbol{sesearrows}{MdArrows}{\mathrel}
-\mdsy@DeclareSymbol{rightleftarrows}{MdArrows}{\mathrel}
-\mdsy@DeclareSymbol{updownarrows}{MdArrows}{\mathrel}
-\mdsy@DeclareSymbol{neswarrows}{MdArrows}{\mathrel}
-\mdsy@DeclareSymbol{nwsearrows}{MdArrows}{\mathrel}
-\mdsy@DeclareSymbol{leftrightarrows}{MdArrows}{\mathrel}
-\mdsy@DeclareSymbol{downuparrows}{MdArrows}{\mathrel}
-\mdsy@DeclareSymbol{swnearrows}{MdArrows}{\mathrel}
-\mdsy@DeclareSymbol{senwarrows}{MdArrows}{\mathrel}
-\mdsy@DeclareSymbol{rightwavearrow}{MdArrows}{\mathrel}
-  \mdsy@DeclareAlias{leadsto}{MdArrows}{\mathrel}
-  \mdsy@DeclareAlias{rightsquigarrow}{MdArrows}{\mathrel}
-  \mdsy@DeclareAlias{rightcurvedarrow}{MdArrows}{\mathrel}
-  \mdsy@DeclareAlias{rightlsquigarrow}{MdArrows}{\mathrel}
-\mdsy@DeclareSymbol{varupwavearrow}{MdArrows}{\mathrel}
-  \mdsy@DeclareAlias{uplsquigarrow}{MdArrows}{\mathrel}
-\mdsy@DeclareSymbol{varleftwavearrow}{MdArrows}{\mathrel}
-  \mdsy@DeclareAlias{leftlsquigarrow}{MdArrows}{\mathrel}
-\mdsy@DeclareSymbol{downwavearrow}{MdArrows}{\mathrel}
-  \mdsy@DeclareAlias{downlsquigarrow}{MdArrows}{\mathrel}
-\mdsy@DeclareSymbol{varrightwavearrow}{MdArrows}{\mathrel}
-  \mdsy@DeclareAlias{rightrsquigarrow}{MdArrows}{\mathrel}
-\mdsy@DeclareSymbol{upwavearrow}{MdArrows}{\mathrel}
-  \mdsy@DeclareAlias{uprsquigarrow}{MdArrows}{\mathrel}
-\mdsy@DeclareSymbol{leftwavearrow}{MdArrows}{\mathrel}
-  \mdsy@DeclareAlias{leftsquigarrow}{MdArrows}{\mathrel}
-  \mdsy@DeclareAlias{leftcurvedarrow}{MdArrows}{\mathrel}
-  \mdsy@DeclareAlias{leftrsquigarrow}{MdArrows}{\mathrel}
-\mdsy@DeclareSymbol{vardownwavearrow}{MdArrows}{\mathrel}
-  \mdsy@DeclareAlias{downrsquigarrow}{MdArrows}{\mathrel}
-\mdsy@DeclareSymbol{leftrightwavearrow}{MdArrows}{\mathrel}
-  \mdsy@DeclareAlias{leftrightsquigarrow}{MdArrows}{\mathrel}
-\mdsy@DeclareSymbol{updownwavearrow}{MdArrows}{\mathrel}
-  \mdsy@DeclareAlias{updownsquigarrow}{MdArrows}{\mathrel}
-\mdsy@DeclareSymbol{varleftrightwavearrow}{MdArrows}{\mathrel}
-  \mdsy@DeclareAlias{rightleftsquigarrow}{MdArrows}{\mathrel}
-\mdsy@DeclareSymbol{varupdownwavearrow}{MdArrows}{\mathrel}
-  \mdsy@DeclareAlias{downupsquigarrow}{MdArrows}{\mathrel}
-\mdsy@DeclareSymbol{cwoverarcarrow}{MdArrows}{\mathrel}
-  \mdsy@DeclareAlias{curvearrowright}{MdArrows}{\mathrel}
-  \mdsy@DeclareAlias{rightlcurvearrow}{MdArrows}{\mathrel}
-\mdsy@DeclareSymbol{cwleftarcarrow}{MdArrows}{\mathrel}
-  \mdsy@DeclareAlias{uplcurvearrow}{MdArrows}{\mathrel}
-\mdsy@DeclareSymbol{cwunderarcarrow}{MdArrows}{\mathrel}
-  \mdsy@DeclareAlias{leftlcurvearrow}{MdArrows}{\mathrel}
-\mdsy@DeclareSymbol{cwrightarcarrow}{MdArrows}{\mathrel}
-  \mdsy@DeclareAlias{downlcurvearrow}{MdArrows}{\mathrel}
-\mdsy@DeclareSymbol{cwnwarcarrow}{MdArrows}{\mathrel}
-  \mdsy@DeclareAlias{rightupcurvedarrow}{MdArrows}{\mathrel}
-  \mdsy@DeclareAlias{nelcurvearrow}{MdArrows}{\mathrel}
-\mdsy@DeclareSymbol{cwswarcarrow}{MdArrows}{\mathrel}
-  \mdsy@DeclareAlias{upleftcurvedarrow}{MdArrows}{\mathrel}
-  \mdsy@DeclareAlias{nwlcurvearrow}{MdArrows}{\mathrel}
-\mdsy@DeclareSymbol{cwsearcarrow}{MdArrows}{\mathrel}
-  \mdsy@DeclareAlias{leftdowncurvedarrow}{MdArrows}{\mathrel}
-  \mdsy@DeclareAlias{swlcurvearrow}{MdArrows}{\mathrel}
-\mdsy@DeclareSymbol{cwnearcarrow}{MdArrows}{\mathrel}
-  \mdsy@DeclareAlias{downrightcurvedarrow}{MdArrows}{\mathrel}
-  \mdsy@DeclareAlias{selcurvearrow}{MdArrows}{\mathrel}
-\mdsy@DeclareSymbol{acwunderarcarrow}{MdArrows}{\mathrel}
-  \mdsy@DeclareAlias{rightrcurvearrow}{MdArrows}{\mathrel}
-\mdsy@DeclareSymbol{acwrightarcarrow}{MdArrows}{\mathrel}
-  \mdsy@DeclareAlias{uprcurvearrow}{MdArrows}{\mathrel}
-\mdsy@DeclareSymbol{acwoverarcarrow}{MdArrows}{\mathrel}
-  \mdsy@DeclareAlias{curvearrowleft}{MdArrows}{\mathrel}
-  \mdsy@DeclareAlias{leftrcurvearrow}{MdArrows}{\mathrel}
-\mdsy@DeclareSymbol{acwleftarcarrow}{MdArrows}{\mathrel}
-  \mdsy@DeclareAlias{downrcurvearrow}{MdArrows}{\mathrel}
-\mdsy@DeclareSymbol{acwsearcarrow}{MdArrows}{\mathrel}
-  \mdsy@DeclareAlias{uprightcurvearrow}{MdArrows}{\mathrel}
-  \mdsy@DeclareAlias{nercurvearrow}{MdArrows}{\mathrel}
-\mdsy@DeclareSymbol{acwnearcarrow}{MdArrows}{\mathrel}
-  \mdsy@DeclareAlias{leftupcurvedarrow}{MdArrows}{\mathrel}
-  \mdsy@DeclareAlias{nwrcurvearrow}{MdArrows}{\mathrel}
-\mdsy@DeclareSymbol{acwnwarcarrow}{MdArrows}{\mathrel}
-  \mdsy@DeclareAlias{downleftcurvedarrow}{MdArrows}{\mathrel}
-  \mdsy@DeclareAlias{swrcurvearrow}{MdArrows}{\mathrel}
-\mdsy@DeclareSymbol{acwswarcarrow}{MdArrows}{\mathrel}
-  \mdsy@DeclareAlias{rightdowncurvedarrow}{MdArrows}{\mathrel}
-  \mdsy@DeclareAlias{sercurvearrow}{MdArrows}{\mathrel}
-\mdsy@DeclareSymbol{bdoverarcarrow}{MdArrows}{\mathrel}
-  \mdsy@DeclareAlias{leftrightcurvearrow}{MdArrows}{\mathrel}
-\mdsy@DeclareSymbol{bdleftarcarrow}{MdArrows}{\mathrel}
-  \mdsy@DeclareAlias{updowncurvearrow}{MdArrows}{\mathrel}
-\mdsy@DeclareSymbol{bdunderarcarrow}{MdArrows}{\mathrel}
-  \mdsy@DeclareAlias{rightleftcurvearrow}{MdArrows}{\mathrel}
-\mdsy@DeclareSymbol{bdrightarcarrow}{MdArrows}{\mathrel}
-  \mdsy@DeclareAlias{downupcurvearrow}{MdArrows}{\mathrel}
-\mdsy@DeclareSymbol{bdnwarcarrow}{MdArrows}{\mathrel}
-  \mdsy@DeclareAlias{neswcurvearrow}{MdArrows}{\mathrel}
-\mdsy@DeclareSymbol{bdswarcarrow}{MdArrows}{\mathrel}
-  \mdsy@DeclareAlias{nwsecurvearrow}{MdArrows}{\mathrel}
-\mdsy@DeclareSymbol{bdsearcarrow}{MdArrows}{\mathrel}
-  \mdsy@DeclareAlias{swnecurvearrow}{MdArrows}{\mathrel}
-\mdsy@DeclareSymbol{bdnearcarrow}{MdArrows}{\mathrel}
-  \mdsy@DeclareAlias{senwcurvearrow}{MdArrows}{\mathrel}
-\mdsy@DeclareSymbol{leftfootline}{MdArrows}{\mathrel}
-\mdsy@DeclareSymbol{rightfootline}{MdArrows}{\mathrel}
-\mdsy@DeclareSymbol{acwcirclearrowup}{MdArrows}{\mathrel}
-\mdsy@DeclareSymbol{acwcirclearrowleft}{MdArrows}{\mathrel}
-  \mdsy@DeclareAlias{circlearrowleft}{MdArrows}{\mathrel}
-  \mdsy@DeclareAlias{acwopencirclearrow}{MdArrows}{\mathrel}
-\mdsy@DeclareSymbol{acwcirclearrowdown}{MdArrows}{\mathrel}
-  \mdsy@DeclareAlias{acwgapcirclearrow}{MdArrows}{\mathrel}
-\mdsy@DeclareSymbol{acwcirclearrowright}{MdArrows}{\mathrel}
-\mdsy@DeclareSymbol{cwcirclearrowdown}{MdArrows}{\mathrel}
-  \mdsy@DeclareAlias{cwgapcirclearrow}{MdArrows}{\mathrel}
-\mdsy@DeclareSymbol{cwcirclearrowright}{MdArrows}{\mathrel}
-  \mdsy@DeclareAlias{circlearrowright}{MdArrows}{\mathrel}
-  \mdsy@DeclareAlias{cwopencirclearrow}{MdArrows}{\mathrel}
-\mdsy@DeclareSymbol{cwcirclearrowup}{MdArrows}{\mathrel}
-\mdsy@DeclareSymbol{cwcirclearrowleft}{MdArrows}{\mathrel}
-\mdsy@DeclareSymbol{Rrightarrow}{MdArrows}{\mathrel}
-\mdsy@DeclareSymbol{Uuparrow}{MdArrows}{\mathrel}
-\mdsy@DeclareSymbol{Lleftarrow}{MdArrows}{\mathrel}
-\mdsy@DeclareSymbol{Ddownarrow}{MdArrows}{\mathrel}
-\mdsy@DeclareSymbol{longrightarrow}{MdArrows}{\mathrel}
-\mdsy@DeclareSymbol{longleftarrow}{MdArrows}{\mathrel}
-\mdsy@DeclareSymbol{Longrightarrow}{MdArrows}{\mathrel}
-\mdsy@DeclareSymbol{Longleftarrow}{MdArrows}{\mathrel}
-\mdsy@DeclareSymbol{longleftrightarrow}{MdArrows}{\mathrel}
-\mdsy@DeclareSymbol{Longleftrightarrow}{MdArrows}{\mathrel}
-\mdsy@DeclareSymbol{longmapsto}{MdArrows}{\mathrel}
-\mdsy@DeclareSymbol{longmapsfrom}{MdArrows}{\mathrel}
-\mdsy@DeclareSymbol{Longmapsto}{MdArrows}{\mathrel}
-\mdsy@DeclareSymbol{Longmapsfrom}{MdArrows}{\mathrel}
-\mdsy@DeclareSymbol{longrightwavearrow}{MdArrows}{\mathrel}
-  \mdsy@DeclareAlias{longleadsto}{MdArrows}{\mathrel}
-  \mdsy@DeclareAlias{longrightsquigarrow}{MdArrows}{\mathrel}
-\mdsy@DeclareSymbol{longleftwavearrow}{MdArrows}{\mathrel}
-  \mdsy@DeclareAlias{longleftsquigarrow}{MdArrows}{\mathrel}
-\mdsy@DeclareSymbol{longleftfootline}{MdArrows}{\mathrel}
-  \mdsy@DeclareAlias{vlongdash}{MdArrows}{\mathrel}
-\mdsy@DeclareSymbol{longrightfootline}{MdArrows}{\mathrel}
-  \mdsy@DeclareAlias{longdashv}{MdArrows}{\mathrel}
-\mdsy@DeclareSymbol{Lsh}{MdArrows}{\mathrel}
-\mdsy@DeclareSymbol{Rsh}{MdArrows}{\mathrel}
-\mdsy@DeclareSymbol{Ldsh}{MdArrows}{\mathrel}
-\mdsy@DeclareSymbol{Rdsh}{MdArrows}{\mathrel}
-\mdsy@DeclareSymbol{looparrowright}{MdArrows}{\mathrel}
-\mdsy@DeclareSymbol{looparrowleft}{MdArrows}{\mathrel}
+\mdsy@DeclareSymbol{Neswarrow}{arrows}{\mathrel}
+\mdsy@DeclareSymbol{Nwsearrow}{arrows}{\mathrel}
+\mdsy@DeclareSymbol{twoheadrightarrow}{arrows}{\mathrel}
+\mdsy@DeclareSymbol{twoheaduparrow}{arrows}{\mathrel}
+\mdsy@DeclareSymbol{twoheadleftarrow}{arrows}{\mathrel}
+\mdsy@DeclareSymbol{twoheaddownarrow}{arrows}{\mathrel}
+\mdsy@DeclareSymbol{twoheadnearrow}{arrows}{\mathrel}
+\mdsy@DeclareSymbol{twoheadnwarrow}{arrows}{\mathrel}
+\mdsy@DeclareSymbol{twoheadswarrow}{arrows}{\mathrel}
+\mdsy@DeclareSymbol{twoheadsearrow}{arrows}{\mathrel}
+\mdsy@DeclareSymbol{rightarrowtail}{arrows}{\mathrel}
+\mdsy@DeclareSymbol{uparrowtail}{arrows}{\mathrel}
+\mdsy@DeclareSymbol{leftarrowtail}{arrows}{\mathrel}
+\mdsy@DeclareSymbol{downarrowtail}{arrows}{\mathrel}
+\mdsy@DeclareSymbol{nearrowtail}{arrows}{\mathrel}
+\mdsy@DeclareSymbol{nwarrowtail}{arrows}{\mathrel}
+\mdsy@DeclareSymbol{swarrowtail}{arrows}{\mathrel}
+\mdsy@DeclareSymbol{searrowtail}{arrows}{\mathrel}
+\mdsy@DeclareSymbol{rightmapsto}{arrows}{\mathrel}
+  \mdsy@DeclareAlias{mapsto}{arrows}{\mathrel}
+\mdsy@DeclareSymbol{upmapsto}{arrows}{\mathrel}
+  \mdsy@DeclareAlias{mapsup}{arrows}{\mathrel}
+\mdsy@DeclareSymbol{leftmapsto}{arrows}{\mathrel}
+  \mdsy@DeclareAlias{mapsfrom}{arrows}{\mathrel}
+\mdsy@DeclareSymbol{downmapsto}{arrows}{\mathrel}
+  \mdsy@DeclareAlias{mapsdown}{arrows}{\mathrel}
+\mdsy@DeclareSymbol{Rightmapsto}{arrows}{\mathrel}
+  \mdsy@DeclareAlias{Mapsto}{arrows}{\mathrel}
+\mdsy@DeclareSymbol{Upmapsto}{arrows}{\mathrel}
+  \mdsy@DeclareAlias{Mapsup}{arrows}{\mathrel}
+\mdsy@DeclareSymbol{Leftmapsto}{arrows}{\mathrel}
+  \mdsy@DeclareAlias{Mapsfrom}{arrows}{\mathrel}
+\mdsy@DeclareSymbol{Downmapsto}{arrows}{\mathrel}
+  \mdsy@DeclareAlias{Mapsdown}{arrows}{\mathrel}
+\mdsy@DeclareSymbol{hookrightarrow}{arrows}{\mathrel}
+  \mdsy@DeclareAlias{lhookrightarrow}{arrows}{\mathrel}
+\mdsy@DeclareSymbol{hookuparrow}{arrows}{\mathrel}
+  \mdsy@DeclareAlias{lhookuparrow}{arrows}{\mathrel}
+\mdsy@DeclareSymbol{varhookleftarrow}{arrows}{\mathrel}
+  \mdsy@DeclareAlias{lhookleftarrow}{arrows}{\mathrel}
+\mdsy@DeclareSymbol{varhookdownarrow}{arrows}{\mathrel}
+  \mdsy@DeclareAlias{lhookdownarrow}{arrows}{\mathrel}
+\mdsy@DeclareSymbol{varhooknearrow}{arrows}{\mathrel}
+  \mdsy@DeclareAlias{lhooknearrow}{arrows}{\mathrel}
+\mdsy@DeclareSymbol{hooknwarrow}{arrows}{\mathrel}
+  \mdsy@DeclareAlias{hknwarrow}{arrows}{\mathrel}
+  \mdsy@DeclareAlias{lhooknwarrow}{arrows}{\mathrel}
+\mdsy@DeclareSymbol{varhookswarrow}{arrows}{\mathrel}
+  \mdsy@DeclareAlias{lhookswarrow}{arrows}{\mathrel}
+\mdsy@DeclareSymbol{hooksearrow}{arrows}{\mathrel}
+  \mdsy@DeclareAlias{hksearrow}{arrows}{\mathrel}
+  \mdsy@DeclareAlias{lhooksearrow}{arrows}{\mathrel}
+\mdsy@DeclareSymbol{varhookrightarrow}{arrows}{\mathrel}
+  \mdsy@DeclareAlias{rhookrightarrow}{arrows}{\mathrel}
+\mdsy@DeclareSymbol{varhookuparrow}{arrows}{\mathrel}
+  \mdsy@DeclareAlias{rhookuparrow}{arrows}{\mathrel}
+\mdsy@DeclareSymbol{hookleftarrow}{arrows}{\mathrel}
+  \mdsy@DeclareAlias{rhookleftarrow}{arrows}{\mathrel}
+\mdsy@DeclareSymbol{hookdownarrow}{arrows}{\mathrel}
+  \mdsy@DeclareAlias{rhookdownarrow}{arrows}{\mathrel}
+\mdsy@DeclareSymbol{hooknearrow}{arrows}{\mathrel}
+  \mdsy@DeclareAlias{hknearrow}{arrows}{\mathrel}
+  \mdsy@DeclareAlias{rhooknearrow}{arrows}{\mathrel}
+\mdsy@DeclareSymbol{varhooknwarrow}{arrows}{\mathrel}
+  \mdsy@DeclareAlias{rhooknwarrow}{arrows}{\mathrel}
+\mdsy@DeclareSymbol{hookswarrow}{arrows}{\mathrel}
+  \mdsy@DeclareAlias{hkswarrow}{arrows}{\mathrel}
+  \mdsy@DeclareAlias{rhookswarrow}{arrows}{\mathrel}
+\mdsy@DeclareSymbol{varhooksearrow}{arrows}{\mathrel}
+  \mdsy@DeclareAlias{rhooksearrow}{arrows}{\mathrel}
+\mdsy@DeclareSymbol{rightharpoonup}{arrows}{\mathrel}
+\mdsy@DeclareSymbol{upharpoonleft}{arrows}{\mathrel}
+\mdsy@DeclareSymbol{leftharpoondown}{arrows}{\mathrel}
+\mdsy@DeclareSymbol{downharpoonright}{arrows}{\mathrel}
+\mdsy@DeclareSymbol{neharpoonnw}{arrows}{\mathrel}
+\mdsy@DeclareSymbol{nwharpoonsw}{arrows}{\mathrel}
+\mdsy@DeclareSymbol{swharpoonse}{arrows}{\mathrel}
+\mdsy@DeclareSymbol{seharpoonne}{arrows}{\mathrel}
+\mdsy@DeclareSymbol{rightharpoondown}{arrows}{\mathrel}
+\mdsy@DeclareSymbol{upharpoonright}{arrows}{\mathrel}
+  \mdsy@DeclareAlias{restriction}{arrows}{\mathrel}
+\mdsy@DeclareSymbol{leftharpoonup}{arrows}{\mathrel}
+\mdsy@DeclareSymbol{downharpoonleft}{arrows}{\mathrel}
+\mdsy@DeclareSymbol{neharpoonse}{arrows}{\mathrel}
+\mdsy@DeclareSymbol{nwharpoonne}{arrows}{\mathrel}
+\mdsy@DeclareSymbol{swharpoonnw}{arrows}{\mathrel}
+\mdsy@DeclareSymbol{seharpoonsw}{arrows}{\mathrel}
+\mdsy@DeclareSymbol{leftrightharpoonupdown}{arrows}{\mathrel}
+\mdsy@DeclareSymbol{updownharpoonleftright}{arrows}{\mathrel}
+\mdsy@DeclareSymbol{neswharpoonnwse}{arrows}{\mathrel}
+\mdsy@DeclareSymbol{nwseharpoonnesw}{arrows}{\mathrel}
+\mdsy@DeclareSymbol{leftrightharpoondownup}{arrows}{\mathrel}
+\mdsy@DeclareSymbol{updownharpoonrightleft}{arrows}{\mathrel}
+\mdsy@DeclareSymbol{neswharpoonsenw}{arrows}{\mathrel}
+\mdsy@DeclareSymbol{nwseharpoonswne}{arrows}{\mathrel}
+\mdsy@DeclareSymbol{rightleftharpoons}{arrows}{\mathrel}
+\mdsy@DeclareSymbol{updownharpoons}{arrows}{\mathrel}
+  \mdsy@DeclareAlias{updownharpoonsleftright}{arrows}{\mathrel}
+\mdsy@DeclareSymbol{neswharpoons}{arrows}{\mathrel}
+\mdsy@DeclareSymbol{senwharpoons}{arrows}{\mathrel}
+\mdsy@DeclareSymbol{leftrightharpoons}{arrows}{\mathrel}
+\mdsy@DeclareSymbol{downupharpoons}{arrows}{\mathrel}
+  \mdsy@DeclareAlias{downupharpoonsleftright}{arrows}{\mathrel}
+\mdsy@DeclareSymbol{swneharpoons}{arrows}{\mathrel}
+\mdsy@DeclareSymbol{nwseharpoons}{arrows}{\mathrel}
+\mdsy@DeclareSymbol{rightbkarrow}{arrows}{\mathrel}
+  \mdsy@DeclareAlias{dasharrow}{arrows}{\mathrel}
+  \mdsy@DeclareAlias{dashrightarrow}{arrows}{\mathrel}
+\mdsy@DeclareSymbol{upbkarrow}{arrows}{\mathrel}
+\mdsy@DeclareSymbol{leftbkarrow}{arrows}{\mathrel}
+  \mdsy@DeclareAlias{dashleftarrow}{arrows}{\mathrel}
+\mdsy@DeclareSymbol{downbkarrow}{arrows}{\mathrel}
+\mdsy@DeclareSymbol{nebkarrow}{arrows}{\mathrel}
+\mdsy@DeclareSymbol{nwbkarrow}{arrows}{\mathrel}
+\mdsy@DeclareSymbol{swbkarrow}{arrows}{\mathrel}
+\mdsy@DeclareSymbol{sebkarrow}{arrows}{\mathrel}
+\mdsy@DeclareSymbol{rightspoon}{arrows}{\mathrel}
+  \mdsy@DeclareAlias{multimap}{arrows}{\mathrel}
+\mdsy@DeclareSymbol{upspoon}{arrows}{\mathrel}
+  \mdsy@DeclareAlias{cirmid}{arrows}{\mathrel}
+\mdsy@DeclareSymbol{leftspoon}{arrows}{\mathrel}
+  \mdsy@DeclareAlias{multimapinv}{arrows}{\mathrel}
+\mdsy@DeclareSymbol{downspoon}{arrows}{\mathrel}
+  \mdsy@DeclareAlias{midcir}{arrows}{\mathrel}
+\mdsy@DeclareSymbol{rightblackspoon}{arrows}{\mathrel}
+\mdsy@DeclareSymbol{upblackspoon}{arrows}{\mathrel}
+\mdsy@DeclareSymbol{leftblackspoon}{arrows}{\mathrel}
+\mdsy@DeclareSymbol{downblackspoon}{arrows}{\mathrel}
+\mdsy@DeclareSymbol{leftrightspoon}{arrows}{\mathrel}
+  \mdsy@DeclareAlias{dualmap}{arrows}{\mathrel}
+\mdsy@DeclareSymbol{leftrightblackspoon}{arrows}{\mathrel}
+\mdsy@DeclareSymbol{blackwhitespoon}{arrows}{\mathrel}
+  \mdsy@DeclareAlias{imageof}{arrows}{\mathrel}
+\mdsy@DeclareSymbol{whiteblackspoon}{arrows}{\mathrel}
+  \mdsy@DeclareAlias{origof}{arrows}{\mathrel}
+\mdsy@DeclareSymbol{rightpitchfork}{arrows}{\mathrel}
+\mdsy@DeclareSymbol{uppitchfork}{arrows}{\mathrel}
+  \mdsy@DeclareAlias{pitchfork}{arrows}{\mathrel}
+\mdsy@DeclareSymbol{leftpitchfork}{arrows}{\mathrel}
+\mdsy@DeclareSymbol{downpitchfork}{arrows}{\mathrel}
+\mdsy@DeclareSymbol{rightrightarrows}{arrows}{\mathrel}
+\mdsy@DeclareSymbol{upuparrows}{arrows}{\mathrel}
+\mdsy@DeclareSymbol{leftleftarrows}{arrows}{\mathrel}
+\mdsy@DeclareSymbol{downdownarrows}{arrows}{\mathrel}
+\mdsy@DeclareSymbol{nenearrows}{arrows}{\mathrel}
+\mdsy@DeclareSymbol{nwnwarrows}{arrows}{\mathrel}
+\mdsy@DeclareSymbol{swswarrows}{arrows}{\mathrel}
+\mdsy@DeclareSymbol{sesearrows}{arrows}{\mathrel}
+\mdsy@DeclareSymbol{rightleftarrows}{arrows}{\mathrel}
+\mdsy@DeclareSymbol{updownarrows}{arrows}{\mathrel}
+\mdsy@DeclareSymbol{neswarrows}{arrows}{\mathrel}
+\mdsy@DeclareSymbol{nwsearrows}{arrows}{\mathrel}
+\mdsy@DeclareSymbol{leftrightarrows}{arrows}{\mathrel}
+\mdsy@DeclareSymbol{downuparrows}{arrows}{\mathrel}
+\mdsy@DeclareSymbol{swnearrows}{arrows}{\mathrel}
+\mdsy@DeclareSymbol{senwarrows}{arrows}{\mathrel}
+\mdsy@DeclareSymbol{rightwavearrow}{arrows}{\mathrel}
+  \mdsy@DeclareAlias{leadsto}{arrows}{\mathrel}
+  \mdsy@DeclareAlias{rightsquigarrow}{arrows}{\mathrel}
+  \mdsy@DeclareAlias{rightcurvedarrow}{arrows}{\mathrel}
+  \mdsy@DeclareAlias{rightlsquigarrow}{arrows}{\mathrel}
+\mdsy@DeclareSymbol{varupwavearrow}{arrows}{\mathrel}
+  \mdsy@DeclareAlias{uplsquigarrow}{arrows}{\mathrel}
+\mdsy@DeclareSymbol{varleftwavearrow}{arrows}{\mathrel}
+  \mdsy@DeclareAlias{leftlsquigarrow}{arrows}{\mathrel}
+\mdsy@DeclareSymbol{downwavearrow}{arrows}{\mathrel}
+  \mdsy@DeclareAlias{downlsquigarrow}{arrows}{\mathrel}
+\mdsy@DeclareSymbol{varrightwavearrow}{arrows}{\mathrel}
+  \mdsy@DeclareAlias{rightrsquigarrow}{arrows}{\mathrel}
+\mdsy@DeclareSymbol{upwavearrow}{arrows}{\mathrel}
+  \mdsy@DeclareAlias{uprsquigarrow}{arrows}{\mathrel}
+\mdsy@DeclareSymbol{leftwavearrow}{arrows}{\mathrel}
+  \mdsy@DeclareAlias{leftsquigarrow}{arrows}{\mathrel}
+  \mdsy@DeclareAlias{leftcurvedarrow}{arrows}{\mathrel}
+  \mdsy@DeclareAlias{leftrsquigarrow}{arrows}{\mathrel}
+\mdsy@DeclareSymbol{vardownwavearrow}{arrows}{\mathrel}
+  \mdsy@DeclareAlias{downrsquigarrow}{arrows}{\mathrel}
+\mdsy@DeclareSymbol{leftrightwavearrow}{arrows}{\mathrel}
+  \mdsy@DeclareAlias{leftrightsquigarrow}{arrows}{\mathrel}
+\mdsy@DeclareSymbol{updownwavearrow}{arrows}{\mathrel}
+  \mdsy@DeclareAlias{updownsquigarrow}{arrows}{\mathrel}
+\mdsy@DeclareSymbol{varleftrightwavearrow}{arrows}{\mathrel}
+  \mdsy@DeclareAlias{rightleftsquigarrow}{arrows}{\mathrel}
+\mdsy@DeclareSymbol{varupdownwavearrow}{arrows}{\mathrel}
+  \mdsy@DeclareAlias{downupsquigarrow}{arrows}{\mathrel}
+\mdsy@DeclareSymbol{cwoverarcarrow}{arrows}{\mathrel}
+  \mdsy@DeclareAlias{curvearrowright}{arrows}{\mathrel}
+  \mdsy@DeclareAlias{rightlcurvearrow}{arrows}{\mathrel}
+\mdsy@DeclareSymbol{cwleftarcarrow}{arrows}{\mathrel}
+  \mdsy@DeclareAlias{uplcurvearrow}{arrows}{\mathrel}
+\mdsy@DeclareSymbol{cwunderarcarrow}{arrows}{\mathrel}
+  \mdsy@DeclareAlias{leftlcurvearrow}{arrows}{\mathrel}
+\mdsy@DeclareSymbol{cwrightarcarrow}{arrows}{\mathrel}
+  \mdsy@DeclareAlias{downlcurvearrow}{arrows}{\mathrel}
+\mdsy@DeclareSymbol{cwnwarcarrow}{arrows}{\mathrel}
+  \mdsy@DeclareAlias{rightupcurvedarrow}{arrows}{\mathrel}
+  \mdsy@DeclareAlias{nelcurvearrow}{arrows}{\mathrel}
+\mdsy@DeclareSymbol{cwswarcarrow}{arrows}{\mathrel}
+  \mdsy@DeclareAlias{upleftcurvedarrow}{arrows}{\mathrel}
+  \mdsy@DeclareAlias{nwlcurvearrow}{arrows}{\mathrel}
+\mdsy@DeclareSymbol{cwsearcarrow}{arrows}{\mathrel}
+  \mdsy@DeclareAlias{leftdowncurvedarrow}{arrows}{\mathrel}
+  \mdsy@DeclareAlias{swlcurvearrow}{arrows}{\mathrel}
+\mdsy@DeclareSymbol{cwnearcarrow}{arrows}{\mathrel}
+  \mdsy@DeclareAlias{downrightcurvedarrow}{arrows}{\mathrel}
+  \mdsy@DeclareAlias{selcurvearrow}{arrows}{\mathrel}
+\mdsy@DeclareSymbol{acwunderarcarrow}{arrows}{\mathrel}
+  \mdsy@DeclareAlias{rightrcurvearrow}{arrows}{\mathrel}
+\mdsy@DeclareSymbol{acwrightarcarrow}{arrows}{\mathrel}
+  \mdsy@DeclareAlias{uprcurvearrow}{arrows}{\mathrel}
+\mdsy@DeclareSymbol{acwoverarcarrow}{arrows}{\mathrel}
+  \mdsy@DeclareAlias{curvearrowleft}{arrows}{\mathrel}
+  \mdsy@DeclareAlias{leftrcurvearrow}{arrows}{\mathrel}
+\mdsy@DeclareSymbol{acwleftarcarrow}{arrows}{\mathrel}
+  \mdsy@DeclareAlias{downrcurvearrow}{arrows}{\mathrel}
+\mdsy@DeclareSymbol{acwsearcarrow}{arrows}{\mathrel}
+  \mdsy@DeclareAlias{uprightcurvearrow}{arrows}{\mathrel}
+  \mdsy@DeclareAlias{nercurvearrow}{arrows}{\mathrel}
+\mdsy@DeclareSymbol{acwnearcarrow}{arrows}{\mathrel}
+  \mdsy@DeclareAlias{leftupcurvedarrow}{arrows}{\mathrel}
+  \mdsy@DeclareAlias{nwrcurvearrow}{arrows}{\mathrel}
+\mdsy@DeclareSymbol{acwnwarcarrow}{arrows}{\mathrel}
+  \mdsy@DeclareAlias{downleftcurvedarrow}{arrows}{\mathrel}
+  \mdsy@DeclareAlias{swrcurvearrow}{arrows}{\mathrel}
+\mdsy@DeclareSymbol{acwswarcarrow}{arrows}{\mathrel}
+  \mdsy@DeclareAlias{rightdowncurvedarrow}{arrows}{\mathrel}
+  \mdsy@DeclareAlias{sercurvearrow}{arrows}{\mathrel}
+\mdsy@DeclareSymbol{bdoverarcarrow}{arrows}{\mathrel}
+  \mdsy@DeclareAlias{leftrightcurvearrow}{arrows}{\mathrel}
+\mdsy@DeclareSymbol{bdleftarcarrow}{arrows}{\mathrel}
+  \mdsy@DeclareAlias{updowncurvearrow}{arrows}{\mathrel}
+\mdsy@DeclareSymbol{bdunderarcarrow}{arrows}{\mathrel}
+  \mdsy@DeclareAlias{rightleftcurvearrow}{arrows}{\mathrel}
+\mdsy@DeclareSymbol{bdrightarcarrow}{arrows}{\mathrel}
+  \mdsy@DeclareAlias{downupcurvearrow}{arrows}{\mathrel}
+\mdsy@DeclareSymbol{bdnwarcarrow}{arrows}{\mathrel}
+  \mdsy@DeclareAlias{neswcurvearrow}{arrows}{\mathrel}
+\mdsy@DeclareSymbol{bdswarcarrow}{arrows}{\mathrel}
+  \mdsy@DeclareAlias{nwsecurvearrow}{arrows}{\mathrel}
+\mdsy@DeclareSymbol{bdsearcarrow}{arrows}{\mathrel}
+  \mdsy@DeclareAlias{swnecurvearrow}{arrows}{\mathrel}
+\mdsy@DeclareSymbol{bdnearcarrow}{arrows}{\mathrel}
+  \mdsy@DeclareAlias{senwcurvearrow}{arrows}{\mathrel}
+\mdsy@DeclareSymbol{leftfootline}{arrows}{\mathrel}
+\mdsy@DeclareSymbol{rightfootline}{arrows}{\mathrel}
+\mdsy@DeclareSymbol{acwcirclearrowup}{arrows}{\mathrel}
+\mdsy@DeclareSymbol{acwcirclearrowleft}{arrows}{\mathrel}
+  \mdsy@DeclareAlias{circlearrowleft}{arrows}{\mathrel}
+  \mdsy@DeclareAlias{acwopencirclearrow}{arrows}{\mathrel}
+\mdsy@DeclareSymbol{acwcirclearrowdown}{arrows}{\mathrel}
+  \mdsy@DeclareAlias{acwgapcirclearrow}{arrows}{\mathrel}
+\mdsy@DeclareSymbol{acwcirclearrowright}{arrows}{\mathrel}
+\mdsy@DeclareSymbol{cwcirclearrowdown}{arrows}{\mathrel}
+  \mdsy@DeclareAlias{cwgapcirclearrow}{arrows}{\mathrel}
+\mdsy@DeclareSymbol{cwcirclearrowright}{arrows}{\mathrel}
+  \mdsy@DeclareAlias{circlearrowright}{arrows}{\mathrel}
+  \mdsy@DeclareAlias{cwopencirclearrow}{arrows}{\mathrel}
+\mdsy@DeclareSymbol{cwcirclearrowup}{arrows}{\mathrel}
+\mdsy@DeclareSymbol{cwcirclearrowleft}{arrows}{\mathrel}
+\mdsy@DeclareSymbol{Rrightarrow}{arrows}{\mathrel}
+\mdsy@DeclareSymbol{Uuparrow}{arrows}{\mathrel}
+\mdsy@DeclareSymbol{Lleftarrow}{arrows}{\mathrel}
+\mdsy@DeclareSymbol{Ddownarrow}{arrows}{\mathrel}
+\mdsy@DeclareSymbol{longrightarrow}{arrows}{\mathrel}
+\mdsy@DeclareSymbol{longleftarrow}{arrows}{\mathrel}
+\mdsy@DeclareSymbol{Longrightarrow}{arrows}{\mathrel}
+\mdsy@DeclareSymbol{Longleftarrow}{arrows}{\mathrel}
+\mdsy@DeclareSymbol{longleftrightarrow}{arrows}{\mathrel}
+\mdsy@DeclareSymbol{Longleftrightarrow}{arrows}{\mathrel}
+\mdsy@DeclareSymbol{longmapsto}{arrows}{\mathrel}
+\mdsy@DeclareSymbol{longmapsfrom}{arrows}{\mathrel}
+\mdsy@DeclareSymbol{Longmapsto}{arrows}{\mathrel}
+\mdsy@DeclareSymbol{Longmapsfrom}{arrows}{\mathrel}
+\mdsy@DeclareSymbol{longrightwavearrow}{arrows}{\mathrel}
+  \mdsy@DeclareAlias{longleadsto}{arrows}{\mathrel}
+  \mdsy@DeclareAlias{longrightsquigarrow}{arrows}{\mathrel}
+\mdsy@DeclareSymbol{longleftwavearrow}{arrows}{\mathrel}
+  \mdsy@DeclareAlias{longleftsquigarrow}{arrows}{\mathrel}
+\mdsy@DeclareSymbol{longleftfootline}{arrows}{\mathrel}
+  \mdsy@DeclareAlias{vlongdash}{arrows}{\mathrel}
+\mdsy@DeclareSymbol{longrightfootline}{arrows}{\mathrel}
+  \mdsy@DeclareAlias{longdashv}{arrows}{\mathrel}
+\mdsy@DeclareSymbol{Lsh}{arrows}{\mathrel}
+\mdsy@DeclareSymbol{Rsh}{arrows}{\mathrel}
+\mdsy@DeclareSymbol{Ldsh}{arrows}{\mathrel}
+\mdsy@DeclareSymbol{Rdsh}{arrows}{\mathrel}
+\mdsy@DeclareSymbol{looparrowright}{arrows}{\mathrel}
+\mdsy@DeclareSymbol{looparrowleft}{arrows}{\mathrel}
 \mdsy@setslot{224}
-\mdsy@DeclareSymbol{rightvdash}{MdArrows}{\mathrel}
-  \mdsy@DeclareAlias{vdash}{MdArrows}{\mathrel}
-\mdsy@DeclareSymbol{upvdash}{MdArrows}{\mathrel}
-  \mdsy@DeclareAlias{perp}{MdArrows}{\mathrel}
-  \mdsy@DeclareAlias{bot}{MdArrows}{\mathord}
-\mdsy@DeclareSymbol{leftvdash}{MdArrows}{\mathrel}
-  \mdsy@DeclareAlias{dashv}{MdArrows}{\mathrel}
-\mdsy@DeclareSymbol{downvdash}{MdArrows}{\mathrel}
-  \mdsy@DeclareAlias{top}{MdArrows}{\mathord}
-\mdsy@DeclareSymbol{rightassert}{MdArrows}{\mathrel}
-  \mdsy@DeclareAlias{assert}{MdArrows}{\mathrel}
-  \mdsy@DeclareAlias{shortrighttack}{MdArrows}{\mathrel}
-\mdsy@DeclareSymbol{upassert}{MdArrows}{\mathrel}
-  \mdsy@DeclareAlias{shortuptack}{MdArrows}{\mathrel}
-\mdsy@DeclareSymbol{leftassert}{MdArrows}{\mathrel}
-  \mdsy@DeclareAlias{shortlefttack}{MdArrows}{\mathrel}
-\mdsy@DeclareSymbol{downassert}{MdArrows}{\mathrel}
-  \mdsy@DeclareAlias{shortdowntack}{MdArrows}{\mathrel}
-\mdsy@DeclareSymbol{rightvDash}{MdArrows}{\mathrel}
-  \mdsy@DeclareAlias{vDash}{MdArrows}{\mathrel}
-\mdsy@DeclareSymbol{upvDash}{MdArrows}{\mathrel}
-  \mdsy@DeclareAlias{Vbar}{MdArrows}{\mathrel}
-\mdsy@DeclareSymbol{leftvDash}{MdArrows}{\mathrel}
-  \mdsy@DeclareAlias{Dashv}{MdArrows}{\mathrel}
-\mdsy@DeclareSymbol{downvDash}{MdArrows}{\mathrel}
-  \mdsy@DeclareAlias{barV}{MdArrows}{\mathrel}
-\mdsy@DeclareSymbol{rightmodels}{MdArrows}{\mathrel}
-  \mdsy@DeclareAlias{models}{MdArrows}{\mathrel}
-\mdsy@DeclareSymbol{upmodels}{MdArrows}{\mathrel}
-\mdsy@DeclareSymbol{leftmodels}{MdArrows}{\mathrel}
-\mdsy@DeclareSymbol{downmodels}{MdArrows}{\mathrel}
-\mdsy@DeclareSymbol{rightVdash}{MdArrows}{\mathrel}
-  \mdsy@DeclareAlias{Vdash}{MdArrows}{\mathrel}
-\mdsy@DeclareSymbol{upVdash}{MdArrows}{\mathrel}
-\mdsy@DeclareSymbol{leftVdash}{MdArrows}{\mathrel}
-  \mdsy@DeclareAlias{dashV}{MdArrows}{\mathrel}
-\mdsy@DeclareSymbol{downVdash}{MdArrows}{\mathrel}
-\mdsy@DeclareSymbol{rightAssert}{MdArrows}{\mathrel}
- \mdsy@DeclareAlias{Assert}{MdArrows}{\mathrel}
-\mdsy@DeclareSymbol{upAssert}{MdArrows}{\mathrel}
-  \mdsy@DeclareAlias{vBar}{MdArrows}{\mathrel}
-\mdsy@DeclareSymbol{leftAssert}{MdArrows}{\mathrel}
-\mdsy@DeclareSymbol{downAssert}{MdArrows}{\mathrel}
-  \mdsy@DeclareAlias{Barv}{MdArrows}{\mathrel}
-\mdsy@DeclareSymbol{rightVDash}{MdArrows}{\mathrel}
-  \mdsy@DeclareAlias{VDash}{MdArrows}{\mathrel}
-\mdsy@DeclareSymbol{upVDash}{MdArrows}{\mathrel}
-\mdsy@DeclareSymbol{leftVDash}{MdArrows}{\mathrel}
-  \mdsy@DeclareAlias{DashV}{MdArrows}{\mathrel}
-\mdsy@DeclareSymbol{downVDash}{MdArrows}{\mathrel}
-\mdsy@DeclareSymbol{Vvdash}{MdArrows}{\mathrel}
-\mdsy@DeclareSymbol{dashVv}{MdArrows}{\mathrel}
-\mdsy@DeclareSymbol{vDdash}{MdArrows}{\mathrel}
-\mdsy@DeclareSymbol{Ddashv}{MdArrows}{\mathrel}
+\mdsy@DeclareSymbol{rightvdash}{arrows}{\mathrel}
+  \mdsy@DeclareAlias{vdash}{arrows}{\mathrel}
+\mdsy@DeclareSymbol{upvdash}{arrows}{\mathrel}
+  \mdsy@DeclareAlias{perp}{arrows}{\mathrel}
+  \mdsy@DeclareAlias{bot}{arrows}{\mathord}
+\mdsy@DeclareSymbol{leftvdash}{arrows}{\mathrel}
+  \mdsy@DeclareAlias{dashv}{arrows}{\mathrel}
+\mdsy@DeclareSymbol{downvdash}{arrows}{\mathrel}
+  \mdsy@DeclareAlias{top}{arrows}{\mathord}
+\mdsy@DeclareSymbol{rightassert}{arrows}{\mathrel}
+  \mdsy@DeclareAlias{assert}{arrows}{\mathrel}
+  \mdsy@DeclareAlias{shortrighttack}{arrows}{\mathrel}
+\mdsy@DeclareSymbol{upassert}{arrows}{\mathrel}
+  \mdsy@DeclareAlias{shortuptack}{arrows}{\mathrel}
+\mdsy@DeclareSymbol{leftassert}{arrows}{\mathrel}
+  \mdsy@DeclareAlias{shortlefttack}{arrows}{\mathrel}
+\mdsy@DeclareSymbol{downassert}{arrows}{\mathrel}
+  \mdsy@DeclareAlias{shortdowntack}{arrows}{\mathrel}
+\mdsy@DeclareSymbol{rightvDash}{arrows}{\mathrel}
+  \mdsy@DeclareAlias{vDash}{arrows}{\mathrel}
+\mdsy@DeclareSymbol{upvDash}{arrows}{\mathrel}
+  \mdsy@DeclareAlias{Vbar}{arrows}{\mathrel}
+\mdsy@DeclareSymbol{leftvDash}{arrows}{\mathrel}
+  \mdsy@DeclareAlias{Dashv}{arrows}{\mathrel}
+\mdsy@DeclareSymbol{downvDash}{arrows}{\mathrel}
+  \mdsy@DeclareAlias{barV}{arrows}{\mathrel}
+\mdsy@DeclareSymbol{rightmodels}{arrows}{\mathrel}
+  \mdsy@DeclareAlias{models}{arrows}{\mathrel}
+\mdsy@DeclareSymbol{upmodels}{arrows}{\mathrel}
+\mdsy@DeclareSymbol{leftmodels}{arrows}{\mathrel}
+\mdsy@DeclareSymbol{downmodels}{arrows}{\mathrel}
+\mdsy@DeclareSymbol{rightVdash}{arrows}{\mathrel}
+  \mdsy@DeclareAlias{Vdash}{arrows}{\mathrel}
+\mdsy@DeclareSymbol{upVdash}{arrows}{\mathrel}
+\mdsy@DeclareSymbol{leftVdash}{arrows}{\mathrel}
+  \mdsy@DeclareAlias{dashV}{arrows}{\mathrel}
+\mdsy@DeclareSymbol{downVdash}{arrows}{\mathrel}
+\mdsy@DeclareSymbol{rightAssert}{arrows}{\mathrel}
+ \mdsy@DeclareAlias{Assert}{arrows}{\mathrel}
+\mdsy@DeclareSymbol{upAssert}{arrows}{\mathrel}
+  \mdsy@DeclareAlias{vBar}{arrows}{\mathrel}
+\mdsy@DeclareSymbol{leftAssert}{arrows}{\mathrel}
+\mdsy@DeclareSymbol{downAssert}{arrows}{\mathrel}
+  \mdsy@DeclareAlias{Barv}{arrows}{\mathrel}
+\mdsy@DeclareSymbol{rightVDash}{arrows}{\mathrel}
+  \mdsy@DeclareAlias{VDash}{arrows}{\mathrel}
+\mdsy@DeclareSymbol{upVDash}{arrows}{\mathrel}
+\mdsy@DeclareSymbol{leftVDash}{arrows}{\mathrel}
+  \mdsy@DeclareAlias{DashV}{arrows}{\mathrel}
+\mdsy@DeclareSymbol{downVDash}{arrows}{\mathrel}
+\mdsy@DeclareSymbol{Vvdash}{arrows}{\mathrel}
+\mdsy@DeclareSymbol{dashVv}{arrows}{\mathrel}
+\mdsy@DeclareSymbol{vDdash}{arrows}{\mathrel}
+\mdsy@DeclareSymbol{Ddashv}{arrows}{\mathrel}
 
 \mdsy@DeclareRobustCommand{relbar}{\mathrel{\smash-}}
 \mdsy@DeclareRobustCommand{Relbar}{\mathrel=}
@@ -2878,473 +2878,473 @@
 % MdSymbolD: stroked arrows
 %    \begin{macrocode}
 \mdsy@setslot{0}
-\mdsy@DeclareSymbol{nrightarrow}{MdNarrows}{\mathrel}
-  \mdsy@DeclareAlias{nto}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{nuparrow}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{nleftarrow}{MdNarrows}{\mathrel}
-  \mdsy@DeclareAlias{ngets}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{ndownarrow}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{nnearrow}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{nnwarrow}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{nswarrow}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{nsearrow}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{nRightarrow}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{nUparrow}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{nLeftarrow}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{nDownarrow}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{nNearrow}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{nNwarrow}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{nSwarrow}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{nSearrow}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{nleftrightarrow}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{nupdownarrow}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{nneswarrow}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{nnwsearrow}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{nLeftrightarrow}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{nUpdownarrow}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{nNeswarrow}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{nNwsearrow}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{ntwoheadrightarrow}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{ntwoheaduparrow}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{ntwoheadleftarrow}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{ntwoheaddownarrow}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{ntwoheadnearrow}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{ntwoheadnwarrow}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{ntwoheadswarrow}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{ntwoheadsearrow}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{nrightarrowtail}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{nuparrowtail}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{nleftarrowtail}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{ndownarrowtail}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{nnearrowtail}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{nnwarrowtail}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{nswarrowtail}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{nsearrowtail}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{nrightmapsto}{MdNarrows}{\mathrel}
-  \mdsy@DeclareAlias{nmapsto}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{nupmapsto}{MdNarrows}{\mathrel}
-  \mdsy@DeclareAlias{nmapsup}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{nleftmapsto}{MdNarrows}{\mathrel}
-  \mdsy@DeclareAlias{nmapsfrom}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{ndownmapsto}{MdNarrows}{\mathrel}
-  \mdsy@DeclareAlias{nmapsdown}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{nRightmapsto}{MdNarrows}{\mathrel}
-  \mdsy@DeclareAlias{nMapsto}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{nUpmapsto}{MdNarrows}{\mathrel}
-  \mdsy@DeclareAlias{nMapsup}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{nLeftmapsto}{MdNarrows}{\mathrel}
-  \mdsy@DeclareAlias{nMapsfrom}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{nDownmapsto}{MdNarrows}{\mathrel}
-  \mdsy@DeclareAlias{nMapsdown}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{nhookrightarrow}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{nhookuparrow}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{nvarhookleftarrow}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{nvarhookdownarrow}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{nvarhooknearrow}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{nhooknwarrow}{MdNarrows}{\mathrel}
-  \mdsy@DeclareAlias{nhknwarrow}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{nvarhookswarrow}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{nhooksearrow}{MdNarrows}{\mathrel}
-  \mdsy@DeclareAlias{nhksearrow}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{nvarhookrightarrow}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{nvarhookuparrow}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{nhookleftarrow}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{nhookdownarrow}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{nhooknearrow}{MdNarrows}{\mathrel}
-  \mdsy@DeclareAlias{nhknearrow}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{nvarhooknwarrow}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{nhookswarrow}{MdNarrows}{\mathrel}
-  \mdsy@DeclareAlias{nhkswarrow}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{nvarhooksearrow}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{nrightharpoonup}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{nupharpoonleft}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{nleftharpoondown}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{ndownharpoonright}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{nneharpoonnw}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{nnwharpoonsw}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{nswharpoonse}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{nseharpoonne}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{nrightharpoondown}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{nupharpoonright}{MdNarrows}{\mathrel}
-  \mdsy@DeclareAlias{nrestriction}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{nleftharpoonup}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{ndownharpoonleft}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{nneharpoonse}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{nnwharpoonne}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{nswharpoonnw}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{nseharpoonsw}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{nleftrightharpoonupdown}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{nupdownharpoonleftright}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{nneswharpoonnwse}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{nnwseharpoonnesw}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{nleftrightharpoondownup}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{nupdownharpoonrightleft}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{nneswharpoonsenw}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{nnwseharpoonswne}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{nrightleftharpoons}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{nupdownharpoons}{MdNarrows}{\mathrel}
-  \mdsy@DeclareAlias{nupdownharpoonsleftright}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{nneswharpoons}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{nsenwharpoons}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{nleftrightharpoons}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{ndownupharpoons}{MdNarrows}{\mathrel}
-  \mdsy@DeclareAlias{ndownupharpoonsleftright}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{nswneharpoons}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{nnwseharpoons}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{nrightbkarrow}{MdNarrows}{\mathrel}
-  \mdsy@DeclareAlias{ndasharrow}{MdNarrows}{\mathrel}
-  \mdsy@DeclareAlias{ndashrightarrow}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{nupbkarrow}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{nleftbkarrow}{MdNarrows}{\mathrel}
-  \mdsy@DeclareAlias{ndashleftarrow}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{ndownbkarrow}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{nnebkarrow}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{nnwbkarrow}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{nswbkarrow}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{nsebkarrow}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{nrightspoon}{MdNarrows}{\mathrel}
-  \mdsy@DeclareAlias{nmultimap}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{nupspoon}{MdNarrows}{\mathrel}
-  \mdsy@DeclareAlias{ncirmid}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{nleftspoon}{MdNarrows}{\mathrel}
-  \mdsy@DeclareAlias{nmultimapinv}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{ndownspoon}{MdNarrows}{\mathrel}
-  \mdsy@DeclareAlias{nmidcir}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{nrightblackspoon}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{nupblackspoon}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{nleftblackspoon}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{ndownblackspoon}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{nleftrightspoon}{MdNarrows}{\mathrel}
-  \mdsy@DeclareAlias{ndualmap}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{nleftrightblackspoon}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{nblackwhitespoon}{MdNarrows}{\mathrel}
-  \mdsy@DeclareAlias{nimageof}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{nwhiteblackspoon}{MdNarrows}{\mathrel}
-  \mdsy@DeclareAlias{norigof}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{nrightpitchfork}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{nuppitchfork}{MdNarrows}{\mathrel}
-  \mdsy@DeclareAlias{npitchfork}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{nleftpitchfork}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{ndownpitchfork}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{nrightrightarrows}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{nupuparrows}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{nleftleftarrows}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{ndowndownarrows}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{nnenearrows}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{nnwnwarrows}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{nswswarrows}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{nsesearrows}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{nrightleftarrows}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{nupdownarrows}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{nneswarrows}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{nnwsearrows}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{nleftrightarrows}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{ndownuparrows}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{nswnearrows}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{nsenwarrows}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{nrightwavearrow}{MdNarrows}{\mathrel}
-  \mdsy@DeclareAlias{nleadsto}{MdNarrows}{\mathrel}
-  \mdsy@DeclareAlias{nrightsquigarrow}{MdNarrows}{\mathrel}
-  \mdsy@DeclareAlias{nrightcurvedarrow}{MdArrows}{\mathrel}
-  \mdsy@DeclareAlias{nrightlsquigarrow}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{nvarupwavearrow}{MdNarrows}{\mathrel}
-  \mdsy@DeclareAlias{nuplsquigarrow}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{nvarleftwavearrow}{MdNarrows}{\mathrel}
-  \mdsy@DeclareAlias{nleftlsquigarrow}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{ndownwavearrow}{MdNarrows}{\mathrel}
-  \mdsy@DeclareAlias{ndownlsquigarrow}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{nvarrightwavearrow}{MdNarrows}{\mathrel}
-  \mdsy@DeclareAlias{nrightrsquigarrow}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{nupwavearrow}{MdNarrows}{\mathrel}
-  \mdsy@DeclareAlias{nuprsquigarrow}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{nleftwavearrow}{MdNarrows}{\mathrel}
-  \mdsy@DeclareAlias{nleftsquigarrow}{MdNarrows}{\mathrel}
-  \mdsy@DeclareAlias{nleftcurvedarrow}{MdArrows}{\mathrel}
-  \mdsy@DeclareAlias{nleftrsquigarrow}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{nvardownwavearrow}{MdNarrows}{\mathrel}
-  \mdsy@DeclareAlias{ndownrsquigarrow}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{nleftrightwavearrow}{MdNarrows}{\mathrel}
-  \mdsy@DeclareAlias{nleftrightsquigarrow}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{nupdownwavearrow}{MdNarrows}{\mathrel}
-  \mdsy@DeclareAlias{nupdownsquigarrow}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{nvarleftrightwavearrow}{MdNarrows}{\mathrel}
-  \mdsy@DeclareAlias{nrightleftsquigarrow}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{nvarupdownwavearrow}{MdNarrows}{\mathrel}
-  \mdsy@DeclareAlias{ndownupsquigarrow}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{ncwoverarcarrow}{MdNarrows}{\mathrel}
-  \mdsy@DeclareAlias{ncurvearrowright}{MdNarrows}{\mathrel}
-  \mdsy@DeclareAlias{nrightlcurvearrow}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{ncwleftarcarrow}{MdNarrows}{\mathrel}
-  \mdsy@DeclareAlias{nuplcurvearrow}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{ncwunderarcarrow}{MdNarrows}{\mathrel}
-  \mdsy@DeclareAlias{nleftlcurvearrow}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{ncwrightarcarrow}{MdNarrows}{\mathrel}
-  \mdsy@DeclareAlias{ndownlcurvearrow}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{ncwnwarcarrow}{MdNarrows}{\mathrel}
-  \mdsy@DeclareAlias{nrightupcurvedarrow}{MdNarrows}{\mathrel}
-  \mdsy@DeclareAlias{nnelcurvearrow}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{ncwswarcarrow}{MdNarrows}{\mathrel}
-  \mdsy@DeclareAlias{nupleftcurvedarrow}{MdNarrows}{\mathrel}
-  \mdsy@DeclareAlias{nnwlcurvearrow}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{ncwsearcarrow}{MdNarrows}{\mathrel}
-  \mdsy@DeclareAlias{nleftdowncurvedarrow}{MdNarrows}{\mathrel}
-  \mdsy@DeclareAlias{nswlcurvearrow}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{ncwnearcarrow}{MdNarrows}{\mathrel}
-  \mdsy@DeclareAlias{ndownrightcurvedarrow}{MdNarrows}{\mathrel}
-  \mdsy@DeclareAlias{nselcurvearrow}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{nacwunderarcarrow}{MdNarrows}{\mathrel}
-  \mdsy@DeclareAlias{nrightrcurvearrow}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{nacwrightarcarrow}{MdNarrows}{\mathrel}
-  \mdsy@DeclareAlias{nuprcurvearrow}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{nacwoverarcarrow}{MdNarrows}{\mathrel}
-  \mdsy@DeclareAlias{ncurvearrowleft}{MdNarrows}{\mathrel}
-  \mdsy@DeclareAlias{nleftrcurvearrow}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{nacwleftarcarrow}{MdNarrows}{\mathrel}
-  \mdsy@DeclareAlias{ndownrcurvearrow}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{nacwsearcarrow}{MdNarrows}{\mathrel}
-  \mdsy@DeclareAlias{nuprightcurvearrow}{MdNarrows}{\mathrel}
-  \mdsy@DeclareAlias{nnercurvearrow}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{nacwnearcarrow}{MdNarrows}{\mathrel}
-  \mdsy@DeclareAlias{nleftupcurvedarrow}{MdNarrows}{\mathrel}
-  \mdsy@DeclareAlias{nnwrcurvearrow}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{nacwnwarcarrow}{MdNarrows}{\mathrel}
-  \mdsy@DeclareAlias{ndownleftcurvedarrow}{MdNarrows}{\mathrel}
-  \mdsy@DeclareAlias{nswrcurvearrow}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{nacwswarcarrow}{MdNarrows}{\mathrel}
-  \mdsy@DeclareAlias{nrightdowncurvedarrow}{MdNarrows}{\mathrel}
-  \mdsy@DeclareAlias{nsercurvearrow}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{nbdoverarcarrow}{MdNarrows}{\mathrel}
-  \mdsy@DeclareAlias{nleftrightcurvearrow}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{nbdleftarcarrow}{MdNarrows}{\mathrel}
-  \mdsy@DeclareAlias{nupdowncurvearrow}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{nbdunderarcarrow}{MdNarrows}{\mathrel}
-  \mdsy@DeclareAlias{nrightleftcurvearrow}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{nbdrightarcarrow}{MdNarrows}{\mathrel}
-  \mdsy@DeclareAlias{ndownupcurvearrow}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{nbdnwarcarrow}{MdNarrows}{\mathrel}
-  \mdsy@DeclareAlias{nneswcurvearrow}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{nbdswarcarrow}{MdNarrows}{\mathrel}
-  \mdsy@DeclareAlias{nnwsecurvearrow}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{nbdsearcarrow}{MdNarrows}{\mathrel}
-  \mdsy@DeclareAlias{nswnecurvearrow}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{nbdnearcarrow}{MdNarrows}{\mathrel}
-  \mdsy@DeclareAlias{nsenwcurvearrow}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{nleftfootline}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{nrightfootline}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{nacwcirclearrowup}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{nacwcirclearrowleft}{MdNarrows}{\mathrel}
-  \mdsy@DeclareAlias{ncirclearrowleft}{MdNarrows}{\mathrel}
-  \mdsy@DeclareAlias{nacwopencirclearrow}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{nacwcirclearrowdown}{MdNarrows}{\mathrel}
-  \mdsy@DeclareAlias{nacwgapcirclearrow}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{nacwcirclearrowright}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{ncwcirclearrowdown}{MdNarrows}{\mathrel}
-  \mdsy@DeclareAlias{ncwgapcirclearrow}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{ncwcirclearrowright}{MdNarrows}{\mathrel}
-  \mdsy@DeclareAlias{ncirclearrowright}{MdNarrows}{\mathrel}
-  \mdsy@DeclareAlias{ncwopencirclearrow}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{ncwcirclearrowup}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{ncwcirclearrowleft}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{nRrightarrow}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{nUuparrow}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{nLleftarrow}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{nDdownarrow}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{nlongrightarrow}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{nlongleftarrow}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{nLongrightarrow}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{nLongleftarrow}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{nlongleftrightarrow}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{nLongleftrightarrow}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{nlongmapsto}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{nlongmapsfrom}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{nLongmapsto}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{nLongmapsfrom}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{nlongrightwavearrow}{MdNarrows}{\mathrel}
-  \mdsy@DeclareAlias{nlongleadsto}{MdNarrows}{\mathrel}
-  \mdsy@DeclareAlias{nlongrightsquigarrow}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{nlongleftwavearrow}{MdNarrows}{\mathrel}
-  \mdsy@DeclareAlias{nlongleftsquigarrow}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{nlongleftfootline}{MdNarrows}{\mathrel}
-  \mdsy@DeclareAlias{nvlongdash}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{nlongrightfootline}{MdNarrows}{\mathrel}
-  \mdsy@DeclareAlias{nlongdashv}{MdNarrows}{\mathrel}
+\mdsy@DeclareSymbol{nrightarrow}{narrows}{\mathrel}
+  \mdsy@DeclareAlias{nto}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{nuparrow}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{nleftarrow}{narrows}{\mathrel}
+  \mdsy@DeclareAlias{ngets}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{ndownarrow}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{nnearrow}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{nnwarrow}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{nswarrow}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{nsearrow}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{nRightarrow}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{nUparrow}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{nLeftarrow}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{nDownarrow}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{nNearrow}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{nNwarrow}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{nSwarrow}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{nSearrow}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{nleftrightarrow}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{nupdownarrow}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{nneswarrow}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{nnwsearrow}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{nLeftrightarrow}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{nUpdownarrow}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{nNeswarrow}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{nNwsearrow}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{ntwoheadrightarrow}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{ntwoheaduparrow}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{ntwoheadleftarrow}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{ntwoheaddownarrow}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{ntwoheadnearrow}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{ntwoheadnwarrow}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{ntwoheadswarrow}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{ntwoheadsearrow}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{nrightarrowtail}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{nuparrowtail}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{nleftarrowtail}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{ndownarrowtail}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{nnearrowtail}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{nnwarrowtail}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{nswarrowtail}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{nsearrowtail}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{nrightmapsto}{narrows}{\mathrel}
+  \mdsy@DeclareAlias{nmapsto}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{nupmapsto}{narrows}{\mathrel}
+  \mdsy@DeclareAlias{nmapsup}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{nleftmapsto}{narrows}{\mathrel}
+  \mdsy@DeclareAlias{nmapsfrom}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{ndownmapsto}{narrows}{\mathrel}
+  \mdsy@DeclareAlias{nmapsdown}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{nRightmapsto}{narrows}{\mathrel}
+  \mdsy@DeclareAlias{nMapsto}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{nUpmapsto}{narrows}{\mathrel}
+  \mdsy@DeclareAlias{nMapsup}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{nLeftmapsto}{narrows}{\mathrel}
+  \mdsy@DeclareAlias{nMapsfrom}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{nDownmapsto}{narrows}{\mathrel}
+  \mdsy@DeclareAlias{nMapsdown}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{nhookrightarrow}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{nhookuparrow}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{nvarhookleftarrow}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{nvarhookdownarrow}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{nvarhooknearrow}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{nhooknwarrow}{narrows}{\mathrel}
+  \mdsy@DeclareAlias{nhknwarrow}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{nvarhookswarrow}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{nhooksearrow}{narrows}{\mathrel}
+  \mdsy@DeclareAlias{nhksearrow}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{nvarhookrightarrow}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{nvarhookuparrow}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{nhookleftarrow}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{nhookdownarrow}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{nhooknearrow}{narrows}{\mathrel}
+  \mdsy@DeclareAlias{nhknearrow}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{nvarhooknwarrow}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{nhookswarrow}{narrows}{\mathrel}
+  \mdsy@DeclareAlias{nhkswarrow}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{nvarhooksearrow}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{nrightharpoonup}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{nupharpoonleft}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{nleftharpoondown}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{ndownharpoonright}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{nneharpoonnw}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{nnwharpoonsw}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{nswharpoonse}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{nseharpoonne}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{nrightharpoondown}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{nupharpoonright}{narrows}{\mathrel}
+  \mdsy@DeclareAlias{nrestriction}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{nleftharpoonup}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{ndownharpoonleft}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{nneharpoonse}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{nnwharpoonne}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{nswharpoonnw}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{nseharpoonsw}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{nleftrightharpoonupdown}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{nupdownharpoonleftright}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{nneswharpoonnwse}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{nnwseharpoonnesw}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{nleftrightharpoondownup}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{nupdownharpoonrightleft}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{nneswharpoonsenw}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{nnwseharpoonswne}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{nrightleftharpoons}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{nupdownharpoons}{narrows}{\mathrel}
+  \mdsy@DeclareAlias{nupdownharpoonsleftright}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{nneswharpoons}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{nsenwharpoons}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{nleftrightharpoons}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{ndownupharpoons}{narrows}{\mathrel}
+  \mdsy@DeclareAlias{ndownupharpoonsleftright}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{nswneharpoons}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{nnwseharpoons}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{nrightbkarrow}{narrows}{\mathrel}
+  \mdsy@DeclareAlias{ndasharrow}{narrows}{\mathrel}
+  \mdsy@DeclareAlias{ndashrightarrow}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{nupbkarrow}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{nleftbkarrow}{narrows}{\mathrel}
+  \mdsy@DeclareAlias{ndashleftarrow}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{ndownbkarrow}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{nnebkarrow}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{nnwbkarrow}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{nswbkarrow}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{nsebkarrow}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{nrightspoon}{narrows}{\mathrel}
+  \mdsy@DeclareAlias{nmultimap}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{nupspoon}{narrows}{\mathrel}
+  \mdsy@DeclareAlias{ncirmid}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{nleftspoon}{narrows}{\mathrel}
+  \mdsy@DeclareAlias{nmultimapinv}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{ndownspoon}{narrows}{\mathrel}
+  \mdsy@DeclareAlias{nmidcir}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{nrightblackspoon}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{nupblackspoon}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{nleftblackspoon}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{ndownblackspoon}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{nleftrightspoon}{narrows}{\mathrel}
+  \mdsy@DeclareAlias{ndualmap}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{nleftrightblackspoon}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{nblackwhitespoon}{narrows}{\mathrel}
+  \mdsy@DeclareAlias{nimageof}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{nwhiteblackspoon}{narrows}{\mathrel}
+  \mdsy@DeclareAlias{norigof}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{nrightpitchfork}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{nuppitchfork}{narrows}{\mathrel}
+  \mdsy@DeclareAlias{npitchfork}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{nleftpitchfork}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{ndownpitchfork}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{nrightrightarrows}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{nupuparrows}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{nleftleftarrows}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{ndowndownarrows}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{nnenearrows}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{nnwnwarrows}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{nswswarrows}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{nsesearrows}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{nrightleftarrows}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{nupdownarrows}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{nneswarrows}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{nnwsearrows}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{nleftrightarrows}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{ndownuparrows}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{nswnearrows}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{nsenwarrows}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{nrightwavearrow}{narrows}{\mathrel}
+  \mdsy@DeclareAlias{nleadsto}{narrows}{\mathrel}
+  \mdsy@DeclareAlias{nrightsquigarrow}{narrows}{\mathrel}
+  \mdsy@DeclareAlias{nrightcurvedarrow}{arrows}{\mathrel}
+  \mdsy@DeclareAlias{nrightlsquigarrow}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{nvarupwavearrow}{narrows}{\mathrel}
+  \mdsy@DeclareAlias{nuplsquigarrow}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{nvarleftwavearrow}{narrows}{\mathrel}
+  \mdsy@DeclareAlias{nleftlsquigarrow}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{ndownwavearrow}{narrows}{\mathrel}
+  \mdsy@DeclareAlias{ndownlsquigarrow}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{nvarrightwavearrow}{narrows}{\mathrel}
+  \mdsy@DeclareAlias{nrightrsquigarrow}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{nupwavearrow}{narrows}{\mathrel}
+  \mdsy@DeclareAlias{nuprsquigarrow}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{nleftwavearrow}{narrows}{\mathrel}
+  \mdsy@DeclareAlias{nleftsquigarrow}{narrows}{\mathrel}
+  \mdsy@DeclareAlias{nleftcurvedarrow}{arrows}{\mathrel}
+  \mdsy@DeclareAlias{nleftrsquigarrow}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{nvardownwavearrow}{narrows}{\mathrel}
+  \mdsy@DeclareAlias{ndownrsquigarrow}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{nleftrightwavearrow}{narrows}{\mathrel}
+  \mdsy@DeclareAlias{nleftrightsquigarrow}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{nupdownwavearrow}{narrows}{\mathrel}
+  \mdsy@DeclareAlias{nupdownsquigarrow}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{nvarleftrightwavearrow}{narrows}{\mathrel}
+  \mdsy@DeclareAlias{nrightleftsquigarrow}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{nvarupdownwavearrow}{narrows}{\mathrel}
+  \mdsy@DeclareAlias{ndownupsquigarrow}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{ncwoverarcarrow}{narrows}{\mathrel}
+  \mdsy@DeclareAlias{ncurvearrowright}{narrows}{\mathrel}
+  \mdsy@DeclareAlias{nrightlcurvearrow}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{ncwleftarcarrow}{narrows}{\mathrel}
+  \mdsy@DeclareAlias{nuplcurvearrow}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{ncwunderarcarrow}{narrows}{\mathrel}
+  \mdsy@DeclareAlias{nleftlcurvearrow}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{ncwrightarcarrow}{narrows}{\mathrel}
+  \mdsy@DeclareAlias{ndownlcurvearrow}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{ncwnwarcarrow}{narrows}{\mathrel}
+  \mdsy@DeclareAlias{nrightupcurvedarrow}{narrows}{\mathrel}
+  \mdsy@DeclareAlias{nnelcurvearrow}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{ncwswarcarrow}{narrows}{\mathrel}
+  \mdsy@DeclareAlias{nupleftcurvedarrow}{narrows}{\mathrel}
+  \mdsy@DeclareAlias{nnwlcurvearrow}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{ncwsearcarrow}{narrows}{\mathrel}
+  \mdsy@DeclareAlias{nleftdowncurvedarrow}{narrows}{\mathrel}
+  \mdsy@DeclareAlias{nswlcurvearrow}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{ncwnearcarrow}{narrows}{\mathrel}
+  \mdsy@DeclareAlias{ndownrightcurvedarrow}{narrows}{\mathrel}
+  \mdsy@DeclareAlias{nselcurvearrow}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{nacwunderarcarrow}{narrows}{\mathrel}
+  \mdsy@DeclareAlias{nrightrcurvearrow}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{nacwrightarcarrow}{narrows}{\mathrel}
+  \mdsy@DeclareAlias{nuprcurvearrow}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{nacwoverarcarrow}{narrows}{\mathrel}
+  \mdsy@DeclareAlias{ncurvearrowleft}{narrows}{\mathrel}
+  \mdsy@DeclareAlias{nleftrcurvearrow}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{nacwleftarcarrow}{narrows}{\mathrel}
+  \mdsy@DeclareAlias{ndownrcurvearrow}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{nacwsearcarrow}{narrows}{\mathrel}
+  \mdsy@DeclareAlias{nuprightcurvearrow}{narrows}{\mathrel}
+  \mdsy@DeclareAlias{nnercurvearrow}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{nacwnearcarrow}{narrows}{\mathrel}
+  \mdsy@DeclareAlias{nleftupcurvedarrow}{narrows}{\mathrel}
+  \mdsy@DeclareAlias{nnwrcurvearrow}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{nacwnwarcarrow}{narrows}{\mathrel}
+  \mdsy@DeclareAlias{ndownleftcurvedarrow}{narrows}{\mathrel}
+  \mdsy@DeclareAlias{nswrcurvearrow}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{nacwswarcarrow}{narrows}{\mathrel}
+  \mdsy@DeclareAlias{nrightdowncurvedarrow}{narrows}{\mathrel}
+  \mdsy@DeclareAlias{nsercurvearrow}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{nbdoverarcarrow}{narrows}{\mathrel}
+  \mdsy@DeclareAlias{nleftrightcurvearrow}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{nbdleftarcarrow}{narrows}{\mathrel}
+  \mdsy@DeclareAlias{nupdowncurvearrow}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{nbdunderarcarrow}{narrows}{\mathrel}
+  \mdsy@DeclareAlias{nrightleftcurvearrow}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{nbdrightarcarrow}{narrows}{\mathrel}
+  \mdsy@DeclareAlias{ndownupcurvearrow}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{nbdnwarcarrow}{narrows}{\mathrel}
+  \mdsy@DeclareAlias{nneswcurvearrow}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{nbdswarcarrow}{narrows}{\mathrel}
+  \mdsy@DeclareAlias{nnwsecurvearrow}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{nbdsearcarrow}{narrows}{\mathrel}
+  \mdsy@DeclareAlias{nswnecurvearrow}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{nbdnearcarrow}{narrows}{\mathrel}
+  \mdsy@DeclareAlias{nsenwcurvearrow}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{nleftfootline}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{nrightfootline}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{nacwcirclearrowup}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{nacwcirclearrowleft}{narrows}{\mathrel}
+  \mdsy@DeclareAlias{ncirclearrowleft}{narrows}{\mathrel}
+  \mdsy@DeclareAlias{nacwopencirclearrow}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{nacwcirclearrowdown}{narrows}{\mathrel}
+  \mdsy@DeclareAlias{nacwgapcirclearrow}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{nacwcirclearrowright}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{ncwcirclearrowdown}{narrows}{\mathrel}
+  \mdsy@DeclareAlias{ncwgapcirclearrow}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{ncwcirclearrowright}{narrows}{\mathrel}
+  \mdsy@DeclareAlias{ncirclearrowright}{narrows}{\mathrel}
+  \mdsy@DeclareAlias{ncwopencirclearrow}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{ncwcirclearrowup}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{ncwcirclearrowleft}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{nRrightarrow}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{nUuparrow}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{nLleftarrow}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{nDdownarrow}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{nlongrightarrow}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{nlongleftarrow}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{nLongrightarrow}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{nLongleftarrow}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{nlongleftrightarrow}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{nLongleftrightarrow}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{nlongmapsto}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{nlongmapsfrom}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{nLongmapsto}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{nLongmapsfrom}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{nlongrightwavearrow}{narrows}{\mathrel}
+  \mdsy@DeclareAlias{nlongleadsto}{narrows}{\mathrel}
+  \mdsy@DeclareAlias{nlongrightsquigarrow}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{nlongleftwavearrow}{narrows}{\mathrel}
+  \mdsy@DeclareAlias{nlongleftsquigarrow}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{nlongleftfootline}{narrows}{\mathrel}
+  \mdsy@DeclareAlias{nvlongdash}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{nlongrightfootline}{narrows}{\mathrel}
+  \mdsy@DeclareAlias{nlongdashv}{narrows}{\mathrel}
 \mdsy@setslot{224}
-\mdsy@DeclareSymbol{nrightvdash}{MdNarrows}{\mathrel}
-  \mdsy@DeclareAlias{nvdash}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{nupvdash}{MdNarrows}{\mathrel}
-  \mdsy@DeclareAlias{nperp}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{nleftvdash}{MdNarrows}{\mathrel}
-  \mdsy@DeclareAlias{ndashv}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{ndownvdash}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{nrightassert}{MdNarrows}{\mathrel}
-  \mdsy@DeclareAlias{nassert}{MdNarrows}{\mathrel}
-  \mdsy@DeclareAlias{nshortrighttack}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{nupassert}{MdNarrows}{\mathrel}
-  \mdsy@DeclareAlias{nshortuptack}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{nleftassert}{MdNarrows}{\mathrel}
-  \mdsy@DeclareAlias{nshortlefttack}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{ndownassert}{MdNarrows}{\mathrel}
-  \mdsy@DeclareAlias{nshortdowntack}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{nrightvDash}{MdNarrows}{\mathrel}
-  \mdsy@DeclareAlias{nvDash}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{nupvDash}{MdNarrows}{\mathrel}
-  \mdsy@DeclareAlias{nVbar}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{nleftvDash}{MdNarrows}{\mathrel}
-  \mdsy@DeclareAlias{nDashv}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{ndownvDash}{MdNarrows}{\mathrel}
-  \mdsy@DeclareAlias{nbarV}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{nrightmodels}{MdNarrows}{\mathrel}
-  \mdsy@DeclareAlias{nmodels}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{nupmodels}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{nleftmodels}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{ndownmodels}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{nrightVdash}{MdNarrows}{\mathrel}
-  \mdsy@DeclareAlias{nVdash}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{nupVdash}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{nleftVdash}{MdNarrows}{\mathrel}
-  \mdsy@DeclareAlias{ndashV}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{ndownVdash}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{nrightAssert}{MdNarrows}{\mathrel}
- \mdsy@DeclareAlias{nAssert}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{nupAssert}{MdNarrows}{\mathrel}
-  \mdsy@DeclareAlias{nvBar}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{nleftAssert}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{ndownAssert}{MdNarrows}{\mathrel}
-  \mdsy@DeclareAlias{nBarv}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{nrightVDash}{MdNarrows}{\mathrel}
-  \mdsy@DeclareAlias{nVDash}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{nupVDash}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{nleftVDash}{MdNarrows}{\mathrel}
-  \mdsy@DeclareAlias{nDashV}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{ndownVDash}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{nVvdash}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{ndashVv}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{nvDdash}{MdNarrows}{\mathrel}
-\mdsy@DeclareSymbol{nDdashv}{MdNarrows}{\mathrel}
+\mdsy@DeclareSymbol{nrightvdash}{narrows}{\mathrel}
+  \mdsy@DeclareAlias{nvdash}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{nupvdash}{narrows}{\mathrel}
+  \mdsy@DeclareAlias{nperp}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{nleftvdash}{narrows}{\mathrel}
+  \mdsy@DeclareAlias{ndashv}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{ndownvdash}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{nrightassert}{narrows}{\mathrel}
+  \mdsy@DeclareAlias{nassert}{narrows}{\mathrel}
+  \mdsy@DeclareAlias{nshortrighttack}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{nupassert}{narrows}{\mathrel}
+  \mdsy@DeclareAlias{nshortuptack}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{nleftassert}{narrows}{\mathrel}
+  \mdsy@DeclareAlias{nshortlefttack}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{ndownassert}{narrows}{\mathrel}
+  \mdsy@DeclareAlias{nshortdowntack}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{nrightvDash}{narrows}{\mathrel}
+  \mdsy@DeclareAlias{nvDash}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{nupvDash}{narrows}{\mathrel}
+  \mdsy@DeclareAlias{nVbar}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{nleftvDash}{narrows}{\mathrel}
+  \mdsy@DeclareAlias{nDashv}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{ndownvDash}{narrows}{\mathrel}
+  \mdsy@DeclareAlias{nbarV}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{nrightmodels}{narrows}{\mathrel}
+  \mdsy@DeclareAlias{nmodels}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{nupmodels}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{nleftmodels}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{ndownmodels}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{nrightVdash}{narrows}{\mathrel}
+  \mdsy@DeclareAlias{nVdash}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{nupVdash}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{nleftVdash}{narrows}{\mathrel}
+  \mdsy@DeclareAlias{ndashV}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{ndownVdash}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{nrightAssert}{narrows}{\mathrel}
+ \mdsy@DeclareAlias{nAssert}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{nupAssert}{narrows}{\mathrel}
+  \mdsy@DeclareAlias{nvBar}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{nleftAssert}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{ndownAssert}{narrows}{\mathrel}
+  \mdsy@DeclareAlias{nBarv}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{nrightVDash}{narrows}{\mathrel}
+  \mdsy@DeclareAlias{nVDash}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{nupVDash}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{nleftVDash}{narrows}{\mathrel}
+  \mdsy@DeclareAlias{nDashV}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{ndownVDash}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{nVvdash}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{ndashVv}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{nvDdash}{narrows}{\mathrel}
+\mdsy@DeclareSymbol{nDdashv}{narrows}{\mathrel}
 %    \end{macrocode}
 % MdSymbolE: large operators
 %    \begin{macrocode}
 \mdsy@setslot{0}
-\mdsy@DeclareSymbol{tbigplus}{MdLargesymbols}{\mathop}
-\mdsy@DeclareSymbol{dbigplus}{MdLargesymbols}{\mathop}
-\mdsy@DeclareSymbol{tbigtimes}{MdLargesymbols}{\mathop}
-\mdsy@DeclareSymbol{dbigtimes}{MdLargesymbols}{\mathop}
-\mdsy@DeclareSymbol{tbigwedge}{MdLargesymbols}{\mathop}
-\mdsy@DeclareSymbol{dbigwedge}{MdLargesymbols}{\mathop}
-\mdsy@DeclareSymbol{tbigvee}{MdLargesymbols}{\mathop}
-\mdsy@DeclareSymbol{dbigvee}{MdLargesymbols}{\mathop}
-\mdsy@DeclareSymbol{tbigwedgedot}{MdLargesymbols}{\mathop}
-\mdsy@DeclareSymbol{dbigwedgedot}{MdLargesymbols}{\mathop}
-\mdsy@DeclareSymbol{tbigveedot}{MdLargesymbols}{\mathop}
-\mdsy@DeclareSymbol{dbigveedot}{MdLargesymbols}{\mathop}
-\mdsy@DeclareSymbol{tbigdoublewedge}{MdLargesymbols}{\mathop}
-  \mdsy@DeclareAlias{tconjquant}{MdLargesymbols}{\mathop}
-\mdsy@DeclareSymbol{dbigdoublewedge}{MdLargesymbols}{\mathop}
-  \mdsy@DeclareAlias{dconjquant}{MdLargesymbols}{\mathop}
-\mdsy@DeclareSymbol{tbigdoublevee}{MdLargesymbols}{\mathop}
-  \mdsy@DeclareAlias{tdisjquant}{MdLargesymbols}{\mathop}
-\mdsy@DeclareSymbol{dbigdoublevee}{MdLargesymbols}{\mathop}
-  \mdsy@DeclareAlias{ddisjquant}{MdLargesymbols}{\mathop}
-\mdsy@DeclareSymbol{tbigcurlywedge}{MdLargesymbols}{\mathop}
-\mdsy@DeclareSymbol{dbigcurlywedge}{MdLargesymbols}{\mathop}
-\mdsy@DeclareSymbol{tbigcurlyvee}{MdLargesymbols}{\mathop}
-\mdsy@DeclareSymbol{dbigcurlyvee}{MdLargesymbols}{\mathop}
-\mdsy@DeclareSymbol{tbigcap}{MdLargesymbols}{\mathop}
-\mdsy@DeclareSymbol{dbigcap}{MdLargesymbols}{\mathop}
-\mdsy@DeclareSymbol{tbigcup}{MdLargesymbols}{\mathop}
-\mdsy@DeclareSymbol{dbigcup}{MdLargesymbols}{\mathop}
-\mdsy@DeclareSymbol{tbigcapdot}{MdLargesymbols}{\mathop}
-\mdsy@DeclareSymbol{dbigcapdot}{MdLargesymbols}{\mathop}
-\mdsy@DeclareSymbol{tbigcupdot}{MdLargesymbols}{\mathop}
-\mdsy@DeclareSymbol{dbigcupdot}{MdLargesymbols}{\mathop}
-\mdsy@DeclareSymbol{tbigcapplus}{MdLargesymbols}{\mathop}
-\mdsy@DeclareSymbol{dbigcapplus}{MdLargesymbols}{\mathop}
-\mdsy@DeclareSymbol{tbigcupplus}{MdLargesymbols}{\mathop}
-  \mdsy@DeclareAlias{tbiguplus}{MdLargesymbols}{\mathop}
-\mdsy@DeclareSymbol{dbigcupplus}{MdLargesymbols}{\mathop}
-  \mdsy@DeclareAlias{dbiguplus}{MdLargesymbols}{\mathop}
-\mdsy@DeclareSymbol{tbigsqcap}{MdLargesymbols}{\mathop}
-\mdsy@DeclareSymbol{dbigsqcap}{MdLargesymbols}{\mathop}
-\mdsy@DeclareSymbol{tbigsqcup}{MdLargesymbols}{\mathop}
-\mdsy@DeclareSymbol{dbigsqcup}{MdLargesymbols}{\mathop}
-\mdsy@DeclareSymbol{tbigsqcapdot}{MdLargesymbols}{\mathop}
-\mdsy@DeclareSymbol{dbigsqcapdot}{MdLargesymbols}{\mathop}
-\mdsy@DeclareSymbol{tbigsqcupdot}{MdLargesymbols}{\mathop}
-\mdsy@DeclareSymbol{dbigsqcupdot}{MdLargesymbols}{\mathop}
-\mdsy@DeclareSymbol{tbigsqcapplus}{MdLargesymbols}{\mathop}
-\mdsy@DeclareSymbol{dbigsqcapplus}{MdLargesymbols}{\mathop}
-\mdsy@DeclareSymbol{tbigsqcupplus}{MdLargesymbols}{\mathop}
-\mdsy@DeclareSymbol{dbigsqcupplus}{MdLargesymbols}{\mathop}
-\mdsy@DeclareSymbol{tbigoplus}{MdLargesymbols}{\mathop}
-\mdsy@DeclareSymbol{dbigoplus}{MdLargesymbols}{\mathop}
-\mdsy@DeclareSymbol{tbigotimes}{MdLargesymbols}{\mathop}
-\mdsy@DeclareSymbol{dbigotimes}{MdLargesymbols}{\mathop}
-\mdsy@DeclareSymbol{tbigodot}{MdLargesymbols}{\mathop}
-\mdsy@DeclareSymbol{dbigodot}{MdLargesymbols}{\mathop}
-\mdsy@DeclareSymbol{tbigoast}{MdLargesymbols}{\mathop}
-\mdsy@DeclareSymbol{dbigoast}{MdLargesymbols}{\mathop}
-\mdsy@DeclareSymbol{tprod}{MdLargesymbols}{\mathop}
-\mdsy@DeclareSymbol{dprod}{MdLargesymbols}{\mathop}
-\mdsy@DeclareSymbol{tcoprod}{MdLargesymbols}{\mathop}
-\mdsy@DeclareSymbol{dcoprod}{MdLargesymbols}{\mathop}
-\mdsy@DeclareSymbol{tsum}{MdLargesymbols}{\mathop}
-\mdsy@DeclareSymbol{dsum}{MdLargesymbols}{\mathop}
-\mdsy@DeclareSymbol{tosum}{MdLargesymbols}{\mathop}
-  \mdsy@DeclareAlias{tmodtwosum}{MdLargesymbols}{\mathop}
-\mdsy@DeclareSymbol{dosum}{MdLargesymbols}{\mathop}
-  \mdsy@DeclareAlias{dmodtwosum}{MdLargesymbols}{\mathop}
-\mdsy@DeclareSymbol{tint}{MdLargesymbols}{\mathop}
-\mdsy@DeclareSymbol{dint}{MdLargesymbols}{\mathop}
-\mdsy@DeclareSymbol{tiint}{MdLargesymbols}{\mathop}
-\mdsy@DeclareSymbol{diint}{MdLargesymbols}{\mathop}
-\mdsy@DeclareSymbol{tiiint}{MdLargesymbols}{\mathop}
-\mdsy@DeclareSymbol{diiint}{MdLargesymbols}{\mathop}
-\mdsy@DeclareSymbol{tiiiint}{MdLargesymbols}{\mathop}
-\mdsy@DeclareSymbol{diiiint}{MdLargesymbols}{\mathop}
-\mdsy@DeclareSymbol{tidotsint}{MdLargesymbols}{\mathop}
-  \mdsy@DeclareAlias{tdotsint}{MdLargesymbols}{\mathop}
-\mdsy@DeclareSymbol{didotsint}{MdLargesymbols}{\mathop}
-  \mdsy@DeclareAlias{ddotsint}{MdLargesymbols}{\mathop}
-\mdsy@DeclareSymbol{tlandupint}{MdLargesymbols}{\mathop}
-  \mdsy@DeclareAlias{tintclockwise}{MdLargesymbols}{\mathop}
-\mdsy@DeclareSymbol{dlandupint}{MdLargesymbols}{\mathop}
-  \mdsy@DeclareAlias{dintclockwise}{MdLargesymbols}{\mathop}
-\mdsy@DeclareSymbol{tlanddownint}{MdLargesymbols}{\mathop}
-  \mdsy@DeclareAlias{tawint}{MdLargesymbols}{\mathop}
-  \mdsy@DeclareAlias{tintctrclockwise}{MdLargesymbols}{\mathop}
-\mdsy@DeclareSymbol{dlanddownint}{MdLargesymbols}{\mathop}
-  \mdsy@DeclareAlias{dawint}{MdLargesymbols}{\mathop}
-  \mdsy@DeclareAlias{dintctrclockwise}{MdLargesymbols}{\mathop}
-\mdsy@DeclareSymbol{tintbar}{MdLargesymbols}{\mathop}
-\mdsy@DeclareSymbol{dintbar}{MdLargesymbols}{\mathop}
-\mdsy@DeclareSymbol{tintBar}{MdLargesymbols}{\mathop}
-\mdsy@DeclareSymbol{dintBar}{MdLargesymbols}{\mathop}
-\mdsy@DeclareSymbol{tfint}{MdLargesymbols}{\mathop}
-\mdsy@DeclareSymbol{dfint}{MdLargesymbols}{\mathop}
-\mdsy@DeclareSymbol{toint}{MdLargesymbols}{\mathop}
-\mdsy@DeclareSymbol{doint}{MdLargesymbols}{\mathop}
-\mdsy@DeclareSymbol{toiint}{MdLargesymbols}{\mathop}
-\mdsy@DeclareSymbol{doiint}{MdLargesymbols}{\mathop}
-\mdsy@DeclareSymbol{toiiint}{MdLargesymbols}{\mathop}
-\mdsy@DeclareSymbol{doiiint}{MdLargesymbols}{\mathop}
-\mdsy@DeclareSymbol{trcirclerightint}{MdLargesymbols}{\mathop}
-  \mdsy@DeclareAlias{tointctrclockwise}{MdLargesymbols}{\mathop}
-\mdsy@DeclareSymbol{drcirclerightint}{MdLargesymbols}{\mathop}
-  \mdsy@DeclareAlias{dointctrclockwise}{MdLargesymbols}{\mathop}
-\mdsy@DeclareSymbol{tlcirclerightint}{MdLargesymbols}{\mathop}
-  \mdsy@DeclareAlias{tvarointclockwise}{MdLargesymbols}{\mathop}
-\mdsy@DeclareSymbol{dlcirclerightint}{MdLargesymbols}{\mathop}
-  \mdsy@DeclareAlias{dvarointclockwise}{MdLargesymbols}{\mathop}
-\mdsy@DeclareSymbol{trcircleleftint}{MdLargesymbols}{\mathop}
-  \mdsy@DeclareAlias{tvarointctrclockwise}{MdLargesymbols}{\mathop}
-\mdsy@DeclareSymbol{drcircleleftint}{MdLargesymbols}{\mathop}
-  \mdsy@DeclareAlias{dvarointctrclockwise}{MdLargesymbols}{\mathop}
-\mdsy@DeclareSymbol{tlcircleleftint}{MdLargesymbols}{\mathop}
-  \mdsy@DeclareAlias{tointclockwise}{MdLargesymbols}{\mathop}
-\mdsy@DeclareSymbol{dlcircleleftint}{MdLargesymbols}{\mathop}
-  \mdsy@DeclareAlias{dointclockwise}{MdLargesymbols}{\mathop}
-\mdsy@DeclareSymbol{tsumint}{MdLargesymbols}{\mathop}
-\mdsy@DeclareSymbol{dsumint}{MdLargesymbols}{\mathop}
+\mdsy@DeclareSymbol{tbigplus}{largesymbols}{\mathop}
+\mdsy@DeclareSymbol{dbigplus}{largesymbols}{\mathop}
+\mdsy@DeclareSymbol{tbigtimes}{largesymbols}{\mathop}
+\mdsy@DeclareSymbol{dbigtimes}{largesymbols}{\mathop}
+\mdsy@DeclareSymbol{tbigwedge}{largesymbols}{\mathop}
+\mdsy@DeclareSymbol{dbigwedge}{largesymbols}{\mathop}
+\mdsy@DeclareSymbol{tbigvee}{largesymbols}{\mathop}
+\mdsy@DeclareSymbol{dbigvee}{largesymbols}{\mathop}
+\mdsy@DeclareSymbol{tbigwedgedot}{largesymbols}{\mathop}
+\mdsy@DeclareSymbol{dbigwedgedot}{largesymbols}{\mathop}
+\mdsy@DeclareSymbol{tbigveedot}{largesymbols}{\mathop}
+\mdsy@DeclareSymbol{dbigveedot}{largesymbols}{\mathop}
+\mdsy@DeclareSymbol{tbigdoublewedge}{largesymbols}{\mathop}
+  \mdsy@DeclareAlias{tconjquant}{largesymbols}{\mathop}
+\mdsy@DeclareSymbol{dbigdoublewedge}{largesymbols}{\mathop}
+  \mdsy@DeclareAlias{dconjquant}{largesymbols}{\mathop}
+\mdsy@DeclareSymbol{tbigdoublevee}{largesymbols}{\mathop}
+  \mdsy@DeclareAlias{tdisjquant}{largesymbols}{\mathop}
+\mdsy@DeclareSymbol{dbigdoublevee}{largesymbols}{\mathop}
+  \mdsy@DeclareAlias{ddisjquant}{largesymbols}{\mathop}
+\mdsy@DeclareSymbol{tbigcurlywedge}{largesymbols}{\mathop}
+\mdsy@DeclareSymbol{dbigcurlywedge}{largesymbols}{\mathop}
+\mdsy@DeclareSymbol{tbigcurlyvee}{largesymbols}{\mathop}
+\mdsy@DeclareSymbol{dbigcurlyvee}{largesymbols}{\mathop}
+\mdsy@DeclareSymbol{tbigcap}{largesymbols}{\mathop}
+\mdsy@DeclareSymbol{dbigcap}{largesymbols}{\mathop}
+\mdsy@DeclareSymbol{tbigcup}{largesymbols}{\mathop}
+\mdsy@DeclareSymbol{dbigcup}{largesymbols}{\mathop}
+\mdsy@DeclareSymbol{tbigcapdot}{largesymbols}{\mathop}
+\mdsy@DeclareSymbol{dbigcapdot}{largesymbols}{\mathop}
+\mdsy@DeclareSymbol{tbigcupdot}{largesymbols}{\mathop}
+\mdsy@DeclareSymbol{dbigcupdot}{largesymbols}{\mathop}
+\mdsy@DeclareSymbol{tbigcapplus}{largesymbols}{\mathop}
+\mdsy@DeclareSymbol{dbigcapplus}{largesymbols}{\mathop}
+\mdsy@DeclareSymbol{tbigcupplus}{largesymbols}{\mathop}
+  \mdsy@DeclareAlias{tbiguplus}{largesymbols}{\mathop}
+\mdsy@DeclareSymbol{dbigcupplus}{largesymbols}{\mathop}
+  \mdsy@DeclareAlias{dbiguplus}{largesymbols}{\mathop}
+\mdsy@DeclareSymbol{tbigsqcap}{largesymbols}{\mathop}
+\mdsy@DeclareSymbol{dbigsqcap}{largesymbols}{\mathop}
+\mdsy@DeclareSymbol{tbigsqcup}{largesymbols}{\mathop}
+\mdsy@DeclareSymbol{dbigsqcup}{largesymbols}{\mathop}
+\mdsy@DeclareSymbol{tbigsqcapdot}{largesymbols}{\mathop}
+\mdsy@DeclareSymbol{dbigsqcapdot}{largesymbols}{\mathop}
+\mdsy@DeclareSymbol{tbigsqcupdot}{largesymbols}{\mathop}
+\mdsy@DeclareSymbol{dbigsqcupdot}{largesymbols}{\mathop}
+\mdsy@DeclareSymbol{tbigsqcapplus}{largesymbols}{\mathop}
+\mdsy@DeclareSymbol{dbigsqcapplus}{largesymbols}{\mathop}
+\mdsy@DeclareSymbol{tbigsqcupplus}{largesymbols}{\mathop}
+\mdsy@DeclareSymbol{dbigsqcupplus}{largesymbols}{\mathop}
+\mdsy@DeclareSymbol{tbigoplus}{largesymbols}{\mathop}
+\mdsy@DeclareSymbol{dbigoplus}{largesymbols}{\mathop}
+\mdsy@DeclareSymbol{tbigotimes}{largesymbols}{\mathop}
+\mdsy@DeclareSymbol{dbigotimes}{largesymbols}{\mathop}
+\mdsy@DeclareSymbol{tbigodot}{largesymbols}{\mathop}
+\mdsy@DeclareSymbol{dbigodot}{largesymbols}{\mathop}
+\mdsy@DeclareSymbol{tbigoast}{largesymbols}{\mathop}
+\mdsy@DeclareSymbol{dbigoast}{largesymbols}{\mathop}
+\mdsy@DeclareSymbol{tprod}{largesymbols}{\mathop}
+\mdsy@DeclareSymbol{dprod}{largesymbols}{\mathop}
+\mdsy@DeclareSymbol{tcoprod}{largesymbols}{\mathop}
+\mdsy@DeclareSymbol{dcoprod}{largesymbols}{\mathop}
+\mdsy@DeclareSymbol{tsum}{largesymbols}{\mathop}
+\mdsy@DeclareSymbol{dsum}{largesymbols}{\mathop}
+\mdsy@DeclareSymbol{tosum}{largesymbols}{\mathop}
+  \mdsy@DeclareAlias{tmodtwosum}{largesymbols}{\mathop}
+\mdsy@DeclareSymbol{dosum}{largesymbols}{\mathop}
+  \mdsy@DeclareAlias{dmodtwosum}{largesymbols}{\mathop}
+\mdsy@DeclareSymbol{tint}{largesymbols}{\mathop}
+\mdsy@DeclareSymbol{dint}{largesymbols}{\mathop}
+\mdsy@DeclareSymbol{tiint}{largesymbols}{\mathop}
+\mdsy@DeclareSymbol{diint}{largesymbols}{\mathop}
+\mdsy@DeclareSymbol{tiiint}{largesymbols}{\mathop}
+\mdsy@DeclareSymbol{diiint}{largesymbols}{\mathop}
+\mdsy@DeclareSymbol{tiiiint}{largesymbols}{\mathop}
+\mdsy@DeclareSymbol{diiiint}{largesymbols}{\mathop}
+\mdsy@DeclareSymbol{tidotsint}{largesymbols}{\mathop}
+  \mdsy@DeclareAlias{tdotsint}{largesymbols}{\mathop}
+\mdsy@DeclareSymbol{didotsint}{largesymbols}{\mathop}
+  \mdsy@DeclareAlias{ddotsint}{largesymbols}{\mathop}
+\mdsy@DeclareSymbol{tlandupint}{largesymbols}{\mathop}
+  \mdsy@DeclareAlias{tintclockwise}{largesymbols}{\mathop}
+\mdsy@DeclareSymbol{dlandupint}{largesymbols}{\mathop}
+  \mdsy@DeclareAlias{dintclockwise}{largesymbols}{\mathop}
+\mdsy@DeclareSymbol{tlanddownint}{largesymbols}{\mathop}
+  \mdsy@DeclareAlias{tawint}{largesymbols}{\mathop}
+  \mdsy@DeclareAlias{tintctrclockwise}{largesymbols}{\mathop}
+\mdsy@DeclareSymbol{dlanddownint}{largesymbols}{\mathop}
+  \mdsy@DeclareAlias{dawint}{largesymbols}{\mathop}
+  \mdsy@DeclareAlias{dintctrclockwise}{largesymbols}{\mathop}
+\mdsy@DeclareSymbol{tintbar}{largesymbols}{\mathop}
+\mdsy@DeclareSymbol{dintbar}{largesymbols}{\mathop}
+\mdsy@DeclareSymbol{tintBar}{largesymbols}{\mathop}
+\mdsy@DeclareSymbol{dintBar}{largesymbols}{\mathop}
+\mdsy@DeclareSymbol{tfint}{largesymbols}{\mathop}
+\mdsy@DeclareSymbol{dfint}{largesymbols}{\mathop}
+\mdsy@DeclareSymbol{toint}{largesymbols}{\mathop}
+\mdsy@DeclareSymbol{doint}{largesymbols}{\mathop}
+\mdsy@DeclareSymbol{toiint}{largesymbols}{\mathop}
+\mdsy@DeclareSymbol{doiint}{largesymbols}{\mathop}
+\mdsy@DeclareSymbol{toiiint}{largesymbols}{\mathop}
+\mdsy@DeclareSymbol{doiiint}{largesymbols}{\mathop}
+\mdsy@DeclareSymbol{trcirclerightint}{largesymbols}{\mathop}
+  \mdsy@DeclareAlias{tointctrclockwise}{largesymbols}{\mathop}
+\mdsy@DeclareSymbol{drcirclerightint}{largesymbols}{\mathop}
+  \mdsy@DeclareAlias{dointctrclockwise}{largesymbols}{\mathop}
+\mdsy@DeclareSymbol{tlcirclerightint}{largesymbols}{\mathop}
+  \mdsy@DeclareAlias{tvarointclockwise}{largesymbols}{\mathop}
+\mdsy@DeclareSymbol{dlcirclerightint}{largesymbols}{\mathop}
+  \mdsy@DeclareAlias{dvarointclockwise}{largesymbols}{\mathop}
+\mdsy@DeclareSymbol{trcircleleftint}{largesymbols}{\mathop}
+  \mdsy@DeclareAlias{tvarointctrclockwise}{largesymbols}{\mathop}
+\mdsy@DeclareSymbol{drcircleleftint}{largesymbols}{\mathop}
+  \mdsy@DeclareAlias{dvarointctrclockwise}{largesymbols}{\mathop}
+\mdsy@DeclareSymbol{tlcircleleftint}{largesymbols}{\mathop}
+  \mdsy@DeclareAlias{tointclockwise}{largesymbols}{\mathop}
+\mdsy@DeclareSymbol{dlcircleleftint}{largesymbols}{\mathop}
+  \mdsy@DeclareAlias{dointclockwise}{largesymbols}{\mathop}
+\mdsy@DeclareSymbol{tsumint}{largesymbols}{\mathop}
+\mdsy@DeclareSymbol{dsumint}{largesymbols}{\mathop}
 %\let\intop\tint
 %\let\ointop\toint
 
@@ -3424,156 +3424,156 @@
 %    \end{macrocode}
 % Math accents.
 %    \begin{macrocode}
-\mdsy@DeclareMathAccent{widehat}{\mathord}{MdLargesymbols}{"72}
-\mdsy@DeclareMathAccent{widetilde}{\mathord}{MdLargesymbols}{"78}
-\mdsy@DeclareMathAccent{wideparen}{\mathord}{MdLargesymbols}{"7E}
-\mdsy@DeclareMathAccent{vec}{\mathord}{MdLargesymbols}{"84}
-\mdsy@DeclareMathAccent{middlebar}{\mathord}{MdLargesymbols}{"85}
-\mdsy@DeclareMathAccent{middleslash}{\mathord}{MdLargesymbols}{"86}
-\mdsy@DeclareMathAccent{strokethrough}{\mathord}{MdLargesymbols}{"87}
+\mdsy@DeclareMathAccent{widehat}{\mathord}{largesymbols}{"72}
+\mdsy@DeclareMathAccent{widetilde}{\mathord}{largesymbols}{"78}
+\mdsy@DeclareMathAccent{wideparen}{\mathord}{largesymbols}{"7E}
+\mdsy@DeclareMathAccent{vec}{\mathord}{largesymbols}{"84}
+\mdsy@DeclareMathAccent{middlebar}{\mathord}{largesymbols}{"85}
+\mdsy@DeclareMathAccent{middleslash}{\mathord}{largesymbols}{"86}
+\mdsy@DeclareMathAccent{strokethrough}{\mathord}{largesymbols}{"87}
 %    \end{macrocode}
 % MdSymbolF: delimiters
 %    \begin{macrocode}
 \ifmdsy@largedelims
-%  \mdsy@DeclareOpen{(}{MdDelimiters}{"01}
-%  \mdsy@DeclareClose{)}{MdDelimiters}{"07}
-  \mdsy@DeclareOpen{lparen}{MdDelimiters}{"01}
-  \mdsy@DeclareClose{rparen}{MdDelimiters}{"07}
-%  \mdsy@DeclareOpen{[}{MdDelimiters}{"13}
-%  \mdsy@DeclareClose{]}{MdDelimiters}{"19}
-  \mdsy@DeclareOpen{lbrack}{MdDelimiters}{"13}
-  \mdsy@DeclareClose{rbrack}{MdDelimiters}{"19}
-  \mdsy@DeclareOpen{lfloor}{MdDelimiters}{"1F}
-  \mdsy@DeclareClose{rfloor}{MdDelimiters}{"25}
-  \mdsy@DeclareOpen{lceil}{MdDelimiters}{"2B}
-  \mdsy@DeclareClose{rceil}{MdDelimiters}{"31}
-  \mdsy@DeclareOpen{ulcorner}{MdDelimiters}{"37}
-  \mdsy@DeclareClose{urcorner}{MdDelimiters}{"3D}
-  \mdsy@DeclareOpen{llcorner}{MdDelimiters}{"43}
-  \mdsy@DeclareClose{lrcorner}{MdDelimiters}{"49}
-  \mdsy@DeclareOpen{ullcorner}{MdDelimiters}{"4F}
-  \mdsy@DeclareClose{ulrcorner}{MdDelimiters}{"55}
-  \mdsy@DeclareOpen{lsem}{MdDelimiters}{"61}
-  \mdsy@DeclareClose{rsem}{MdDelimiters}{"67}
-  \mdsy@DeclareOpen{lBrack}{MdDelimiters}{"61}
-  \mdsy@DeclareClose{rBrack}{MdDelimiters}{"67}
-  \mdsy@DeclareOpen{lbrace}{MdDelimiters}{"73}
-  \mdsy@DeclareClose{rbrace}{MdDelimiters}{"79}
-%  \mdsy@DeclareOpen{<}{MdDelimiters}{"86}
-%  \mdsy@DeclareClose{>}{MdDelimiters}{"8C}
-  \mdsy@DeclareOpen{langle}{MdDelimiters}{"86}
-  \mdsy@DeclareClose{rangle}{MdDelimiters}{"8C}
-  \mdsy@DeclareOpen{lAngle}{MdDelimiters}{"92}
-  \mdsy@DeclareClose{rAngle}{MdDelimiters}{"98}
-  \mdsy@DeclareOpen{langledot}{MdDelimiters}{"9E}
-  \mdsy@DeclareClose{rangledot}{MdDelimiters}{"A4}
-%  \mdsy@DeclareDelimiter{/}{\mathord}{MdDelimiters}{"AA}
-  \mdsy@DeclareDelimiter{mathslash}{\mathord}{MdDelimiters}{"AA}
-  \mdsy@DeclareMathSymbol{divslash}{\mathbin}{MdDelimiters}{"AA}
-  \mdsy@DeclareDelimiter{backslash}{\mathord}{MdDelimiters}{"B0}
+%  \mdsy@DeclareOpen{(}{delimiters}{"01}
+%  \mdsy@DeclareClose{)}{delimiters}{"07}
+  \mdsy@DeclareOpen{lparen}{delimiters}{"01}
+  \mdsy@DeclareClose{rparen}{delimiters}{"07}
+%  \mdsy@DeclareOpen{[}{delimiters}{"13}
+%  \mdsy@DeclareClose{]}{delimiters}{"19}
+  \mdsy@DeclareOpen{lbrack}{delimiters}{"13}
+  \mdsy@DeclareClose{rbrack}{delimiters}{"19}
+  \mdsy@DeclareOpen{lfloor}{delimiters}{"1F}
+  \mdsy@DeclareClose{rfloor}{delimiters}{"25}
+  \mdsy@DeclareOpen{lceil}{delimiters}{"2B}
+  \mdsy@DeclareClose{rceil}{delimiters}{"31}
+  \mdsy@DeclareOpen{ulcorner}{delimiters}{"37}
+  \mdsy@DeclareClose{urcorner}{delimiters}{"3D}
+  \mdsy@DeclareOpen{llcorner}{delimiters}{"43}
+  \mdsy@DeclareClose{lrcorner}{delimiters}{"49}
+  \mdsy@DeclareOpen{ullcorner}{delimiters}{"4F}
+  \mdsy@DeclareClose{ulrcorner}{delimiters}{"55}
+  \mdsy@DeclareOpen{lsem}{delimiters}{"61}
+  \mdsy@DeclareClose{rsem}{delimiters}{"67}
+  \mdsy@DeclareOpen{lBrack}{delimiters}{"61}
+  \mdsy@DeclareClose{rBrack}{delimiters}{"67}
+  \mdsy@DeclareOpen{lbrace}{delimiters}{"73}
+  \mdsy@DeclareClose{rbrace}{delimiters}{"79}
+%  \mdsy@DeclareOpen{<}{delimiters}{"86}
+%  \mdsy@DeclareClose{>}{delimiters}{"8C}
+  \mdsy@DeclareOpen{langle}{delimiters}{"86}
+  \mdsy@DeclareClose{rangle}{delimiters}{"8C}
+  \mdsy@DeclareOpen{lAngle}{delimiters}{"92}
+  \mdsy@DeclareClose{rAngle}{delimiters}{"98}
+  \mdsy@DeclareOpen{langledot}{delimiters}{"9E}
+  \mdsy@DeclareClose{rangledot}{delimiters}{"A4}
+%  \mdsy@DeclareDelimiter{/}{\mathord}{delimiters}{"AA}
+  \mdsy@DeclareDelimiter{mathslash}{\mathord}{delimiters}{"AA}
+  \mdsy@DeclareMathSymbol{divslash}{\mathbin}{delimiters}{"AA}
+  \mdsy@DeclareDelimiter{backslash}{\mathord}{delimiters}{"B0}
 %  \expandafter\DeclareMathDelimiter\@backslashchar%
-%    {\mathord}{MdDelimiters}{"B0}{MdDelimiters}{"B0}
-  \mdsy@DeclareMathSymbol{setminus}{\mathbin}{MdDelimiters}{"B0}
-%  \mdsy@DeclareDelimiter{|}{\mathord}{MdDelimiters}{"B7}
-  \mdsy@DeclareDelimiter{vert}{\mathord}{MdDelimiters}{"B7}
-  \mdsy@DeclareOpen{lvert}{MdDelimiters}{"B7}
-  \mdsy@DeclareClose{rvert}{MdDelimiters}{"B7}
-  \mdsy@DeclareMathSymbol{mid}{\mathrel}{MdDelimiters}{"B7}
-  \mdsy@DeclareMathSymbol{nmid}{\mathrel}{MdDelimiters}{"BA}
-  \mdsy@DeclareDelimiter{Vert}{\mathord}{MdDelimiters}{"BE}
-  \mdsy@DeclareOpen{lVert}{MdDelimiters}{"BE}
-  \mdsy@DeclareClose{rVert}{MdDelimiters}{"BE}
-  \mdsy@DeclareMathSymbol{parallel}{\mathrel}{MdDelimiters}{"BE}
-  \mdsy@DeclareMathSymbol{nparallel}{\mathrel}{MdDelimiters}{"C1}
-  \mdsy@DeclareDelimiter{Vvert}{\mathord}{MdDelimiters}{"C4}
-  \mdsy@DeclareOpen{lVvert}{MdDelimiters}{"C4}
-  \mdsy@DeclareClose{rVvert}{MdDelimiters}{"C4}
+%    {\mathord}{delimiters}{"B0}{delimiters}{"B0}
+  \mdsy@DeclareMathSymbol{setminus}{\mathbin}{delimiters}{"B0}
+%  \mdsy@DeclareDelimiter{|}{\mathord}{delimiters}{"B7}
+  \mdsy@DeclareDelimiter{vert}{\mathord}{delimiters}{"B7}
+  \mdsy@DeclareOpen{lvert}{delimiters}{"B7}
+  \mdsy@DeclareClose{rvert}{delimiters}{"B7}
+  \mdsy@DeclareMathSymbol{mid}{\mathrel}{delimiters}{"B7}
+  \mdsy@DeclareMathSymbol{nmid}{\mathrel}{delimiters}{"BA}
+  \mdsy@DeclareDelimiter{Vert}{\mathord}{delimiters}{"BE}
+  \mdsy@DeclareOpen{lVert}{delimiters}{"BE}
+  \mdsy@DeclareClose{rVert}{delimiters}{"BE}
+  \mdsy@DeclareMathSymbol{parallel}{\mathrel}{delimiters}{"BE}
+  \mdsy@DeclareMathSymbol{nparallel}{\mathrel}{delimiters}{"C1}
+  \mdsy@DeclareDelimiter{Vvert}{\mathord}{delimiters}{"C4}
+  \mdsy@DeclareOpen{lVvert}{delimiters}{"C4}
+  \mdsy@DeclareClose{rVvert}{delimiters}{"C4}
 \else
-%  \mdsy@DeclareOpen{(}{MdDelimiters}{"00}
-%  \mdsy@DeclareClose{)}{MdDelimiters}{"06}
-  \mdsy@DeclareOpen{lparen}{MdDelimiters}{"00}
-  \mdsy@DeclareClose{rparen}{MdDelimiters}{"06}
-%  \mdsy@DeclareOpen{[}{MdDelimiters}{"12}
-%  \mdsy@DeclareClose{]}{MdDelimiters}{"18}
-  \mdsy@DeclareOpen{lbrack}{MdDelimiters}{"12}
-  \mdsy@DeclareClose{rbrack}{MdDelimiters}{"18}
-  \mdsy@DeclareOpen{lfloor}{MdDelimiters}{"1E}
-  \mdsy@DeclareClose{rfloor}{MdDelimiters}{"24}
-  \mdsy@DeclareOpen{lceil}{MdDelimiters}{"2A}
-  \mdsy@DeclareClose{rceil}{MdDelimiters}{"30}
-  \mdsy@DeclareOpen{ulcorner}{MdDelimiters}{"36}
-  \mdsy@DeclareClose{urcorner}{MdDelimiters}{"3C}
-  \mdsy@DeclareOpen{llcorner}{MdDelimiters}{"42}
-  \mdsy@DeclareClose{lrcorner}{MdDelimiters}{"48}
-  \mdsy@DeclareOpen{ullcorner}{MdDelimiters}{"4E}
-  \mdsy@DeclareClose{ulrcorner}{MdDelimiters}{"54}
-  \mdsy@DeclareOpen{lsem}{MdDelimiters}{"60}
-  \mdsy@DeclareClose{rsem}{MdDelimiters}{"66}
-  \mdsy@DeclareOpen{lBrack}{MdDelimiters}{"60}
-  \mdsy@DeclareClose{rBrack}{MdDelimiters}{"66}
-  \mdsy@DeclareOpen{lbrace}{MdDelimiters}{"72}
-  \mdsy@DeclareClose{rbrace}{MdDelimiters}{"78}
-%  \mdsy@DeclareOpen{<}{MdDelimiters}{"85}
-%  \mdsy@DeclareClose{>}{MdDelimiters}{"8B}
-  \mdsy@DeclareOpen{langle}{MdDelimiters}{"85}
-  \mdsy@DeclareClose{rangle}{MdDelimiters}{"8B}
-  \mdsy@DeclareOpen{lAngle}{MdDelimiters}{"91}
-  \mdsy@DeclareClose{rAngle}{MdDelimiters}{"97}
-  \mdsy@DeclareOpen{langledot}{MdDelimiters}{"9D}
-  \mdsy@DeclareClose{rangledot}{MdDelimiters}{"A3}
-%  \mdsy@DeclareDelimiter{/}{\mathord}{MdDelimiters}{"A9}
-  \mdsy@DeclareDelimiter{mathslash}{\mathord}{MdDelimiters}{"A9}
-  \mdsy@DeclareMathSymbol{divslash}{\mathbin}{MdDelimiters}{"A9}
-  \mdsy@DeclareDelimiter{backslash}{\mathord}{MdDelimiters}{"AF}
+%  \mdsy@DeclareOpen{(}{delimiters}{"00}
+%  \mdsy@DeclareClose{)}{delimiters}{"06}
+  \mdsy@DeclareOpen{lparen}{delimiters}{"00}
+  \mdsy@DeclareClose{rparen}{delimiters}{"06}
+%  \mdsy@DeclareOpen{[}{delimiters}{"12}
+%  \mdsy@DeclareClose{]}{delimiters}{"18}
+  \mdsy@DeclareOpen{lbrack}{delimiters}{"12}
+  \mdsy@DeclareClose{rbrack}{delimiters}{"18}
+  \mdsy@DeclareOpen{lfloor}{delimiters}{"1E}
+  \mdsy@DeclareClose{rfloor}{delimiters}{"24}
+  \mdsy@DeclareOpen{lceil}{delimiters}{"2A}
+  \mdsy@DeclareClose{rceil}{delimiters}{"30}
+  \mdsy@DeclareOpen{ulcorner}{delimiters}{"36}
+  \mdsy@DeclareClose{urcorner}{delimiters}{"3C}
+  \mdsy@DeclareOpen{llcorner}{delimiters}{"42}
+  \mdsy@DeclareClose{lrcorner}{delimiters}{"48}
+  \mdsy@DeclareOpen{ullcorner}{delimiters}{"4E}
+  \mdsy@DeclareClose{ulrcorner}{delimiters}{"54}
+  \mdsy@DeclareOpen{lsem}{delimiters}{"60}
+  \mdsy@DeclareClose{rsem}{delimiters}{"66}
+  \mdsy@DeclareOpen{lBrack}{delimiters}{"60}
+  \mdsy@DeclareClose{rBrack}{delimiters}{"66}
+  \mdsy@DeclareOpen{lbrace}{delimiters}{"72}
+  \mdsy@DeclareClose{rbrace}{delimiters}{"78}
+%  \mdsy@DeclareOpen{<}{delimiters}{"85}
+%  \mdsy@DeclareClose{>}{delimiters}{"8B}
+  \mdsy@DeclareOpen{langle}{delimiters}{"85}
+  \mdsy@DeclareClose{rangle}{delimiters}{"8B}
+  \mdsy@DeclareOpen{lAngle}{delimiters}{"91}
+  \mdsy@DeclareClose{rAngle}{delimiters}{"97}
+  \mdsy@DeclareOpen{langledot}{delimiters}{"9D}
+  \mdsy@DeclareClose{rangledot}{delimiters}{"A3}
+%  \mdsy@DeclareDelimiter{/}{\mathord}{delimiters}{"A9}
+  \mdsy@DeclareDelimiter{mathslash}{\mathord}{delimiters}{"A9}
+  \mdsy@DeclareMathSymbol{divslash}{\mathbin}{delimiters}{"A9}
+  \mdsy@DeclareDelimiter{backslash}{\mathord}{delimiters}{"AF}
 %  \expandafter\DeclareMathDelimiter\@backslashchar%
-%    {\mathord}{MdDelimiters}{"AF}{MdDelimiters}{"AF}
-  \mdsy@DeclareMathSymbol{setminus}{\mathbin}{MdDelimiters}{"AF}
-%  \mdsy@DeclareDelimiter{|}{\mathord}{MdDelimiters}{"B6}
-  \mdsy@DeclareDelimiter{vert}{\mathord}{MdDelimiters}{"B6}
-  \mdsy@DeclareOpen{lvert}{MdDelimiters}{"B6}
-  \mdsy@DeclareClose{rvert}{MdDelimiters}{"B6}
-  \mdsy@DeclareMathSymbol{mid}{\mathrel}{MdDelimiters}{"B6}
-  \mdsy@DeclareMathSymbol{nmid}{\mathrel}{MdDelimiters}{"B9}
-  \mdsy@DeclareDelimiter{Vert}{\mathord}{MdDelimiters}{"BD}
-  \mdsy@DeclareOpen{lVert}{MdDelimiters}{"BD}
-  \mdsy@DeclareClose{rVert}{MdDelimiters}{"BD}
-  \mdsy@DeclareMathSymbol{parallel}{\mathrel}{MdDelimiters}{"BD}
-  \mdsy@DeclareMathSymbol{nparallel}{\mathrel}{MdDelimiters}{"C0}
-  \mdsy@DeclareDelimiter{Vvert}{\mathord}{MdDelimiters}{"C3}
-  \mdsy@DeclareOpen{lVvert}{MdDelimiters}{"C3}
-  \mdsy@DeclareClose{rVvert}{MdDelimiters}{"C3}
+%    {\mathord}{delimiters}{"AF}{delimiters}{"AF}
+  \mdsy@DeclareMathSymbol{setminus}{\mathbin}{delimiters}{"AF}
+%  \mdsy@DeclareDelimiter{|}{\mathord}{delimiters}{"B6}
+  \mdsy@DeclareDelimiter{vert}{\mathord}{delimiters}{"B6}
+  \mdsy@DeclareOpen{lvert}{delimiters}{"B6}
+  \mdsy@DeclareClose{rvert}{delimiters}{"B6}
+  \mdsy@DeclareMathSymbol{mid}{\mathrel}{delimiters}{"B6}
+  \mdsy@DeclareMathSymbol{nmid}{\mathrel}{delimiters}{"B9}
+  \mdsy@DeclareDelimiter{Vert}{\mathord}{delimiters}{"BD}
+  \mdsy@DeclareOpen{lVert}{delimiters}{"BD}
+  \mdsy@DeclareClose{rVert}{delimiters}{"BD}
+  \mdsy@DeclareMathSymbol{parallel}{\mathrel}{delimiters}{"BD}
+  \mdsy@DeclareMathSymbol{nparallel}{\mathrel}{delimiters}{"C0}
+  \mdsy@DeclareDelimiter{Vvert}{\mathord}{delimiters}{"C3}
+  \mdsy@DeclareOpen{lVvert}{delimiters}{"C3}
+  \mdsy@DeclareClose{rVvert}{delimiters}{"C3}
 \fi
 \let\|\Vert
 \mdsy@renewcommand{divides}{\mid}
 \mdsy@renewcommand{ndivides}{\nmid}
-\mdsy@DeclareMathSymbol{shortmid}{\mathrel}{MdDelimiters}{"B5}
-\mdsy@DeclareMathSymbol{nshortmid}{\mathrel}{MdDelimiters}{"B8}
-\mdsy@DeclareMathSymbol{shortparallel}{\mathrel}{MdDelimiters}{"BC}
-\mdsy@DeclareMathSymbol{nshortparallel}{\mathrel}{MdDelimiters}{"BF}
-\mdsy@DeclareDelimiter{arrowvert}{\mathord}{MdDelimiters}{"BB}
-\mdsy@DeclareDelimiter{Arrowvert}{\mathord}{MdDelimiters}{"C2}
-\mdsy@DeclareClose{lgroup}{MdDelimiters}{"7E}
-\mdsy@DeclareOpen{rgroup}{MdDelimiters}{"7F}
-\mdsy@DeclareClose{rmoustache}{MdDelimiters}{"80}
-\mdsy@DeclareOpen{lmoustache}{MdDelimiters}{"81}
-\mdsy@DeclareDelimiter{bracevert}{\mathord}{MdDelimiters}{"84}
+\mdsy@DeclareMathSymbol{shortmid}{\mathrel}{delimiters}{"B5}
+\mdsy@DeclareMathSymbol{nshortmid}{\mathrel}{delimiters}{"B8}
+\mdsy@DeclareMathSymbol{shortparallel}{\mathrel}{delimiters}{"BC}
+\mdsy@DeclareMathSymbol{nshortparallel}{\mathrel}{delimiters}{"BF}
+\mdsy@DeclareDelimiter{arrowvert}{\mathord}{delimiters}{"BB}
+\mdsy@DeclareDelimiter{Arrowvert}{\mathord}{delimiters}{"C2}
+\mdsy@DeclareClose{lgroup}{delimiters}{"7E}
+\mdsy@DeclareOpen{rgroup}{delimiters}{"7F}
+\mdsy@DeclareClose{rmoustache}{delimiters}{"80}
+\mdsy@DeclareOpen{lmoustache}{delimiters}{"81}
+\mdsy@DeclareDelimiter{bracevert}{\mathord}{delimiters}{"84}
 
-\mdsy@DeclareMathDelimiter{uparrow}{\mathrel}{MdArrows}{"01}{MdDelimiters}{"C6}
-\mdsy@DeclareMathDelimiter{downarrow}{\mathrel}{MdArrows}{"03}{MdDelimiters}{"C7}
-\mdsy@DeclareMathDelimiter{updownarrow}{\mathrel}{MdArrows}{"11}{MdDelimiters}{"C8}
-\mdsy@DeclareMathDelimiter{Uparrow}{\mathrel}{MdArrows}{"09}{MdDelimiters}{"C9}
-\mdsy@DeclareMathDelimiter{Downarrow}{\mathrel}{MdArrows}{"0B}{MdDelimiters}{"CA}
-\mdsy@DeclareMathDelimiter{Updownarrow}{\mathrel}{MdArrows}{"15}{MdDelimiters}{"CB}
+\mdsy@DeclareMathDelimiter{uparrow}{\mathrel}{arrows}{"01}{delimiters}{"C6}
+\mdsy@DeclareMathDelimiter{downarrow}{\mathrel}{arrows}{"03}{delimiters}{"C7}
+\mdsy@DeclareMathDelimiter{updownarrow}{\mathrel}{arrows}{"11}{delimiters}{"C8}
+\mdsy@DeclareMathDelimiter{Uparrow}{\mathrel}{arrows}{"09}{delimiters}{"C9}
+\mdsy@DeclareMathDelimiter{Downarrow}{\mathrel}{arrows}{"0B}{delimiters}{"CA}
+\mdsy@DeclareMathDelimiter{Updownarrow}{\mathrel}{arrows}{"15}{delimiters}{"CB}
 %    \end{macrocode}
 % Horizontal braces.
 %    \begin{macrocode}
-\mdsy@DeclareMathSymbol{braceld}{\mathord}{MdDelimiters}{"CC}
-\mdsy@DeclareMathSymbol{bracelu}{\mathord}{MdDelimiters}{"CD}
-\mdsy@DeclareMathSymbol{bracerd}{\mathord}{MdDelimiters}{"CE}
-\mdsy@DeclareMathSymbol{braceru}{\mathord}{MdDelimiters}{"CF}
-\mdsy@DeclareMathSymbol{bracemd}{\mathord}{MdDelimiters}{"D0}
-\mdsy@DeclareMathSymbol{bracemu}{\mathord}{MdDelimiters}{"D1}
-\mdsy@DeclareMathSymbol{bracemid}{\mathord}{MdDelimiters}{"D2}
+\mdsy@DeclareMathSymbol{braceld}{\mathord}{delimiters}{"CC}
+\mdsy@DeclareMathSymbol{bracelu}{\mathord}{delimiters}{"CD}
+\mdsy@DeclareMathSymbol{bracerd}{\mathord}{delimiters}{"CE}
+\mdsy@DeclareMathSymbol{braceru}{\mathord}{delimiters}{"CF}
+\mdsy@DeclareMathSymbol{bracemd}{\mathord}{delimiters}{"D0}
+\mdsy@DeclareMathSymbol{bracemu}{\mathord}{delimiters}{"D1}
+\mdsy@DeclareMathSymbol{bracemid}{\mathord}{delimiters}{"D2}
 
 \mdsy@DeclareRobustCommandArg{bracefill@}{5}{%
   $\m@th#5#1\leaders\hbox{$#4$}\hfill#2\leaders\hbox{$#4$}\hfill#3$%
@@ -3602,11 +3602,11 @@
 % Radical symbols.
 %    \begin{macrocode}
 \ifmdsy@largedelims
-  \mdsy@DeclareMathRadical{sqrtsign}{MdDelimiters}{"D4}{MdDelimiters}{"D4}
-  \mdsy@DeclareMathSymbol{surd}{\mathop}{MdDelimiters}{"D4}
+  \mdsy@DeclareMathRadical{sqrtsign}{delimiters}{"D4}{delimiters}{"D4}
+  \mdsy@DeclareMathSymbol{surd}{\mathop}{delimiters}{"D4}
 \else
-  \mdsy@DeclareMathRadical{sqrtsign}{MdDelimiters}{"D3}{MdDelimiters}{"D3}
-  \mdsy@DeclareMathSymbol{surd}{\mathop}{MdDelimiters}{"D3}
+  \mdsy@DeclareMathRadical{sqrtsign}{delimiters}{"D3}{delimiters}{"D3}
+  \mdsy@DeclareMathSymbol{surd}{\mathop}{delimiters}{"D3}
 \fi
 %    \end{macrocode}
 % In the \textit{n}-th root, we don't want the~\textit{n} to come too
@@ -3620,27 +3620,27 @@
 % to react on the mathversion.
 %    \begin{macrocode}
 \AtBeginDocument{%
-  \mdsy@DeclareActiveMathSymbol{+}{\mathbin}{MdSymbols}{"11}
-  \mdsy@DeclareActiveMathSymbol{-}{\mathbin}{MdSymbols}{"0E}
-  \mdsy@DeclareActiveMathSymbol{*}{\mathbin}{MdSymbols}{"98}
-  \mdsy@DeclareActiveMathSymbol{:}{\mathrel}{MdSymbols}{"02}
-  \mdsy@DeclareActiveMathSymbol{=}{\mathrel}{MdRelations}{"00}
-  \mdsy@DeclareActiveMathSymbol{<}{\mathrel}{MdRelations}{"24}
-  \mdsy@DeclareActiveMathSymbol{>}{\mathrel}{MdRelations}{"25}
+  \mdsy@DeclareActiveMathSymbol{+}{\mathbin}{symbols}{"11}
+  \mdsy@DeclareActiveMathSymbol{-}{\mathbin}{symbols}{"0E}
+  \mdsy@DeclareActiveMathSymbol{*}{\mathbin}{symbols}{"98}
+  \mdsy@DeclareActiveMathSymbol{:}{\mathrel}{symbols}{"02}
+  \mdsy@DeclareActiveMathSymbol{=}{\mathrel}{relations}{"00}
+  \mdsy@DeclareActiveMathSymbol{<}{\mathrel}{relations}{"24}
+  \mdsy@DeclareActiveMathSymbol{>}{\mathrel}{relations}{"25}
   \ifmdsy@largedelims
-    \mdsy@DeclareActiveMathDelimiter{|}{\mathord}{MdDelimiters}{"B7}
-    \mdsy@DeclareActiveMathDelimiter{(}{\mathopen}{MdDelimiters}{"01}
-    \mdsy@DeclareActiveMathDelimiter{)}{\mathclose}{MdDelimiters}{"07}
-    \mdsy@DeclareActiveMathDelimiter{[}{\mathopen}{MdDelimiters}{"13}
-    \mdsy@DeclareActiveMathDelimiter{]}{\mathclose}{MdDelimiters}{"19}
-    \mdsy@DeclareActiveMathDelimiter{/}{\mathord}{MdDelimiters}{"AA}
+    \mdsy@DeclareActiveMathDelimiter{|}{\mathord}{delimiters}{"B7}
+    \mdsy@DeclareActiveMathDelimiter{(}{\mathopen}{delimiters}{"01}
+    \mdsy@DeclareActiveMathDelimiter{)}{\mathclose}{delimiters}{"07}
+    \mdsy@DeclareActiveMathDelimiter{[}{\mathopen}{delimiters}{"13}
+    \mdsy@DeclareActiveMathDelimiter{]}{\mathclose}{delimiters}{"19}
+    \mdsy@DeclareActiveMathDelimiter{/}{\mathord}{delimiters}{"AA}
   \else
-    \mdsy@DeclareActiveMathDelimiter{|}{\mathord}{MdDelimiters}{"B6}
-    \mdsy@DeclareActiveMathDelimiter{(}{\mathopen}{MdDelimiters}{"00}
-    \mdsy@DeclareActiveMathDelimiter{)}{\mathclose}{MdDelimiters}{"06}
-    \mdsy@DeclareActiveMathDelimiter{[}{\mathopen}{MdDelimiters}{"12}
-    \mdsy@DeclareActiveMathDelimiter{]}{\mathclose}{MdDelimiters}{"18}
-    \mdsy@DeclareActiveMathDelimiter{/}{\mathord}{MdDelimiters}{"A9}
+    \mdsy@DeclareActiveMathDelimiter{|}{\mathord}{delimiters}{"B6}
+    \mdsy@DeclareActiveMathDelimiter{(}{\mathopen}{delimiters}{"00}
+    \mdsy@DeclareActiveMathDelimiter{)}{\mathclose}{delimiters}{"06}
+    \mdsy@DeclareActiveMathDelimiter{[}{\mathopen}{delimiters}{"12}
+    \mdsy@DeclareActiveMathDelimiter{]}{\mathclose}{delimiters}{"18}
+    \mdsy@DeclareActiveMathDelimiter{/}{\mathord}{delimiters}{"A9}
   \fi
   \ifmdsy@onlysansmath
 %    \end{macrocode}
