@@ -8,7 +8,7 @@ PSTOPDF := ps2pdf
 PYTHON := python2.7
 PDFLATEX := pdflatex -interaction nonstopmode -halt-on-error
 RM := rm -rf
-TAR := tar
+TAR := bsdtar
 ZIP := zip
 MKDIR := mkdir -p
 INSTALL := install
@@ -150,7 +150,7 @@ $(pkg).tds.zip: $(pfbfiles) $(otffiles) $(tfmfiles) $(mapfile) $(encfiles) $(src
 dist: $(pkg).tar.gz
 
 $(pkg).tar.gz: $(pkg).tds.zip README.ctan $(pfbfiles) $(otffiles) $(tfmfiles) $(mapfile) $(encfiles) $(srcfiles) $(addprefix latex/,$(pkg).ins $(pkg).dtx $(pkg).pdf) FONTLOG.txt OFL.txt
-	$(TAR) -cz -s '/README\.ctan/README/' -s '/latex.//' $^ > $@
+	$(TAR) -czf $@ -s '/README\.ctan/README/' -s '/latex.//' -s ':fonts/\(.*pfb\):type1/\1:' -s ':fonts/\(.*tfm\):tfm/\1:' -s ':fonts/\(.*otf\):otf/\1:' $^
 
 # rules for building proofs and charts
 
