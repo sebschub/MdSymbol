@@ -14,8 +14,8 @@
 % 
 % The Current Maintainer of this work is Sebastian Schubert.
 %
-% This work consists of the files MdSymbol.dtx, MdSymbol.ins
-% and the derived files MdSymbol.pdf and MdSymbol.sty.
+% This work consists of the files mdsymbol.dtx, mdsymbol.ins
+% and the derived files mdsymbol.pdf and mdsymbol.sty.
 %
 % \fi
 %
@@ -66,7 +66,7 @@
   {\normalfont\figureversion{tab}\scriptsize\arabic{CodelineNo}}
 
 \begin{document}
-\DocInput{MdSymbol.dtx}
+\DocInput{mdsymbol.dtx}
 \end{document}
 %</driver>
 %\fi
@@ -88,7 +88,7 @@
 %   Grave accent  \`     Left brace    \{     Vertical bar  \|
 %   Right brace   \}     Tilde         \~}
 %
-% \GetFileInfo{MdSymbol.dtx}
+% \GetFileInfo{mdsymbol.dtx}
 %
 % \title{MdSymbol: A Math Symbol Font}
 % \author{Sebastian Schubert \\ \texttt{schubert.seb@googlemail.com}}
@@ -103,7 +103,7 @@
 % contemporary typefaces.  To use this font in a \LaTeX\ document, add
 % the command
 % \begin{quote}
-%   |\usepackage|\oarg{options}|{MdSymbol}|
+%   |\usepackage|\oarg{options}|{mdsymbol}|
 % \end{quote}
 % to the preamble of your document. With default settings, it
 % redefines most of the standard mathematical symbols and makes
@@ -126,10 +126,10 @@
 %
 % \section{Interferences with other packages}
 %
-% The \pkg{MdSymbol} package is incompatible with the \pkg{amssymb} and
+% The \pkg{mdsymbol} package is incompatible with the \pkg{amssymb} and
 % \pkg{amsfonts} packages. It automatically loads the \pkg{amsmath} and
 % \pkg{textcomp} packages. If you want to pass options to these packages, you
-% can either load these packages before \pkg{MdSymbol} or you can include the
+% can either load these packages before \pkg{mdsymbol} or you can include the
 % options in the |\documentclass| command.
 %
 % \section{Options}\label{sec:options}
@@ -187,7 +187,7 @@
 % MdSymbol with a text font that has rather tall delimiters.
 %
 % The following table summarises all options (keys) that can be used with the
-% \pkg{MdSymbol} package. Values that correspond to the default behaviour of
+% \pkg{mdsymbol} package. Values that correspond to the default behaviour of
 % the package are marked by an asterisk.
 % \begin{center}
 % \begin{tabular}{@{}ll@{}}
@@ -220,7 +220,7 @@
 %
 % \section{Symbols}\label{sec:glyphs}
 %
-% The \pkg{MdSymbol} package provides the following symbols.
+% The \pkg{mdsymbol} package provides the following symbols.
 %
 % \renewcommand\cmd[1]{\texttt{\string#1}}
 % \newcommand\showsymbol[1]{\par\noindent\hangindent=3em%
@@ -1405,28 +1405,28 @@
 %<*style>
 \RequirePackage{xkeyval}
 \newcommand*\mdsy@choicekey[3]{%
-  \define@choicekey*{MdSymbol.sty}{#1}[\@tempa\@tempb]{#2}{#3}%
+  \define@choicekey*{mdsymbol.sty}{#1}[\@tempa\@tempb]{#2}{#3}%
 }
 %    \end{macrocode}
 % We use \pkg{xkeyval}'s key mechanism to declare all options. The
 % first options determines the size of delimiters.
 %    \begin{macrocode}
-\define@boolkey{MdSymbol.sty}[mdsy@]{largedelims}[true]{}
+\define@boolkey{mdsymbol.sty}[mdsy@]{largedelims}[true]{}
 %    \end{macrocode}
 % The following option determines whether faked symbols should be
 % defined.
 %    \begin{macrocode}
-\define@boolkey{MdSymbol.sty}[mdsy@]{retainmissing}[true]{}
+\define@boolkey{mdsymbol.sty}[mdsy@]{retainmissing}[true]{}
 %    \end{macrocode}
 % The next option allows to scale the fonts by an arbitrary factor.
 %    \begin{macrocode}
 \newcommand{\mdsy@scale}{1.0}
-\define@key{MdSymbol.sty}{scale}{\renewcommand\mdsy@scale{#1}}
+\define@key{mdsymbol.sty}{scale}{\renewcommand\mdsy@scale{#1}}
 %    \end{macrocode}
 % The next option controls whether only the sans and sansbold
 % mathversions are modified.
 %    \begin{macrocode}
-\define@boolkey{MdSymbol.sty}[mdsy@]{onlysansmath}[true]{}
+\define@boolkey{mdsymbol.sty}[mdsy@]{onlysansmath}[true]{}
 %    \end{macrocode}
 % The following two options control which weights are used
 % for which math version and font size.
