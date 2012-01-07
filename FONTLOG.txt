@@ -17,7 +17,7 @@ MdSymbol is derived from FdSymbol, designed and released under the SIL
 Open Font License, Version 1.1 by Michael Ummels.
 
 MdSymbol development is currently hosted on:
-http://github.com/sebschub/fdsymbol
+http://github.com/sebschub/MdSymbol
 
 
 ChangeLog

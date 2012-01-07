@@ -21,10 +21,10 @@
 %
 %\iffalse
 %<*driver>
-\ProvidesFile{MdSymbol.dtx}[2012/01/03 v0.2a MdSymbol support package]
+\ProvidesFile{mdsymbol.dtx}[2012/01/07 v0.3 MdSymbol support package]
 %</driver>
 %<style>\NeedsTeXFormat{LaTeX2e}[1999/12/01]
-%<style>\ProvidesPackage{MdSymbol}[2012/01/03 v0.2a MdSymbol support package]
+%<style>\ProvidesPackage{mdsymbol}[2012/01/07 v0.3 MdSymbol support package]
 %<*driver>
 \documentclass[10pt]{ltxdoc}
 
@@ -40,7 +40,7 @@
   \usepackage[toc,eqno,enum,bib,lineno]{tabfigures}
 }{%
   \usepackage{lmodern}
-  \usepackage{MdSymbol}
+  \usepackage{mdsymbol}
 }
 \usepackage{booktabs,paralist}
 \usepackage{hypdoc}
@@ -157,7 +157,7 @@
 %
 %\subsection{Math Symbols only in sans serif math}\label{sec:sansmath}
 %
-% With the \mainopt{onlysansmath} option, MdSymbol does not change
+% With the \mainopt{onlysansmath} option, \pkg{mdsymbol} does not change
 % already defined math symbols but declares two new math versions,
 % sans and sansbold, and defines its symbols to be only used within
 % these math versions.  Use the command |\mathversion{sans}| or
@@ -172,7 +172,7 @@
 %\subsection{Miscellaneous}\label{sec:Misc}
 %
 %
-% MdSymbol uses and combines some symbols of the text font
+% \pkg{mdsymbol} uses and combines some symbols of the text font
 % (section~\ref{sec:faked}). The option \mainopt{retainmissing}
 % prevents this.
 %
@@ -214,9 +214,10 @@
 % \begin{compactitem}
 % \item Bugfixes of bugfixes
 % \item Issue error when using a symbol in non-sans math versions
-%   which has not been declared before loading MdSymbol with
+%   which has not been declared before loading \pkg{mdsymbol} with
 %   \opt{onlysansmath} option
 % \end{compactitem}
+% Version 0.3: Rename package to lower-case mdsymbol for CTAN upload
 %
 % \section{Symbols}\label{sec:glyphs}
 %
@@ -1535,8 +1536,8 @@
 
 \ifmdsy@onlysansmath
   \newcommand\mdsy@OrigSymbol@not@def{%
-    \PackageError{MdSymbol}{Symbol is only available in sans-like mathversions}{%
-      Define symbol before loading MdSymbol with the onlysansmath option}
+    \PackageError{mdsymbol}{Symbol is only available in sans-like mathversions}{%
+      Define symbol before loading mdsymbol with the onlysansmath option}
   }
   \newcommand\mdsy@DeclareSymbol[3]{%
     \ifcsdef{#1}{%
