@@ -48,7 +48,7 @@ Installation
 
 5. Finally, you need to activate the map file:
 
-    updmap --enable Map=mdsymbol.map
+    updmap --enable MixedMap=mdsymbol.map
 
 For a system-wide installation, replace updmap by updmap-sys.
 
