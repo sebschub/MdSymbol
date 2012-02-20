@@ -4,7 +4,6 @@ import argparse
 from itertools import product
 import fontforge
 
-FAMILY = "FdSymbol"
 ALIASES = {"uni2A3D": ("uni2319",),
            "uni219D": ("uni21DD", "uni2933"),
            "uni219C": ("uni21DC", "uni2B3F"),
@@ -25,6 +24,8 @@ def addlig(iterable, glyph):
 parser = argparse.ArgumentParser(description="""
 Create one OpenType font from several Type1 fonts.
 """)
+parser.add_argument("-F", "--family", help="Font family name",
+                    metavar="family")
 parser.add_argument("-f", "--featurefile", help="OpenType feature file",
                     metavar="featurefile")
 parser.add_argument("fontfile", nargs="+",help="original font file (.pfb)")
@@ -39,9 +40,9 @@ font.encoding = "UnicodeBmp"
 
 # Set the font name
 weight = font.fontname.rpartition("-")[2]
-font.familyname = FAMILY
-font.fontname = FAMILY + "-" + weight
-font.fullname = FAMILY + " " + weight
+font.familyname = args.family
+font.fontname = args.family + "-" + weight
+font.fullname = args.family + " " + weight
 
 # Add space
 space = font.createChar(0x20, "space")

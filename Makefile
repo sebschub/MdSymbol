@@ -103,7 +103,7 @@ endif
 opentype: $(otffiles)
 
 $(otffiles): source/features.fea scripts/makeotf.py
-	$(PYTHON) scripts/makeotf.py -f $< $(filter %.pfb,$^) $@
+	$(PYTHON) scripts/makeotf.py -F $(font) -f $< $(filter %.pfb,$^) $@
 
 # rules for building the mapfile
 
