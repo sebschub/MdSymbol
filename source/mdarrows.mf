@@ -591,9 +591,9 @@ for alpha = 0, 90, 180, 270:
     z4 - z3 = z5 - z4 = 2/3equal_spread * dir (alpha + 90);
     z4 = head_ex;
 
-    draw_straight(z0, arrowhead_intersection(head, alpha, 3/2arrow_spread, z0 -- z3), 4/5line_thickness, false);
-    draw_straight(z1, arrowhead_intersection(head, alpha, 3/2arrow_spread, z1 -- z4), 4/5line_thickness, false);
-    draw_straight(z2, arrowhead_intersection(head, alpha, 3/2arrow_spread, z2 -- z5), 4/5line_thickness, false);
+    draw_straight(z0, arrowhead_intersection(head, alpha, 3/2arrow_spread, z0 -- z3), 7/8line_thickness, false);
+    draw_straight(z1, arrowhead_intersection(head, alpha, 3/2arrow_spread, z1 -- z4), 7/8line_thickness, false);
+    draw_straight(z2, arrowhead_intersection(head, alpha, 3/2arrow_spread, z2 -- z5), 7/8line_thickness, false);
     draw_arrowhead(head, alpha, 3/2arrow_spread, line_thickness);
 
     if negated:
