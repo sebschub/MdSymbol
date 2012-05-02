@@ -21,19 +21,23 @@ desc_depth# := 1.98pt#; % 2.94pt#;
 x_height# := 4.84pt#;
 math_axis# := 2.75pt#;
 if weight_index = 0: % Light
-  line_thickness# := 0.41pt#;
+  line_thickness# := 0.37pt#;
+  letter_line_thickness# := 0.41pt#;
   rule_thickness# := line_thickness#;
   dot_size# := line_thickness#;
 elseif weight_index = 1: % Regular
-  line_thickness# := 0.72pt#;
+  line_thickness# := 0.69pt#;
+  letter_line_thickness# := 0.73pt#;
   rule_thickness# := line_thickness#;
   dot_size# := line_thickness#;
 elseif weight_index = 2: % Semibold
-  line_thickness# := 0.98pt#;
+  line_thickness# := 0.93pt#;
+  letter_line_thickness# := 0.98pt#;
   rule_thickness# := line_thickness#;
   dot_size# := 0.85pt#;
 else: % Bold
   line_thickness# := 1.17pt#;
+  letter_line_thickness# := 1.20pt#;
   rule_thickness# := line_thickness#;
   dot_size# := 1.0pt#;
 fi;
@@ -64,7 +68,7 @@ define_whole_pixels(dot_size, small_op_size, med_op_size, large_op_size, plus_si
   arrow_horiz_len, arrow_vert_len, arrow_diag_len, arrow_spread);
 
 if known ps_output:
-  define_pixels(math_axis, line_thickness, rule_thickness, side_bearing, accent_height, accent_thickness);
+  define_pixels(math_axis, line_thickness, letter_line_thickness, rule_thickness, side_bearing, accent_height, accent_thickness);
 else:
   math_axis        := good.y(math_axis# * hppp);
   line_thickness   := ceiling(line_thickness# * hppp);

@@ -1705,8 +1705,8 @@ beginsymbol(4u# + line_thickness# + 2side_bearing#, asc_height#, desc_depth#); "
   penlabels (0,1,2,3,4,5,6,7);
 endchar;
 
-beginsymbol(8u# + line_thickness# + 2side_bearing#, cap_height#, 0); "aleph";
-  thick := line_thickness;
+beginsymbol(8u# + letter_line_thickness# + 2side_bearing#, cap_height#, 0); "aleph";
+  thick := letter_line_thickness;
 
   x0l = x2l = side_bearing;
   x1r = x3r = w - side_bearing;
@@ -1739,8 +1739,8 @@ beginsymbol(8u# + line_thickness# + 2side_bearing#, cap_height#, 0); "aleph";
   penlabels(0,1,2,3,4,5,6);
 endchar;
 
-beginsymbol(8u# + line_thickness# + 2side_bearing#, cap_height#, 0); "beth";
-  thick := line_thickness;
+beginsymbol(8u# + letter_line_thickness# + 2side_bearing#, cap_height#, 0); "beth";
+  thick := letter_line_thickness;
 
   x0 = u + side_bearing;
   x1 = 5/8[x2,x4];
@@ -1767,8 +1767,8 @@ beginsymbol(8u# + line_thickness# + 2side_bearing#, cap_height#, 0); "beth";
   penlabels(0,1,2,3,4,5);
 endchar;
 
-beginsymbol(6u# + line_thickness# + 2side_bearing#, cap_height#, 0); "gimel";
-  thick := line_thickness;
+beginsymbol(6u# + letter_line_thickness# + 2side_bearing#, cap_height#, 0); "gimel";
+  thick := letter_line_thickness;
 
   x0 = x2 = side_bearing;
   x2'r = 1/8[x0,x1];
@@ -1805,8 +1805,8 @@ beginsymbol(6u# + line_thickness# + 2side_bearing#, cap_height#, 0); "gimel";
   penlabels(2,2',3,4,5,6,7,8);
 endchar;
 
-beginsymbol(7u# + line_thickness# + 2side_bearing#, cap_height#, 0); "daleth";
-  thick := line_thickness;
+beginsymbol(7u# + letter_line_thickness# + 2side_bearing#, cap_height#, 0); "daleth";
+  thick := letter_line_thickness;
 
   x0 = side_bearing;
   x1 = w - side_bearing;
@@ -1883,8 +1883,8 @@ beginsymbol(9u# + 2line_thickness#, x_height#, desc_depth#); "Weierstrass p";
 endchar;
 endgroup;
 
-beginsymbol(8u# + line_thickness# + 2side_bearing#, cap_height#, 0); "nabla";
-  thick:=line_thickness;
+beginsymbol(8u# + letter_line_thickness# + 2side_bearing#, cap_height#, 0); "nabla";
+  thick:=letter_line_thickness;
   thin := 4/5thick;
   thicker := 8/7thick;
 

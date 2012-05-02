@@ -14,6 +14,9 @@ def sthick(expr scale) =
 enddef;
 
 def bop_line_thickness(expr scale) = 
+  bop_thickness_fac * letter_line_thickness * sqrt sthick(scale)
+enddef;
+def bop_part_line_thickness(expr scale) = 
   bop_thickness_fac * line_thickness * sqrt sthick(scale)
 enddef;
 def bop_dot_size(expr scale) =
@@ -240,15 +243,15 @@ charlist current_char - 1: current_char;
 for scale = 1, 1.4:
   beginbigop(scale, scale); "sum modulo two";
     draw_sum(a)(centre, op_width, op_height, bop_line_thickness(scale));
-    draw_circle(z4a, sqrt scale * 1/4op_width, bop_line_thickness(scale));
+    draw_circle(z4a, sqrt scale * 1/4op_width, bop_part_line_thickness(scale));
   endchar;
 endfor;
 charlist current_char - 1: current_char;
 
 for number = 0, 1, 2, 3:
   for scale = 1, 1.8:
-    beginsymbol(scale * (5number + 4) * u# + (sthick(scale)) * 3/4bop_thickness_fac*line_thickness# + 2side_bearing#, vcentre(scale * 1.6asc_height#)); "integral";
-      italcorr scale * 3u# - (sthick(scale)) * 3/4bop_thickness_fac*line_thickness#; % kerning between upper limit and lower limit
+    beginsymbol(scale * (5number + 4) * u# + (sthick(scale)) * 3/4bop_thickness_fac*letter_line_thickness# + 2side_bearing#, vcentre(scale * 1.6asc_height#)); "integral";
+      italcorr scale * 3u# - (sthick(scale)) * 3/4bop_thickness_fac*letter_line_thickness#; % kerning between upper limit and lower limit
 
       pair centre;
 
@@ -262,8 +265,8 @@ for number = 0, 1, 2, 3:
 endfor;
 
 for scale = 1, 1.8:
-  beginsymbol(scale * 9u# + 4(equal_spread# + sqrt sthick(scale) * bop_thickness_fac*dot_size#) + (sthick(scale)) * 3/4bop_thickness_fac*line_thickness# + 2side_bearing#, vcentre(scale * 1.6asc_height#)); "integral dots";
-    italcorr scale * 3u# - (sthick(scale)) * 3/4bop_thickness_fac*line_thickness#; % kerning between upper limit and lower limit
+  beginsymbol(scale * 9u# + 4(equal_spread# + sqrt sthick(scale) * bop_thickness_fac*dot_size#) + (sthick(scale)) * 3/4bop_thickness_fac*letter_line_thickness# + 2side_bearing#, vcentre(scale * 1.6asc_height#)); "integral dots";
+    italcorr scale * 3u# - (sthick(scale)) * 3/4bop_thickness_fac*letter_line_thickness#; % kerning between upper limit and lower limit
 
     pair centre;
     centre := (side_bearing + scale * 7/2u, (h - d)/2);
@@ -287,9 +290,9 @@ charlist current_char - 1: current_char;
 
 for sign = 1, -1:
   for scale = 1, 1.8:
-    beginsymbol(scale * 6u# + if scale > 1: (sthick(scale)) * 3/4bop_thickness_fac*line_thickness# else: scale * 3u# fi + 2side_bearing#, vcentre(scale * 1.6asc_height#)); "oriented integral";
+    beginsymbol(scale * 6u# + if scale > 1: (sthick(scale)) * 3/4bop_thickness_fac*letter_line_thickness# else: scale * 3u# fi + 2side_bearing#, vcentre(scale * 1.6asc_height#)); "oriented integral";
       if scale > 1:
-        italcorr scale * 3u# - (sthick(scale)) * 3/4bop_thickness_fac*line_thickness#; % kerning between upper limit and lower limit
+        italcorr scale * 3u# - (sthick(scale)) * 3/4bop_thickness_fac*letter_line_thickness#; % kerning between upper limit and lower limit
       fi
 
       pair centre;
@@ -297,7 +300,7 @@ for sign = 1, -1:
 
       draw_integral(a)(scale, centre, bop_line_thickness(scale));
 
-      thick := bop_line_thickness(scale);
+      thick := bop_part_line_thickness(scale);
       r := 4u;
 
       penpos0(thick, 135);
@@ -323,9 +326,9 @@ for sign = 1, -1:
 endfor;
 
 for scale = 1, 1.8:
-  beginsymbol(scale * 4u# + if scale > 1: (sthick(scale)) * 3/4bop_thickness_fac*line_thickness# else: scale * 3u# fi + 2side_bearing#, vcentre(scale * 1.6asc_height#)); "integral with horizontal bar";
+  beginsymbol(scale * 4u# + if scale > 1: (sthick(scale)) * 3/4bop_thickness_fac*letter_line_thickness# else: scale * 3u# fi + 2side_bearing#, vcentre(scale * 1.6asc_height#)); "integral with horizontal bar";
     if scale > 1:
-      italcorr scale * 3u# - (sthick(scale)) * 3/4bop_thickness_fac*line_thickness#; % kerning between upper limit and lower limit
+      italcorr scale * 3u# - (sthick(scale)) * 3/4bop_thickness_fac*letter_line_thickness#; % kerning between upper limit and lower limit
     fi
 
     pair centre;
@@ -334,7 +337,7 @@ for scale = 1, 1.8:
     draw_integral(a)(scale, centre, bop_line_thickness(scale));
 
     r := scale * 5/2u;
-    thick := bop_line_thickness(scale);
+    thick := bop_part_line_thickness(scale);
 
     draw_straight(z0a + r * left, z0a + r * right, thick, true);
   endchar;
@@ -342,9 +345,9 @@ endfor;
 charlist current_char - 1: current_char;
 
 for scale = 1, 1.8:
-  beginsymbol(scale * 4u# + if scale > 1: (sthick(scale)) * 3/4bop_thickness_fac*line_thickness# else: scale * 3u# fi + 2side_bearing#, vcentre(scale * 1.6asc_height#)); "integral with double horizontal bar";
+  beginsymbol(scale * 4u# + if scale > 1: (sthick(scale)) * 3/4bop_thickness_fac*letter_line_thickness# else: scale * 3u# fi + 2side_bearing#, vcentre(scale * 1.6asc_height#)); "integral with double horizontal bar";
     if scale > 1:
-      italcorr scale * 3u# - (sthick(scale)) * 3/4bop_thickness_fac*line_thickness#; % kerning between upper limit and lower limit
+      italcorr scale * 3u# - (sthick(scale)) * 3/4bop_thickness_fac*letter_line_thickness#; % kerning between upper limit and lower limit
     fi
 
     pair centre;
@@ -356,7 +359,7 @@ for scale = 1, 1.8:
     1/2[z0, z1] = z0a;
 
     r := scale * 5/2u;
-    thick := bop_line_thickness(scale);
+    thick := bop_part_line_thickness(scale);
 
     draw_straight(z0 + r * left, z0 + r * right, thick, true);
     draw_straight(z1 + r * left, z1 + r * right, thick, true);
@@ -365,8 +368,8 @@ endfor;
 charlist current_char - 1: current_char;
 
 for scale = 1, 1.8:
-  beginsymbol(scale * 4u# + (sthick(scale)) * 3/4bop_thickness_fac*line_thickness# + 2side_bearing#, vcentre(scale * 1.6asc_height#)); "stroked integral";
-    italcorr scale * 3u# - (sthick(scale)) * 3/4bop_thickness_fac*line_thickness#; % kerning between upper limit and lower limit
+  beginsymbol(scale * 4u# + (sthick(scale)) * 3/4bop_thickness_fac*letter_line_thickness# + 2side_bearing#, vcentre(scale * 1.6asc_height#)); "stroked integral";
+    italcorr scale * 3u# - (sthick(scale)) * 3/4bop_thickness_fac*letter_line_thickness#; % kerning between upper limit and lower limit
 
     pair centre;
     centre := (side_bearing + scale * 7/2u, (h - d)/2);
@@ -374,7 +377,7 @@ for scale = 1, 1.8:
     draw_integral(a)(scale, centre, bop_line_thickness(scale));
 
     r := scale * 7/2u;
-    thick := bop_line_thickness(scale);
+    thick := bop_part_line_thickness(scale);
 
     draw_straight(z0a - r * dir 35, z0a + r * dir 35, thick, true);
   endchar;
@@ -383,15 +386,15 @@ charlist current_char - 1: current_char;
 
 for number = 0, 1, 2:
   for scale = 1, 1.8:
-    beginsymbol(scale * (5number + 5) * u# + if scale > 1: (sthick(scale)) * 3/4bop_thickness_fac*line_thickness# else: scale * 3u# fi + 2side_bearing#, vcentre(scale * 1.6asc_height#)); "contour integral";
+    beginsymbol(scale * (5number + 5) * u# + if scale > 1: (sthick(scale)) * 3/4bop_thickness_fac*letter_line_thickness# else: scale * 3u# fi + 2side_bearing#, vcentre(scale * 1.6asc_height#)); "contour integral";
       if scale > 1:
-        italcorr scale * 3u# - (sthick(scale)) * 3/4bop_thickness_fac*line_thickness#; % kerning between upper limit and lower limit
+        italcorr scale * 3u# - (sthick(scale)) * 3/4bop_thickness_fac*letter_line_thickness#; % kerning between upper limit and lower limit
       fi
 
       pair centre;
 
       centre := (side_bearing + scale * (5number/2 + 4) * u, (h - d)/2);
-      thick := bop_line_thickness(scale);
+      thick := bop_part_line_thickness(scale);
       r := scale * 4u;
       s := scale * (5number + 8)/2 * u;
 
@@ -416,9 +419,9 @@ endfor;
 for alpha = 0, 180:
   for sign = 1, -1:
     for scale = 1, 1.8:
-      beginsymbol(scale * 6u# + if scale > 1: (sthick(scale)) * 3/4bop_thickness_fac*line_thickness# else: scale * 3u# fi + 2side_bearing#, vcentre(scale * 1.6asc_height#)); "oriented contour integral";
+      beginsymbol(scale * 6u# + if scale > 1: (sthick(scale)) * 3/4bop_thickness_fac*letter_line_thickness# else: scale * 3u# fi + 2side_bearing#, vcentre(scale * 1.6asc_height#)); "oriented contour integral";
         if scale > 1:
-          italcorr scale * 3u# - (sthick(scale)) * 3/4bop_thickness_fac*line_thickness#; % kerning between upper limit and lower limit
+          italcorr scale * 3u# - (sthick(scale)) * 3/4bop_thickness_fac*letter_line_thickness#; % kerning between upper limit and lower limit
         fi
 
         pair centre;
@@ -426,7 +429,7 @@ for alpha = 0, 180:
 
         draw_integral(a)(scale, centre, bop_line_thickness(scale));
 
-        thick := bop_line_thickness(scale);
+        thick := bop_part_line_thickness(scale);
         r := scale * 4u;
 
         reg_poly_points(a)(8, z0a, r, alpha + 25);
