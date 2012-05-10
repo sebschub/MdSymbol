@@ -310,10 +310,10 @@ for sign = 1, -1:
 
       if sign > 0:
         fill stroke z0.e{dir 45} .. {dir 0}z1.e .. {dir -45}z2.e;
-        draw_arrowhead(z2, -40, 2/3scale * arrow_spread, 5/6thick, 7/8);
+        draw_arrowhead(z2, -40, 2/3scale * arrow_spread, 5/6thick);
       else:
         fill stroke z0.e{dir -135} .. {dir 180}z1.e .. {dir 135}z2.e;
-        draw_arrowhead(z0, 40, 2/3scale * arrow_spread, 5/6thick, 7/8);
+        draw_arrowhead(z0, 40, 2/3scale * arrow_spread, 5/6thick);
       fi
 
       penlabels(0,1,2);
@@ -436,10 +436,10 @@ for alpha = 0, 180:
 
         if sign > 0:
           fill z.a0 .. z.a1 .. z.a2 .. z.a3 .. z.a4 .. z.a5 .. z.a6 .. z.a7 .. z.a8 -- z.b8 .. z.b7 .. z.b6 .. z.b5 .. z.b4 .. z.b3 .. z.b2 .. z.b1 .. z.b0 -- cycle;
-          draw_arrowhead(1/2[z.a8, z.b8], alpha + 75, 2/3scale * arrow_spread, 5/6thick, 7/8);
+          draw_arrowhead(1/2[z.a8, z.b8], alpha + 75, 2/3scale * arrow_spread, 5/6thick);
         else:
           fill z.a8 .. z.a0 .. z.a1 .. z.a2 .. z.a3 .. z.a4 .. z.a5 .. z.a6 .. z.a7 -- z.b7 .. z.b6 .. z.b5 .. z.b4 .. z.b3 .. z.b2 .. z.b1 .. z.b0 .. z.b8 -- cycle;
-          draw_arrowhead(1/2[z.a8, z.b8], alpha - 75, 2/3scale * arrow_spread, 5/6thick, 7/8);
+          draw_arrowhead(1/2[z.a8, z.b8], alpha - 75, 2/3scale * arrow_spread, 5/6thick);
         fi
       endchar;
     endfor;

@@ -50,7 +50,7 @@ beginaccent(6u# + side_bearing#, 3u# + 1/2accent_thickness#); "vec";
   y0 = y1 = h - 1/2(1/2(x1-x0) + thick);
 
   draw_straight(z0, z1, thick, false);
-  draw_arrowhead(z1, 0, 1/2(x1-x0), thick, 7/8);
+  draw_arrowhead(z1, 0, 1/2(x1-x0), thick);
   labels(0,1);
 endchar;
 
