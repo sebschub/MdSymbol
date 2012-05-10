@@ -488,7 +488,7 @@ for arrow_dir = 90, 270:
     fi;
 
     draw_line(foot, head, false);
-    draw_arrowhead(head, arrow_dir, arrow_spread, line_thickness);
+    draw_arrowhead(head, arrow_dir, arrow_spread, line_thickness, 7/8);
   endchar;
 endfor;
 
@@ -521,7 +521,7 @@ for arrow_dir = 90, 270:
 
     draw_line(z0, arrowhead_intersection(head, arrow_dir, 13/10arrow_spread, z0 -- z2), false);
     draw_line(z1, arrowhead_intersection(head, arrow_dir, 13/10arrow_spread, z1 -- z3), false);
-    draw_arrowhead(head, arrow_dir, 13/10arrow_spread, line_thickness);
+    draw_arrowhead(head, arrow_dir, 13/10arrow_spread, line_thickness, 1);
   endchar;
 endfor;
 

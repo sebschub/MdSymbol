@@ -13,7 +13,7 @@ enddef;
 for alpha = 0, 90, 180, 270, 45, 135, 225, 315:
   beginarrow(alpha, 1, ifneg(3/2, 1) * arrow_spread#); "single arrow (" & decimal alpha & ")";
     draw_line(foot_ex, head, false);
-    draw_arrowhead(head, alpha, arrow_spread, line_thickness);
+    draw_arrowhead(head, alpha, arrow_spread, line_thickness, 7/8);
 
     if negated:
       stroke_through_arrow(1/2[foot, head - 1/2arrow_spread * dir alpha], alpha, 3/2arrow_spread)(70, 70, 110, 110, 70, 70, 110, 110);
@@ -29,7 +29,7 @@ for alpha = 0, 90, 180, 270, 45, 135, 225, 315:
 
     draw_line(z0, arrowhead_intersection(head, alpha, 13/10arrow_spread, z0 -- z2), false);
     draw_line(z1, arrowhead_intersection(head, alpha, 13/10arrow_spread, z1 -- z3), false);
-    draw_arrowhead(head, alpha, 13/10arrow_spread, line_thickness);
+    draw_arrowhead(head, alpha, 13/10arrow_spread, line_thickness, 1);
 
     if negated:
       stroke_through_arrow(1/2[foot, head - arrow_spread * dir alpha], alpha, 19/10arrow_spread)(70, 70, 110, 110, 70, 70, 110, 110);
@@ -40,8 +40,8 @@ endfor;
 for alpha = 0, 90, 45, 135:
   beginarrow(alpha, 6/5, ifneg(3/2, 1) * arrow_spread#); "bidirectional arrow (" & decimal alpha & ")";
     draw_line(foot, head, false);
-    draw_arrowhead(head, alpha, arrow_spread, line_thickness);
-    draw_arrowhead(foot, alpha+180, arrow_spread, line_thickness);
+    draw_arrowhead(head, alpha, arrow_spread, line_thickness, 7/8);
+    draw_arrowhead(foot, alpha+180, arrow_spread, line_thickness, 7/8);
 
     if negated:
       stroke_through_arrow(1/2[foot, head], alpha, 3/2arrow_spread)(70, 70, 110, 110, 70, 70, 110, 110);
@@ -57,8 +57,8 @@ for alpha = 0, 90, 45, 135:
 
     draw_line(arrowhead_intersection(foot, alpha+180, 13/10arrow_spread, z0 -- z2), arrowhead_intersection(head, alpha, 13/10arrow_spread, z0 -- z2), false);
     draw_line(arrowhead_intersection(foot, alpha+180, 13/10arrow_spread, z1 -- z3), arrowhead_intersection(head, alpha, 13/10arrow_spread, z1 -- z3), false);
-    draw_arrowhead(head, alpha, 13/10arrow_spread, line_thickness);
-    draw_arrowhead(foot, alpha+180, 13/10arrow_spread, line_thickness);
+    draw_arrowhead(head, alpha, 13/10arrow_spread, line_thickness, 1);
+    draw_arrowhead(foot, alpha+180, 13/10arrow_spread, line_thickness, 1);
 
     if negated:
       stroke_through_arrow(1/2[foot, head], alpha, 19/10arrow_spread)(70, 70, 110, 110, 70, 70, 110, 110);
@@ -69,8 +69,8 @@ endfor;
 for alpha = 0, 90, 180, 270, 45, 135, 225, 315:
   beginarrow(alpha, 5/4, ifneg(3/2, 1) * arrow_spread#); "double-head arrow (" & decimal alpha & ")";
     draw_line(foot_ex, head, false);
-    draw_arrowhead(head, alpha, arrow_spread, line_thickness);
-    draw_arrowhead(head - 1/4arrow_len * dir alpha, alpha, arrow_spread, line_thickness);
+    draw_arrowhead(head, alpha, arrow_spread, line_thickness, 7/8);
+    draw_arrowhead(head - 1/4arrow_len * dir alpha, alpha, arrow_spread, line_thickness, 7/8);
 
     if negated:
       stroke_through_arrow(1/2[foot, head - (1/2arrow_spread + 1/4arrow_len) * dir alpha], alpha, 3/2arrow_spread)(70, 70, 110, 110, 70, 70, 110, 110);
@@ -83,8 +83,8 @@ for alpha = 0, 90, 180, 270, 45, 135, 225, 315:
     z0 = foot + 1/2arrow_spread * dir alpha;
 
     draw_line(z0, head, false);
-    draw_arrowhead(head, alpha, arrow_spread, line_thickness);
-    draw_arrowhead(z0,   alpha, arrow_spread, line_thickness);
+    draw_arrowhead(head, alpha, arrow_spread, line_thickness, 7/8);
+    draw_arrowhead(z0,   alpha, arrow_spread, line_thickness, 7/8);
 
     if negated:
       stroke_through_arrow(1/2[foot, head], alpha, 3/2arrow_spread)(70, 70, 110, 110, 70, 70, 110, 110);
@@ -96,7 +96,7 @@ for alpha = 0, 90, 180, 270:
   beginarrow(alpha, 1, ifneg(3/2, 1) * arrow_spread#); "arrow with foot (" & decimal alpha & ")";
     draw_line(foot, head, false);
     draw_line(foot - 1/2arrow_spread * dir (alpha + 90), foot + 1/2arrow_spread * dir (alpha + 90), true);
-    draw_arrowhead(head, alpha, arrow_spread, line_thickness);
+    draw_arrowhead(head, alpha, arrow_spread, line_thickness, 7/8);
 
     if negated:
       stroke_through_arrow(1/2[foot, head - 1/2arrow_spread * dir alpha], alpha, 3/2arrow_spread)(70, 70, 110, 110, 70, 70, 110, 110);
@@ -113,7 +113,7 @@ for alpha = 0, 90, 180, 270:
     draw_line(z0, arrowhead_intersection(head, alpha, 13/10arrow_spread, z0 -- z2), false);
     draw_line(z1, arrowhead_intersection(head, alpha, 13/10arrow_spread, z1 -- z3), false);
     draw_line(foot - 13/20arrow_spread * dir (alpha + 90), foot + 13/20arrow_spread * dir (alpha + 90), true);
-    draw_arrowhead(head, alpha, 13/10arrow_spread, line_thickness);
+    draw_arrowhead(head, alpha, 13/10arrow_spread, line_thickness, 1.);
 
     if negated:
       stroke_through_arrow(1/2[foot, head - 1/2arrow_spread * dir alpha], alpha, 19/10arrow_spread)(70, 70, 110, 110, 70, 70, 110, 110);
@@ -137,7 +137,7 @@ for alpha = 0, 90, 180, 270, 45, 135, 225, 315:
     penpos3(thick, alpha + 90);
     penpos4(thick, alpha - 90);
 
-    draw_arrowhead(head, alpha, arrow_spread, thick);
+    draw_arrowhead(head, alpha, arrow_spread, thick, 7/8);
     fill stroke z4.e -- z2.e{dir (alpha + 180)} ..
       z0.e{dir (alpha - 90)} .. z1.e{dir alpha} -- z3.e;
 
@@ -163,7 +163,7 @@ for alpha = 0, 90, 180, 270, 45, 135, 225, 315:
     penpos3(thick, alpha + 90);
     penpos4(thick, alpha - 90);
 
-    draw_arrowhead(head, alpha, arrow_spread, thick);
+    draw_arrowhead(head, alpha, arrow_spread, thick, 7/8);
     fill stroke z4.e -- z2.e{dir (alpha + 180)} ..
       z0.e{dir (alpha + 90)} .. z1.e{dir alpha} -- z3.e;
     
@@ -176,7 +176,7 @@ endfor;
 for alpha = 0, 90, 180, 270, 45, 135, 225, 315:
   beginarrow(alpha, 1, ifneg(3/2, 1) * arrow_spread#); "left harpoon (" & decimal alpha & ")";
     draw_line(foot_ex, head, false);
-    draw_arrowhead_left(head, alpha, arrow_spread, line_thickness);
+    draw_arrowhead_left(head, alpha, arrow_spread, line_thickness, 7/8);
 
     if negated:
       stroke_through_arrow(1/2[foot, head - 1/2arrow_spread * dir alpha], alpha, 3/2arrow_spread)(70, 70, 110, 110, 70, 70, 110, 110);
@@ -187,7 +187,7 @@ endfor;
 for alpha = 0, 90, 180, 270, 45, 135, 225, 315:
   beginarrow(alpha, 1, ifneg(3/2, 1) * arrow_spread#); "right harpoon (" & decimal alpha & ")";
     draw_line(foot_ex, head, false);
-    draw_arrowhead_right(head, alpha, arrow_spread, line_thickness);
+    draw_arrowhead_right(head, alpha, arrow_spread, line_thickness, 7/8);
 
     if negated:
       stroke_through_arrow(1/2[foot, head - 1/2arrow_spread * dir alpha], alpha, 3/2arrow_spread)(70, 70, 110, 110, 70, 70, 110, 110);
@@ -198,8 +198,8 @@ endfor;
 for alpha = 0, 90, 45, 135:
   beginarrow(alpha, 1, ifneg(3/2, 1) * arrow_spread#); "left left harpoon (" & decimal alpha & ")";
     draw_line(foot, head, false);
-    draw_arrowhead_left(head, alpha, arrow_spread, line_thickness);
-    draw_arrowhead_left(foot, alpha+180, arrow_spread, line_thickness);
+    draw_arrowhead_left(head, alpha, arrow_spread, line_thickness, 7/8);
+    draw_arrowhead_left(foot, alpha+180, arrow_spread, line_thickness, 7/8);
 
     if negated:
       stroke_through_arrow(1/2[foot, head], alpha, 3/2arrow_spread)(80, 80, 110, 110);
@@ -210,8 +210,8 @@ endfor;
 for alpha = 0, 90, 45, 135:
   beginarrow(alpha, 1, ifneg(3/2, 1) * arrow_spread#); "right right harpoon (" & decimal alpha & ")";
     draw_line(foot, head, false);
-    draw_arrowhead_right(head, alpha, arrow_spread, line_thickness);
-    draw_arrowhead_right(foot, alpha+180, arrow_spread, line_thickness);
+    draw_arrowhead_right(head, alpha, arrow_spread, line_thickness, 7/8);
+    draw_arrowhead_right(foot, alpha+180, arrow_spread, line_thickness, 7/8);
 
     if negated:
       stroke_through_arrow(1/2[foot, head], alpha, 3/2arrow_spread)(70, 70, 100, 100);
@@ -229,8 +229,8 @@ for alpha = 0, 90, 45, 135:
 
     draw_line(z2', z0, false);
     draw_line(z1', z3, false);
-    draw_arrowhead_left(z3, alpha, arrow_spread, line_thickness);
-    draw_arrowhead_left(z0, alpha+180, arrow_spread, line_thickness);
+    draw_arrowhead_left(z3, alpha, arrow_spread, line_thickness, 7/8);
+    draw_arrowhead_left(z0, alpha+180, arrow_spread, line_thickness, 7/8);
 
     if negated:
       stroke_through_arrow(1/2[foot, head], alpha, 3/2arrow_spread + equal_spread)(80, 80, 110, 110);
@@ -248,8 +248,8 @@ for alpha = 0, 90, 45, 135:
 
     draw_line(z0', z2, false);
     draw_line(z3', z1, false);
-    draw_arrowhead_right(z2, alpha, arrow_spread, line_thickness);
-    draw_arrowhead_right(z1, alpha+180, arrow_spread, line_thickness);
+    draw_arrowhead_right(z2, alpha, arrow_spread, line_thickness, 7/8);
+    draw_arrowhead_right(z1, alpha+180, arrow_spread, line_thickness, 7/8);
 
     if negated:
       stroke_through_arrow(1/2[foot, head], alpha, 3/2arrow_spread + equal_spread)(70, 70, 100, 100);
@@ -264,7 +264,7 @@ for alpha = 0, 90, 180, 270, 45, 135, 225, 315:
 
     draw_line(foot_ex, z0, false);
     draw_line(z1, head, false);
-    draw_arrowhead(head, alpha, arrow_spread, line_thickness);
+    draw_arrowhead(head, alpha, arrow_spread, line_thickness, 7/8);
 
     if negated:
       stroke_through_arrow(1/2[z0, z1], alpha, 3/2arrow_spread)(70, 70, 110, 110, 70, 70, 110, 110);
@@ -345,8 +345,8 @@ for alpha = 0, 90, 180, 270, 45, 135, 225, 315:
 
     draw_line(z0, z2, false);
     draw_line(z1, z3, false);
-    draw_arrowhead(z2, alpha, arrow_spread, line_thickness);
-    draw_arrowhead(z3, alpha, arrow_spread, line_thickness);
+    draw_arrowhead(z2, alpha, arrow_spread, line_thickness, 7/8);
+    draw_arrowhead(z3, alpha, arrow_spread, line_thickness, 7/8);
 
     if negated:
       stroke_through_arrow(1/2[foot, head - 1/2arrow_spread * dir alpha], alpha, 2arrow_spread)(70, 70, 110, 110, 70, 70, 110, 110);
@@ -364,8 +364,8 @@ for alpha = 0, 90, 45, 135:
 
     draw_line(z2', z0, false);
     draw_line(z1', z3, false);
-    draw_arrowhead(z3, alpha, arrow_spread, line_thickness);
-    draw_arrowhead(z0, alpha+180, arrow_spread, line_thickness);
+    draw_arrowhead(z3, alpha, arrow_spread, line_thickness, 7/8);
+    draw_arrowhead(z0, alpha+180, arrow_spread, line_thickness, 7/8);
 
     if negated:
       stroke_through_arrow(1/2[foot, head], alpha, 2arrow_spread)(80, 80, 110, 110);
@@ -383,8 +383,8 @@ for alpha = 0, 90, 45, 135:
 
     draw_line(z0', z2, false);
     draw_line(z3', z1, false);
-    draw_arrowhead(z2, alpha, arrow_spread, line_thickness);
-    draw_arrowhead(z1, alpha+180, arrow_spread, line_thickness);
+    draw_arrowhead(z2, alpha, arrow_spread, line_thickness, 7/8);
+    draw_arrowhead(z1, alpha+180, arrow_spread, line_thickness, 7/8);
 
     if negated:
       stroke_through_arrow(1/2[foot, head], alpha, 2arrow_spread)(70, 70, 100, 100);
@@ -417,7 +417,7 @@ for alpha = 0, 90, 180, 270:
     penlabels(0,1,2,3,4,5,6);
 
     fill stroke z0.e{dir (alpha + sign * 55)} .. z1.e{dir alpha} .. z2.e{dir (alpha - sign * 55)} .. z3.e{dir alpha} .. z4.e{dir (alpha + sign * 35)} ... {dir alpha}z5.e -- z6.e;
-    draw_arrowhead(z6, alpha, arrow_spread, thick);
+    draw_arrowhead(z6, alpha, arrow_spread, thick, 7/8);
 
     if negated:
       stroke_through_arrow(1/2[foot, head - 1/2arrow_spread * dir alpha], alpha, 3/2arrow_spread)(70, 70, 70, 70, 70, 70, 70, 70);
@@ -455,8 +455,8 @@ for sign = 1, -1:
       penlabels(0,1,2,3,4,5,6,7,8);
 
       fill stroke z0e. -- z1.e{dir alpha} .. z2.e{dir (alpha + sign * 35)} .. z3.e{dir alpha} .. z4.e{dir (alpha - sign * 55)} .. z5.e{dir alpha} ... z6.e{dir (alpha + sign * 35)} .. {dir alpha}z7.e -- z8.e;
-      draw_arrowhead(z0, alpha + 180, arrow_spread, thick);
-      draw_arrowhead(z8, alpha, arrow_spread, thick);
+      draw_arrowhead(z0, alpha + 180, arrow_spread, thick, 7/8);
+      draw_arrowhead(z8, alpha, arrow_spread, thick, 7/8);
 
       if negated:
         stroke_through_arrow(1/2[foot, head], alpha, 3/2arrow_spread)(70, 70, 70, 70);
@@ -478,7 +478,7 @@ for alpha = 0, 90, 180, 270, 45, 135, 225, 315:
     penpos2(thick, alpha - 150);
 
     fill stroke z0.e{dir (alpha + 55)} .. z1.e .. {dir (alpha - 60)}z2.e;
-    draw_arrowhead(z2, alpha - 50, arrow_spread, thick);
+    draw_arrowhead(z2, alpha - 50, arrow_spread, thick, 7/8);
 
     if negated:
       stroke_through_arrow(1/10[z1,z2] + 1/8arrow_spread * dir (alpha - 90), alpha, 3/2arrow_spread)(80, 80, 80, 80, 80, 80, 80, 80);
@@ -499,7 +499,7 @@ for alpha = 0, 90, 180, 270, 45, 135, 225, 315:
     penpos2(thick, alpha + 150);
 
     fill stroke z0.e{dir (alpha - 55)} .. z1.e .. {dir (alpha + 60)}z2.e;
-    draw_arrowhead(z2, alpha + 50, arrow_spread, thick);
+    draw_arrowhead(z2, alpha + 50, arrow_spread, thick, 7/8);
 
     if negated:
       stroke_through_arrow(1/10[z1,z2] + 1/8arrow_spread * dir (alpha + 90), alpha, 3/2arrow_spread)(110, 110, 110, 110, 110, 110, 110, 110);
@@ -520,8 +520,8 @@ for alpha = 0, 90, 180, 270, 45, 135, 225, 315:
     penpos2(thick, alpha - 150);
 
     fill stroke z0.e{dir (alpha + 60)} .. z1.e .. {dir (alpha - 60)}z2.e;
-    draw_arrowhead(z0, alpha + 230, arrow_spread, thick);
-    draw_arrowhead(z2, alpha - 50, arrow_spread, thick);
+    draw_arrowhead(z0, alpha + 230, arrow_spread, thick, 7/8);
+    draw_arrowhead(z2, alpha - 50, arrow_spread, thick, 7/8);
 
     if negated:
       stroke_through_arrow(z1 + 1/8arrow_spread * dir (alpha - 90), alpha, 3/2arrow_spread)(80, 80, 100, 100, 80, 80, 100, 100);
@@ -563,9 +563,9 @@ for sign = 1, -1:
       fill stroke z0'.e{dir (alpha + 100)} .. z1.e .. z2.e .. z3.e .. z4.e .. z5.e .. z6.e .. z7.e .. {dir (alpha + 80)}z0''.e;
 
       if sign > 0:
-        draw_arrowhead(z0'', (alpha + 65), arrow_spread, thick);
+        draw_arrowhead(z0'', (alpha + 65), arrow_spread, thick, 7/8);
       else:
-        draw_arrowhead(z0', (alpha - 65), arrow_spread, thick);
+        draw_arrowhead(z0', (alpha - 65), arrow_spread, thick, 7/8);
       fi;
 
       if negated:
@@ -594,7 +594,7 @@ for alpha = 0, 90, 180, 270:
     draw_straight(z0, arrowhead_intersection(head, alpha, 3/2arrow_spread, z0 -- z3), 7/8line_thickness, false);
     draw_straight(z1, arrowhead_intersection(head, alpha, 3/2arrow_spread, z1 -- z4), 7/8line_thickness, false);
     draw_straight(z2, arrowhead_intersection(head, alpha, 3/2arrow_spread, z2 -- z5), 7/8line_thickness, false);
-    draw_arrowhead(head, alpha, 3/2arrow_spread, line_thickness);
+    draw_arrowhead(head, alpha, 3/2arrow_spread, line_thickness, 7/8);
 
     if negated:
       stroke_through_arrow(1/2[foot, head - arrow_spread * dir alpha], alpha, 21/10arrow_spread)(70, 70, 110, 110, 70, 70, 110, 110);
@@ -605,7 +605,7 @@ endfor;
 for alpha = 0, 180:
   beginarrow(alpha, 2, ifneg(3/2, 1) * arrow_spread#); "long single arrow (" & decimal alpha & ")";
     draw_line(foot_ex, head, false);
-    draw_arrowhead(head, alpha, arrow_spread, line_thickness);
+    draw_arrowhead(head, alpha, arrow_spread, line_thickness, 7/8);
 
     if negated:
       stroke_through_arrow(1/2[foot, head - 1/2arrow_spread * dir alpha], alpha, 3/2arrow_spread)(70, 70, 110, 110, 70, 70, 110, 110);
@@ -621,7 +621,7 @@ for alpha = 0, 180:
 
     draw_line(z0, arrowhead_intersection(head, alpha, 13/10arrow_spread, z0 -- z2), false);
     draw_line(z1, arrowhead_intersection(head, alpha, 13/10arrow_spread, z1 -- z3), false);
-    draw_arrowhead(head, alpha, 13/10arrow_spread, line_thickness);
+    draw_arrowhead(head, alpha, 13/10arrow_spread, line_thickness, 7/8);
 
     if negated:
       stroke_through_arrow(1/2[foot, head - arrow_spread * dir alpha], alpha, 19/10arrow_spread)(70, 70, 110, 110, 70, 70, 110, 110);
@@ -632,8 +632,8 @@ endfor;
 for alpha = 0:
   beginarrow(alpha, 2, ifneg(3/2, 1) * arrow_spread#); "long bidirectional arrow (" & decimal alpha & ")";
     draw_line(foot, head, false);
-    draw_arrowhead(head, alpha, arrow_spread, line_thickness);
-    draw_arrowhead(foot, alpha+180, arrow_spread, line_thickness);
+    draw_arrowhead(head, alpha, arrow_spread, line_thickness, 7/8);
+    draw_arrowhead(foot, alpha+180, arrow_spread, line_thickness, 7/8);
 
     if negated:
       stroke_through_arrow(1/2[foot, head], alpha, 3/2arrow_spread)(70, 70, 110, 110, 70, 70, 110, 110);
@@ -649,8 +649,8 @@ for alpha = 0:
 
     draw_line(arrowhead_intersection(foot, alpha+180, 13/10arrow_spread, z0 -- z2), arrowhead_intersection(head, alpha, 13/10arrow_spread, z0 -- z2), false);
     draw_line(arrowhead_intersection(foot, alpha+180, 13/10arrow_spread, z1 -- z3), arrowhead_intersection(head, alpha, 13/10arrow_spread, z1 -- z3), false);
-    draw_arrowhead(head, alpha, 13/10arrow_spread, line_thickness);
-    draw_arrowhead(foot, alpha+180, 13/10arrow_spread, line_thickness);
+    draw_arrowhead(head, alpha, 13/10arrow_spread, line_thickness, 7/8);
+    draw_arrowhead(foot, alpha+180, 13/10arrow_spread, line_thickness, 7/8);
 
     if negated:
       stroke_through_arrow(1/2[foot, head], alpha, 19/10arrow_spread)(70, 70, 110, 110, 70, 70, 110, 110);
@@ -662,7 +662,7 @@ for alpha = 0, 180:
   beginarrow(alpha, 2, ifneg(3/2, 1) * arrow_spread#); "long arrow with foot (" & decimal alpha & ")";
     draw_line(foot, head, false);
     draw_line(foot - 1/2arrow_spread * dir (alpha + 90), foot + 1/2arrow_spread * dir (alpha + 90), true);
-    draw_arrowhead(head, alpha, arrow_spread, line_thickness);
+    draw_arrowhead(head, alpha, arrow_spread, line_thickness, 7/8);
 
     if negated:
       stroke_through_arrow(1/2[foot, head - 1/2arrow_spread * dir alpha], alpha, 3/2arrow_spread)(70, 70, 110, 110, 70, 70, 110, 110);
@@ -679,7 +679,7 @@ for alpha = 0, 180:
     draw_line(z0, arrowhead_intersection(head, alpha, 13/10arrow_spread, z0 -- z2), false);
     draw_line(z1, arrowhead_intersection(head, alpha, 13/10arrow_spread, z1 -- z3), false);
     draw_line(foot - 13/20arrow_spread * dir (alpha + 90), foot + 13/20arrow_spread * dir (alpha + 90), true);
-    draw_arrowhead(head, alpha, 13/10arrow_spread, line_thickness);
+    draw_arrowhead(head, alpha, 13/10arrow_spread, line_thickness, 7/8);
 
     if negated:
       stroke_through_arrow(1/2[foot, head - arrow_spread * dir alpha], alpha, 19/10arrow_spread)(70, 70, 110, 110, 70, 70, 110, 110);
@@ -727,7 +727,7 @@ for alpha = 0, 180:
     penlabels(0,1,2,3,4,5,6,7,8,9,10,11,12,13,14);
 
     fill stroke z0e{dir (sign * 35 + 90)} .. z1.e{dir (sign * 90 + 90)} .. z2.e{dir (sign * 145 + 90)} .. z3.e{dir (sign * 90 + 90)} .. z4.e{dir (sign * 35 + 90)} .. z5.e{dir (sign * 90 + 90)} .. z6.e{dir (sign * 145 + 90)} .. z7.e{dir (sign * 90 + 90)} .. z8.e{dir (sign * 35 + 90)} .. z9.e{dir (sign * 90 + 90)} .. z10.e{dir (sign * 145 + 90)} .. z11.e{dir (sign * 90 + 90)} .. z12.e{dir (sign * 45 + 90)} .. {dir (sign * 90 + 90)}z13.e -- z14.e;
-    draw_arrowhead(z14, alpha, arrow_spread, thick);
+    draw_arrowhead(z14, alpha, arrow_spread, thick, 7/8);
 
     if negated:
       stroke_through_arrow(1/2[foot, head - 1/2arrow_spread * dir alpha], alpha, 3/2arrow_spread)(70, 70, 70, 70, 70, 70, 70, 70);
@@ -757,7 +757,7 @@ if not negated:
 
       draw_line(z2, z1, true);
       draw_line(z1, z0, false);
-      draw_arrowhead(z0, 90 + sign * 90, arrow_spread, line_thickness);
+      draw_arrowhead(z0, 90 + sign * 90, arrow_spread, line_thickness, 7/8);
     endchar;
   endfor;
 
@@ -771,7 +771,7 @@ if not negated:
 
       draw_line(z2, z1, true);
       draw_line(z1, z0, false);
-      draw_arrowhead(z0, 90 + sign * 90, arrow_spread, line_thickness);
+      draw_arrowhead(z0, 90 + sign * 90, arrow_spread, line_thickness, 7/8);
     endchar;
   endfor;
 
@@ -797,7 +797,7 @@ if not negated:
       penpos5(thick, 0);
 
       fill stroke z0e -- z3e{sign * right} .. {up}z5e .. {sign * left}z4e .. {down}z2e -- z1e;
-      draw_arrowhead(z0, 90 + sign * 90, arrow_spread, thick);
+      draw_arrowhead(z0, 90 + sign * 90, arrow_spread, thick, 7/8);
 
       penlabels(0,1,2,3,4,5);
     endchar;

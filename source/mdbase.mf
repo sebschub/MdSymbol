@@ -632,7 +632,7 @@ def draw_integral(suffix $)(expr scale, centre, thick) =
   penlabels(0$,1$,2$,3$,4$,5$,6$);
 enddef;
 
-def draw_arrowhead_left(expr pos, angle, spread, thick) =
+def draw_arrowhead_left(expr pos, angle, spread, thick, hlf) =
   begingroup;
     pair p[], p[].l, p[].r;
 
@@ -640,8 +640,8 @@ def draw_arrowhead_left(expr pos, angle, spread, thick) =
     p2 = pos + sqrt(2) * (spread + thick)/2 * dir (angle + 135);
     1/2[p1.l, p1.r] = p1;
     1/2[p2.l, p2.r] = p2;
-    p1.r - p1 = 7/8*thick/(2 * sind 45) * dir angle;
-    p2.r - p2 = 7/8*thick/(2 * sind 45) * dir angle;
+    p1.r - p1 = hlf*thick/(2 * sind 45) * dir angle;
+    p2.r - p2 = hlf*thick/(2 * sind 45) * dir angle;
     p3.l = whatever[p2.l,p1.l];
     p3.l = pos + 1/2thick * dir (angle - 90) + whatever * dir angle;
     p3.r - p1.r = whatever * dir (angle - 90);
@@ -650,7 +650,7 @@ def draw_arrowhead_left(expr pos, angle, spread, thick) =
   endgroup;
 enddef;
 
-def draw_arrowhead_right(expr pos, angle, spread, thick) =
+def draw_arrowhead_right(expr pos, angle, spread, thick, hlf) =
   begingroup;
     pair p[], p[].l, p[].r;
 
@@ -658,8 +658,8 @@ def draw_arrowhead_right(expr pos, angle, spread, thick) =
     p2 = pos + sqrt(2) * (spread + thick)/2 * dir (angle - 135);
     1/2[p1.l, p1.r] = p1;
     1/2[p2.l, p2.r] = p2;
-    p1.r - p1 = 7/8*thick/(2 * sind 45) * dir angle;
-    p2.r - p2 = 7/8*thick/(2 * sind 45) * dir angle;
+    p1.r - p1 = hlf*thick/(2 * sind 45) * dir angle;
+    p2.r - p2 = hlf*thick/(2 * sind 45) * dir angle;
     p3.l = whatever[p2.l,p1.l];
     p3.l = pos + 1/2thick * dir (angle + 90) + whatever * dir angle;
     p3.r - p1.r = whatever * dir (angle + 90);
@@ -668,7 +668,7 @@ def draw_arrowhead_right(expr pos, angle, spread, thick) =
   endgroup;
 enddef;
 
-def draw_arrowhead(expr pos, angle, spread, thick) =
+def draw_arrowhead(expr pos, angle, spread, thick, hlf) =
   begingroup;
     pair p[], p[].l, p[].r;
 
@@ -679,9 +679,9 @@ def draw_arrowhead(expr pos, angle, spread, thick) =
     1/2[p2.l, p2.r] = p2;
     1/2[p3.l, p3.r] = p3;
     
-    p1.r - p1 = 7/8*thick/(2 * sind 45) * dir angle;
-    p2.r - p2 = 7/8*thick/(2 * sind 45) * dir (angle);
-    p3.r - p3 = 7/8*thick/(2 * sind 45) * dir (angle);
+    p1.r - p1 = hlf*thick/(2 * sind 45) * dir angle;
+    p2.r - p2 = hlf*thick/(2 * sind 45) * dir (angle);
+    p3.r - p3 = hlf*thick/(2 * sind 45) * dir (angle);
 
     fill p1.r -- p2.r -- p2.l -- p1.l -- p3.l -- p3.r -- cycle;
   endgroup;

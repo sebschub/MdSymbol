@@ -1302,7 +1302,7 @@ beginsymbol(6u# + line_thickness# + 2side_bearing#, 5/4asc_height#, 1/8asc_heigh
   z8 = whatever[z6r,z5r];
 
   fill z1l -- z2l -- z8 -- z4l -- z4r -- z3r -- z7 -- z1r -- cycle;
-  draw_arrowhead(z4, angle (z4l - z3l), 4/5arrow_spread, thick);
+  draw_arrowhead(z4, angle (z4l - z3l), 4/5arrow_spread, thick, 1);
 
   penlabels(1,2,3,4,7,8);
 endchar;
