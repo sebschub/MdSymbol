@@ -21,23 +21,23 @@ desc_depth# := 1.98pt#; % 2.94pt#;
 x_height# := 4.84pt#;
 math_axis# := 2.75pt#;
 if weight_index = 0: % Light
-  line_thickness# := 0.37pt#;
-  letter_line_thickness# := 0.41pt#;
+  line_thickness# := 0.40pt#;
+  letter_line_thickness# := 0.40pt#;
   rule_thickness# := line_thickness#;
   dot_size# := line_thickness#;
 elseif weight_index = 1: % Regular
-  line_thickness# := 0.69pt#;
+  line_thickness# := 0.68pt#;
   letter_line_thickness# := 0.73pt#;
   rule_thickness# := line_thickness#;
   dot_size# := line_thickness#;
 elseif weight_index = 2: % Semibold
   line_thickness# := 0.93pt#;
-  letter_line_thickness# := 0.98pt#;
+  letter_line_thickness# := 1.01pt#;
   rule_thickness# := line_thickness#;
   dot_size# := 0.85pt#;
 else: % Bold
-  line_thickness# := 1.17pt#;
-  letter_line_thickness# := 1.20pt#;
+  line_thickness# := 1.14pt#;
+  letter_line_thickness# := 1.25pt#;
   rule_thickness# := line_thickness#;
   dot_size# := 1.0pt#;
 fi;
@@ -72,6 +72,7 @@ if known ps_output:
 else:
   math_axis        := good.y(math_axis# * hppp);
   line_thickness   := ceiling(line_thickness# * hppp);
+  letter_line_thickness := ceiling(letter_line_thickness# * hppp);
   rule_thickness   := ceiling(rule_thickness# * hppp);
   side_bearing     := ceiling(side_bearing# * hppp);
   accent_height    := ceiling(accent_height# * hppp);
