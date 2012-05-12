@@ -1886,7 +1886,7 @@ endgroup;
 beginsymbol(8u# + letter_line_thickness# + 2side_bearing#, cap_height#, 0); "nabla";
   thick:=letter_line_thickness;
   thin := 4/5thick;
-  thicker := 8/7thick;
+  thicker := thick;
 
   y0r = y1r = h;
   y2  = 0;
