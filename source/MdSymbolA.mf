@@ -17,7 +17,7 @@ subs := 7/10;  % subscript size
 rth# := rule_thickness#;
 
 fontdimen 8:  % parameters $\sigma_8$ to $\sigma_{22}$ will now be listed
- math_axis# + 3.5rth# + desc_depth#,  % num1 (\sigma_8)
+ math_axis# + 3.5rth# + subs * desc_depth#,  % num1 (\sigma_8)
  math_axis# + 1.5rth# + 5/6pt#,  % num2 (\sigma_9)
  math_axis# + 1.5rth# + 5/6pt#,  % num3 (\sigma_{10})
  3.5rth# + subs * asc_height# - math_axis#,  % denom1 (\sigma_{11})
