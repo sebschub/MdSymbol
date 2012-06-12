@@ -23,22 +23,18 @@ math_axis# := 2.75pt#;
 if weight_index = 0: % Light
   line_thickness# := 0.40pt#;
   letter_line_thickness# := 0.40pt#;
-  rule_thickness# := line_thickness#;
   dot_size# := line_thickness#;
 elseif weight_index = 1: % Regular
   line_thickness# := 0.68pt#;
   letter_line_thickness# := 0.73pt#;
-  rule_thickness# := line_thickness#;
   dot_size# := line_thickness#;
 elseif weight_index = 2: % Semibold
   line_thickness# := 0.93pt#;
   letter_line_thickness# := 1.01pt#;
-  rule_thickness# := line_thickness#;
   dot_size# := 0.85pt#;
 else: % Bold
   line_thickness# := 1.14pt#;
   letter_line_thickness# := 1.25pt#;
-  rule_thickness# := line_thickness#;
   dot_size# := 1.0pt#;
 fi;
 
@@ -59,6 +55,7 @@ delim_height# := 4.9pt#; % half the height of normal delimiters
 bigop_height# := 10.7pt#; % height of big operators
 accent_height# := x_height# + 1.u#; % height of accents
 accent_thickness# := 3/4line_thickness#;
+rule_thickness# := accent_thickness#;
 
 mode_setup;
 
