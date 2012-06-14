@@ -14,7 +14,7 @@ if known ps_output:
   font_comment := "Copyright (c) 2011, Sebastian Schubert. This Font Software is licensed under the SIL Open Font License, Version 1.1.";
 fi
 
-u# := 0.6pt#;
+u# := 0.57pt#;
 cap_height# := 6.74pt#; %7.37pt#;
 asc_height# := 7.10pt#; % 8.56pt#;
 desc_depth# := 1.98pt#; % 2.94pt#;
