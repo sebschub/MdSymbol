@@ -54,7 +54,7 @@ beginaccent(6u# + side_bearing#, 3u# + 1/2accent_thickness#); "vec";
   labels(0,1);
 endchar;
 
-beginsymbol(5u#, (-1)[x_height#, asc_height#], 0); "middle bar";
+beginsymbol(5u#, (-.8)[x_height#, asc_height#], 0); "middle bar";
   penpos0(accent_thickness, 90);
   penpos1(accent_thickness, 90);
 
@@ -65,7 +65,7 @@ beginsymbol(5u#, (-1)[x_height#, asc_height#], 0); "middle bar";
   penlabels(0,1)
 endchar;
 
-beginsymbol(5u#, (-1)[x_height#, asc_height#], 0); "middle slash";
+beginsymbol(5u#, (-.8)[x_height#, asc_height#], 0); "middle slash";
   x0 = w - x1 = 0;
   1/2[y0,y1] = h;
   y1 - y0 = 2line_thickness;
