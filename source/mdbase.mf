@@ -54,7 +54,7 @@ arrow_spread# := 1.6equal_spread#;
 delim_height# := 4.9pt#; % half the height of normal delimiters
 bigop_height# := 10.7pt#; % height of big operators
 accent_height# := x_height# + 1.u#; % height of accents
-accent_thickness# := 3/4line_thickness#;
+accent_thickness# := 4/5line_thickness#;
 rule_thickness# := line_thickness#;
 
 mode_setup;
