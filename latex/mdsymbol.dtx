@@ -1,6 +1,6 @@
 % \iffalse meta-comment
 %
-% Copyright (c) 2011 by Sebastian Schubert <schubert.seb@googlemail.com>
+% Copyright (c) 2012 by Sebastian Schubert <schubert.seb@googlemail.com>
 %
 % This work may be distributed and/or modified under the
 % conditions of the LaTeX Project Public License, either version 1.3c
@@ -21,10 +21,10 @@
 %
 %\iffalse
 %<*driver>
-\ProvidesFile{mdsymbol.dtx}[2012/01/07 v0.3 MdSymbol support package]
+\ProvidesFile{mdsymbol.dtx}[2012/06/15 v0.4 MdSymbol support package]
 %</driver>
 %<style>\NeedsTeXFormat{LaTeX2e}[1999/12/01]
-%<style>\ProvidesPackage{mdsymbol}[2012/01/07 v0.3 MdSymbol support package]
+%<style>\ProvidesPackage{mdsymbol}[2012/06/15 v0.4 MdSymbol support package]
 %<*driver>
 \documentclass[10pt]{ltxdoc}
 
@@ -71,7 +71,7 @@
 %</driver>
 %\fi
 %
-% \CheckSum{4274}
+% \CheckSum{4427}
 % \CharacterTable
 %  {Upper-case    \A\B\C\D\E\F\G\H\I\J\K\L\M\N\O\P\Q\R\S\T\U\V\W\X\Y\Z
 %   Lower-case    \a\b\c\d\e\f\g\h\i\j\k\l\m\n\o\p\q\r\s\t\u\v\w\x\y\z
@@ -217,7 +217,12 @@
 %   which has not been declared before loading \pkg{mdsymbol} with
 %   \opt{onlysansmath} option
 % \end{compactitem}
-% Version 0.3: Rename package to lower-case mdsymbol for CTAN upload
+% Version 0.3: Rename package to lower-case mdsymbol for CTAN upload\\
+% Version 0.4:
+% \begin{compactitem}
+% \item Added overlining command
+% \item Tuning of parameters and correction of some symbols
+% \end{compactitem}
 %
 % \section{Symbols}\label{sec:glyphs}
 %
@@ -1356,6 +1361,15 @@
 % \showaccent{\middleslash}
 % \showaccent{\strokethrough}
 % \end{multicols}
+%
+% In addition to the |\overline| command, which produces a line with a
+% height of three times the line width over its argument (and which
+% might be to high due to that), \pkg{mdsymbol} also defines an
+% command with a fixed height:
+% \begin{multicols}{2}
+% \showover{\overlining}
+% \end{multicols}
+%
 %
 % \subsection{Faked symbols}\label{sec:faked}
 %
@@ -3659,6 +3673,70 @@
 %    \begin{macrocode}
 \mdsy@DeclareRobustCommandArg{c@ncel}{2}{\m@th\ooalign{$\hfil#1/\hfil$\crcr$#1#2$}}
 \mdsy@DeclareRobustCommandArg{not}{1}{\mathrel{\m@th\mathpalette\c@ncel{#1}}}
+%    \end{macrocode}
+% The height of the |\overline| command is three times the
+% |default_line_thickness| which can be too much for heavier weights.
+% An alternative implementation follows with a fixed height. It is
+% based on \url{http://tex.stackexchange.com/a/24134/11605} and \url{http://tex.stackexchange.com/a/43906/11605}.
+%    \begin{macrocode}
+\RequirePackage{calc}
+\newsavebox\overliningbox
+
+\def\ovlg@eat#1#2#3#4#5{\futurelet\ovlg@let@token\ovlg@eat@}
+\def\ovlg@eat@#1\ovlg@eat{%
+\ifx\ovlg@let@token\bgroup
+\else\ifx\ovlg@let@token\mathop
+  \mathop
+\else\ifx\ovlg@let@token\mathbin
+  \mathbin
+\else\ifx\ovlg@let@token\mathrel
+  \mathrel
+\else\ifx\ovlg@let@token\mathopen
+  \mathopen
+\else\ifx\ovlg@let@token\mathop
+  \mathop
+\else\ifx\ovlg@let@token\mathpunct
+  \mathpunct
+\else\ifcat.\ifcat a\noexpand\ovlg@let@token.\else\noexpand\ovlg@let@token\fi
+  \afterassignment\ovlg@mathchar\count@\mathcode`#1\relax\ovlg@eat
+\else\ifx\ovlg@let@token\mathchar
+  \afterassignment\ovlg@mathchar\expandafter\count@\@gobble#1\relax\ovlg@eat
+\else
+    \xdef\meaning@{\meaning\ovlg@let@token}%
+    \expandafter\ovlg@mchar@test\meaning@""\@nil
+\fi\fi\fi\fi\fi\fi\fi\fi\fi
+}
+
+\edef\ovlg@mchar@{\meaning\mathchar}
+
+\def\ovlg@mchar@test#1"#2"#3\@nil{%
+  \xdef\meaning@{#1}%
+  \ifx\meaning@\ovlg@mchar@
+    \count@"#2\relax
+    \ovlg@mathchar\ovlg@eat
+   \fi
+}
+
+\def\ovlg@mathchar#1\ovlg@eat{%
+  \divide\count@"1000 }
+
+\mdsy@DeclareRobustCommandArg{overlining}{1}{%
+\begingroup
+\let\protect\empty
+\expandafter\ovlg@eat\romannumeral`\Q#1\relax\ovlg@eat
+  \ifcase\count@
+    \or
+    \mathop\or
+    \mathbin\or
+    \mathrel\or
+    \mathopen\or
+    \mathclose\or
+    \mathpunct\or
+  \fi
+  {\text{\savebox\overliningbox{$\m@th#1$}\fboxsep\z@%
+      \makebox[0pt][l]{$\m@th#1$}%
+      \rule[\ht\overliningbox+1.2pt]{\wd\overliningbox}{.8\fontdimen8\textfont3}}}%
+\endgroup}
 %</style>
 %    \end{macrocode}
 %
