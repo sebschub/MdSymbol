@@ -1259,6 +1259,8 @@
 % \showop{\bigoast}
 % \showop{\prod}
 % \showop{\coprod}
+% \showop{\prodi}
+% \showop{\coprodi}
 % \showop{\sum}
 % \showop{\osum}, \cmd{\modtwosum}
 % \showop{\int}
@@ -1281,6 +1283,8 @@
 % \showop{\sumint}
 % \showop{\smallprod}
 % \showop{\smallcoprod}
+% \showop{\smallprodi}
+% \showop{\smallcoprodi}
 % \showop{\smallint}
 % \showop{\surd}
 % \end{multicols}
@@ -2185,6 +2189,8 @@
 \mdsy@DeclareSymbol{daleth}{symbols}{\mathord}
 \mdsy@DeclareSymbol{wp}{symbols}{\mathord}
 \mdsy@DeclareSymbol{nabla}{symbols}{\mathord}
+\mdsy@DeclareSymbol{smallprodi}{symbols}{\mathop}
+\mdsy@DeclareSymbol{smallcoprodi}{symbols}{\mathop}
 %    \end{macrocode}
 % MdSymbolB: relations
 %    \begin{macrocode}
@@ -3341,6 +3347,10 @@
   \mdsy@DeclareAlias{dointclockwise}{largesymbols}{\mathop}
 \mdsy@DeclareSymbol{tsumint}{largesymbols}{\mathop}
 \mdsy@DeclareSymbol{dsumint}{largesymbols}{\mathop}
+\mdsy@DeclareSymbol{tprodi}{largesymbols}{\mathop}
+\mdsy@DeclareSymbol{dprodi}{largesymbols}{\mathop}
+\mdsy@DeclareSymbol{tcoprodi}{largesymbols}{\mathop}
+\mdsy@DeclareSymbol{dcoprodi}{largesymbols}{\mathop}
 %\let\intop\tint
 %\let\ointop\toint
 
@@ -3382,6 +3392,8 @@
 \mdsy@DeclareOperator{modtwosum}{\dmodtwosum}{\tmodtwosum}
 \mdsy@DeclareOperator{prod}{\dprod}{\tprod}
 \mdsy@DeclareOperator{coprod}{\dcoprod}{\tcoprod}
+\mdsy@DeclareOperator{prodi}{\dprodi}{\tprodi}
+\mdsy@DeclareOperator{coprodi}{\dcoprodi}{\tcoprodi}
 \mdsy@DeclareIntegral{int}{\dint}{\tint}
 \mdsy@DeclareIntegral{iint}{\diint}{\tiint}
 \mdsy@DeclareIntegral{iiint}{\diiint}{\tiiint}

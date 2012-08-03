@@ -24,7 +24,9 @@ lookup disp { # Display mode
   sub [uni22C0-uni22C3] by [uni22C0.disp-uni22C3.disp];
   sub [sym090-sym099] by [sym090.disp-sym099.disp];
   sub sym09A by sym09A.disp;
-  sub sym09B by sym09B.disp;  
+  sub sym09B by sym09B.disp;
+  sub sym09C by sym09C.disp;
+  sub sym09D by sym09D.disp;
 } disp;
 
 lookup ss01 { # Bigger delimiters
@@ -124,6 +126,8 @@ feature aalt {
   sub arrowdblup by arrowdblup.short;
   sub arrowdbldown by arrowdbldown.short;
   sub uni2980 by uni2980.big1;
+  sub sym09C by sym01B;
+  sub sym09D by sym01C;
 } aalt;
 
 feature aalt {

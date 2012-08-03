@@ -1912,3 +1912,9 @@ beginsymbol(8u# + letter_line_thickness# + 2side_bearing#, cap_height#, 0); "nab
 
   penlabels(0,1,2,3,4,5);
 endchar;
+
+for sign = 1, -1:
+  beginoperator(plus_size#, 1); "product";
+    draw_productintegral(centre, plus_size, plus_size, sign, line_thickness);
+  endchar;
+endfor;

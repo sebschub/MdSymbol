@@ -465,3 +465,14 @@ for scale = 1, 1.8:
   endchar;
 endfor;
 charlist current_char - 1: current_char;
+
+for sign = 1, -1:
+  for scale = 1, 1.4:
+    beginbigop(1.3scale, scale); "product integral";
+      draw_productintegral(centre, op_width, op_height, sign, bop_line_thickness(scale));
+    endchar;
+  endfor;
+  charlist current_char - 1: current_char;
+endfor;
+
+
