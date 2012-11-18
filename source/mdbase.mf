@@ -570,24 +570,34 @@ enddef;
 
 def draw_productintegral(expr centre, width, height, sign, thick) =
 
-  put_product_points(centre, width, height, sign, thick)
+  put_product_points(centre, width, height, sign, thick);
 
+  z8''=0.3[z2l,z3l];
+  z9''=0.7[z2l,z3l];
+  
   x6'=x6; y6'-y6=sign*(x6-x0+1/2thick); 
-  penpos6'(thick,0);
+  penpos6'(sign*thick/sind(angle(z8''-z0)),0);
+  penpos8''(thick, 0);
+  penpos9''(thick, 0);
+
   z0r = z0'r;
   penpos0'(thick,sign*76);
 
-  z2 - z2' = sign* 1/50height * up;
+  z2 - z2' = sign* 1/35height * up;
   penpos2'(thin,sign*90);
-  z8l = z8'l;
+  z8''l = z8'l;
   penpos8'(thick,sign*90);
 
-  z7' - z7 = 1/4(z1l-z7);
-  penpos7'(thick/cosd(7),0);
-  
-  fill z8r -- z9l{sign*down} .. {dir(sign*-83)}z7'l -- z7'r{dir(sign*97)} .. {sign*up}z9r -- z3l -- z3r -- z8'r{left} .. z2'r -- z2'l .. {right}z8l -- z6'l{sign*down} .. {left}z0r -- z0'l{left} .. {right}z0l{right} .. {sign*up}z6'r --cycle;
+  x7'=x7; y7'-y7=sign*(x1-x7+1/2thick); 
+  penpos7'(sign*thick/sind(angle(z9''-z1)),0);
 
-  penlabels(0',2',6',7',8');
+  z7'' = z7' + whatever*(z1-z9'');
+  y7'' = y7;
+  penpos7''(sign*thick/sind(angle(z7'-z7'')),0);
+  
+  fill z8''r -- z9''l{sign*down} .. {z1-z9''}z7'l -- z7''l -- z7''r -- z7'r{z9''-z1} .. {sign*up}z9''r -- z3l -- z3r -- z8'r{left} .. z2'r -- z2'l .. {right}z8''l{sign*down} ... {z0-z8''}z6'l{z0-z8''} ... {left}z0r -- z0'l{left} .. {right}z0l{right} ... {z8''-z0}z6'r{z8''-z0} ... {sign*up}cycle;
+
+  penlabels(0',2',6',7',7'',8',8'',9'');
 enddef;
 
 def draw_sum(suffix $)(expr centre, width, height, thick) =
