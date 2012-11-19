@@ -934,10 +934,11 @@ beginsymbol(18/10order_width# + 2side_bearing#, vcentre(2equal_spread# + line_th
   pair centre;
   centre := (w/2, (h-d)/2);
   thick := line_thickness;
+  thin  := letter_line_thickness;
   alpha := 0;
 
-  z0 = centre - (9/10order_width - 1/2thick) * dir alpha;
-  z1 = centre + (9/10order_width - 1/2thick) * dir alpha;
+  z0 = centre - (9/10order_width - 1/2thin) * dir alpha;
+  z1 = centre + (9/10order_width - 1/2thin) * dir alpha;
   z6 = 1/5[z0,z1];
   z7 = 4/5[z0,z1];
   z2 = z6 + equal_spread * dir (alpha + 90);
@@ -946,14 +947,14 @@ beginsymbol(18/10order_width# + 2side_bearing#, vcentre(2equal_spread# + line_th
   z5 = z7 - equal_spread * dir (alpha + 90);
   z8 = z9 = centre;
 
-  penpos0(thick, alpha);
-  penpos1(thick, alpha);
+  penpos0(thin,  alpha);
+  penpos1(thin,  alpha);
   penpos2(thick, alpha - 90);
   penpos3(thick, alpha + 90);
   penpos4(thick, alpha + 90);
   penpos5(thick, alpha - 90);
-  penpos8(thick, alpha - 135);
-  penpos9(thick, alpha + 135);
+  penpos8(thin,  alpha - 135);
+  penpos9(thin,  alpha + 135);
 
   fill stroke z4.e{dir (alpha + 180)}
     .. {dir (alpha + 225)}z9.e
@@ -1235,7 +1236,7 @@ endchar;
 
 for sign = 1, -1:
   beginoperator(plus_size#, 1); "product";
-    draw_product(centre, plus_size, plus_size, sign, line_thickness);
+    draw_product(centre, plus_size, plus_size, sign, letter_line_thickness);
   endchar;
 endfor;
 
@@ -1834,24 +1835,24 @@ slant := 0.212557;
 transform currenttransform;
 currenttransform := identity slanted slant yscaled aspect_ratio scaled granularity shifted (-u,0);
 
-beginsymbol(9u# + 2line_thickness#, x_height#, desc_depth#); "Weierstrass p";
+beginsymbol(9u# + 2letter_line_thickness#, x_height#, desc_depth#); "Weierstrass p";
   numeric theta;
   theta = 90 - angle(8u,h);
   slope := -h/8u;  % angle at middle
   superness := 1/sqrt 2;
   superpull := 1/6;
 
-  penpos2(line_thickness, -60);
-  penpos1(line_thickness, theta);
-  penpos7(line_thickness, -90);
+  penpos2(letter_line_thickness, -60);
+  penpos1(letter_line_thickness, theta);
+  penpos7(letter_line_thickness, -90);
 
   x2 + 1/2u = x1 = x7 - 1/2u = 3u;
   y2l = h;
   y7r = -d;
   y1 = 2/5[-d, h];
   x3l = 1/2u;
-  x6r = max(x7 + line_thickness, 1/2w - 1/4u);
-  x3r - x3l = x6r - x6l =line_thickness;
+  x6r = max(x7 + letter_line_thickness, 1/2w - 1/4u);
+  x3r - x3l = x6r - x6l =letter_line_thickness;
 
   ellipse_set(2l,3l,4l,1l);
   ellipse_set(2r,3r,4r,1r);
@@ -1863,13 +1864,13 @@ beginsymbol(9u# + 2line_thickness#, x_height#, desc_depth#); "Weierstrass p";
 
   fill stroke super_arc.e(2,3) & z3e{down} .. z4e .. z5e .. z6e{down} & super_arc.e(6,7);  % flourish
 
-  penpos8(line_thickness, 180);
-  penpos9(line_thickness, 90);
-  penpos10(line_thickness, 0);
-  penpos11(line_thickness, -90);
-  penpos12(line_thickness, -100);
+  penpos8(letter_line_thickness, 180);
+  penpos9(letter_line_thickness, 90);
+  penpos10(letter_line_thickness, 0);
+  penpos11(letter_line_thickness, -90);
+  penpos12(letter_line_thickness, -100);
 
-  x10r = w - 3/2u + 1/2line_thickness;
+  x10r = w - 3/2u + 1/2letter_line_thickness;
   x8r = u;
   x9 = x11 = 1/2w + 3/2u;
   x12l = max(x6r, .5w + .5u);
@@ -1913,7 +1914,7 @@ beginsymbol(8u# + letter_line_thickness# + 2side_bearing#, cap_height#, 0); "nab
 endchar;
 
 for sign = 1, -1:
-  beginoperator(plus_size#, 1); "product";
-    draw_productintegral(centre, plus_size, plus_size, sign, line_thickness);
+  beginoperator(plus_size#, 1); "product integral";
+    draw_productintegral(centre, plus_size, plus_size, sign, letter_line_thickness);
   endchar;
 endfor;
