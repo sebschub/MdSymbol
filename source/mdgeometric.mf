@@ -1364,13 +1364,11 @@ for filled = false, true:
     z8 = z0 + thick * dir (180-20);
     p1 = z7{dir (90+35)} .. {dir 90}z2r;
     p2 = z3r{dir 270} .. {dir (270-35)}z8;
-    %(t1,t2) = p1 intersectiontimes p2;
-    z10 = p1 intersectionpoint p2;
-  
+    (t1,t2) = p1 intersectiontimes p2;
+      
     fill z0{dir (90+35)} .. {dir 90}z2l .. {dir 0}z4l .. {dir (270+45)}z1l{dir (90-45)} .. {dir 0}z5l .. {dir 270}z3l .. {dir (270-35)}z0 & cycle;
     if not filled:
-    %   unfill subpath (t1,1) of p1 & z2r{dir 90} .. {dir 0}z4r .. {dir (270+45)}z1r -- z6 -- z1'r{dir (90-45)} .. {dir 0}z5r .. {dir 270}z3r & subpath (0,t2) of p2 -- cycle;
-      unfill z10{dir (90+35)} .. {dir 90}z2r{dir 90} .. z2r{dir 90} .. {dir 0}z4r .. {dir (270+45)}z1r -- z6 -- z1'r{dir (90-45)} .. {dir 0}z5r .. {dir 270}z3r{dir 270} .. {dir (270-35)}z10  -- cycle;
+      unfill subpath (t1,1) of p1 & z2r{dir 90} .. {dir 0}z4r .. {dir (270+45)}z1r -- z6 -- z1'r{dir (90-45)} .. {dir 0}z5r .. {dir 270}z3r & subpath (0,t2) of p2 -- cycle;
     fi;
 
     penlabels(0,1,1',2,3,4,5,6,7,8,10);
