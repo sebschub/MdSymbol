@@ -22,6 +22,10 @@ http://github.com/sebschub/MdSymbol
 
 ChangeLog
 ---------
+29 Nov 2012 (Sebastian Schubert) MdSymbol version 2.000
+- Tuning of line width (mainly thinner lines) and font dimensions
+- Added "product integral" and inverted "product integral"
+- Correction of name in opentype
 
 19 Dec 2011 (Sebastian Schubert) MdSymbol version 1.000
 - First public release
